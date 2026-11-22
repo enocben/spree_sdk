@@ -1,7 +1,6 @@
 /// Post-purchase order models.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -14,71 +13,68 @@
 ///   checkout was placed from).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'cart.dart';
 import 'meta.dart';
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+part 'order.freezed.dart';
 
 /// A completed order.
 ///
 /// Source: `packages/sdk/src/types/generated/Order.ts`;
 /// SPEC `store.yaml#/components/schemas/Order`.
-class Order {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Order with _$Order {
+  const Order._();
+
   /// Creates an order.
-  const Order({
-    this.marketId,
-    this.withdrawalPeriodEndsAt,
-    required this.withinWithdrawalPeriod,
-    required this.shippingEqBillingAddress,
-    this.cartId,
-    this.channelId,
-    this.companyId,
-    this.companyName,
-    this.poDocumentFilename,
-    this.poDocumentByteSize,
-    required this.number,
-    required this.email,
-    this.customerNote,
-    this.poNumber,
-    required this.currency,
-    this.locale,
-    required this.totalQuantity,
-    this.couponCode,
-    this.fulfillmentStatus,
-    this.paymentStatus,
-    this.completedAt,
-    this.itemTotal,
-    this.discountTotal,
-    this.taxTotal,
-    this.includedTaxTotal,
-    this.additionalTaxTotal,
-    this.deliveryTotal,
-    this.feeTotal,
-    this.giftCardTotal,
-    this.storeCreditTotal,
-    this.total,
-    this.amountDue,
-    required this.coveredByStoreCredit,
-    required this.payments,
-    this.adjustmentTotal,
-    required this.discounts,
-    required this.fees,
-    required this.items,
-    required this.fulfillments,
-    this.billingAddress,
-    this.shippingAddress,
-    this.giftCard,
-    this.market,
-    this.customFields,
-  });
+  const factory Order({
+    String? marketId,
+    String? withdrawalPeriodEndsAt,
+    required bool withinWithdrawalPeriod,
+    required bool shippingEqBillingAddress,
+    String? cartId,
+    String? channelId,
+    String? companyId,
+    String? companyName,
+    String? poDocumentFilename,
+    int? poDocumentByteSize,
+    required String number,
+    required String email,
+    String? customerNote,
+    String? poNumber,
+    required CurrencyCode currency,
+    LocaleCode? locale,
+    required int totalQuantity,
+    String? couponCode,
+    OrderFulfillmentStatus? fulfillmentStatus,
+    OrderPaymentStatus? paymentStatus,
+    String? completedAt,
+    String? itemTotal,
+    String? discountTotal,
+    String? taxTotal,
+    String? includedTaxTotal,
+    String? additionalTaxTotal,
+    String? deliveryTotal,
+    String? feeTotal,
+    String? giftCardTotal,
+    String? storeCreditTotal,
+    String? total,
+    String? amountDue,
+    required bool coveredByStoreCredit,
+    required List<Payment> payments,
+    String? adjustmentTotal,
+    required List<AppliedPromotion> discounts,
+    required List<Fee> fees,
+    required List<LineItem> items,
+    required List<Fulfillment> fulfillments,
+    Address? billingAddress,
+    Address? shippingAddress,
+    GiftCard? giftCard,
+    Market? market,
+    List<CustomField>? customFields,
+  }) = _Order;
 
   /// Parses an order from its JSON shape.
   factory Order.fromJson(Map<String, Object?> json) => Order(
@@ -153,137 +149,225 @@ class Order {
   );
 
   /// Owning market id, when set.
-  final String? marketId;
+  @override
+  @override
+  String? get marketId;
 
   /// Withdrawal-period end, when reported.
-  final String? withdrawalPeriodEndsAt;
+  @override
+  @override
+  String? get withdrawalPeriodEndsAt;
 
   /// Whether the order is within its withdrawal period.
-  final bool withinWithdrawalPeriod;
+  @override
+  @override
+  bool get withinWithdrawalPeriod;
 
   /// Whether the shipping address equals the billing address.
-  final bool shippingEqBillingAddress;
+  @override
+  @override
+  bool get shippingEqBillingAddress;
 
   /// Id of the cart the checkout was placed from, when reported (also
   /// accepted by `orders.get` in place of the order id).
-  final String? cartId;
+  @override
+  @override
+  String? get cartId;
 
   /// Owning channel id, when set.
-  final String? channelId;
+  @override
+  @override
+  String? get channelId;
 
   /// Owning company id, when set.
-  final String? companyId;
+  @override
+  @override
+  String? get companyId;
 
   /// Owning company name, when set.
-  final String? companyName;
+  @override
+  @override
+  String? get companyName;
 
   /// Uploaded PO document file name, when set.
-  final String? poDocumentFilename;
+  @override
+  @override
+  String? get poDocumentFilename;
 
   /// Uploaded PO document size in bytes, when reported.
-  final int? poDocumentByteSize;
+  @override
+  @override
+  int? get poDocumentByteSize;
 
   /// Order number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Customer email.
-  final String email;
+  @override
+  @override
+  String get email;
 
   /// Customer note, when set.
-  final String? customerNote;
+  @override
+  @override
+  String? get customerNote;
 
   /// Purchase-order number, when set.
-  final String? poNumber;
+  @override
+  @override
+  String? get poNumber;
 
   /// Order currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Order locale, when set.
-  final LocaleCode? locale;
+  @override
+  @override
+  LocaleCode? get locale;
 
   /// Total item quantity.
-  final int totalQuantity;
+  @override
+  @override
+  int get totalQuantity;
 
   /// Applied coupon code, when set.
-  final String? couponCode;
+  @override
+  @override
+  String? get couponCode;
 
   /// Aggregate fulfillment status, when reported.
-  final OrderFulfillmentStatus? fulfillmentStatus;
+  @override
+  @override
+  OrderFulfillmentStatus? get fulfillmentStatus;
 
   /// Aggregate payment status, when reported.
-  final OrderPaymentStatus? paymentStatus;
+  @override
+  @override
+  OrderPaymentStatus? get paymentStatus;
 
   /// Completion timestamp, when reported.
-  final String? completedAt;
+  @override
+  @override
+  String? get completedAt;
 
   /// Line items total before discounts/fees/delivery, decimal string.
-  final String? itemTotal;
+  @override
+  @override
+  String? get itemTotal;
 
   /// Promotion discounts (negative), decimal string.
-  final String? discountTotal;
+  @override
+  @override
+  String? get discountTotal;
 
   /// All tax (included + added), decimal string.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Tax included in prices, decimal string.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Tax added on top of prices, decimal string.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Delivery cost before delivery discounts, decimal string.
-  final String? deliveryTotal;
+  @override
+  @override
+  String? get deliveryTotal;
 
   /// All fees, decimal string.
-  final String? feeTotal;
+  @override
+  @override
+  String? get feeTotal;
 
   /// What a gift card pays, decimal string.
-  final String? giftCardTotal;
+  @override
+  @override
+  String? get giftCardTotal;
 
   /// What store credit pays, decimal string.
-  final String? storeCreditTotal;
+  @override
+  @override
+  String? get storeCreditTotal;
 
   /// Grand total, decimal string.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Remainder to pay after payments and store credit, decimal string.
-  final String? amountDue;
+  @override
+  @override
+  String? get amountDue;
 
   /// Whether store credit covers the order.
-  final bool coveredByStoreCredit;
+  @override
+  @override
+  bool get coveredByStoreCredit;
 
   /// Payments on the order.
-  final List<Payment> payments;
+  @override
+  @override
+  List<Payment> get payments;
 
   /// Discounts, fees and added tax together, decimal string.
-  final String? adjustmentTotal;
+  @override
+  @override
+  String? get adjustmentTotal;
 
   /// Applied promotions.
-  final List<AppliedPromotion> discounts;
+  @override
+  @override
+  List<AppliedPromotion> get discounts;
 
   /// Charged fees.
-  final List<Fee> fees;
+  @override
+  @override
+  List<Fee> get fees;
 
   /// Line items.
-  final List<LineItem> items;
+  @override
+  @override
+  List<LineItem> get items;
 
   /// Fulfillments (shipments).
-  final List<Fulfillment> fulfillments;
+  @override
+  @override
+  List<Fulfillment> get fulfillments;
 
   /// Billing address, when set.
-  final Address? billingAddress;
+  @override
+  @override
+  Address? get billingAddress;
 
   /// Shipping address, when set.
-  final Address? shippingAddress;
+  @override
+  @override
+  Address? get shippingAddress;
 
   /// Applied gift card, when set.
-  final GiftCard? giftCard;
+  @override
+  @override
+  GiftCard? get giftCard;
 
   /// Expanded market, when requested via `expand`.
-  final Market? market;
+  @override
+  @override
+  Market? get market;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this order back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -333,58 +417,6 @@ class Order {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Order &&
-          marketId == other.marketId &&
-          withdrawalPeriodEndsAt == other.withdrawalPeriodEndsAt &&
-          withinWithdrawalPeriod == other.withinWithdrawalPeriod &&
-          shippingEqBillingAddress == other.shippingEqBillingAddress &&
-          cartId == other.cartId &&
-          channelId == other.channelId &&
-          companyId == other.companyId &&
-          companyName == other.companyName &&
-          poDocumentFilename == other.poDocumentFilename &&
-          poDocumentByteSize == other.poDocumentByteSize &&
-          number == other.number &&
-          email == other.email &&
-          customerNote == other.customerNote &&
-          poNumber == other.poNumber &&
-          currency == other.currency &&
-          locale == other.locale &&
-          totalQuantity == other.totalQuantity &&
-          couponCode == other.couponCode &&
-          fulfillmentStatus == other.fulfillmentStatus &&
-          paymentStatus == other.paymentStatus &&
-          completedAt == other.completedAt &&
-          itemTotal == other.itemTotal &&
-          discountTotal == other.discountTotal &&
-          taxTotal == other.taxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          deliveryTotal == other.deliveryTotal &&
-          feeTotal == other.feeTotal &&
-          giftCardTotal == other.giftCardTotal &&
-          storeCreditTotal == other.storeCreditTotal &&
-          total == other.total &&
-          amountDue == other.amountDue &&
-          coveredByStoreCredit == other.coveredByStoreCredit &&
-          _listEquals(payments, other.payments) &&
-          adjustmentTotal == other.adjustmentTotal &&
-          _listEquals(discounts, other.discounts) &&
-          _listEquals(fees, other.fees) &&
-          _listEquals(items, other.items) &&
-          _listEquals(fulfillments, other.fulfillments) &&
-          billingAddress == other.billingAddress &&
-          shippingAddress == other.shippingAddress &&
-          giftCard == other.giftCard &&
-          market == other.market &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(number, email, currency, totalQuantity);
 }
 
 /// The group a multi-seller checkout divides into, carrying one [Order]
@@ -392,33 +424,36 @@ class Order {
 ///
 /// Source: `packages/sdk/src/types/generated/OrderGroup.ts`;
 /// SPEC `store.yaml#/components/schemas/OrderGroup`.
-class OrderGroup {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class OrderGroup with _$OrderGroup {
+  const OrderGroup._();
+
   /// Creates an order group.
-  const OrderGroup({
-    required this.id,
-    required this.number,
-    this.email,
-    required this.currency,
-    this.itemTotal,
-    this.discountTotal,
-    this.taxTotal,
-    this.includedTaxTotal,
-    this.additionalTaxTotal,
-    this.deliveryTotal,
-    this.feeTotal,
-    this.giftCardTotal,
-    this.storeCreditTotal,
-    this.total,
-    this.amountDue,
-    required this.coveredByStoreCredit,
-    required this.payments,
-    this.fulfillmentStatus,
-    this.paymentStatus,
-    this.completedAt,
-    this.billingAddress,
-    this.shippingAddress,
-    required this.orders,
-  });
+  const factory OrderGroup({
+    required String id,
+    required String number,
+    String? email,
+    required CurrencyCode currency,
+    String? itemTotal,
+    String? discountTotal,
+    String? taxTotal,
+    String? includedTaxTotal,
+    String? additionalTaxTotal,
+    String? deliveryTotal,
+    String? feeTotal,
+    String? giftCardTotal,
+    String? storeCreditTotal,
+    String? total,
+    String? amountDue,
+    required bool coveredByStoreCredit,
+    required List<Payment> payments,
+    OrderFulfillmentStatus? fulfillmentStatus,
+    OrderPaymentStatus? paymentStatus,
+    String? completedAt,
+    Address? billingAddress,
+    Address? shippingAddress,
+    required List<Order> orders,
+  }) = _OrderGroup;
 
   /// Parses an order group from its JSON shape.
   factory OrderGroup.fromJson(Map<String, Object?> json) => OrderGroup(
@@ -460,73 +495,119 @@ class OrderGroup {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Group number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Customer email, when reported.
-  final String? email;
+  @override
+  @override
+  String? get email;
 
   /// Group currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Line items total before discounts/fees/delivery, decimal string.
-  final String? itemTotal;
+  @override
+  @override
+  String? get itemTotal;
 
   /// Promotion discounts (negative), decimal string.
-  final String? discountTotal;
+  @override
+  @override
+  String? get discountTotal;
 
   /// All tax (included + added), decimal string.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Tax included in prices, decimal string.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Tax added on top of prices, decimal string.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Delivery cost before delivery discounts, decimal string.
-  final String? deliveryTotal;
+  @override
+  @override
+  String? get deliveryTotal;
 
   /// All fees, decimal string.
-  final String? feeTotal;
+  @override
+  @override
+  String? get feeTotal;
 
   /// What a gift card pays, decimal string.
-  final String? giftCardTotal;
+  @override
+  @override
+  String? get giftCardTotal;
 
   /// What store credit pays, decimal string.
-  final String? storeCreditTotal;
+  @override
+  @override
+  String? get storeCreditTotal;
 
   /// Grand total, decimal string.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Remainder to pay after payments and store credit, decimal string.
-  final String? amountDue;
+  @override
+  @override
+  String? get amountDue;
 
   /// Whether store credit covers the group.
-  final bool coveredByStoreCredit;
+  @override
+  @override
+  bool get coveredByStoreCredit;
 
   /// Payments on the group.
-  final List<Payment> payments;
+  @override
+  @override
+  List<Payment> get payments;
 
   /// Aggregate fulfillment status, when reported.
-  final OrderFulfillmentStatus? fulfillmentStatus;
+  @override
+  @override
+  OrderFulfillmentStatus? get fulfillmentStatus;
 
   /// Aggregate payment status, when reported.
-  final OrderPaymentStatus? paymentStatus;
+  @override
+  @override
+  OrderPaymentStatus? get paymentStatus;
 
   /// Completion timestamp, when reported.
-  final String? completedAt;
+  @override
+  @override
+  String? get completedAt;
 
   /// Billing address, when set.
-  final Address? billingAddress;
+  @override
+  @override
+  Address? get billingAddress;
 
   /// Shipping address, when set.
-  final Address? shippingAddress;
+  @override
+  @override
+  Address? get shippingAddress;
 
   /// Per-seller orders of this group.
-  final List<Order> orders;
+  @override
+  @override
+  List<Order> get orders;
 
   /// Serializes this group back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -554,37 +635,6 @@ class OrderGroup {
     'shipping_address': shippingAddress?.toJson(),
     'orders': orders.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OrderGroup &&
-          id == other.id &&
-          number == other.number &&
-          email == other.email &&
-          currency == other.currency &&
-          itemTotal == other.itemTotal &&
-          discountTotal == other.discountTotal &&
-          taxTotal == other.taxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          deliveryTotal == other.deliveryTotal &&
-          feeTotal == other.feeTotal &&
-          giftCardTotal == other.giftCardTotal &&
-          storeCreditTotal == other.storeCreditTotal &&
-          total == other.total &&
-          amountDue == other.amountDue &&
-          coveredByStoreCredit == other.coveredByStoreCredit &&
-          _listEquals(payments, other.payments) &&
-          fulfillmentStatus == other.fulfillmentStatus &&
-          paymentStatus == other.paymentStatus &&
-          completedAt == other.completedAt &&
-          billingAddress == other.billingAddress &&
-          shippingAddress == other.shippingAddress &&
-          _listEquals(orders, other.orders);
-
-  @override
-  int get hashCode => Object.hash(id, number, currency);
 }
 
 /// Whether a decoded `carts.complete` / `orders.get` payload is the group

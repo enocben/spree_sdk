@@ -1,7 +1,6 @@
 /// Group-C models: post-purchase, B2B and payment-setup shapes.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models and parameter objects with explicit JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -38,30 +37,12 @@
 ///   handoff in `OrdersResource` tests).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'cart.dart';
 import 'meta.dart';
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
-
-/// Compares two maps element-wise; both `null` counts as equal.
-bool _mapEquals(Map<String, Object?>? a, Map<String, Object?>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (final MapEntry<String, Object?> entry in a.entries) {
-    if (!b.containsKey(entry.key) || b[entry.key] != entry.value) {
-      return false;
-    }
-  }
-  return true;
-}
+part 'params_orders.freezed.dart';
 
 /// Lifecycle status of a return.
 ///
@@ -326,13 +307,16 @@ enum PaymentSetupSessionStatus {
 /// A return reason of the store.
 ///
 /// Source: `packages/sdk/src/types/generated/ReturnReason.ts`.
-class ReturnReason {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ReturnReason with _$ReturnReason {
+  const ReturnReason._();
+
   /// Creates a return reason.
-  const ReturnReason({
-    required this.id,
-    required this.name,
-    required this.active,
-  });
+  const factory ReturnReason({
+    required String id,
+    required String name,
+    required bool active,
+  }) = _ReturnReason;
 
   /// Parses a return reason from its JSON shape.
   factory ReturnReason.fromJson(Map<String, Object?> json) => ReturnReason(
@@ -342,13 +326,19 @@ class ReturnReason {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Reason name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether the reason is active.
-  final bool active;
+  @override
+  @override
+  bool get active;
 
   /// Serializes this reason back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -356,29 +346,21 @@ class ReturnReason {
     'name': name,
     'active': active,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ReturnReason &&
-          id == other.id &&
-          name == other.name &&
-          active == other.active;
-
-  @override
-  int get hashCode => Object.hash(id, name, active);
 }
 
 /// A claim reason of the store.
 ///
 /// Source: `packages/sdk/src/types/generated/ClaimReason.ts`.
-class ClaimReason {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ClaimReason with _$ClaimReason {
+  const ClaimReason._();
+
   /// Creates a claim reason.
-  const ClaimReason({
-    required this.id,
-    required this.name,
-    required this.active,
-  });
+  const factory ClaimReason({
+    required String id,
+    required String name,
+    required bool active,
+  }) = _ClaimReason;
 
   /// Parses a claim reason from its JSON shape.
   factory ClaimReason.fromJson(Map<String, Object?> json) => ClaimReason(
@@ -388,13 +370,19 @@ class ClaimReason {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Reason name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether the reason is active.
-  final bool active;
+  @override
+  @override
+  bool get active;
 
   /// Serializes this reason back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -402,40 +390,32 @@ class ClaimReason {
     'name': name,
     'active': active,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ClaimReason &&
-          id == other.id &&
-          name == other.name &&
-          active == other.active;
-
-  @override
-  int get hashCode => Object.hash(id, name, active);
 }
 
 /// One returned unit on a return.
 ///
 /// Source: `packages/sdk/src/types/generated/ReturnLineItem.ts`. The
 /// expanded `variant` is kept raw (see library docs).
-class ReturnLineItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ReturnLineItem with _$ReturnLineItem {
+  const ReturnLineItem._();
+
   /// Creates a return line item.
-  const ReturnLineItem({
-    required this.id,
-    required this.quantity,
-    required this.receivedQuantity,
-    required this.resellable,
-    this.preTaxAmount,
-    this.includedTaxTotal,
-    this.additionalTaxTotal,
-    this.taxTotal,
-    this.refundAmount,
-    this.variantId,
-    this.lineItemId,
-    this.fulfillmentItemId,
-    this.variant,
-  });
+  const factory ReturnLineItem({
+    required String id,
+    required int quantity,
+    required int receivedQuantity,
+    required bool resellable,
+    String? preTaxAmount,
+    String? includedTaxTotal,
+    String? additionalTaxTotal,
+    String? taxTotal,
+    String? refundAmount,
+    String? variantId,
+    String? lineItemId,
+    String? fulfillmentItemId,
+    Map<String, Object?>? variant,
+  }) = _ReturnLineItem;
 
   /// Parses a return line item from its JSON shape.
   factory ReturnLineItem.fromJson(Map<String, Object?> json) => ReturnLineItem(
@@ -459,43 +439,69 @@ class ReturnLineItem {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Quantity being returned.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Quantity received so far.
-  final int receivedQuantity;
+  @override
+  @override
+  int get receivedQuantity;
 
   /// Whether the unit can be resold.
-  final bool resellable;
+  @override
+  @override
+  bool get resellable;
 
   /// Pre-tax amount, decimal string, when reported.
-  final String? preTaxAmount;
+  @override
+  @override
+  String? get preTaxAmount;
 
   /// Included tax total, decimal string, when reported.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Added tax total, decimal string, when reported.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Tax total, decimal string, when reported.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Refund amount, decimal string, when reported.
-  final String? refundAmount;
+  @override
+  @override
+  String? get refundAmount;
 
   /// Returning variant id, when reported.
-  final String? variantId;
+  @override
+  @override
+  String? get variantId;
 
   /// Originating line item id, when reported.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Shipped unit coming back (the return identity), when reported.
-  final String? fulfillmentItemId;
+  @override
+  @override
+  String? get fulfillmentItemId;
 
   /// Expanded variant, when requested via `expand`. Kept raw.
-  final Map<String, Object?>? variant;
+  @override
+  @override
+  Map<String, Object?>? get variant;
 
   /// Serializes this line item back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -513,50 +519,32 @@ class ReturnLineItem {
     'fulfillment_item_id': fulfillmentItemId,
     'variant': variant,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ReturnLineItem &&
-          id == other.id &&
-          quantity == other.quantity &&
-          receivedQuantity == other.receivedQuantity &&
-          resellable == other.resellable &&
-          preTaxAmount == other.preTaxAmount &&
-          includedTaxTotal == other.includedTaxTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          taxTotal == other.taxTotal &&
-          refundAmount == other.refundAmount &&
-          variantId == other.variantId &&
-          lineItemId == other.lineItemId &&
-          fulfillmentItemId == other.fulfillmentItemId &&
-          _mapEquals(variant, other.variant);
-
-  @override
-  int get hashCode => Object.hash(id, quantity, fulfillmentItemId);
 }
 
 /// A customer return on an order.
 ///
 /// Source: `packages/sdk/src/types/generated/Return.ts`.
-class Return {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Return with _$Return {
+  const Return._();
+
   /// Creates a return.
-  const Return({
-    required this.id,
-    required this.number,
-    required this.status,
-    this.orderId,
-    this.reasonId,
-    this.refundTotal,
-    this.refundTaxTotal,
-    this.approvedAt,
-    this.receivedAt,
-    this.refundedAt,
-    this.canceledAt,
-    this.reason,
-    this.returnLineItems,
-    this.customFields,
-  });
+  const factory Return({
+    required String id,
+    required String number,
+    required ReturnStatus status,
+    String? orderId,
+    String? reasonId,
+    String? refundTotal,
+    String? refundTaxTotal,
+    String? approvedAt,
+    String? receivedAt,
+    String? refundedAt,
+    String? canceledAt,
+    ReturnReason? reason,
+    List<ReturnLineItem>? returnLineItems,
+    List<CustomField>? customFields,
+  }) = _Return;
 
   /// Parses a return from its JSON shape.
   factory Return.fromJson(Map<String, Object?> json) => Return(
@@ -583,46 +571,74 @@ class Return {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Return number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Lifecycle status.
-  final ReturnStatus status;
+  @override
+  @override
+  ReturnStatus get status;
 
   /// Owning order id, when reported.
-  final String? orderId;
+  @override
+  @override
+  String? get orderId;
 
   /// Return reason id, when set (one of the store's return reasons).
-  final String? reasonId;
+  @override
+  @override
+  String? get reasonId;
 
   /// Refund total, decimal string, when reported.
-  final String? refundTotal;
+  @override
+  @override
+  String? get refundTotal;
 
   /// Refund tax total, decimal string, when reported.
-  final String? refundTaxTotal;
+  @override
+  @override
+  String? get refundTaxTotal;
 
   /// Approval timestamp, when set.
-  final String? approvedAt;
+  @override
+  @override
+  String? get approvedAt;
 
   /// Receipt timestamp, when set.
-  final String? receivedAt;
+  @override
+  @override
+  String? get receivedAt;
 
   /// Refund timestamp, when set.
-  final String? refundedAt;
+  @override
+  @override
+  String? get refundedAt;
 
   /// Cancellation timestamp, when set.
-  final String? canceledAt;
+  @override
+  @override
+  String? get canceledAt;
 
   /// Expanded reason, when requested via `expand`.
-  final ReturnReason? reason;
+  @override
+  @override
+  ReturnReason? get reason;
 
   /// Returned units, when present.
-  final List<ReturnLineItem>? returnLineItems;
+  @override
+  @override
+  List<ReturnLineItem>? get returnLineItems;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this return back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -642,52 +658,33 @@ class Return {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Return &&
-          id == other.id &&
-          number == other.number &&
-          status == other.status &&
-          orderId == other.orderId &&
-          reasonId == other.reasonId &&
-          refundTotal == other.refundTotal &&
-          refundTaxTotal == other.refundTaxTotal &&
-          approvedAt == other.approvedAt &&
-          receivedAt == other.receivedAt &&
-          refundedAt == other.refundedAt &&
-          canceledAt == other.canceledAt &&
-          reason == other.reason &&
-          _listEquals(returnLineItems, other.returnLineItems) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, number, status);
 }
 
 /// One claimed unit on a claim.
 ///
 /// Source: `packages/sdk/src/types/generated/ClaimLineItem.ts`. The
 /// expanded `variant` is kept raw (see library docs).
-class ClaimLineItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ClaimLineItem with _$ClaimLineItem {
+  const ClaimLineItem._();
+
   /// Creates a claim line item.
-  const ClaimLineItem({
-    required this.id,
-    required this.quantity,
-    required this.sendReplacement,
-    this.description,
-    this.refundAmount,
-    this.paidAmount,
-    this.preTaxAmount,
-    this.includedTaxTotal,
-    this.additionalTaxTotal,
-    this.taxTotal,
-    this.variantId,
-    this.replacementVariantId,
-    this.lineItemId,
-    this.variant,
-  });
+  const factory ClaimLineItem({
+    required String id,
+    required int quantity,
+    required bool sendReplacement,
+    String? description,
+    String? refundAmount,
+    String? paidAmount,
+    String? preTaxAmount,
+    String? includedTaxTotal,
+    String? additionalTaxTotal,
+    String? taxTotal,
+    String? variantId,
+    String? replacementVariantId,
+    String? lineItemId,
+    Map<String, Object?>? variant,
+  }) = _ClaimLineItem;
 
   /// Parses a claim line item from its JSON shape.
   factory ClaimLineItem.fromJson(Map<String, Object?> json) => ClaimLineItem(
@@ -712,46 +709,74 @@ class ClaimLineItem {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Claimed quantity.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Whether a replacement unit is sent.
-  final bool sendReplacement;
+  @override
+  @override
+  bool get sendReplacement;
 
   /// What is wrong with the item, when reported.
-  final String? description;
+  @override
+  @override
+  String? get description;
 
   /// Refund amount, decimal string, when reported.
-  final String? refundAmount;
+  @override
+  @override
+  String? get refundAmount;
 
   /// Paid amount, decimal string, when reported.
-  final String? paidAmount;
+  @override
+  @override
+  String? get paidAmount;
 
   /// Pre-tax amount, decimal string, when reported.
-  final String? preTaxAmount;
+  @override
+  @override
+  String? get preTaxAmount;
 
   /// Included tax total, decimal string, when reported.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Added tax total, decimal string, when reported.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Tax total, decimal string, when reported.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Claimed variant id, when reported.
-  final String? variantId;
+  @override
+  @override
+  String? get variantId;
 
   /// Replacement variant id, when set.
-  final String? replacementVariantId;
+  @override
+  @override
+  String? get replacementVariantId;
 
   /// Originating line item id, when reported.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Expanded variant, when requested via `expand`. Kept raw.
-  final Map<String, Object?>? variant;
+  @override
+  @override
+  Map<String, Object?>? get variant;
 
   /// Serializes this line item back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -770,51 +795,32 @@ class ClaimLineItem {
     'line_item_id': lineItemId,
     'variant': variant,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ClaimLineItem &&
-          id == other.id &&
-          quantity == other.quantity &&
-          sendReplacement == other.sendReplacement &&
-          description == other.description &&
-          refundAmount == other.refundAmount &&
-          paidAmount == other.paidAmount &&
-          preTaxAmount == other.preTaxAmount &&
-          includedTaxTotal == other.includedTaxTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          taxTotal == other.taxTotal &&
-          variantId == other.variantId &&
-          replacementVariantId == other.replacementVariantId &&
-          lineItemId == other.lineItemId &&
-          _mapEquals(variant, other.variant);
-
-  @override
-  int get hashCode => Object.hash(id, quantity, lineItemId);
 }
 
 /// A customer claim on an order.
 ///
 /// Source: `packages/sdk/src/types/generated/Claim.ts`.
-class Claim {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Claim with _$Claim {
+  const Claim._();
+
   /// Creates a claim.
-  const Claim({
-    required this.id,
-    required this.number,
-    required this.status,
-    this.resolution,
-    this.orderId,
-    this.reasonId,
-    this.refundTotal,
-    this.approvedAt,
-    this.resolvedAt,
-    this.deniedAt,
-    this.canceledAt,
-    this.reason,
-    this.claimLineItems,
-    this.customFields,
-  });
+  const factory Claim({
+    required String id,
+    required String number,
+    required ClaimStatus status,
+    ClaimResolution? resolution,
+    String? orderId,
+    String? reasonId,
+    String? refundTotal,
+    String? approvedAt,
+    String? resolvedAt,
+    String? deniedAt,
+    String? canceledAt,
+    ClaimReason? reason,
+    List<ClaimLineItem>? claimLineItems,
+    List<CustomField>? customFields,
+  }) = _Claim;
 
   /// Parses a claim from its JSON shape.
   factory Claim.fromJson(Map<String, Object?> json) => Claim(
@@ -843,46 +849,74 @@ class Claim {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Claim number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Lifecycle status.
-  final ClaimStatus status;
+  @override
+  @override
+  ClaimStatus get status;
 
   /// Resolution, when resolved.
-  final ClaimResolution? resolution;
+  @override
+  @override
+  ClaimResolution? get resolution;
 
   /// Owning order id, when reported.
-  final String? orderId;
+  @override
+  @override
+  String? get orderId;
 
   /// Claim reason id, when set (one of the store's claim reasons).
-  final String? reasonId;
+  @override
+  @override
+  String? get reasonId;
 
   /// Refund total, decimal string, when reported.
-  final String? refundTotal;
+  @override
+  @override
+  String? get refundTotal;
 
   /// Approval timestamp, when set.
-  final String? approvedAt;
+  @override
+  @override
+  String? get approvedAt;
 
   /// Resolution timestamp, when set.
-  final String? resolvedAt;
+  @override
+  @override
+  String? get resolvedAt;
 
   /// Denial timestamp, when set.
-  final String? deniedAt;
+  @override
+  @override
+  String? get deniedAt;
 
   /// Cancellation timestamp, when set.
-  final String? canceledAt;
+  @override
+  @override
+  String? get canceledAt;
 
   /// Expanded reason, when requested via `expand`.
-  final ClaimReason? reason;
+  @override
+  @override
+  ClaimReason? get reason;
 
   /// Claimed units, when present.
-  final List<ClaimLineItem>? claimLineItems;
+  @override
+  @override
+  List<ClaimLineItem>? get claimLineItems;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this claim back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -902,47 +936,28 @@ class Claim {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Claim &&
-          id == other.id &&
-          number == other.number &&
-          status == other.status &&
-          resolution == other.resolution &&
-          orderId == other.orderId &&
-          reasonId == other.reasonId &&
-          refundTotal == other.refundTotal &&
-          approvedAt == other.approvedAt &&
-          resolvedAt == other.resolvedAt &&
-          deniedAt == other.deniedAt &&
-          canceledAt == other.canceledAt &&
-          reason == other.reason &&
-          _listEquals(claimLineItems, other.claimLineItems) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, number, status);
 }
 
 /// A saved credit card of the customer.
 ///
 /// Source: `packages/sdk/src/types/generated/CreditCard.ts`.
-class CreditCard {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreditCard with _$CreditCard {
+  const CreditCard._();
+
   /// Creates a saved credit card.
-  const CreditCard({
-    required this.id,
-    required this.brand,
-    required this.last4,
-    required this.month,
-    required this.year,
-    this.name,
-    required this.isDefault,
-    this.gatewayPaymentProfileId,
-    this.paymentMethodId,
-    this.customFields,
-  });
+  const factory CreditCard({
+    required String id,
+    required String brand,
+    required String last4,
+    required int month,
+    required int year,
+    String? name,
+    required bool isDefault,
+    String? gatewayPaymentProfileId,
+    String? paymentMethodId,
+    List<CustomField>? customFields,
+  }) = _CreditCard;
 
   /// Parses a saved credit card from its JSON shape.
   factory CreditCard.fromJson(Map<String, Object?> json) => CreditCard(
@@ -961,35 +976,55 @@ class CreditCard {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Card brand (for example `visa`).
-  final String brand;
+  @override
+  @override
+  String get brand;
 
   /// Last four digits.
-  final String last4;
+  @override
+  @override
+  String get last4;
 
   /// Expiry month.
-  final int month;
+  @override
+  @override
+  int get month;
 
   /// Expiry year.
-  final int year;
+  @override
+  @override
+  int get year;
 
   /// Cardholder name, when set.
-  final String? name;
+  @override
+  @override
+  String? get name;
 
   /// Whether this is the default card.
-  final bool isDefault;
+  @override
+  @override
+  bool get isDefault;
 
   /// Gateway profile id, when reported.
-  final String? gatewayPaymentProfileId;
+  @override
+  @override
+  String? get gatewayPaymentProfileId;
 
   /// The payment method the card was saved with; a card is offered only
   /// for it. Null when reported as such.
-  final String? paymentMethodId;
+  @override
+  @override
+  String? get paymentMethodId;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this card back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1005,43 +1040,28 @@ class CreditCard {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreditCard &&
-          id == other.id &&
-          brand == other.brand &&
-          last4 == other.last4 &&
-          month == other.month &&
-          year == other.year &&
-          name == other.name &&
-          isDefault == other.isDefault &&
-          gatewayPaymentProfileId == other.gatewayPaymentProfileId &&
-          paymentMethodId == other.paymentMethodId &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, brand, last4, isDefault);
 }
 
 /// A payment setup session (save-method flow).
 ///
 /// Source: `packages/sdk/src/types/generated/PaymentSetupSession.ts`.
-class PaymentSetupSession {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class PaymentSetupSession with _$PaymentSetupSession {
+  const PaymentSetupSession._();
+
   /// Creates a payment setup session.
-  const PaymentSetupSession({
-    required this.id,
-    required this.status,
-    this.externalId,
-    this.externalClientSecret,
-    required this.externalData,
-    this.paymentMethodId,
-    this.paymentSourceId,
-    this.paymentSourceType,
-    this.customerId,
-    required this.paymentMethod,
-  });
+  const factory PaymentSetupSession({
+    required String id,
+    required PaymentSetupSessionStatus status,
+    String? externalId,
+    String? externalClientSecret,
+    required Map<String, Object?> externalData,
+    String? paymentMethodId,
+    String? paymentSourceId,
+    String? paymentSourceType,
+    String? customerId,
+    required PaymentMethod paymentMethod,
+  }) = _PaymentSetupSession;
 
   /// Parses a payment setup session from its JSON shape.
   factory PaymentSetupSession.fromJson(Map<String, Object?> json) =>
@@ -1064,34 +1084,54 @@ class PaymentSetupSession {
       );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Session status.
-  final PaymentSetupSessionStatus status;
+  @override
+  @override
+  PaymentSetupSessionStatus get status;
 
   /// Gateway-side id, when reported.
-  final String? externalId;
+  @override
+  @override
+  String? get externalId;
 
   /// Gateway client secret, when reported.
-  final String? externalClientSecret;
+  @override
+  @override
+  String? get externalClientSecret;
 
   /// Provider-specific data passed to the gateway.
-  final Map<String, Object?> externalData;
+  @override
+  @override
+  Map<String, Object?> get externalData;
 
   /// Payment method id, when reported.
-  final String? paymentMethodId;
+  @override
+  @override
+  String? get paymentMethodId;
 
   /// Saved source id, when reported.
-  final String? paymentSourceId;
+  @override
+  @override
+  String? get paymentSourceId;
 
   /// Saved source type, when reported.
-  final String? paymentSourceType;
+  @override
+  @override
+  String? get paymentSourceType;
 
   /// Owning customer id, when reported.
-  final String? customerId;
+  @override
+  @override
+  String? get customerId;
 
   /// The payment method the setup runs against.
-  final PaymentMethod paymentMethod;
+  @override
+  @override
+  PaymentMethod get paymentMethod;
 
   /// Serializes this session back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1106,39 +1146,24 @@ class PaymentSetupSession {
     'customer_id': customerId,
     'payment_method': paymentMethod.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PaymentSetupSession &&
-          id == other.id &&
-          status == other.status &&
-          externalId == other.externalId &&
-          externalClientSecret == other.externalClientSecret &&
-          _mapEquals(externalData, other.externalData) &&
-          paymentMethodId == other.paymentMethodId &&
-          paymentSourceId == other.paymentSourceId &&
-          paymentSourceType == other.paymentSourceType &&
-          customerId == other.customerId &&
-          paymentMethod == other.paymentMethod;
-
-  @override
-  int get hashCode => Object.hash(id, status, paymentMethodId);
 }
 
 /// A customer wishlist.
 ///
 /// Source: `packages/sdk/src/types/generated/Wishlist.ts`.
-class Wishlist {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Wishlist with _$Wishlist {
+  const Wishlist._();
+
   /// Creates a wishlist.
-  const Wishlist({
-    required this.id,
-    required this.name,
-    required this.token,
-    required this.isDefault,
-    required this.isPrivate,
-    this.items,
-  });
+  const factory Wishlist({
+    required String id,
+    required String name,
+    required String token,
+    required bool isDefault,
+    required bool isPrivate,
+    List<WishlistItem>? items,
+  }) = _Wishlist;
 
   /// Parses a wishlist from its JSON shape.
   factory Wishlist.fromJson(Map<String, Object?> json) => Wishlist(
@@ -1153,22 +1178,34 @@ class Wishlist {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Wishlist name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Sharing token.
-  final String token;
+  @override
+  @override
+  String get token;
 
   /// Whether this is the default wishlist.
-  final bool isDefault;
+  @override
+  @override
+  bool get isDefault;
 
   /// Whether this wishlist is private.
-  final bool isPrivate;
+  @override
+  @override
+  bool get isPrivate;
 
   /// Items, when side-loaded.
-  final List<WishlistItem>? items;
+  @override
+  @override
+  List<WishlistItem>? get items;
 
   /// Serializes this wishlist back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1179,37 +1216,26 @@ class Wishlist {
     'is_private': isPrivate,
     'items': items?.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Wishlist &&
-          id == other.id &&
-          name == other.name &&
-          token == other.token &&
-          isDefault == other.isDefault &&
-          isPrivate == other.isPrivate &&
-          _listEquals(items, other.items);
-
-  @override
-  int get hashCode => Object.hash(id, name, token);
 }
 
 /// One item on a wishlist.
 ///
 /// Source: `packages/sdk/src/types/generated/WishlistItem.ts`. The
 /// expanded `variant`/`product` are kept raw (see library docs).
-class WishlistItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class WishlistItem with _$WishlistItem {
+  const WishlistItem._();
+
   /// Creates a wishlist item.
-  const WishlistItem({
-    required this.id,
-    required this.variantId,
-    required this.productId,
-    required this.wishlistId,
-    required this.quantity,
-    this.variant,
-    this.product,
-  });
+  const factory WishlistItem({
+    required String id,
+    required String variantId,
+    required String productId,
+    required String wishlistId,
+    required int quantity,
+    Map<String, Object?>? variant,
+    Map<String, Object?>? product,
+  }) = _WishlistItem;
 
   /// Parses a wishlist item from its JSON shape.
   factory WishlistItem.fromJson(Map<String, Object?> json) => WishlistItem(
@@ -1231,25 +1257,39 @@ class WishlistItem {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Wishlisted variant id.
-  final String variantId;
+  @override
+  @override
+  String get variantId;
 
   /// Owning product id.
-  final String productId;
+  @override
+  @override
+  String get productId;
 
   /// Owning wishlist id.
-  final String wishlistId;
+  @override
+  @override
+  String get wishlistId;
 
   /// Wanted quantity.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Expanded variant, when side-loaded. Kept raw.
-  final Map<String, Object?>? variant;
+  @override
+  @override
+  Map<String, Object?>? get variant;
 
   /// Expanded product, when side-loaded. Kept raw.
-  final Map<String, Object?>? product;
+  @override
+  @override
+  Map<String, Object?>? get product;
 
   /// Serializes this item back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1261,34 +1301,22 @@ class WishlistItem {
     'variant': variant,
     'product': product,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is WishlistItem &&
-          id == other.id &&
-          variantId == other.variantId &&
-          productId == other.productId &&
-          wishlistId == other.wishlistId &&
-          quantity == other.quantity &&
-          _mapEquals(variant, other.variant) &&
-          _mapEquals(product, other.product);
-
-  @override
-  int get hashCode => Object.hash(id, variantId, wishlistId);
 }
 
 /// One ancestor on a company's path.
 ///
 /// Source: inline `Company['ancestors'][number]` in
 /// `packages/sdk/src/types/generated/Company.ts`.
-class CompanyAncestor {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyAncestor with _$CompanyAncestor {
+  const CompanyAncestor._();
+
   /// Creates a company ancestor.
-  const CompanyAncestor({
-    required this.id,
-    required this.name,
-    required this.kind,
-  });
+  const factory CompanyAncestor({
+    required String id,
+    required String name,
+    required String kind,
+  }) = _CompanyAncestor;
 
   /// Parses an ancestor from its JSON shape.
   factory CompanyAncestor.fromJson(Map<String, Object?> json) =>
@@ -1299,13 +1327,19 @@ class CompanyAncestor {
       );
 
   /// Ancestor id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Ancestor name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Ancestor kind, kept as reported.
-  final String kind;
+  @override
+  @override
+  String get kind;
 
   /// Serializes this ancestor back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1313,33 +1347,25 @@ class CompanyAncestor {
     'name': name,
     'kind': kind,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyAncestor &&
-          id == other.id &&
-          name == other.name &&
-          kind == other.kind;
-
-  @override
-  int get hashCode => Object.hash(id, name, kind);
 }
 
 /// A B2B company node.
 ///
 /// Source: `packages/sdk/src/types/generated/Company.ts`.
-class Company {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Company with _$Company {
+  const Company._();
+
   /// Creates a company.
-  const Company({
-    required this.id,
-    required this.name,
-    required this.kind,
-    required this.poNumberRequired,
-    this.parentId,
-    required this.ancestors,
-    this.customFields,
-  });
+  const factory Company({
+    required String id,
+    required String name,
+    required CompanyKind kind,
+    required bool poNumberRequired,
+    String? parentId,
+    required List<CompanyAncestor> ancestors,
+    List<CustomField>? customFields,
+  }) = _Company;
 
   /// Parses a company from its JSON shape.
   factory Company.fromJson(Map<String, Object?> json) => Company(
@@ -1357,25 +1383,39 @@ class Company {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Company name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Node kind.
-  final CompanyKind kind;
+  @override
+  @override
+  CompanyKind get kind;
 
   /// Whether purchase orders require a PO number.
-  final bool poNumberRequired;
+  @override
+  @override
+  bool get poNumberRequired;
 
   /// Parent node id, when nested.
-  final String? parentId;
+  @override
+  @override
+  String? get parentId;
 
   /// Ancestor path.
-  final List<CompanyAncestor> ancestors;
+  @override
+  @override
+  List<CompanyAncestor> get ancestors;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this company back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1388,34 +1428,22 @@ class Company {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Company &&
-          id == other.id &&
-          name == other.name &&
-          kind == other.kind &&
-          poNumberRequired == other.poNumberRequired &&
-          parentId == other.parentId &&
-          _listEquals(ancestors, other.ancestors) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, name, kind);
 }
 
 /// A customer's standing on a company node.
 ///
 /// Source: `packages/sdk/src/types/generated/CompanyMembership.ts`.
-class CompanyMembership {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyMembership with _$CompanyMembership {
+  const CompanyMembership._();
+
   /// Creates a company membership.
-  const CompanyMembership({
-    required this.id,
-    required this.companyId,
-    required this.customerId,
-    this.email,
-  });
+  const factory CompanyMembership({
+    required String id,
+    required String companyId,
+    required String customerId,
+    String? email,
+  }) = _CompanyMembership;
 
   /// Parses a membership from its JSON shape.
   factory CompanyMembership.fromJson(Map<String, Object?> json) =>
@@ -1427,16 +1455,24 @@ class CompanyMembership {
       );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning company node id.
-  final String companyId;
+  @override
+  @override
+  String get companyId;
 
   /// Member customer id.
-  final String customerId;
+  @override
+  @override
+  String get customerId;
 
   /// Member email, when reported.
-  final String? email;
+  @override
+  @override
+  String? get email;
 
   /// Serializes this membership back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1445,32 +1481,23 @@ class CompanyMembership {
     'customer_id': customerId,
     'email': email,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyMembership &&
-          id == other.id &&
-          companyId == other.companyId &&
-          customerId == other.customerId &&
-          email == other.email;
-
-  @override
-  int get hashCode => Object.hash(id, companyId, customerId);
 }
 
 /// A pending invitation to join a company.
 ///
 /// Source: `packages/sdk/src/types/generated/CompanyInvitation.ts`.
-class CompanyInvitation {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyInvitation with _$CompanyInvitation {
+  const CompanyInvitation._();
+
   /// Creates a company invitation.
-  const CompanyInvitation({
-    required this.id,
-    required this.email,
-    this.expiresAt,
-    required this.companyId,
-    required this.status,
-  });
+  const factory CompanyInvitation({
+    required String id,
+    required String email,
+    String? expiresAt,
+    required String companyId,
+    required CompanyInvitationStatus status,
+  }) = _CompanyInvitation;
 
   /// Parses an invitation from its JSON shape.
   factory CompanyInvitation.fromJson(Map<String, Object?> json) =>
@@ -1483,19 +1510,29 @@ class CompanyInvitation {
       );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Invitee email.
-  final String email;
+  @override
+  @override
+  String get email;
 
   /// Expiry timestamp, when set.
-  final String? expiresAt;
+  @override
+  @override
+  String? get expiresAt;
 
   /// Inviting company node id.
-  final String companyId;
+  @override
+  @override
+  String get companyId;
 
   /// Invitation status.
-  final CompanyInvitationStatus status;
+  @override
+  @override
+  CompanyInvitationStatus get status;
 
   /// Serializes this invitation back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1505,19 +1542,6 @@ class CompanyInvitation {
     'company_id': companyId,
     'status': status.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyInvitation &&
-          id == other.id &&
-          email == other.email &&
-          expiresAt == other.expiresAt &&
-          companyId == other.companyId &&
-          status == other.status;
-
-  @override
-  int get hashCode => Object.hash(id, email, companyId, status);
 }
 
 /// One entry of the signed-in buyer's company directory: the membership
@@ -1525,9 +1549,15 @@ class CompanyInvitation {
 ///
 /// Source: `packages/sdk/src/store-client.ts` (`account.companies` returns
 /// `{data: Array<CompanyMembership & {company: Company}>}`).
-class AccountCompany {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AccountCompany with _$AccountCompany {
+  const AccountCompany._();
+
   /// Creates a directory entry.
-  const AccountCompany({required this.membership, required this.company});
+  const factory AccountCompany({
+    required CompanyMembership membership,
+    required Company company,
+  }) = _AccountCompany;
 
   /// Parses an entry from its JSON shape (membership fields plus
   /// an embedded `company` object).
@@ -1537,26 +1567,20 @@ class AccountCompany {
   );
 
   /// The buyer's membership on the node.
-  final CompanyMembership membership;
+  @override
+  @override
+  CompanyMembership get membership;
 
   /// The company node.
-  final Company company;
+  @override
+  @override
+  Company get company;
 
   /// Serializes this entry back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     ...membership.toJson(),
     'company': company.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AccountCompany &&
-          membership == other.membership &&
-          company == other.company;
-
-  @override
-  int get hashCode => Object.hash(membership, company);
 }
 
 /// An invitation looked up by its email token, with its context.
@@ -1564,13 +1588,16 @@ class AccountCompany {
 /// Source: `packages/sdk/src/store-client.ts`
 /// (`companyInvitations.lookup` returns
 /// `CompanyInvitation & {company_name, store_name}`).
-class CompanyInvitationLookup {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyInvitationLookup with _$CompanyInvitationLookup {
+  const CompanyInvitationLookup._();
+
   /// Creates an invitation lookup result.
-  const CompanyInvitationLookup({
-    required this.invitation,
-    required this.companyName,
-    required this.storeName,
-  });
+  const factory CompanyInvitationLookup({
+    required CompanyInvitation invitation,
+    required String companyName,
+    required String storeName,
+  }) = _CompanyInvitationLookup;
 
   /// Parses a lookup result from its JSON shape.
   factory CompanyInvitationLookup.fromJson(Map<String, Object?> json) =>
@@ -1581,13 +1608,19 @@ class CompanyInvitationLookup {
       );
 
   /// The looked-up invitation.
-  final CompanyInvitation invitation;
+  @override
+  @override
+  CompanyInvitation get invitation;
 
   /// Inviting company name.
-  final String companyName;
+  @override
+  @override
+  String get companyName;
 
   /// Owning store name.
-  final String storeName;
+  @override
+  @override
+  String get storeName;
 
   /// Serializes this result back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1595,51 +1628,37 @@ class CompanyInvitationLookup {
     'company_name': companyName,
     'store_name': storeName,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyInvitationLookup &&
-          invitation == other.invitation &&
-          companyName == other.companyName &&
-          storeName == other.storeName;
-
-  @override
-  int get hashCode => Object.hash(invitation, companyName, storeName);
 }
 
 /// One returned unit on a `POST /orders/{id}/returns` body.
 ///
 /// Source: `packages/sdk/src/types/params/CreateReturnParams.ts`
 /// (`items` entry: "The shipped unit coming back").
-class CreateReturnItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateReturnItem with _$CreateReturnItem {
+  const CreateReturnItem._();
+
   /// Creates a return item.
-  const CreateReturnItem({
-    required this.fulfillmentItemId,
-    required this.quantity,
-  });
+  const factory CreateReturnItem({
+    required String fulfillmentItemId,
+    required int quantity,
+  }) = _CreateReturnItem;
 
   /// The shipped unit coming back.
-  final String fulfillmentItemId;
+  @override
+  @override
+  String get fulfillmentItemId;
 
   /// Quantity coming back.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Serializes this item to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'fulfillment_item_id': fulfillmentItemId,
     'quantity': quantity,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateReturnItem &&
-          fulfillmentItemId == other.fulfillmentItemId &&
-          quantity == other.quantity;
-
-  @override
-  int get hashCode => Object.hash(fulfillmentItemId, quantity);
 }
 
 /// Body for `POST /orders/{id}/returns`.
@@ -1647,19 +1666,32 @@ class CreateReturnItem {
 /// Source: `packages/sdk/src/types/params/CreateReturnParams.ts`. A
 /// rejected request comes back as a 422 (verified: contract section 5,
 /// `returns.create.validate`).
-class CreateReturnParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateReturnParams with _$CreateReturnParams {
+  const CreateReturnParams._();
+
   /// Creates return params.
-  const CreateReturnParams({required this.items, this.reasonId, this.memo});
+  const factory CreateReturnParams({
+    required List<CreateReturnItem> items,
+    String? reasonId,
+    String? memo,
+  }) = _CreateReturnParams;
 
   /// The fulfilled units coming back: `fulfillment_item_id` rather than a
   /// line item id, because a return is against a shipped unit.
-  final List<CreateReturnItem> items;
+  @override
+  @override
+  List<CreateReturnItem> get items;
 
   /// One of the store's return reasons, when set.
-  final String? reasonId;
+  @override
+  @override
+  String? get reasonId;
 
   /// Customer memo, when set.
-  final String? memo;
+  @override
+  @override
+  String? get memo;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1667,39 +1699,37 @@ class CreateReturnParams {
     if (reasonId != null) 'reason_id': reasonId,
     if (memo != null) 'memo': memo,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateReturnParams &&
-          _listEquals(items, other.items) &&
-          reasonId == other.reasonId &&
-          memo == other.memo;
-
-  @override
-  int get hashCode => Object.hash(Object.hashAll(items), reasonId, memo);
 }
 
 /// One claimed unit on a `POST /orders/{id}/claims` body.
 ///
 /// Source: `packages/sdk/src/types/params/CreateClaimParams.ts`
 /// (`items` entry).
-class CreateClaimItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateClaimItem with _$CreateClaimItem {
+  const CreateClaimItem._();
+
   /// Creates a claim item.
-  const CreateClaimItem({
-    required this.lineItemId,
-    required this.quantity,
-    this.description,
-  });
+  const factory CreateClaimItem({
+    required String lineItemId,
+    required int quantity,
+    String? description,
+  }) = _CreateClaimItem;
 
   /// Originating line item id.
-  final String lineItemId;
+  @override
+  @override
+  String get lineItemId;
 
   /// Claimed quantity.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// What is wrong with the item, when set.
-  final String? description;
+  @override
+  @override
+  String? get description;
 
   /// Serializes this item to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1707,34 +1737,36 @@ class CreateClaimItem {
     'quantity': quantity,
     if (description != null) 'description': description,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateClaimItem &&
-          lineItemId == other.lineItemId &&
-          quantity == other.quantity &&
-          description == other.description;
-
-  @override
-  int get hashCode => Object.hash(lineItemId, quantity, description);
 }
 
 /// Body for `POST /orders/{id}/claims`.
 ///
 /// Source: `packages/sdk/src/types/params/CreateClaimParams.ts`.
-class CreateClaimParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateClaimParams with _$CreateClaimParams {
+  const CreateClaimParams._();
+
   /// Creates claim params.
-  const CreateClaimParams({required this.items, this.reasonId, this.memo});
+  const factory CreateClaimParams({
+    required List<CreateClaimItem> items,
+    String? reasonId,
+    String? memo,
+  }) = _CreateClaimParams;
 
   /// The claimed units.
-  final List<CreateClaimItem> items;
+  @override
+  @override
+  List<CreateClaimItem> get items;
 
   /// One of the store's claim reasons, when set.
-  final String? reasonId;
+  @override
+  @override
+  String? get reasonId;
 
   /// Customer memo, when set.
-  final String? memo;
+  @override
+  @override
+  String? get memo;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1742,38 +1774,36 @@ class CreateClaimParams {
     if (reasonId != null) 'reason_id': reasonId,
     if (memo != null) 'memo': memo,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateClaimParams &&
-          _listEquals(items, other.items) &&
-          reasonId == other.reasonId &&
-          memo == other.memo;
-
-  @override
-  int get hashCode => Object.hash(Object.hashAll(items), reasonId, memo);
 }
 
 /// Body for `POST /wishlists`.
 ///
 /// Source: `packages/sdk/src/types/params/CreateWishlistParams.ts`.
-class CreateWishlistParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateWishlistParams with _$CreateWishlistParams {
+  const CreateWishlistParams._();
+
   /// Creates wishlist params.
-  const CreateWishlistParams({
-    required this.name,
-    this.isPrivate,
-    this.isDefault,
-  });
+  const factory CreateWishlistParams({
+    required String name,
+    bool? isPrivate,
+    bool? isDefault,
+  }) = _CreateWishlistParams;
 
   /// Wishlist name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether the wishlist is private, when set.
-  final bool? isPrivate;
+  @override
+  @override
+  bool? get isPrivate;
 
   /// Whether this becomes the default wishlist, when set.
-  final bool? isDefault;
+  @override
+  @override
+  bool? get isDefault;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1781,34 +1811,36 @@ class CreateWishlistParams {
     if (isPrivate != null) 'is_private': isPrivate,
     if (isDefault != null) 'is_default': isDefault,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateWishlistParams &&
-          name == other.name &&
-          isPrivate == other.isPrivate &&
-          isDefault == other.isDefault;
-
-  @override
-  int get hashCode => Object.hash(name, isPrivate, isDefault);
 }
 
 /// Body for `PATCH /wishlists/{id}`.
 ///
 /// Source: `packages/sdk/src/types/params/UpdateWishlistParams.ts`.
-class UpdateWishlistParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateWishlistParams with _$UpdateWishlistParams {
+  const UpdateWishlistParams._();
+
   /// Creates wishlist update params.
-  const UpdateWishlistParams({this.name, this.isPrivate, this.isDefault});
+  const factory UpdateWishlistParams({
+    String? name,
+    bool? isPrivate,
+    bool? isDefault,
+  }) = _UpdateWishlistParams;
 
   /// New name, when set.
-  final String? name;
+  @override
+  @override
+  String? get name;
 
   /// New privacy flag, when set.
-  final bool? isPrivate;
+  @override
+  @override
+  bool? get isPrivate;
 
   /// New default flag, when set.
-  final bool? isDefault;
+  @override
+  @override
+  bool? get isDefault;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1816,230 +1848,244 @@ class UpdateWishlistParams {
     if (isPrivate != null) 'is_private': isPrivate,
     if (isDefault != null) 'is_default': isDefault,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateWishlistParams &&
-          name == other.name &&
-          isPrivate == other.isPrivate &&
-          isDefault == other.isDefault;
-
-  @override
-  int get hashCode => Object.hash(name, isPrivate, isDefault);
 }
 
 /// Body for `POST /wishlists/{id}/items`.
 ///
 /// Source: `packages/sdk/src/types/params/CreateWishlistItemParams.ts`.
-class CreateWishlistItemParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreateWishlistItemParams with _$CreateWishlistItemParams {
+  const CreateWishlistItemParams._();
+
   /// Creates wishlist item params.
-  const CreateWishlistItemParams({required this.variantId, this.quantity});
+  const factory CreateWishlistItemParams({
+    required String variantId,
+    int? quantity,
+  }) = _CreateWishlistItemParams;
 
   /// Wishlisted variant id.
-  final String variantId;
+  @override
+  @override
+  String get variantId;
 
   /// Wanted quantity, when set.
-  final int? quantity;
+  @override
+  @override
+  int? get quantity;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'variant_id': variantId,
     if (quantity != null) 'quantity': quantity,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreateWishlistItemParams &&
-          variantId == other.variantId &&
-          quantity == other.quantity;
-
-  @override
-  int get hashCode => Object.hash(variantId, quantity);
 }
 
 /// Body for `PATCH /wishlists/{id}/items/{id}`.
 ///
 /// Source: `packages/sdk/src/types/params/UpdateWishlistItemParams.ts`.
-class UpdateWishlistItemParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateWishlistItemParams with _$UpdateWishlistItemParams {
+  const UpdateWishlistItemParams._();
+
   /// Creates wishlist item update params.
-  const UpdateWishlistItemParams({this.variantId, this.quantity});
+  const factory UpdateWishlistItemParams({String? variantId, int? quantity}) =
+      _UpdateWishlistItemParams;
 
   /// Moves the item to another variant, when set.
-  final String? variantId;
+  @override
+  @override
+  String? get variantId;
 
   /// New quantity, when set.
-  final int? quantity;
+  @override
+  @override
+  int? get quantity;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     if (variantId != null) 'variant_id': variantId,
     if (quantity != null) 'quantity': quantity,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateWishlistItemParams &&
-          variantId == other.variantId &&
-          quantity == other.quantity;
-
-  @override
-  int get hashCode => Object.hash(variantId, quantity);
 }
 
 /// Body for `POST /customers/me/payment_setup_sessions`.
 ///
 /// Source: `packages/sdk/src/types/params/CreatePaymentSetupSessionParams.ts`.
-class CreatePaymentSetupSessionParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreatePaymentSetupSessionParams
+    with _$CreatePaymentSetupSessionParams {
+  const CreatePaymentSetupSessionParams._();
+
   /// Creates payment setup session params.
-  const CreatePaymentSetupSessionParams({
-    required this.paymentMethodId,
-    this.externalData,
-  });
+  const factory CreatePaymentSetupSessionParams({
+    required String paymentMethodId,
+    Map<String, Object?>? externalData,
+  }) = _CreatePaymentSetupSessionParams;
 
   /// Payment method id the setup runs against.
-  final String paymentMethodId;
+  @override
+  @override
+  String get paymentMethodId;
 
   /// Provider-specific data passed to the gateway, when set.
-  final Map<String, Object?>? externalData;
+  @override
+  @override
+  Map<String, Object?>? get externalData;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'payment_method_id': paymentMethodId,
     if (externalData != null) 'external_data': externalData,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreatePaymentSetupSessionParams &&
-          paymentMethodId == other.paymentMethodId &&
-          _mapEquals(externalData, other.externalData);
-
-  @override
-  int get hashCode => Object.hash(paymentMethodId, externalData);
 }
 
 /// Body for `PATCH /customers/me/payment_setup_sessions/{id}/complete`.
 ///
 /// Source: `packages/sdk/src/types/params/CompletePaymentSetupSessionParams.ts`.
-class CompletePaymentSetupSessionParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompletePaymentSetupSessionParams
+    with _$CompletePaymentSetupSessionParams {
+  const CompletePaymentSetupSessionParams._();
+
   /// Creates payment setup session completion params.
-  const CompletePaymentSetupSessionParams({this.externalData});
+  const factory CompletePaymentSetupSessionParams({
+    Map<String, Object?>? externalData,
+  }) = _CompletePaymentSetupSessionParams;
 
   /// Provider-specific completion data, when set.
-  final Map<String, Object?>? externalData;
+  @override
+  @override
+  Map<String, Object?>? get externalData;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     if (externalData != null) 'external_data': externalData,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompletePaymentSetupSessionParams &&
-          _mapEquals(externalData, other.externalData);
-
-  @override
-  int get hashCode => externalData.hashCode;
 }
 
 /// Body for `PATCH /companies/{id}`.
 ///
 /// Source: `packages/sdk/src/types/params/UpdateCompanyParams.ts`.
-class UpdateCompanyParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateCompanyParams with _$UpdateCompanyParams {
+  const UpdateCompanyParams._();
+
   /// Creates company update params.
-  const UpdateCompanyParams({this.name});
+  const factory UpdateCompanyParams({String? name}) = _UpdateCompanyParams;
 
   /// New company name, when set.
-  final String? name;
+  @override
+  @override
+  String? get name;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     if (name != null) 'name': name,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateCompanyParams && name == other.name;
-
-  @override
-  int get hashCode => name.hashCode;
 }
 
 /// Body for `POST /companies/{id}/addresses`.
 ///
 /// Source: `packages/sdk/src/types/params/CompanyAddressCreateParams.ts`.
-class CompanyAddressCreateParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyAddressCreateParams with _$CompanyAddressCreateParams {
+  const CompanyAddressCreateParams._();
+
   /// Creates company address params.
-  const CompanyAddressCreateParams({
-    required this.firstName,
-    required this.lastName,
-    this.company,
-    required this.address1,
-    this.address2,
-    required this.city,
-    this.postalCode,
-    this.phone,
-    this.label,
-    required this.countryCode,
-    this.stateCode,
-    this.stateName,
-    this.zipcode,
-    this.defaultBilling,
-    this.defaultShipping,
-  });
+  const factory CompanyAddressCreateParams({
+    required String firstName,
+    required String lastName,
+    String? company,
+    required String address1,
+    String? address2,
+    required String city,
+    String? postalCode,
+    String? phone,
+    String? label,
+    required CountryCode countryCode,
+    String? stateCode,
+    String? stateName,
+    String? zipcode,
+    bool? defaultBilling,
+    bool? defaultShipping,
+  }) = _CompanyAddressCreateParams;
 
   /// First name.
-  final String firstName;
+  @override
+  @override
+  String get firstName;
 
   /// Last name.
-  final String lastName;
+  @override
+  @override
+  String get lastName;
 
   /// Company line, when set.
-  final String? company;
+  @override
+  @override
+  String? get company;
 
   /// Street line 1.
-  final String address1;
+  @override
+  @override
+  String get address1;
 
   /// Street line 2, when set.
-  final String? address2;
+  @override
+  @override
+  String? get address2;
 
   /// City.
-  final String city;
+  @override
+  @override
+  String get city;
 
   /// Postal code, when set.
-  final String? postalCode;
+  @override
+  @override
+  String? get postalCode;
 
   /// Phone, when set.
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Address-book label, when set.
-  final String? label;
+  @override
+  @override
+  String? get label;
 
   /// ISO 3166-1 alpha-2 code, such as `US`.
-  final CountryCode countryCode;
+  @override
+  @override
+  CountryCode get countryCode;
 
   /// The state or province abbreviation, such as `NY`, when set.
-  final String? stateCode;
+  @override
+  @override
+  String? get stateCode;
 
   /// For countries without states in the database, when set.
-  final String? stateName;
+  @override
+  @override
+  String? get stateName;
 
   /// Deprecated: use [postalCode]. Removed in 6.5.
-  final String? zipcode;
+  @override
+  @override
+  String? get zipcode;
 
   /// True makes this the node's default billing address, false gives that
   /// up, and leaving it out changes nothing.
-  final bool? defaultBilling;
+  @override
+  @override
+  bool? get defaultBilling;
 
   /// True makes this the node's default shipping address, false gives that
   /// up, and leaving it out changes nothing.
-  final bool? defaultShipping;
+  @override
+  @override
+  bool? get defaultShipping;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2059,100 +2105,110 @@ class CompanyAddressCreateParams {
     if (defaultBilling != null) 'default_billing': defaultBilling,
     if (defaultShipping != null) 'default_shipping': defaultShipping,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyAddressCreateParams &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          company == other.company &&
-          address1 == other.address1 &&
-          address2 == other.address2 &&
-          city == other.city &&
-          postalCode == other.postalCode &&
-          phone == other.phone &&
-          label == other.label &&
-          countryCode == other.countryCode &&
-          stateCode == other.stateCode &&
-          stateName == other.stateName &&
-          zipcode == other.zipcode &&
-          defaultBilling == other.defaultBilling &&
-          defaultShipping == other.defaultShipping;
-
-  @override
-  int get hashCode => Object.hash(firstName, lastName, address1, city);
 }
 
 /// Body for `PATCH /companies/{id}/addresses/{id}`.
 ///
 /// Source: `packages/sdk/src/types/params/CompanyAddressUpdateParams.ts`.
-class CompanyAddressUpdateParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompanyAddressUpdateParams with _$CompanyAddressUpdateParams {
+  const CompanyAddressUpdateParams._();
+
   /// Creates company address update params.
-  const CompanyAddressUpdateParams({
-    this.firstName,
-    this.lastName,
-    this.company,
-    this.address1,
-    this.address2,
-    this.city,
-    this.postalCode,
-    this.phone,
-    this.label,
-    this.countryCode,
-    this.stateCode,
-    this.stateName,
-    this.zipcode,
-    this.defaultBilling,
-    this.defaultShipping,
-  });
+  const factory CompanyAddressUpdateParams({
+    String? firstName,
+    String? lastName,
+    String? company,
+    String? address1,
+    String? address2,
+    String? city,
+    String? postalCode,
+    String? phone,
+    String? label,
+    CountryCode? countryCode,
+    String? stateCode,
+    String? stateName,
+    String? zipcode,
+    bool? defaultBilling,
+    bool? defaultShipping,
+  }) = _CompanyAddressUpdateParams;
 
   /// First name, when set.
-  final String? firstName;
+  @override
+  @override
+  String? get firstName;
 
   /// Last name, when set.
-  final String? lastName;
+  @override
+  @override
+  String? get lastName;
 
   /// Company line, when set.
-  final String? company;
+  @override
+  @override
+  String? get company;
 
   /// Street line 1, when set.
-  final String? address1;
+  @override
+  @override
+  String? get address1;
 
   /// Street line 2, when set.
-  final String? address2;
+  @override
+  @override
+  String? get address2;
 
   /// City, when set.
-  final String? city;
+  @override
+  @override
+  String? get city;
 
   /// Postal code, when set.
-  final String? postalCode;
+  @override
+  @override
+  String? get postalCode;
 
   /// Phone, when set.
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Address-book label, when set.
-  final String? label;
+  @override
+  @override
+  String? get label;
 
   /// ISO 3166-1 alpha-2 code, when set.
-  final CountryCode? countryCode;
+  @override
+  @override
+  CountryCode? get countryCode;
 
   /// The state or province abbreviation, when set.
-  final String? stateCode;
+  @override
+  @override
+  String? get stateCode;
 
   /// For countries without states in the database, when set.
-  final String? stateName;
+  @override
+  @override
+  String? get stateName;
 
   /// Deprecated: use [postalCode]. Removed in 6.5.
-  final String? zipcode;
+  @override
+  @override
+  String? get zipcode;
 
   /// True makes this the node's default billing address, false gives that
   /// up, and leaving it out changes nothing.
-  final bool? defaultBilling;
+  @override
+  @override
+  bool? get defaultBilling;
 
   /// True makes this the node's default shipping address, false gives that
   /// up, and leaving it out changes nothing.
-  final bool? defaultShipping;
+  @override
+  @override
+  bool? get defaultShipping;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2172,29 +2228,6 @@ class CompanyAddressUpdateParams {
     if (defaultBilling != null) 'default_billing': defaultBilling,
     if (defaultShipping != null) 'default_shipping': defaultShipping,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CompanyAddressUpdateParams &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          company == other.company &&
-          address1 == other.address1 &&
-          address2 == other.address2 &&
-          city == other.city &&
-          postalCode == other.postalCode &&
-          phone == other.phone &&
-          label == other.label &&
-          countryCode == other.countryCode &&
-          stateCode == other.stateCode &&
-          stateName == other.stateName &&
-          zipcode == other.zipcode &&
-          defaultBilling == other.defaultBilling &&
-          defaultShipping == other.defaultShipping;
-
-  @override
-  int get hashCode => Object.hash(firstName, lastName, address1, city);
 }
 
 /// Body for `POST /companies/{id}/members`: invites a person by email.
@@ -2202,25 +2235,23 @@ class CompanyAddressUpdateParams {
 /// Source: `packages/sdk/src/types/params/AddCompanyMemberParams.ts`.
 /// Even an existing customer joins only by accepting the emailed
 /// invitation, so this always returns the invitation.
-class AddCompanyMemberParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AddCompanyMemberParams with _$AddCompanyMemberParams {
+  const AddCompanyMemberParams._();
+
   /// Creates member-invite params.
-  const AddCompanyMemberParams({required this.customerEmail});
+  const factory AddCompanyMemberParams({required String customerEmail}) =
+      _AddCompanyMemberParams;
 
   /// Invitee email.
-  final String customerEmail;
+  @override
+  @override
+  String get customerEmail;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'customer_email': customerEmail,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AddCompanyMemberParams && customerEmail == other.customerEmail;
-
-  @override
-  int get hashCode => customerEmail.hashCode;
 }
 
 /// Body for `POST /company_invitations/{token}/accept`.
@@ -2229,30 +2260,44 @@ class AddCompanyMemberParams {
 /// Pass a registration payload for a new account (it is created with the
 /// invited email), or call authenticated to bind the invitation to the
 /// signed-in customer. Defaults to `{}` upstream.
-class AcceptCompanyInvitationParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AcceptCompanyInvitationParams
+    with _$AcceptCompanyInvitationParams {
+  const AcceptCompanyInvitationParams._();
+
   /// Creates invitation-accept params.
-  const AcceptCompanyInvitationParams({
-    this.firstName,
-    this.lastName,
-    this.phone,
-    this.password,
-    this.passwordConfirmation,
-  });
+  const factory AcceptCompanyInvitationParams({
+    String? firstName,
+    String? lastName,
+    String? phone,
+    String? password,
+    String? passwordConfirmation,
+  }) = _AcceptCompanyInvitationParams;
 
   /// First name, when registering.
-  final String? firstName;
+  @override
+  @override
+  String? get firstName;
 
   /// Last name, when registering.
-  final String? lastName;
+  @override
+  @override
+  String? get lastName;
 
   /// Phone, when registering.
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Password, when registering.
-  final String? password;
+  @override
+  @override
+  String? get password;
 
   /// Password confirmation, when registering.
-  final String? passwordConfirmation;
+  @override
+  @override
+  String? get passwordConfirmation;
 
   /// Serializes these params to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2263,17 +2308,4 @@ class AcceptCompanyInvitationParams {
     if (passwordConfirmation != null)
       'password_confirmation': passwordConfirmation,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AcceptCompanyInvitationParams &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          phone == other.phone &&
-          password == other.password &&
-          passwordConfirmation == other.passwordConfirmation;
-
-  @override
-  int get hashCode => Object.hash(firstName, lastName, phone);
 }

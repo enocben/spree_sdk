@@ -1,7 +1,6 @@
 /// Catalog taxonomy models: categories, sellers, collections.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -14,47 +13,44 @@
 ///   `GET /collections/{id}/products`).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'meta.dart';
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+part 'taxons.freezed.dart';
 
 /// A category of the catalog tree.
 ///
 /// Source: `packages/sdk/src/types/generated/Category.ts`;
 /// SPEC `store.yaml#/components/schemas/Category`.
-class Category {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Category with _$Category {
+  const Category._();
+
   /// Creates a category.
-  const Category({
-    required this.id,
-    required this.name,
-    required this.permalink,
-    required this.position,
-    required this.depth,
-    this.metaTitle,
-    this.metaDescription,
-    this.metaKeywords,
-    required this.childrenCount,
-    this.parentId,
-    required this.description,
-    required this.descriptionHtml,
-    this.imageUrl,
-    this.squareImageUrl,
-    required this.isRoot,
-    required this.isChild,
-    required this.isLeaf,
-    this.parent,
-    this.children,
-    this.ancestors,
-    this.customFields,
-  });
+  const factory Category({
+    required String id,
+    required String name,
+    required String permalink,
+    required int position,
+    required int depth,
+    String? metaTitle,
+    String? metaDescription,
+    String? metaKeywords,
+    required int childrenCount,
+    String? parentId,
+    required String description,
+    required String descriptionHtml,
+    String? imageUrl,
+    String? squareImageUrl,
+    required bool isRoot,
+    required bool isChild,
+    required bool isLeaf,
+    Category? parent,
+    List<Category>? children,
+    List<Category>? ancestors,
+    List<CustomField>? customFields,
+  }) = _Category;
 
   /// Parses a category from its JSON shape.
   factory Category.fromJson(Map<String, Object?> json) => Category(
@@ -90,67 +86,109 @@ class Category {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Category name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// URL permalink (used by `categories.get` in place of the id).
-  final String permalink;
+  @override
+  @override
+  String get permalink;
 
   /// Sort position among siblings.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Depth in the category tree.
-  final int depth;
+  @override
+  @override
+  int get depth;
 
   /// SEO title override, when set.
-  final String? metaTitle;
+  @override
+  @override
+  String? get metaTitle;
 
   /// Meta description, when set.
-  final String? metaDescription;
+  @override
+  @override
+  String? get metaDescription;
 
   /// Meta keywords, when set.
-  final String? metaKeywords;
+  @override
+  @override
+  String? get metaKeywords;
 
   /// Number of direct children.
-  final int childrenCount;
+  @override
+  @override
+  int get childrenCount;
 
   /// Parent id, `null` for roots.
-  final String? parentId;
+  @override
+  @override
+  String? get parentId;
 
   /// Plain-text description.
-  final String description;
+  @override
+  @override
+  String get description;
 
   /// Rendered HTML description.
-  final String descriptionHtml;
+  @override
+  @override
+  String get descriptionHtml;
 
   /// Image URL, when set.
-  final String? imageUrl;
+  @override
+  @override
+  String? get imageUrl;
 
   /// Square-cropped image URL, when set.
-  final String? squareImageUrl;
+  @override
+  @override
+  String? get squareImageUrl;
 
   /// Whether this is a tree root.
-  final bool isRoot;
+  @override
+  @override
+  bool get isRoot;
 
   /// Whether this has a parent.
-  final bool isChild;
+  @override
+  @override
+  bool get isChild;
 
   /// Whether this has no children.
-  final bool isLeaf;
+  @override
+  @override
+  bool get isLeaf;
 
   /// Expanded parent, when requested via `expand`.
-  final Category? parent;
+  @override
+  @override
+  Category? get parent;
 
   /// Expanded children, when requested via `expand`.
-  final List<Category>? children;
+  @override
+  @override
+  List<Category>? get children;
 
   /// Expanded ancestors, when requested via `expand`.
-  final List<Category>? ancestors;
+  @override
+  @override
+  List<Category>? get ancestors;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this category back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -178,66 +216,29 @@ class Category {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Category &&
-          id == other.id &&
-          name == other.name &&
-          permalink == other.permalink &&
-          position == other.position &&
-          depth == other.depth &&
-          metaTitle == other.metaTitle &&
-          metaDescription == other.metaDescription &&
-          metaKeywords == other.metaKeywords &&
-          childrenCount == other.childrenCount &&
-          parentId == other.parentId &&
-          description == other.description &&
-          descriptionHtml == other.descriptionHtml &&
-          imageUrl == other.imageUrl &&
-          squareImageUrl == other.squareImageUrl &&
-          isRoot == other.isRoot &&
-          isChild == other.isChild &&
-          isLeaf == other.isLeaf &&
-          parent == other.parent &&
-          _listEquals(children, other.children) &&
-          _listEquals(ancestors, other.ancestors) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    name,
-    permalink,
-    position,
-    depth,
-    childrenCount,
-    parentId,
-    isRoot,
-    isChild,
-    isLeaf,
-  );
 }
 
 /// A marketplace seller.
 ///
 /// Source: `packages/sdk/src/types/generated/Seller.ts`;
 /// SPEC `store.yaml#/components/schemas/Seller`.
-class Seller {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Seller with _$Seller {
+  const Seller._();
+
   /// Creates a seller.
-  const Seller({
-    required this.id,
-    required this.name,
-    required this.slug,
-    required this.about,
-    required this.aboutHtml,
-    this.logoUrl,
-    this.squareLogoUrl,
-    this.coverPhotoUrl,
-    this.policies,
-    this.customFields,
-  });
+  const factory Seller({
+    required String id,
+    required String name,
+    required String slug,
+    required String about,
+    required String aboutHtml,
+    String? logoUrl,
+    String? squareLogoUrl,
+    String? coverPhotoUrl,
+    List<Policy>? policies,
+    List<CustomField>? customFields,
+  }) = _Seller;
 
   /// Parses a seller from its JSON shape.
   factory Seller.fromJson(Map<String, Object?> json) => Seller(
@@ -258,34 +259,54 @@ class Seller {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Seller name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// URL slug (used by `sellers.get` in place of the id).
-  final String slug;
+  @override
+  @override
+  String get slug;
 
   /// Plain-text presentation.
-  final String about;
+  @override
+  @override
+  String get about;
 
   /// Rendered HTML presentation.
-  final String aboutHtml;
+  @override
+  @override
+  String get aboutHtml;
 
   /// Logo URL, when set.
-  final String? logoUrl;
+  @override
+  @override
+  String? get logoUrl;
 
   /// Square-cropped logo URL, when set.
-  final String? squareLogoUrl;
+  @override
+  @override
+  String? get squareLogoUrl;
 
   /// Cover photo URL, when set.
-  final String? coverPhotoUrl;
+  @override
+  @override
+  String? get coverPhotoUrl;
 
   /// Seller policies, when expanded.
-  final List<Policy>? policies;
+  @override
+  @override
+  List<Policy>? get policies;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this seller back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -301,48 +322,33 @@ class Seller {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Seller &&
-          id == other.id &&
-          name == other.name &&
-          slug == other.slug &&
-          about == other.about &&
-          aboutHtml == other.aboutHtml &&
-          logoUrl == other.logoUrl &&
-          squareLogoUrl == other.squareLogoUrl &&
-          coverPhotoUrl == other.coverPhotoUrl &&
-          _listEquals(policies, other.policies) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, name, slug, about, aboutHtml);
 }
 
 /// A merchandising collection of products.
 ///
 /// Source: `packages/sdk/src/types/generated/Collection.ts`;
 /// SPEC `store.yaml#/components/schemas/Collection`.
-class Collection {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Collection with _$Collection {
+  const Collection._();
+
   /// Creates a collection.
-  const Collection({
-    required this.id,
-    required this.name,
-    required this.permalink,
-    required this.position,
-    required this.sortOrder,
-    this.metaTitle,
-    this.metaDescription,
-    this.metaKeywords,
-    required this.productsCount,
-    required this.description,
-    required this.descriptionHtml,
-    this.imageUrl,
-    this.squareImageUrl,
-    this.customFields,
-  });
+  const factory Collection({
+    required String id,
+    required String name,
+    required String permalink,
+    required int position,
+    required CollectionSortOrder sortOrder,
+    String? metaTitle,
+    String? metaDescription,
+    String? metaKeywords,
+    required int productsCount,
+    required String description,
+    required String descriptionHtml,
+    String? imageUrl,
+    String? squareImageUrl,
+    List<CustomField>? customFields,
+  }) = _Collection;
 
   /// Parses a collection from its JSON shape.
   factory Collection.fromJson(Map<String, Object?> json) => Collection(
@@ -365,46 +371,74 @@ class Collection {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Collection name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// URL permalink (used by `collections.get` in place of the id).
-  final String permalink;
+  @override
+  @override
+  String get permalink;
 
   /// Sort position.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Product ordering inside the collection.
-  final CollectionSortOrder sortOrder;
+  @override
+  @override
+  CollectionSortOrder get sortOrder;
 
   /// SEO title override, when set.
-  final String? metaTitle;
+  @override
+  @override
+  String? get metaTitle;
 
   /// Meta description, when set.
-  final String? metaDescription;
+  @override
+  @override
+  String? get metaDescription;
 
   /// Meta keywords, when set.
-  final String? metaKeywords;
+  @override
+  @override
+  String? get metaKeywords;
 
   /// Number of products in the collection.
-  final int productsCount;
+  @override
+  @override
+  int get productsCount;
 
   /// Plain-text description.
-  final String description;
+  @override
+  @override
+  String get description;
 
   /// Rendered HTML description.
-  final String descriptionHtml;
+  @override
+  @override
+  String get descriptionHtml;
 
   /// Image URL, when set.
-  final String? imageUrl;
+  @override
+  @override
+  String? get imageUrl;
 
   /// Square-cropped image URL, when set.
-  final String? squareImageUrl;
+  @override
+  @override
+  String? get squareImageUrl;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this collection back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -424,27 +458,4 @@ class Collection {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Collection &&
-          id == other.id &&
-          name == other.name &&
-          permalink == other.permalink &&
-          position == other.position &&
-          sortOrder == other.sortOrder &&
-          metaTitle == other.metaTitle &&
-          metaDescription == other.metaDescription &&
-          metaKeywords == other.metaKeywords &&
-          productsCount == other.productsCount &&
-          description == other.description &&
-          descriptionHtml == other.descriptionHtml &&
-          imageUrl == other.imageUrl &&
-          squareImageUrl == other.squareImageUrl &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode =>
-      Object.hash(id, name, permalink, position, sortOrder, productsCount);
 }

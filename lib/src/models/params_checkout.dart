@@ -1,7 +1,6 @@
 /// Checkout and payment request parameters for cart operations.
 ///
-/// Hand-written immutable parameter bags with manual `toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable parameter bags with explicit, contract-verified JSON.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -31,20 +30,34 @@
 /// payments, store credit, complete).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'params_checkout.freezed.dart';
+
 /// Parameters for `PATCH /carts/{id}`.
 ///
 /// Verified (contract §4, `SRC 560`): `UpdateCartParams` exists and carries
 /// at least the customer `email`. Address payloads and any further fields
 /// are not pinned by the research pass — pass them via [extra].
-class UpdateCartParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateCartParams with _$UpdateCartParams {
+  const UpdateCartParams._();
+
   /// Creates cart-update parameters.
-  const UpdateCartParams({this.email, this.extra = const <String, Object?>{}});
+  const factory UpdateCartParams({
+    String? email,
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _UpdateCartParams;
 
   /// Customer email for the cart, when set.
-  final String? email;
+  @override
+  @override
+  String? get email;
 
   /// Additional server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -58,22 +71,31 @@ class UpdateCartParams {
 /// Verified (contract §4, `SRC 632`): `AddLineItemParams` carries
 /// `variant_id` and `quantity`; further fields are unknown — pass them via
 /// [extra].
-class AddLineItemParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AddLineItemParams with _$AddLineItemParams {
+  const AddLineItemParams._();
+
   /// Creates line-item creation parameters.
-  const AddLineItemParams({
-    required this.variantId,
-    required this.quantity,
-    this.extra = const <String, Object?>{},
-  });
+  const factory AddLineItemParams({
+    required String variantId,
+    required int quantity,
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _AddLineItemParams;
 
   /// Variant to add to the cart.
-  final String variantId;
+  @override
+  @override
+  String get variantId;
 
   /// Quantity to add.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Additional server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -88,18 +110,25 @@ class AddLineItemParams {
 /// Verified (contract §4, `SRC 648`): `UpdateLineItemParams` exists; the
 /// quantity field is the documented update target. Any further fields travel
 /// via [extra].
-class UpdateLineItemParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateLineItemParams with _$UpdateLineItemParams {
+  const UpdateLineItemParams._();
+
   /// Creates line-item update parameters.
-  const UpdateLineItemParams({
-    this.quantity,
-    this.extra = const <String, Object?>{},
-  });
+  const factory UpdateLineItemParams({
+    int? quantity,
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _UpdateLineItemParams;
 
   /// New quantity, when set.
-  final int? quantity;
+  @override
+  @override
+  int? get quantity;
 
   /// Additional server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -114,12 +143,19 @@ class UpdateLineItemParams {
 /// Verified (contract §4, `SRC 747`): `CreatePaymentParams` exists. No body
 /// field is pinned by the research pass, so this class is a verbatim
 /// [extra] passthrough. Do not guess field names here.
-class CreatePaymentParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreatePaymentParams with _$CreatePaymentParams {
+  const CreatePaymentParams._();
+
   /// Creates direct-payment parameters.
-  const CreatePaymentParams({this.extra = const <String, Object?>{}});
+  const factory CreatePaymentParams({
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _CreatePaymentParams;
 
   /// Server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
@@ -130,12 +166,19 @@ class CreatePaymentParams {
 /// Verified (contract §4, `SRC 764`): `CreatePaymentSessionParams` exists
 /// (Stripe-style provider delegation). No body field is pinned by the
 /// research pass, so this class is a verbatim [extra] passthrough.
-class CreatePaymentSessionParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CreatePaymentSessionParams with _$CreatePaymentSessionParams {
+  const CreatePaymentSessionParams._();
+
   /// Creates payment-session creation parameters.
-  const CreatePaymentSessionParams({this.extra = const <String, Object?>{}});
+  const factory CreatePaymentSessionParams({
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _CreatePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
@@ -146,12 +189,19 @@ class CreatePaymentSessionParams {
 /// Verified (contract §4, `SRC 791`): `UpdatePaymentSessionParams` exists.
 /// No body field is pinned by the research pass — verbatim [extra]
 /// passthrough.
-class UpdatePaymentSessionParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdatePaymentSessionParams with _$UpdatePaymentSessionParams {
+  const UpdatePaymentSessionParams._();
+
   /// Creates payment-session update parameters.
-  const UpdatePaymentSessionParams({this.extra = const <String, Object?>{}});
+  const factory UpdatePaymentSessionParams({
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _UpdatePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
@@ -162,12 +212,20 @@ class UpdatePaymentSessionParams {
 /// Verified (contract §4, `SRC 807`): `CompletePaymentSessionParams?`
 /// exists and is optional (the call may carry no body). No body field is
 /// pinned by the research pass — verbatim [extra] passthrough.
-class CompletePaymentSessionParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CompletePaymentSessionParams
+    with _$CompletePaymentSessionParams {
+  const CompletePaymentSessionParams._();
+
   /// Creates payment-session completion parameters.
-  const CompletePaymentSessionParams({this.extra = const <String, Object?>{}});
+  const factory CompletePaymentSessionParams({
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _CompletePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
@@ -178,12 +236,19 @@ class CompletePaymentSessionParams {
 /// Verified (contract §4, `SRC 727`): `UpdateFulfillmentParams` exists and
 /// selects the delivery rate for the fulfillment. The exact body field is
 /// not pinned by the research pass — verbatim [extra] passthrough.
-class UpdateFulfillmentParams {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class UpdateFulfillmentParams with _$UpdateFulfillmentParams {
+  const UpdateFulfillmentParams._();
+
   /// Creates fulfillment-update parameters.
-  const UpdateFulfillmentParams({this.extra = const <String, Object?>{}});
+  const factory UpdateFulfillmentParams({
+    @Default(<String, Object?>{}) Map<String, Object?> extra,
+  }) = _UpdateFulfillmentParams;
 
   /// Server fields, forwarded verbatim (see file docs).
-  final Map<String, Object?> extra;
+  @override
+  @override
+  Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => Map<String, Object?>.from(extra);

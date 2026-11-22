@@ -1,7 +1,6 @@
 /// Cart and checkout models.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -29,27 +28,28 @@
 /// payloads (contract §4, `SRC 672/683`).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'meta.dart';
 import 'product.dart';
 import 'taxons.dart';
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+part 'cart.freezed.dart';
 
 /// Owner of an address-book entry.
 ///
 /// Source: `packages/sdk/src/types/generated/AddressOwner.ts`;
 /// SPEC `store.yaml#/components/schemas/AddressOwner`.
-class AddressOwner {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AddressOwner with _$AddressOwner {
+  const AddressOwner._();
+
   /// Creates an address owner.
-  const AddressOwner({required this.id, required this.type, this.name});
+  const factory AddressOwner({
+    required String id,
+    required AddressOwnerType type,
+    String? name,
+  }) = _AddressOwner;
 
   /// Parses an address owner from its JSON shape.
   factory AddressOwner.fromJson(Map<String, Object?> json) => AddressOwner(
@@ -59,13 +59,19 @@ class AddressOwner {
   );
 
   /// Owner id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owner kind (built-ins; extensions may add more).
-  final AddressOwnerType type;
+  @override
+  @override
+  AddressOwnerType get type;
 
   /// Owner name, when reported.
-  final String? name;
+  @override
+  @override
+  String? get name;
 
   /// Serializes this owner back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -73,50 +79,42 @@ class AddressOwner {
     'type': type.toJson(),
     'name': name,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AddressOwner &&
-          id == other.id &&
-          type == other.type &&
-          name == other.name;
-
-  @override
-  int get hashCode => Object.hash(id, type, name);
 }
 
 /// A postal address: cart address or address-book entry.
 ///
 /// Source: `packages/sdk/src/types/generated/Address.ts`;
 /// SPEC `store.yaml#/components/schemas/Address`.
-class Address {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Address with _$Address {
+  const Address._();
+
   /// Creates an address.
-  const Address({
-    required this.id,
-    this.label,
-    this.firstName,
-    this.lastName,
-    required this.fullName,
-    this.address1,
-    this.address2,
-    this.postalCode,
-    this.city,
-    this.phone,
-    this.company,
-    required this.countryName,
-    required this.countryCode,
-    this.stateText,
-    this.stateCode,
-    required this.quickCheckout,
-    required this.isDefaultBilling,
-    required this.isDefaultShipping,
-    this.stateAbbr,
-    required this.countryIso,
-    this.stateName,
-    this.owner,
-    this.customFields,
-  });
+  const factory Address({
+    required String id,
+    String? label,
+    String? firstName,
+    String? lastName,
+    required String fullName,
+    String? address1,
+    String? address2,
+    String? postalCode,
+    String? city,
+    String? phone,
+    String? company,
+    required String countryName,
+    required CountryCode countryCode,
+    String? stateText,
+    String? stateCode,
+    required bool quickCheckout,
+    required bool isDefaultBilling,
+    required bool isDefaultShipping,
+    String? stateAbbr,
+    required String countryIso,
+    String? stateName,
+    AddressOwner? owner,
+    List<CustomField>? customFields,
+  }) = _Address;
 
   /// Parses an address from its JSON shape.
   factory Address.fromJson(Map<String, Object?> json) => Address(
@@ -150,76 +148,122 @@ class Address {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Address-book label, when set.
-  final String? label;
+  @override
+  @override
+  String? get label;
 
   /// First name, when set.
-  final String? firstName;
+  @override
+  @override
+  String? get firstName;
 
   /// Last name, when set.
-  final String? lastName;
+  @override
+  @override
+  String? get lastName;
 
   /// Computed full name.
-  final String fullName;
+  @override
+  @override
+  String get fullName;
 
   /// Street line 1, when set.
-  final String? address1;
+  @override
+  @override
+  String? get address1;
 
   /// Street line 2, when set.
-  final String? address2;
+  @override
+  @override
+  String? get address2;
 
   /// Postal code, when set.
-  final String? postalCode;
+  @override
+  @override
+  String? get postalCode;
 
   /// City, when set.
-  final String? city;
+  @override
+  @override
+  String? get city;
 
   /// Phone, when set.
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Company, when set.
-  final String? company;
+  @override
+  @override
+  String? get company;
 
   /// Country name, as reported by the API.
-  final String countryName;
+  @override
+  @override
+  String get countryName;
 
   /// ISO country code.
-  final CountryCode countryCode;
+  @override
+  @override
+  CountryCode get countryCode;
 
   /// State text, when set.
-  final String? stateText;
+  @override
+  @override
+  String? get stateText;
 
   /// ISO state code, when set.
-  final String? stateCode;
+  @override
+  @override
+  String? get stateCode;
 
   /// Whether this address was created via quick checkout.
-  final bool quickCheckout;
+  @override
+  @override
+  bool get quickCheckout;
 
   /// Whether this is the default billing address.
-  final bool isDefaultBilling;
+  @override
+  @override
+  bool get isDefaultBilling;
 
   /// Whether this is the default shipping address.
-  final bool isDefaultShipping;
+  @override
+  @override
+  bool get isDefaultShipping;
 
   /// Deprecated upstream in favor of [stateCode] (removal slated for
   /// 6.5) but still serialized; kept as a plain field.
-  final String? stateAbbr;
+  @override
+  @override
+  String? get stateAbbr;
 
   /// Deprecated upstream in favor of [countryCode] (removal slated for
   /// 6.5) but still serialized; kept as a plain field.
-  final String countryIso;
+  @override
+  @override
+  String get countryIso;
 
   /// State name, when set.
-  final String? stateName;
+  @override
+  @override
+  String? get stateName;
 
   /// Address-book origin, when reported (see contract §4:
   /// `carts.addresses.list`).
-  final AddressOwner? owner;
+  @override
+  @override
+  AddressOwner? get owner;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this address back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -248,61 +292,24 @@ class Address {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Address &&
-          id == other.id &&
-          label == other.label &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          fullName == other.fullName &&
-          address1 == other.address1 &&
-          address2 == other.address2 &&
-          postalCode == other.postalCode &&
-          city == other.city &&
-          phone == other.phone &&
-          company == other.company &&
-          countryName == other.countryName &&
-          countryCode == other.countryCode &&
-          stateText == other.stateText &&
-          stateCode == other.stateCode &&
-          quickCheckout == other.quickCheckout &&
-          isDefaultBilling == other.isDefaultBilling &&
-          isDefaultShipping == other.isDefaultShipping &&
-          stateAbbr == other.stateAbbr &&
-          countryIso == other.countryIso &&
-          stateName == other.stateName &&
-          owner == other.owner &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    fullName,
-    countryName,
-    countryCode,
-    quickCheckout,
-    isDefaultBilling,
-    isDefaultShipping,
-    countryIso,
-  );
 }
 
 /// A problem found with the cart (e.g. an item removed after a stock change).
 ///
 /// Source: inline `Cart['warnings'][number]`, aliased as `CartWarning` in
 /// `packages/sdk/src/types/index.ts`.
-class CartWarning {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CartWarning with _$CartWarning {
+  const CartWarning._();
+
   /// Creates a cart warning.
-  const CartWarning({
-    required this.code,
-    required this.message,
-    this.lineItemId,
-    this.variantId,
-    this.itemIndex,
-  });
+  const factory CartWarning({
+    required String code,
+    required String message,
+    String? lineItemId,
+    String? variantId,
+    int? itemIndex,
+  }) = _CartWarning;
 
   /// Parses a cart warning from its JSON shape.
   factory CartWarning.fromJson(Map<String, Object?> json) => CartWarning(
@@ -314,19 +321,29 @@ class CartWarning {
   );
 
   /// Machine-readable code.
-  final String code;
+  @override
+  @override
+  String get code;
 
   /// Human-readable message.
-  final String message;
+  @override
+  @override
+  String get message;
 
   /// Affected line item, when reported.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Affected variant, when reported.
-  final String? variantId;
+  @override
+  @override
+  String? get variantId;
 
   /// Affected item index, when reported.
-  final int? itemIndex;
+  @override
+  @override
+  int? get itemIndex;
 
   /// Serializes this warning back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -336,34 +353,23 @@ class CartWarning {
     'variant_id': variantId,
     'item_index': itemIndex,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CartWarning &&
-          code == other.code &&
-          message == other.message &&
-          lineItemId == other.lineItemId &&
-          variantId == other.variantId &&
-          itemIndex == other.itemIndex;
-
-  @override
-  int get hashCode =>
-      Object.hash(code, message, lineItemId, variantId, itemIndex);
 }
 
 /// A single unsatisfied checkout prerequisite.
 ///
 /// Source: inline `Cart['requirements'][number]`, aliased as
 /// `CheckoutRequirement` in `packages/sdk/src/types/index.ts`.
-class CheckoutRequirement {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CheckoutRequirement with _$CheckoutRequirement {
+  const CheckoutRequirement._();
+
   /// Creates a checkout requirement.
-  const CheckoutRequirement({
-    required this.step,
-    required this.field,
-    required this.code,
-    required this.message,
-  });
+  const factory CheckoutRequirement({
+    required String step,
+    required String field,
+    required String code,
+    required String message,
+  }) = _CheckoutRequirement;
 
   /// Parses a requirement from its JSON shape.
   factory CheckoutRequirement.fromJson(Map<String, Object?> json) =>
@@ -375,16 +381,24 @@ class CheckoutRequirement {
       );
 
   /// Checkout step the prerequisite belongs to (e.g. `address`).
-  final String step;
+  @override
+  @override
+  String get step;
 
   /// Field that still needs satisfying (e.g. `shipping_address`).
-  final String field;
+  @override
+  @override
+  String get field;
 
   /// Machine-readable code.
-  final String code;
+  @override
+  @override
+  String get code;
 
   /// Human-readable message.
-  final String message;
+  @override
+  @override
+  String get message;
 
   /// Serializes this requirement back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -393,41 +407,32 @@ class CheckoutRequirement {
     'code': code,
     'message': message,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CheckoutRequirement &&
-          step == other.step &&
-          field == other.field &&
-          code == other.code &&
-          message == other.message;
-
-  @override
-  int get hashCode => Object.hash(step, field, code, message);
 }
 
 /// One tax line: a single applied tax.
 ///
 /// Source: `packages/sdk/src/types/generated/TaxLine.ts`;
 /// SPEC `store.yaml#/components/schemas/TaxLine`.
-class TaxLine {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class TaxLine with _$TaxLine {
+  const TaxLine._();
+
   /// Creates a tax line.
-  const TaxLine({
-    required this.id,
-    required this.label,
-    required this.included,
-    required this.credit,
-    this.rate,
-    this.taxRateId,
-    this.lineItemId,
-    this.fulfillmentId,
-    this.feeId,
-    this.returnLineItemId,
-    this.claimLineItemId,
-    this.exchangeLineItemId,
-    this.amount,
-  });
+  const factory TaxLine({
+    required String id,
+    required String label,
+    required bool included,
+    required bool credit,
+    String? rate,
+    String? taxRateId,
+    String? lineItemId,
+    String? fulfillmentId,
+    String? feeId,
+    String? returnLineItemId,
+    String? claimLineItemId,
+    String? exchangeLineItemId,
+    String? amount,
+  }) = _TaxLine;
 
   /// Parses a tax line from its JSON shape.
   factory TaxLine.fromJson(Map<String, Object?> json) => TaxLine(
@@ -447,43 +452,69 @@ class TaxLine {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Tax label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Whether the tax is included in prices (vs added on top).
-  final bool included;
+  @override
+  @override
+  bool get included;
 
   /// Whether this line is a credit.
-  final bool credit;
+  @override
+  @override
+  bool get credit;
 
   /// Tax rate, decimal string, when reported.
-  final String? rate;
+  @override
+  @override
+  String? get rate;
 
   /// Owning tax rate id, when reported.
-  final String? taxRateId;
+  @override
+  @override
+  String? get taxRateId;
 
   /// Owning line item id, when set.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Owning fulfillment id, when set.
-  final String? fulfillmentId;
+  @override
+  @override
+  String? get fulfillmentId;
 
   /// Owning fee id, when set.
-  final String? feeId;
+  @override
+  @override
+  String? get feeId;
 
   /// Owning return line item id, when set.
-  final String? returnLineItemId;
+  @override
+  @override
+  String? get returnLineItemId;
 
   /// Owning claim line item id, when set.
-  final String? claimLineItemId;
+  @override
+  @override
+  String? get claimLineItemId;
 
   /// Owning exchange line item id, when set.
-  final String? exchangeLineItemId;
+  @override
+  @override
+  String? get exchangeLineItemId;
 
   /// Tax amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Serializes this tax line back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -501,27 +532,6 @@ class TaxLine {
     'exchange_line_item_id': exchangeLineItemId,
     'amount': amount,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TaxLine &&
-          id == other.id &&
-          label == other.label &&
-          included == other.included &&
-          credit == other.credit &&
-          rate == other.rate &&
-          taxRateId == other.taxRateId &&
-          lineItemId == other.lineItemId &&
-          fulfillmentId == other.fulfillmentId &&
-          feeId == other.feeId &&
-          returnLineItemId == other.returnLineItemId &&
-          claimLineItemId == other.claimLineItemId &&
-          exchangeLineItemId == other.exchangeLineItemId &&
-          amount == other.amount;
-
-  @override
-  int get hashCode => Object.hash(id, label, included, credit, amount);
 }
 
 /// A promotion applied to a cart or order.
@@ -530,16 +540,19 @@ class TaxLine {
 /// SPEC `store.yaml#/components/schemas/AppliedPromotion`. Upstream renamed
 /// the legacy `Discount` alias to this (the type of `cart.discounts` and
 /// `order.discounts`).
-class AppliedPromotion {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AppliedPromotion with _$AppliedPromotion {
+  const AppliedPromotion._();
+
   /// Creates an applied promotion.
-  const AppliedPromotion({
-    required this.id,
-    required this.promotionId,
-    required this.name,
-    this.description,
-    this.code,
-    this.amount,
-  });
+  const factory AppliedPromotion({
+    required String id,
+    required String promotionId,
+    required String name,
+    String? description,
+    String? code,
+    String? amount,
+  }) = _AppliedPromotion;
 
   /// Parses an applied promotion from its JSON shape.
   factory AppliedPromotion.fromJson(Map<String, Object?> json) =>
@@ -553,22 +566,34 @@ class AppliedPromotion {
       );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning promotion id.
-  final String promotionId;
+  @override
+  @override
+  String get promotionId;
 
   /// Promotion name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Promotion description, when set.
-  final String? description;
+  @override
+  @override
+  String? get description;
 
   /// Redeemed code, when the promotion used one.
-  final String? code;
+  @override
+  @override
+  String? get code;
 
   /// Discount amount as a negative decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Serializes this promotion back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -579,21 +604,6 @@ class AppliedPromotion {
     'code': code,
     'amount': amount,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AppliedPromotion &&
-          id == other.id &&
-          promotionId == other.promotionId &&
-          name == other.name &&
-          description == other.description &&
-          code == other.code &&
-          amount == other.amount;
-
-  @override
-  int get hashCode =>
-      Object.hash(id, promotionId, name, description, code, amount);
 }
 
 /// A discount-code record: code, kind, value and applied amount.
@@ -603,20 +613,23 @@ class AppliedPromotion {
 /// `POST/DELETE /carts/{id}/discount_codes` (contract §4, `SRC 672/683`).
 /// Sources: `packages/sdk/src/types/generated/Discount.ts`;
 /// SPEC `store.yaml#/components/schemas/Discount`.
-class DiscountCode {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class DiscountCode with _$DiscountCode {
+  const DiscountCode._();
+
   /// Creates a discount-code record.
-  const DiscountCode({
-    required this.id,
-    required this.label,
-    required this.kind,
-    this.code,
-    this.valueType,
-    this.value,
-    this.promotionId,
-    this.lineItemId,
-    this.fulfillmentId,
-    this.amount,
-  });
+  const factory DiscountCode({
+    required String id,
+    required String label,
+    required DiscountKind kind,
+    String? code,
+    String? valueType,
+    String? value,
+    String? promotionId,
+    String? lineItemId,
+    String? fulfillmentId,
+    String? amount,
+  }) = _DiscountCode;
 
   /// Parses a discount-code record from its JSON shape.
   ///
@@ -636,34 +649,54 @@ class DiscountCode {
   );
 
   /// Unique identifier (absent in `{code}` apply payloads).
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Discount label (absent in `{code}` apply payloads).
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Discount origin: promotion rule or manual adjustment.
-  final DiscountKind kind;
+  @override
+  @override
+  DiscountKind get kind;
 
   /// The redeemed code, when reported.
-  final String? code;
+  @override
+  @override
+  String? get code;
 
   /// Value type, when reported (open string).
-  final String? valueType;
+  @override
+  @override
+  String? get valueType;
 
   /// Value, decimal string, when reported.
-  final String? value;
+  @override
+  @override
+  String? get value;
 
   /// Owning promotion id, when reported.
-  final String? promotionId;
+  @override
+  @override
+  String? get promotionId;
 
   /// Owning line item id, when set.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Owning fulfillment id, when set.
-  final String? fulfillmentId;
+  @override
+  @override
+  String? get fulfillmentId;
 
   /// Applied amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Serializes this record back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -678,40 +711,25 @@ class DiscountCode {
     'fulfillment_id': fulfillmentId,
     'amount': amount,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DiscountCode &&
-          id == other.id &&
-          label == other.label &&
-          kind == other.kind &&
-          code == other.code &&
-          valueType == other.valueType &&
-          value == other.value &&
-          promotionId == other.promotionId &&
-          lineItemId == other.lineItemId &&
-          fulfillmentId == other.fulfillmentId &&
-          amount == other.amount;
-
-  @override
-  int get hashCode => Object.hash(id, label, kind, code, amount);
 }
 
 /// A fee charged on a cart or order (handling, duty, …).
 ///
 /// Source: `packages/sdk/src/types/generated/Fee.ts`;
 /// SPEC `store.yaml#/components/schemas/Fee`.
-class Fee {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Fee with _$Fee {
+  const Fee._();
+
   /// Creates a fee.
-  const Fee({
-    required this.id,
-    required this.label,
-    required this.kind,
-    this.lineItemId,
-    this.fulfillmentId,
-    this.amount,
-  });
+  const factory Fee({
+    required String id,
+    required String label,
+    required FeeKind kind,
+    String? lineItemId,
+    String? fulfillmentId,
+    String? amount,
+  }) = _Fee;
 
   /// Parses a fee from its JSON shape.
   factory Fee.fromJson(Map<String, Object?> json) => Fee(
@@ -724,23 +742,35 @@ class Fee {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Fee label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// What sort of charge this is. Extensions may register further kinds;
   /// unrecognized values map to [FeeKind.unknown].
-  final FeeKind kind;
+  @override
+  @override
+  FeeKind get kind;
 
   /// Owning line item id, when set.
-  final String? lineItemId;
+  @override
+  @override
+  String? get lineItemId;
 
   /// Owning fulfillment id, when set.
-  final String? fulfillmentId;
+  @override
+  @override
+  String? get fulfillmentId;
 
   /// Fee amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Serializes this fee back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -751,40 +781,28 @@ class Fee {
     'fulfillment_id': fulfillmentId,
     'amount': amount,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Fee &&
-          id == other.id &&
-          label == other.label &&
-          kind == other.kind &&
-          lineItemId == other.lineItemId &&
-          fulfillmentId == other.fulfillmentId &&
-          amount == other.amount;
-
-  @override
-  int get hashCode =>
-      Object.hash(id, label, kind, lineItemId, fulfillmentId, amount);
 }
 
 /// A digital link attached to a line item or owned by a customer.
 ///
 /// Source: `packages/sdk/src/types/generated/DigitalLink.ts`;
 /// SPEC `store.yaml#/components/schemas/DigitalLink`.
-class DigitalLink {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class DigitalLink with _$DigitalLink {
+  const DigitalLink._();
+
   /// Creates a digital link.
-  const DigitalLink({
-    required this.id,
-    required this.accessCounter,
-    required this.filename,
-    required this.contentType,
-    required this.downloadUrl,
-    this.expiresAt,
-    required this.authorizable,
-    required this.expired,
-    required this.accessLimitExceeded,
-  });
+  const factory DigitalLink({
+    required String id,
+    required int accessCounter,
+    required String filename,
+    required String contentType,
+    required String downloadUrl,
+    String? expiresAt,
+    required bool authorizable,
+    required bool expired,
+    required bool accessLimitExceeded,
+  }) = _DigitalLink;
 
   /// Parses a digital link from its JSON shape.
   factory DigitalLink.fromJson(Map<String, Object?> json) => DigitalLink(
@@ -800,32 +818,50 @@ class DigitalLink {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Number of recorded accesses.
-  final int accessCounter;
+  @override
+  @override
+  int get accessCounter;
 
   /// File name.
-  final String filename;
+  @override
+  @override
+  String get filename;
 
   /// File content type.
-  final String contentType;
+  @override
+  @override
+  String get contentType;
 
   /// Download URL (follow redirects; see contract §7 for the
   /// authenticated `digital_links/{id}` variant).
-  final String downloadUrl;
+  @override
+  @override
+  String get downloadUrl;
 
   /// Expiry timestamp, when set.
-  final String? expiresAt;
+  @override
+  @override
+  String? get expiresAt;
 
   /// Whether authorization is required to download.
-  final bool authorizable;
+  @override
+  @override
+  bool get authorizable;
 
   /// Whether the link expired.
-  final bool expired;
+  @override
+  @override
+  bool get expired;
 
   /// Whether the access limit was exceeded.
-  final bool accessLimitExceeded;
+  @override
+  @override
+  bool get accessLimitExceeded;
 
   /// Serializes this link back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -839,58 +875,44 @@ class DigitalLink {
     'expired': expired,
     'access_limit_exceeded': accessLimitExceeded,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DigitalLink &&
-          id == other.id &&
-          accessCounter == other.accessCounter &&
-          filename == other.filename &&
-          contentType == other.contentType &&
-          downloadUrl == other.downloadUrl &&
-          expiresAt == other.expiresAt &&
-          authorizable == other.authorizable &&
-          expired == other.expired &&
-          accessLimitExceeded == other.accessLimitExceeded;
-
-  @override
-  int get hashCode => Object.hash(id, filename, downloadUrl, expired);
 }
 
 /// One line item of a cart or order.
 ///
 /// Source: `packages/sdk/src/types/generated/LineItem.ts`;
 /// SPEC `store.yaml#/components/schemas/LineItem`.
-class LineItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class LineItem with _$LineItem {
+  const LineItem._();
+
   /// Creates a line item.
-  const LineItem({
-    required this.id,
-    required this.variantId,
-    this.sellerId,
-    required this.preorder,
-    this.preorderShipsAt,
-    required this.quantity,
-    required this.currency,
-    required this.name,
-    required this.slug,
-    required this.optionsText,
-    this.price,
-    this.total,
-    this.adjustmentTotal,
-    this.additionalTaxTotal,
-    this.includedTaxTotal,
-    this.discountTotal,
-    this.preTaxAmount,
-    this.discountedAmount,
-    this.compareAtAmount,
-    this.thumbnailUrl,
-    this.seller,
-    required this.optionValues,
-    this.digitalLinks,
-    this.taxLines,
-    this.customFields,
-  });
+  const factory LineItem({
+    required String id,
+    required String variantId,
+    String? sellerId,
+    required bool preorder,
+    String? preorderShipsAt,
+    required int quantity,
+    required CurrencyCode currency,
+    required String name,
+    required String slug,
+    required String optionsText,
+    String? price,
+    String? total,
+    String? adjustmentTotal,
+    String? additionalTaxTotal,
+    String? includedTaxTotal,
+    String? discountTotal,
+    String? preTaxAmount,
+    String? discountedAmount,
+    String? compareAtAmount,
+    String? thumbnailUrl,
+    Seller? seller,
+    required List<OptionValue> optionValues,
+    List<DigitalLink>? digitalLinks,
+    List<TaxLine>? taxLines,
+    List<CustomField>? customFields,
+  }) = _LineItem;
 
   /// Parses a line item from its JSON shape.
   factory LineItem.fromJson(Map<String, Object?> json) => LineItem(
@@ -932,80 +954,130 @@ class LineItem {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Bought variant id.
-  final String variantId;
+  @override
+  @override
+  String get variantId;
 
   /// Owning seller id, when set.
-  final String? sellerId;
+  @override
+  @override
+  String? get sellerId;
 
   /// Whether the line is a preorder.
-  final bool preorder;
+  @override
+  @override
+  bool get preorder;
 
   /// Preorder shipping date, when set.
-  final String? preorderShipsAt;
+  @override
+  @override
+  String? get preorderShipsAt;
 
   /// Quantity.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Pricing currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Variant/product name snapshot.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Variant/product slug snapshot.
-  final String slug;
+  @override
+  @override
+  String get slug;
 
   /// Human-readable option summary.
-  final String optionsText;
+  @override
+  @override
+  String get optionsText;
 
   /// Price of one unit, decimal string, when reported.
-  final String? price;
+  @override
+  @override
+  String? get price;
 
   /// Line total (price × quantity, with discounts, fees and added tax),
   /// decimal string, when reported.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Discounts, fees and added tax together, decimal string, when reported.
-  final String? adjustmentTotal;
+  @override
+  @override
+  String? get adjustmentTotal;
 
   /// Tax added on top of the price, decimal string, when reported.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Tax already included in the price, decimal string, when reported.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Promotion discounts on this line (negative), decimal string.
-  final String? discountTotal;
+  @override
+  @override
+  String? get discountTotal;
 
   /// Line total after discounts, without tax, decimal string.
-  final String? preTaxAmount;
+  @override
+  @override
+  String? get preTaxAmount;
 
   /// Price × quantity after discounts, decimal string.
-  final String? discountedAmount;
+  @override
+  @override
+  String? get discountedAmount;
 
   /// Compare-at price × quantity, decimal string, when the variant has one.
-  final String? compareAtAmount;
+  @override
+  @override
+  String? get compareAtAmount;
 
   /// Thumbnail URL, when set.
-  final String? thumbnailUrl;
+  @override
+  @override
+  String? get thumbnailUrl;
 
   /// Expanded seller, when requested via `expand`.
-  final Seller? seller;
+  @override
+  @override
+  Seller? get seller;
 
   /// Option values identifying the bought variant.
-  final List<OptionValue> optionValues;
+  @override
+  @override
+  List<OptionValue> get optionValues;
 
   /// Digital links of this line, when expanded.
-  final List<DigitalLink>? digitalLinks;
+  @override
+  @override
+  List<DigitalLink>? get digitalLinks;
 
   /// Tax lines of this line, when present.
-  final List<TaxLine>? taxLines;
+  @override
+  @override
+  List<TaxLine>? get taxLines;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this line item back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1038,54 +1110,24 @@ class LineItem {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is LineItem &&
-          id == other.id &&
-          variantId == other.variantId &&
-          sellerId == other.sellerId &&
-          preorder == other.preorder &&
-          preorderShipsAt == other.preorderShipsAt &&
-          quantity == other.quantity &&
-          currency == other.currency &&
-          name == other.name &&
-          slug == other.slug &&
-          optionsText == other.optionsText &&
-          price == other.price &&
-          total == other.total &&
-          adjustmentTotal == other.adjustmentTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          discountTotal == other.discountTotal &&
-          preTaxAmount == other.preTaxAmount &&
-          discountedAmount == other.discountedAmount &&
-          compareAtAmount == other.compareAtAmount &&
-          thumbnailUrl == other.thumbnailUrl &&
-          seller == other.seller &&
-          _listEquals(optionValues, other.optionValues) &&
-          _listEquals(digitalLinks, other.digitalLinks) &&
-          _listEquals(taxLines, other.taxLines) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, variantId, quantity, currency);
 }
 
 /// Freight summary of a delivery rate (carton/pallet shipping).
 ///
 /// Source: `packages/sdk/src/types/generated/FreightSummary.ts`.
-class FreightSummary {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class FreightSummary with _$FreightSummary {
+  const FreightSummary._();
+
   /// Creates a freight summary.
-  const FreightSummary({
-    required this.totalUnits,
-    required this.totalCartons,
-    this.totalPallets,
-    required this.totalVolume,
-    required this.totalWeight,
-    required this.complete,
-  });
+  const factory FreightSummary({
+    required int totalUnits,
+    required int totalCartons,
+    int? totalPallets,
+    required String totalVolume,
+    required String totalWeight,
+    required bool complete,
+  }) = _FreightSummary;
 
   /// Parses a freight summary from its JSON shape.
   factory FreightSummary.fromJson(Map<String, Object?> json) => FreightSummary(
@@ -1098,22 +1140,34 @@ class FreightSummary {
   );
 
   /// Total units.
-  final int totalUnits;
+  @override
+  @override
+  int get totalUnits;
 
   /// Total cartons.
-  final int totalCartons;
+  @override
+  @override
+  int get totalCartons;
 
   /// Total pallets, when reported.
-  final int? totalPallets;
+  @override
+  @override
+  int? get totalPallets;
 
   /// Total volume, as reported by the API (kept as-is).
-  final String totalVolume;
+  @override
+  @override
+  String get totalVolume;
 
   /// Total weight, as reported by the API (kept as-is).
-  final String totalWeight;
+  @override
+  @override
+  String get totalWeight;
 
   /// Whether the summary is complete.
-  final bool complete;
+  @override
+  @override
+  bool get complete;
 
   /// Serializes this summary back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1124,49 +1178,31 @@ class FreightSummary {
     'total_weight': totalWeight,
     'complete': complete,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FreightSummary &&
-          totalUnits == other.totalUnits &&
-          totalCartons == other.totalCartons &&
-          totalPallets == other.totalPallets &&
-          totalVolume == other.totalVolume &&
-          totalWeight == other.totalWeight &&
-          complete == other.complete;
-
-  @override
-  int get hashCode => Object.hash(
-    totalUnits,
-    totalCartons,
-    totalPallets,
-    totalVolume,
-    totalWeight,
-    complete,
-  );
 }
 
 /// A stock location fulfilling a shipment.
 ///
 /// Source: `packages/sdk/src/types/generated/StockLocation.ts`.
-class StockLocation {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class StockLocation with _$StockLocation {
+  const StockLocation._();
+
   /// Creates a stock location.
-  const StockLocation({
-    required this.id,
-    required this.name,
-    this.address1,
-    this.city,
-    this.zipcode,
-    this.countryCode,
-    this.countryName,
-    this.stateCode,
-    this.stateText,
-    this.countryIso,
-    this.stateAbbr,
-    this.pickupReadyInMinutes,
-    this.pickupInstructions,
-  });
+  const factory StockLocation({
+    required String id,
+    required String name,
+    String? address1,
+    String? city,
+    String? zipcode,
+    CountryCode? countryCode,
+    String? countryName,
+    String? stateCode,
+    String? stateText,
+    String? countryIso,
+    String? stateAbbr,
+    int? pickupReadyInMinutes,
+    String? pickupInstructions,
+  }) = _StockLocation;
 
   /// Parses a stock location from its JSON shape.
   factory StockLocation.fromJson(Map<String, Object?> json) => StockLocation(
@@ -1188,45 +1224,71 @@ class StockLocation {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Location name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Street, when reported.
-  final String? address1;
+  @override
+  @override
+  String? get address1;
 
   /// City, when reported.
-  final String? city;
+  @override
+  @override
+  String? get city;
 
   /// Postal code, when reported.
-  final String? zipcode;
+  @override
+  @override
+  String? get zipcode;
 
   /// ISO country code, when reported.
-  final CountryCode? countryCode;
+  @override
+  @override
+  CountryCode? get countryCode;
 
   /// Country name, when reported.
-  final String? countryName;
+  @override
+  @override
+  String? get countryName;
 
   /// ISO state code, when reported.
-  final String? stateCode;
+  @override
+  @override
+  String? get stateCode;
 
   /// State text, when reported.
-  final String? stateText;
+  @override
+  @override
+  String? get stateText;
 
   /// Deprecated upstream in favor of [countryCode] (removal slated for
   /// 6.5) but still serialized; kept as a plain field.
-  final String? countryIso;
+  @override
+  @override
+  String? get countryIso;
 
   /// Deprecated upstream in favor of [stateCode] (removal slated for
   /// 6.5) but still serialized; kept as a plain field.
-  final String? stateAbbr;
+  @override
+  @override
+  String? get stateAbbr;
 
   /// Minutes until a pickup is ready, when reported.
-  final int? pickupReadyInMinutes;
+  @override
+  @override
+  int? get pickupReadyInMinutes;
 
   /// Pickup instructions, when set.
-  final String? pickupInstructions;
+  @override
+  @override
+  String? get pickupInstructions;
 
   /// Serializes this location back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1244,46 +1306,28 @@ class StockLocation {
     'pickup_ready_in_minutes': pickupReadyInMinutes,
     'pickup_instructions': pickupInstructions,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StockLocation &&
-          id == other.id &&
-          name == other.name &&
-          address1 == other.address1 &&
-          city == other.city &&
-          zipcode == other.zipcode &&
-          countryCode == other.countryCode &&
-          countryName == other.countryName &&
-          stateCode == other.stateCode &&
-          stateText == other.stateText &&
-          countryIso == other.countryIso &&
-          stateAbbr == other.stateAbbr &&
-          pickupReadyInMinutes == other.pickupReadyInMinutes &&
-          pickupInstructions == other.pickupInstructions;
-
-  @override
-  int get hashCode => Object.hash(id, name, countryCode, stateCode);
 }
 
 /// A delivery method available to a fulfillment.
 ///
 /// Source: `packages/sdk/src/types/generated/DeliveryMethod.ts`;
 /// SPEC `store.yaml#/components/schemas/DeliveryMethod`.
-class DeliveryMethod {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class DeliveryMethod with _$DeliveryMethod {
+  const DeliveryMethod._();
+
   /// Creates a delivery method.
-  const DeliveryMethod({
-    required this.id,
-    required this.name,
-    this.code,
-    this.estimatedTransitBusinessDaysMin,
-    this.estimatedTransitBusinessDaysMax,
-    required this.digital,
-    required this.pickup,
-    required this.pickupPoint,
-    this.customFields,
-  });
+  const factory DeliveryMethod({
+    required String id,
+    required String name,
+    String? code,
+    int? estimatedTransitBusinessDaysMin,
+    int? estimatedTransitBusinessDaysMax,
+    required bool digital,
+    required bool pickup,
+    required bool pickupPoint,
+    List<CustomField>? customFields,
+  }) = _DeliveryMethod;
 
   /// Parses a delivery method from its JSON shape.
   factory DeliveryMethod.fromJson(Map<String, Object?> json) => DeliveryMethod(
@@ -1303,31 +1347,49 @@ class DeliveryMethod {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Method name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Method code, when set.
-  final String? code;
+  @override
+  @override
+  String? get code;
 
   /// Minimum estimated transit business days, when reported.
-  final int? estimatedTransitBusinessDaysMin;
+  @override
+  @override
+  int? get estimatedTransitBusinessDaysMin;
 
   /// Maximum estimated transit business days, when reported.
-  final int? estimatedTransitBusinessDaysMax;
+  @override
+  @override
+  int? get estimatedTransitBusinessDaysMax;
 
   /// Whether this method delivers digitally.
-  final bool digital;
+  @override
+  @override
+  bool get digital;
 
   /// Whether this method is a pickup.
-  final bool pickup;
+  @override
+  @override
+  bool get pickup;
 
   /// Whether this method delivers to a pickup point.
-  final bool pickupPoint;
+  @override
+  @override
+  bool get pickupPoint;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this method back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1342,43 +1404,27 @@ class DeliveryMethod {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DeliveryMethod &&
-          id == other.id &&
-          name == other.name &&
-          code == other.code &&
-          estimatedTransitBusinessDaysMin ==
-              other.estimatedTransitBusinessDaysMin &&
-          estimatedTransitBusinessDaysMax ==
-              other.estimatedTransitBusinessDaysMax &&
-          digital == other.digital &&
-          pickup == other.pickup &&
-          pickupPoint == other.pickupPoint &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, name, code, digital, pickup, pickupPoint);
 }
 
 /// One carrier delivery inside a fulfillment.
 ///
 /// Source: `packages/sdk/src/types/generated/Delivery.ts`.
-class Delivery {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Delivery with _$Delivery {
+  const Delivery._();
+
   /// Creates a delivery.
-  const Delivery({
-    required this.id,
-    required this.trackingNumber,
-    this.carrier,
-    this.carrierName,
-    this.service,
-    required this.status,
-    this.trackingUrl,
-    this.estimatedDeliveryAt,
-    this.deliveredAt,
-  });
+  const factory Delivery({
+    required String id,
+    required String trackingNumber,
+    String? carrier,
+    String? carrierName,
+    String? service,
+    required DeliveryStatus status,
+    String? trackingUrl,
+    String? estimatedDeliveryAt,
+    String? deliveredAt,
+  }) = _Delivery;
 
   /// Parses a delivery from its JSON shape.
   factory Delivery.fromJson(Map<String, Object?> json) => Delivery(
@@ -1394,31 +1440,49 @@ class Delivery {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Carrier tracking number.
-  final String trackingNumber;
+  @override
+  @override
+  String get trackingNumber;
 
   /// Carrier code, when reported.
-  final String? carrier;
+  @override
+  @override
+  String? get carrier;
 
   /// Carrier name, when reported.
-  final String? carrierName;
+  @override
+  @override
+  String? get carrierName;
 
   /// Service level, when reported.
-  final String? service;
+  @override
+  @override
+  String? get service;
 
   /// Delivery status.
-  final DeliveryStatus status;
+  @override
+  @override
+  DeliveryStatus get status;
 
   /// Tracking URL, when reported.
-  final String? trackingUrl;
+  @override
+  @override
+  String? get trackingUrl;
 
   /// Estimated delivery timestamp, when reported.
-  final String? estimatedDeliveryAt;
+  @override
+  @override
+  String? get estimatedDeliveryAt;
 
   /// Delivery timestamp, when reported.
-  final String? deliveredAt;
+  @override
+  @override
+  String? get deliveredAt;
 
   /// Serializes this delivery back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1432,48 +1496,34 @@ class Delivery {
     'estimated_delivery_at': estimatedDeliveryAt,
     'delivered_at': deliveredAt,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Delivery &&
-          id == other.id &&
-          trackingNumber == other.trackingNumber &&
-          carrier == other.carrier &&
-          carrierName == other.carrierName &&
-          service == other.service &&
-          status == other.status &&
-          trackingUrl == other.trackingUrl &&
-          estimatedDeliveryAt == other.estimatedDeliveryAt &&
-          deliveredAt == other.deliveredAt;
-
-  @override
-  int get hashCode => Object.hash(id, trackingNumber, status);
 }
 
 /// One selectable delivery rate of a fulfillment.
 ///
 /// Source: `packages/sdk/src/types/generated/DeliveryRate.ts`;
 /// SPEC `store.yaml#/components/schemas/DeliveryRate`.
-class DeliveryRate {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class DeliveryRate with _$DeliveryRate {
+  const DeliveryRate._();
+
   /// Creates a delivery rate.
-  const DeliveryRate({
-    required this.id,
-    required this.deliveryMethodId,
-    required this.name,
-    required this.selected,
-    this.cost,
-    this.total,
-    this.additionalTaxTotal,
-    this.includedTaxTotal,
-    this.taxTotal,
-    this.carrier,
-    this.serviceLevel,
-    this.estimatedDeliveryDate,
-    required this.unpriced,
-    this.freightSummary,
-    required this.deliveryMethod,
-  });
+  const factory DeliveryRate({
+    required String id,
+    required String deliveryMethodId,
+    required String name,
+    required bool selected,
+    String? cost,
+    String? total,
+    String? additionalTaxTotal,
+    String? includedTaxTotal,
+    String? taxTotal,
+    String? carrier,
+    String? serviceLevel,
+    String? estimatedDeliveryDate,
+    required bool unpriced,
+    FreightSummary? freightSummary,
+    required DeliveryMethod deliveryMethod,
+  }) = _DeliveryRate;
 
   /// Parses a delivery rate from its JSON shape.
   factory DeliveryRate.fromJson(Map<String, Object?> json) => DeliveryRate(
@@ -1501,49 +1551,79 @@ class DeliveryRate {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning delivery method id.
-  final String deliveryMethodId;
+  @override
+  @override
+  String get deliveryMethodId;
 
   /// Rate name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether this rate is currently selected.
-  final bool selected;
+  @override
+  @override
+  bool get selected;
 
   /// Rate cost, decimal string, when reported.
-  final String? cost;
+  @override
+  @override
+  String? get cost;
 
   /// Rate total, decimal string, when reported.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Tax added on top, decimal string, when reported.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Tax included in the cost, decimal string, when reported.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Total tax, decimal string, when reported.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Carrier, when reported.
-  final String? carrier;
+  @override
+  @override
+  String? get carrier;
 
   /// Service level, when reported.
-  final String? serviceLevel;
+  @override
+  @override
+  String? get serviceLevel;
 
   /// Estimated delivery date, when reported.
-  final String? estimatedDeliveryDate;
+  @override
+  @override
+  String? get estimatedDeliveryDate;
 
   /// Whether the rate is unpriced.
-  final bool unpriced;
+  @override
+  @override
+  bool get unpriced;
 
   /// Freight summary, for carton/pallet shipping.
-  final FreightSummary? freightSummary;
+  @override
+  @override
+  FreightSummary? get freightSummary;
 
   /// The delivery method of this rate.
-  final DeliveryMethod deliveryMethod;
+  @override
+  @override
+  DeliveryMethod get deliveryMethod;
 
   /// Serializes this rate back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1563,42 +1643,22 @@ class DeliveryRate {
     'freight_summary': freightSummary?.toJson(),
     'delivery_method': deliveryMethod.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DeliveryRate &&
-          id == other.id &&
-          deliveryMethodId == other.deliveryMethodId &&
-          name == other.name &&
-          selected == other.selected &&
-          cost == other.cost &&
-          total == other.total &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          taxTotal == other.taxTotal &&
-          carrier == other.carrier &&
-          serviceLevel == other.serviceLevel &&
-          estimatedDeliveryDate == other.estimatedDeliveryDate &&
-          unpriced == other.unpriced &&
-          freightSummary == other.freightSummary &&
-          deliveryMethod == other.deliveryMethod;
-
-  @override
-  int get hashCode => Object.hash(id, deliveryMethodId, selected, total);
 }
 
 /// One line allocation inside a fulfillment.
 ///
 /// Source: inline `Fulfillment['items'][number]` in
 /// `packages/sdk/src/types/generated/Fulfillment.ts`.
-class FulfillmentItem {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class FulfillmentItem with _$FulfillmentItem {
+  const FulfillmentItem._();
+
   /// Creates a fulfillment line allocation.
-  const FulfillmentItem({
-    required this.itemId,
-    required this.variantId,
-    required this.quantity,
-  });
+  const factory FulfillmentItem({
+    required String itemId,
+    required String variantId,
+    required int quantity,
+  }) = _FulfillmentItem;
 
   /// Parses a fulfillment line allocation from its JSON shape.
   factory FulfillmentItem.fromJson(Map<String, Object?> json) =>
@@ -1609,13 +1669,19 @@ class FulfillmentItem {
       );
 
   /// Line item id.
-  final String itemId;
+  @override
+  @override
+  String get itemId;
 
   /// Variant id.
-  final String variantId;
+  @override
+  @override
+  String get variantId;
 
   /// Allocated quantity.
-  final int quantity;
+  @override
+  @override
+  int get quantity;
 
   /// Serializes this allocation back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1623,51 +1689,43 @@ class FulfillmentItem {
     'variant_id': variantId,
     'quantity': quantity,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FulfillmentItem &&
-          itemId == other.itemId &&
-          variantId == other.variantId &&
-          quantity == other.quantity;
-
-  @override
-  int get hashCode => Object.hash(itemId, variantId, quantity);
 }
 
 /// A fulfillment (shipment) of a cart or order.
 ///
 /// Source: `packages/sdk/src/types/generated/Fulfillment.ts`;
 /// SPEC `store.yaml#/components/schemas/Fulfillment`.
-class Fulfillment {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Fulfillment with _$Fulfillment {
+  const Fulfillment._();
+
   /// Creates a fulfillment.
-  const Fulfillment({
-    required this.id,
-    required this.number,
-    this.tracking,
-    this.trackingUrl,
-    this.pickupPointData,
-    this.selectedDeliveryRateId,
-    required this.unpriced,
-    this.cost,
-    this.total,
-    this.discountTotal,
-    this.additionalTaxTotal,
-    this.includedTaxTotal,
-    this.taxTotal,
-    required this.status,
-    required this.fulfillmentType,
-    this.fulfilledAt,
-    this.deliveredAt,
-    required this.items,
-    required this.deliveries,
-    required this.deliveryMethod,
-    required this.stockLocation,
-    required this.deliveryRates,
-    this.taxLines,
-    this.customFields,
-  });
+  const factory Fulfillment({
+    required String id,
+    required String number,
+    String? tracking,
+    String? trackingUrl,
+    Map<String, Object?>? pickupPointData,
+    String? selectedDeliveryRateId,
+    required bool unpriced,
+    String? cost,
+    String? total,
+    String? discountTotal,
+    String? additionalTaxTotal,
+    String? includedTaxTotal,
+    String? taxTotal,
+    required FulfillmentStatus status,
+    required FulfillmentType fulfillmentType,
+    String? fulfilledAt,
+    String? deliveredAt,
+    required List<FulfillmentItem> items,
+    required List<Delivery> deliveries,
+    required DeliveryMethod deliveryMethod,
+    required StockLocation stockLocation,
+    required List<DeliveryRate> deliveryRates,
+    List<TaxLine>? taxLines,
+    List<CustomField>? customFields,
+  }) = _Fulfillment;
 
   /// Parses a fulfillment from its JSON shape.
   factory Fulfillment.fromJson(Map<String, Object?> json) => Fulfillment(
@@ -1716,76 +1774,124 @@ class Fulfillment {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Fulfillment number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Tracking reference, when reported.
-  final String? tracking;
+  @override
+  @override
+  String? get tracking;
 
   /// Tracking URL, when reported.
-  final String? trackingUrl;
+  @override
+  @override
+  String? get trackingUrl;
 
   /// Pickup-point payload, when reported (untyped upstream).
-  final Map<String, Object?>? pickupPointData;
+  @override
+  @override
+  Map<String, Object?>? get pickupPointData;
 
   /// Selected delivery rate id, when reported.
-  final String? selectedDeliveryRateId;
+  @override
+  @override
+  String? get selectedDeliveryRateId;
 
   /// Whether the fulfillment is unpriced.
-  final bool unpriced;
+  @override
+  @override
+  bool get unpriced;
 
   /// Fulfillment cost, decimal string, when reported.
-  final String? cost;
+  @override
+  @override
+  String? get cost;
 
   /// Fulfillment total, decimal string, when reported.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Delivery discounts, decimal string, when reported.
-  final String? discountTotal;
+  @override
+  @override
+  String? get discountTotal;
 
   /// Tax added on top, decimal string, when reported.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Tax included in the cost, decimal string, when reported.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Total tax, decimal string, when reported.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Fulfillment status.
-  final FulfillmentStatus status;
+  @override
+  @override
+  FulfillmentStatus get status;
 
   /// How this fulfillment is delivered.
-  final FulfillmentType fulfillmentType;
+  @override
+  @override
+  FulfillmentType get fulfillmentType;
 
   /// Fulfillment timestamp, when reported.
-  final String? fulfilledAt;
+  @override
+  @override
+  String? get fulfilledAt;
 
   /// Delivery timestamp, when reported.
-  final String? deliveredAt;
+  @override
+  @override
+  String? get deliveredAt;
 
   /// Which line items (and units) are in this fulfillment.
-  final List<FulfillmentItem> items;
+  @override
+  @override
+  List<FulfillmentItem> get items;
 
   /// Carrier deliveries of this fulfillment.
-  final List<Delivery> deliveries;
+  @override
+  @override
+  List<Delivery> get deliveries;
 
   /// The delivery method of this fulfillment.
-  final DeliveryMethod deliveryMethod;
+  @override
+  @override
+  DeliveryMethod get deliveryMethod;
 
   /// The stock location fulfilling this fulfillment.
-  final StockLocation stockLocation;
+  @override
+  @override
+  StockLocation get stockLocation;
 
   /// Selectable delivery rates.
-  final List<DeliveryRate> deliveryRates;
+  @override
+  @override
+  List<DeliveryRate> get deliveryRates;
 
   /// Tax lines, when present.
-  final List<TaxLine>? taxLines;
+  @override
+  @override
+  List<TaxLine>? get taxLines;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this fulfillment back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1816,61 +1922,26 @@ class Fulfillment {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Fulfillment &&
-          id == other.id &&
-          number == other.number &&
-          tracking == other.tracking &&
-          trackingUrl == other.trackingUrl &&
-          selectedDeliveryRateId == other.selectedDeliveryRateId &&
-          unpriced == other.unpriced &&
-          cost == other.cost &&
-          total == other.total &&
-          discountTotal == other.discountTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          taxTotal == other.taxTotal &&
-          status == other.status &&
-          fulfillmentType == other.fulfillmentType &&
-          fulfilledAt == other.fulfilledAt &&
-          deliveredAt == other.deliveredAt &&
-          _listEquals(items, other.items) &&
-          _listEquals(deliveries, other.deliveries) &&
-          deliveryMethod == other.deliveryMethod &&
-          stockLocation == other.stockLocation &&
-          _listEquals(deliveryRates, other.deliveryRates) &&
-          _listEquals(taxLines, other.taxLines) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    number,
-    status,
-    fulfillmentType,
-    deliveryMethod,
-    stockLocation,
-  );
 }
 
 /// A payment method available on a cart.
 ///
 /// Source: `packages/sdk/src/types/generated/PaymentMethod.ts`;
 /// SPEC `store.yaml#/components/schemas/PaymentMethod`.
-class PaymentMethod {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class PaymentMethod with _$PaymentMethod {
+  const PaymentMethod._();
+
   /// Creates a payment method.
-  const PaymentMethod({
-    required this.id,
-    required this.name,
-    this.description,
-    required this.type,
-    required this.sessionRequired,
-    required this.sourceRequired,
-    this.customFields,
-  });
+  const factory PaymentMethod({
+    required String id,
+    required String name,
+    String? description,
+    required String type,
+    required bool sessionRequired,
+    required bool sourceRequired,
+    List<CustomField>? customFields,
+  }) = _PaymentMethod;
 
   /// Parses a payment method from its JSON shape.
   factory PaymentMethod.fromJson(Map<String, Object?> json) => PaymentMethod(
@@ -1886,27 +1957,41 @@ class PaymentMethod {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Method name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Method description, when set.
-  final String? description;
+  @override
+  @override
+  String? get description;
 
   /// Method type. Built-ins: `check`, `store_credit`,
   /// `custom_payment_source_method`, `bogus` (test only); payment-provider
   /// gems register their own (e.g. `stripe`). Kept as an open string.
-  final String type;
+  @override
+  @override
+  String get type;
 
   /// Whether a payment session is required before paying.
-  final bool sessionRequired;
+  @override
+  @override
+  bool get sessionRequired;
 
   /// Whether a payment source is required before paying.
-  final bool sourceRequired;
+  @override
+  @override
+  bool get sourceRequired;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this method back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1919,42 +2004,30 @@ class PaymentMethod {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PaymentMethod &&
-          id == other.id &&
-          name == other.name &&
-          description == other.description &&
-          type == other.type &&
-          sessionRequired == other.sessionRequired &&
-          sourceRequired == other.sourceRequired &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, name, type);
 }
 
 /// A payment on a cart or order.
 ///
 /// Source: `packages/sdk/src/types/generated/Payment.ts`;
 /// SPEC `store.yaml#/components/schemas/Payment`.
-class Payment {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Payment with _$Payment {
+  const Payment._();
+
   /// Creates a payment.
-  const Payment({
-    required this.id,
-    required this.paymentMethodId,
-    this.responseCode,
-    required this.number,
-    required this.status,
-    this.amount,
-    this.sourceType,
-    this.sourceId,
-    this.source,
-    required this.paymentMethod,
-    this.customFields,
-  });
+  const factory Payment({
+    required String id,
+    required String paymentMethodId,
+    String? responseCode,
+    required String number,
+    required PaymentStatus status,
+    String? amount,
+    PaymentSourceType? sourceType,
+    String? sourceId,
+    Map<String, Object?>? source,
+    required PaymentMethod paymentMethod,
+    List<CustomField>? customFields,
+  }) = _Payment;
 
   /// Parses a payment from its JSON shape.
   factory Payment.fromJson(Map<String, Object?> json) => Payment(
@@ -1982,40 +2055,62 @@ class Payment {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning payment method id.
-  final String paymentMethodId;
+  @override
+  @override
+  String get paymentMethodId;
 
   /// Provider response code, when reported.
-  final String? responseCode;
+  @override
+  @override
+  String? get responseCode;
 
   /// Payment number.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Payment status.
-  final PaymentStatus status;
+  @override
+  @override
+  PaymentStatus get status;
 
   /// Payment amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Polymorphic source kind, when reported.
-  final PaymentSourceType? sourceType;
+  @override
+  @override
+  PaymentSourceType? get sourceType;
 
   /// Polymorphic source id, when reported.
-  final String? sourceId;
+  @override
+  @override
+  String? get sourceId;
 
   /// Polymorphic source payload (`credit_card` | `store_credit` |
   /// `payment_source`, per [sourceType]). Kept raw: no typed union exists
   /// upstream for the embedded shape (Limitation; narrow later if a
   /// serializer pins it down).
-  final Map<String, Object?>? source;
+  @override
+  @override
+  Map<String, Object?>? get source;
 
   /// The payment method of this payment.
-  final PaymentMethod paymentMethod;
+  @override
+  @override
+  PaymentMethod get paymentMethod;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this payment back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2032,56 +2127,32 @@ class Payment {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Payment &&
-          id == other.id &&
-          paymentMethodId == other.paymentMethodId &&
-          responseCode == other.responseCode &&
-          number == other.number &&
-          status == other.status &&
-          amount == other.amount &&
-          sourceType == other.sourceType &&
-          sourceId == other.sourceId &&
-          paymentMethod == other.paymentMethod &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    paymentMethodId,
-    number,
-    status,
-    amount,
-    sourceType,
-    sourceId,
-    paymentMethod,
-  );
 }
 
 /// A gift card: code, status and decimal-string balances.
 ///
 /// Source: `packages/sdk/src/types/generated/GiftCard.ts`;
 /// SPEC `store.yaml#/components/schemas/GiftCard`.
-class GiftCard {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class GiftCard with _$GiftCard {
+  const GiftCard._();
+
   /// Creates a gift card.
-  const GiftCard({
-    required this.id,
-    required this.code,
-    required this.status,
-    required this.currency,
-    this.amount,
-    this.amountUsed,
-    this.amountAuthorized,
-    this.amountRemaining,
-    this.expiresAt,
-    this.redeemedAt,
-    required this.expired,
-    required this.active,
-    this.customFields,
-  });
+  const factory GiftCard({
+    required String id,
+    required String code,
+    required GiftCardStatus status,
+    required CurrencyCode currency,
+    String? amount,
+    String? amountUsed,
+    String? amountAuthorized,
+    String? amountRemaining,
+    String? expiresAt,
+    String? redeemedAt,
+    required bool expired,
+    required bool active,
+    List<CustomField>? customFields,
+  }) = _GiftCard;
 
   /// Parses a gift card from its JSON shape.
   factory GiftCard.fromJson(Map<String, Object?> json) => GiftCard(
@@ -2103,43 +2174,69 @@ class GiftCard {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Redemption code.
-  final String code;
+  @override
+  @override
+  String get code;
 
   /// Lifecycle status.
-  final GiftCardStatus status;
+  @override
+  @override
+  GiftCardStatus get status;
 
   /// Gift-card currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Original amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Used amount, decimal string, when reported.
-  final String? amountUsed;
+  @override
+  @override
+  String? get amountUsed;
 
   /// Authorized amount, decimal string, when reported.
-  final String? amountAuthorized;
+  @override
+  @override
+  String? get amountAuthorized;
 
   /// Remaining amount, decimal string, when reported.
-  final String? amountRemaining;
+  @override
+  @override
+  String? get amountRemaining;
 
   /// Expiry timestamp, when set.
-  final String? expiresAt;
+  @override
+  @override
+  String? get expiresAt;
 
   /// Redemption timestamp, when set.
-  final String? redeemedAt;
+  @override
+  @override
+  String? get redeemedAt;
 
   /// Whether the card expired.
-  final bool expired;
+  @override
+  @override
+  bool get expired;
 
   /// Whether the card is active.
-  final bool active;
+  @override
+  @override
+  bool get active;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this gift card back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2158,43 +2255,25 @@ class GiftCard {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GiftCard &&
-          id == other.id &&
-          code == other.code &&
-          status == other.status &&
-          currency == other.currency &&
-          amount == other.amount &&
-          amountUsed == other.amountUsed &&
-          amountAuthorized == other.amountAuthorized &&
-          amountRemaining == other.amountRemaining &&
-          expiresAt == other.expiresAt &&
-          redeemedAt == other.redeemedAt &&
-          expired == other.expired &&
-          active == other.active &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, code, status, currency, active);
 }
 
 /// A store-credit record with decimal-string balances.
 ///
 /// Source: `packages/sdk/src/types/generated/StoreCredit.ts`;
 /// SPEC `store.yaml#/components/schemas/StoreCredit`.
-class StoreCredit {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class StoreCredit with _$StoreCredit {
+  const StoreCredit._();
+
   /// Creates a store-credit record.
-  const StoreCredit({
-    required this.id,
-    this.amount,
-    this.amountUsed,
-    this.amountRemaining,
-    required this.currency,
-    this.customFields,
-  });
+  const factory StoreCredit({
+    required String id,
+    String? amount,
+    String? amountUsed,
+    String? amountRemaining,
+    required CurrencyCode currency,
+    List<CustomField>? customFields,
+  }) = _StoreCredit;
 
   /// Parses a store-credit record from its JSON shape.
   factory StoreCredit.fromJson(Map<String, Object?> json) => StoreCredit(
@@ -2209,22 +2288,34 @@ class StoreCredit {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Original amount, decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Used amount, decimal string, when reported.
-  final String? amountUsed;
+  @override
+  @override
+  String? get amountUsed;
 
   /// Remaining amount, decimal string, when reported.
-  final String? amountRemaining;
+  @override
+  @override
+  String? get amountRemaining;
 
   /// Store-credit currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this record back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2236,21 +2327,6 @@ class StoreCredit {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StoreCredit &&
-          id == other.id &&
-          amount == other.amount &&
-          amountUsed == other.amountUsed &&
-          amountRemaining == other.amountRemaining &&
-          currency == other.currency &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode =>
-      Object.hash(id, amount, amountUsed, amountRemaining, currency);
 }
 
 /// The active cart (checkout in progress).
@@ -2260,59 +2336,62 @@ class StoreCredit {
 /// `checkout_steps` / `state_lock_version` appear only in the TS-SDK mocks
 /// (`tests/mocks/handlers.ts`, per contract §4) — not in the serializer type
 /// or the SPEC — so they are not modeled here (Limitation).
-class Cart {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Cart with _$Cart {
+  const Cart._();
+
   /// Creates a cart.
-  const Cart({
-    this.marketId,
-    this.channelId,
-    this.preferredStockLocationId,
-    this.companyId,
-    this.companyName,
-    required this.poNumberRequired,
-    this.poDocumentFilename,
-    this.poDocumentByteSize,
-    required this.number,
-    required this.token,
-    this.email,
-    this.customerNote,
-    this.poNumber,
-    required this.currency,
-    this.locale,
-    required this.totalQuantity,
-    required this.warnings,
-    this.couponCode,
-    this.itemTotal,
-    this.discountTotal,
-    this.taxTotal,
-    this.includedTaxTotal,
-    this.additionalTaxTotal,
-    this.deliveryTotal,
-    this.feeTotal,
-    this.giftCardTotal,
-    this.storeCreditTotal,
-    this.total,
-    this.amountDue,
-    required this.coveredByStoreCredit,
-    required this.payments,
-    this.adjustmentTotal,
-    required this.currentStep,
-    required this.completedSteps,
-    required this.requirements,
-    this.orderMinimum,
-    this.orderMinimumShortfall,
-    this.belowOrderMinimum,
-    this.freightSummary,
-    required this.shippingEqBillingAddress,
-    required this.discounts,
-    required this.fees,
-    required this.items,
-    required this.fulfillments,
-    this.billingAddress,
-    this.shippingAddress,
-    required this.paymentMethods,
-    this.giftCard,
-    this.market,
-  });
+  const factory Cart({
+    String? marketId,
+    String? channelId,
+    String? preferredStockLocationId,
+    String? companyId,
+    String? companyName,
+    required bool poNumberRequired,
+    String? poDocumentFilename,
+    int? poDocumentByteSize,
+    required String number,
+    required String token,
+    String? email,
+    String? customerNote,
+    String? poNumber,
+    required CurrencyCode currency,
+    LocaleCode? locale,
+    required int totalQuantity,
+    required List<CartWarning> warnings,
+    String? couponCode,
+    String? itemTotal,
+    String? discountTotal,
+    String? taxTotal,
+    String? includedTaxTotal,
+    String? additionalTaxTotal,
+    String? deliveryTotal,
+    String? feeTotal,
+    String? giftCardTotal,
+    String? storeCreditTotal,
+    String? total,
+    String? amountDue,
+    required bool coveredByStoreCredit,
+    required List<Payment> payments,
+    String? adjustmentTotal,
+    required String currentStep,
+    required List<String> completedSteps,
+    required List<CheckoutRequirement> requirements,
+    String? orderMinimum,
+    String? orderMinimumShortfall,
+    bool? belowOrderMinimum,
+    FreightSummary? freightSummary,
+    required bool shippingEqBillingAddress,
+    required List<AppliedPromotion> discounts,
+    required List<Fee> fees,
+    required List<LineItem> items,
+    required List<Fulfillment> fulfillments,
+    Address? billingAddress,
+    Address? shippingAddress,
+    required List<PaymentMethod> paymentMethods,
+    GiftCard? giftCard,
+    Market? market,
+  }) = _Cart;
 
   /// Parses a cart from its JSON shape.
   factory Cart.fromJson(Map<String, Object?> json) => Cart(
@@ -2396,152 +2475,250 @@ class Cart {
   );
 
   /// Owning market id, when set.
-  final String? marketId;
+  @override
+  @override
+  String? get marketId;
 
   /// Owning channel id, when set.
-  final String? channelId;
+  @override
+  @override
+  String? get channelId;
 
   /// Preferred stock location id, when set.
-  final String? preferredStockLocationId;
+  @override
+  @override
+  String? get preferredStockLocationId;
 
   /// Owning company id, when set.
-  final String? companyId;
+  @override
+  @override
+  String? get companyId;
 
   /// Owning company name, when set.
-  final String? companyName;
+  @override
+  @override
+  String? get companyName;
 
   /// Whether a PO number is required to complete checkout.
-  final bool poNumberRequired;
+  @override
+  @override
+  bool get poNumberRequired;
 
   /// Uploaded PO document file name, when set.
-  final String? poDocumentFilename;
+  @override
+  @override
+  String? get poDocumentFilename;
 
   /// Uploaded PO document size in bytes, when reported.
-  final int? poDocumentByteSize;
+  @override
+  @override
+  int? get poDocumentByteSize;
 
   /// Cart number. Deprecated upstream in favor of `id` — a cart has no
   /// order number — but still serialized; kept as a plain field.
-  final String number;
+  @override
+  @override
+  String get number;
 
   /// Guest cart token (sent as `x-spree-token` via `spreeToken`).
-  final String token;
+  @override
+  @override
+  String get token;
 
   /// Customer email, when set.
-  final String? email;
+  @override
+  @override
+  String? get email;
 
   /// Customer note, when set.
-  final String? customerNote;
+  @override
+  @override
+  String? get customerNote;
 
   /// Purchase-order number, when set.
-  final String? poNumber;
+  @override
+  @override
+  String? get poNumber;
 
   /// Cart currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Cart locale, when set.
-  final LocaleCode? locale;
+  @override
+  @override
+  LocaleCode? get locale;
 
   /// Total item quantity.
-  final int totalQuantity;
+  @override
+  @override
+  int get totalQuantity;
 
   /// Problems found with the cart (e.g. stock changes).
-  final List<CartWarning> warnings;
+  @override
+  @override
+  List<CartWarning> get warnings;
 
   /// Applied coupon code, when set.
-  final String? couponCode;
+  @override
+  @override
+  String? get couponCode;
 
   /// Line items total before discounts/fees/delivery, decimal string.
-  final String? itemTotal;
+  @override
+  @override
+  String? get itemTotal;
 
   /// Promotion discounts (negative), decimal string.
-  final String? discountTotal;
+  @override
+  @override
+  String? get discountTotal;
 
   /// All tax (included + added), decimal string.
-  final String? taxTotal;
+  @override
+  @override
+  String? get taxTotal;
 
   /// Tax included in prices, decimal string.
-  final String? includedTaxTotal;
+  @override
+  @override
+  String? get includedTaxTotal;
 
   /// Tax added on top of prices, decimal string.
-  final String? additionalTaxTotal;
+  @override
+  @override
+  String? get additionalTaxTotal;
 
   /// Delivery cost before delivery discounts, decimal string.
-  final String? deliveryTotal;
+  @override
+  @override
+  String? get deliveryTotal;
 
   /// All fees, decimal string.
-  final String? feeTotal;
+  @override
+  @override
+  String? get feeTotal;
 
   /// What a gift card pays, decimal string.
-  final String? giftCardTotal;
+  @override
+  @override
+  String? get giftCardTotal;
 
   /// What store credit pays, decimal string.
-  final String? storeCreditTotal;
+  @override
+  @override
+  String? get storeCreditTotal;
 
   /// Grand total, decimal string.
-  final String? total;
+  @override
+  @override
+  String? get total;
 
   /// Remainder to pay after payments and store credit, decimal string.
-  final String? amountDue;
+  @override
+  @override
+  String? get amountDue;
 
   /// Whether store credit covers the cart.
-  final bool coveredByStoreCredit;
+  @override
+  @override
+  bool get coveredByStoreCredit;
 
   /// Payments on the cart.
-  final List<Payment> payments;
+  @override
+  @override
+  List<Payment> get payments;
 
   /// Discounts, fees and added tax together, decimal string.
-  final String? adjustmentTotal;
+  @override
+  @override
+  String? get adjustmentTotal;
 
   /// Current checkout step.
-  final String currentStep;
+  @override
+  @override
+  String get currentStep;
 
   /// Completed checkout steps.
-  final List<String> completedSteps;
+  @override
+  @override
+  List<String> get completedSteps;
 
   /// What is still missing before the cart can be completed.
-  final List<CheckoutRequirement> requirements;
+  @override
+  @override
+  List<CheckoutRequirement> get requirements;
 
   /// Order minimum, decimal string, when enforced.
-  final String? orderMinimum;
+  @override
+  @override
+  String? get orderMinimum;
 
   /// Shortfall below the order minimum, decimal string.
-  final String? orderMinimumShortfall;
+  @override
+  @override
+  String? get orderMinimumShortfall;
 
   /// Whether the cart is below the order minimum.
-  final bool? belowOrderMinimum;
+  @override
+  @override
+  bool? get belowOrderMinimum;
 
   /// Freight summary, for carton/pallet shipping.
-  final FreightSummary? freightSummary;
+  @override
+  @override
+  FreightSummary? get freightSummary;
 
   /// Whether the shipping address equals the billing address.
-  final bool shippingEqBillingAddress;
+  @override
+  @override
+  bool get shippingEqBillingAddress;
 
   /// Applied promotions.
-  final List<AppliedPromotion> discounts;
+  @override
+  @override
+  List<AppliedPromotion> get discounts;
 
   /// Charged fees.
-  final List<Fee> fees;
+  @override
+  @override
+  List<Fee> get fees;
 
   /// Line items.
-  final List<LineItem> items;
+  @override
+  @override
+  List<LineItem> get items;
 
   /// Fulfillments (shipments).
-  final List<Fulfillment> fulfillments;
+  @override
+  @override
+  List<Fulfillment> get fulfillments;
 
   /// Billing address, when set.
-  final Address? billingAddress;
+  @override
+  @override
+  Address? get billingAddress;
 
   /// Shipping address, when set.
-  final Address? shippingAddress;
+  @override
+  @override
+  Address? get shippingAddress;
 
   /// Payment methods available on the cart.
-  final List<PaymentMethod> paymentMethods;
+  @override
+  @override
+  List<PaymentMethod> get paymentMethods;
 
   /// Applied gift card, when set.
-  final GiftCard? giftCard;
+  @override
+  @override
+  GiftCard? get giftCard;
 
   /// Expanded market, when requested via `expand`.
-  final Market? market;
+  @override
+  @override
+  Market? get market;
 
   /// Serializes this cart back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2595,61 +2772,4 @@ class Cart {
     'gift_card': giftCard?.toJson(),
     'market': market?.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Cart &&
-          marketId == other.marketId &&
-          channelId == other.channelId &&
-          preferredStockLocationId == other.preferredStockLocationId &&
-          companyId == other.companyId &&
-          companyName == other.companyName &&
-          poNumberRequired == other.poNumberRequired &&
-          poDocumentFilename == other.poDocumentFilename &&
-          poDocumentByteSize == other.poDocumentByteSize &&
-          number == other.number &&
-          token == other.token &&
-          email == other.email &&
-          customerNote == other.customerNote &&
-          poNumber == other.poNumber &&
-          currency == other.currency &&
-          locale == other.locale &&
-          totalQuantity == other.totalQuantity &&
-          _listEquals(warnings, other.warnings) &&
-          couponCode == other.couponCode &&
-          itemTotal == other.itemTotal &&
-          discountTotal == other.discountTotal &&
-          taxTotal == other.taxTotal &&
-          includedTaxTotal == other.includedTaxTotal &&
-          additionalTaxTotal == other.additionalTaxTotal &&
-          deliveryTotal == other.deliveryTotal &&
-          feeTotal == other.feeTotal &&
-          giftCardTotal == other.giftCardTotal &&
-          storeCreditTotal == other.storeCreditTotal &&
-          total == other.total &&
-          amountDue == other.amountDue &&
-          coveredByStoreCredit == other.coveredByStoreCredit &&
-          _listEquals(payments, other.payments) &&
-          adjustmentTotal == other.adjustmentTotal &&
-          currentStep == other.currentStep &&
-          _listEquals(completedSteps, other.completedSteps) &&
-          _listEquals(requirements, other.requirements) &&
-          orderMinimum == other.orderMinimum &&
-          orderMinimumShortfall == other.orderMinimumShortfall &&
-          belowOrderMinimum == other.belowOrderMinimum &&
-          freightSummary == other.freightSummary &&
-          shippingEqBillingAddress == other.shippingEqBillingAddress &&
-          _listEquals(discounts, other.discounts) &&
-          _listEquals(fees, other.fees) &&
-          _listEquals(items, other.items) &&
-          _listEquals(fulfillments, other.fulfillments) &&
-          billingAddress == other.billingAddress &&
-          shippingAddress == other.shippingAddress &&
-          _listEquals(paymentMethods, other.paymentMethods) &&
-          giftCard == other.giftCard &&
-          market == other.market;
-
-  @override
-  int get hashCode => Object.hash(number, token, currency, totalQuantity);
 }

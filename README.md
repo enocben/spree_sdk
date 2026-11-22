@@ -299,6 +299,12 @@ dart analyze
 dart test
 ```
 
+For Freezed model changes, regenerate checked-in value-class code with:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
 Repository design and Store API contract references are available in
 `doc/architecture/`, `doc/api/`, and `doc/research/`.
 

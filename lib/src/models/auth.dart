@@ -1,7 +1,7 @@
 /// Authentication models for the Spree Store API.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Immutable models use Freezed for value semantics and keep their verified
+/// JSON mappings explicit.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -20,18 +20,25 @@
 ///   (`POST /auth/login`, `POST /auth/refresh`, `POST /auth/logout`).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'auth.freezed.dart';
+
 /// Credentials returned by `POST /auth/login` (and `POST /auth/refresh`,
 /// `POST /customers`, `PATCH /password_resets/{token}`).
 ///
 /// Source: `packages/sdk/src/types/index.ts` (`AuthTokens`);
 /// SPEC `store.yaml#/components/schemas/AuthResponse`.
-class AuthTokens {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AuthTokens with _$AuthTokens {
+  const AuthTokens._();
+
   /// Creates an auth token triple.
-  const AuthTokens({
-    required this.token,
-    required this.refreshToken,
-    required this.user,
-  });
+  const factory AuthTokens({
+    required String token,
+    required String refreshToken,
+    required AuthUser user,
+  }) = _AuthTokens;
 
   /// Parses auth tokens from their JSON shape.
   factory AuthTokens.fromJson(Map<String, Object?> json) => AuthTokens(
@@ -41,13 +48,19 @@ class AuthTokens {
   );
 
   /// JWT access token (sent as `Authorization: Bearer …`).
-  final String token;
+  @override
+  @override
+  String get token;
 
   /// Refresh token (rotated on every refresh; see contract §1).
-  final String refreshToken;
+  @override
+  @override
+  String get refreshToken;
 
   /// The authenticated customer (documented superset, see [AuthUser]).
-  final AuthUser user;
+  @override
+  @override
+  AuthUser get user;
 
   /// Serializes these tokens back to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -55,17 +68,6 @@ class AuthTokens {
     'refresh_token': refreshToken,
     'user': user.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AuthTokens &&
-          token == other.token &&
-          refreshToken == other.refreshToken &&
-          user == other.user;
-
-  @override
-  int get hashCode => Object.hash(token, refreshToken, user);
 }
 
 /// The customer embedded in [AuthTokens].
@@ -75,19 +77,22 @@ class AuthTokens {
 /// class models the documented superset: the SDK fields plus the
 /// SPEC-documented customer fields, all SPEC extras nullable so payloads
 /// matching either shape parse safely.
-class AuthUser {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class AuthUser with _$AuthUser {
+  const AuthUser._();
+
   /// Creates the embedded auth user.
-  const AuthUser({
-    required this.id,
-    required this.email,
-    this.firstName,
-    this.lastName,
-    this.phone,
-    this.acceptsEmailMarketing,
-    this.emailMarketingConsentUpdatedAt,
-    this.fullName,
-    this.availableStoreCreditTotal,
-  });
+  const factory AuthUser({
+    required String id,
+    required String email,
+    String? firstName,
+    String? lastName,
+    String? phone,
+    bool? acceptsEmailMarketing,
+    String? emailMarketingConsentUpdatedAt,
+    String? fullName,
+    String? availableStoreCreditTotal,
+  }) = _AuthUser;
 
   /// Parses the embedded user from its JSON shape.
   factory AuthUser.fromJson(Map<String, Object?> json) => AuthUser(
@@ -104,33 +109,51 @@ class AuthUser {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Customer email.
-  final String email;
+  @override
+  @override
+  String get email;
 
   /// First name, when set.
-  final String? firstName;
+  @override
+  @override
+  String? get firstName;
 
   /// Last name, when set.
-  final String? lastName;
+  @override
+  @override
+  String? get lastName;
 
   /// Phone number (SPEC `Customer.phone`).
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Marketing opt-in flag (SPEC `Customer.accepts_email_marketing`).
-  final bool? acceptsEmailMarketing;
+  @override
+  @override
+  bool? get acceptsEmailMarketing;
 
   /// Marketing-consent timestamp (SPEC
   /// `Customer.email_marketing_consent_updated_at`).
-  final String? emailMarketingConsentUpdatedAt;
+  @override
+  @override
+  String? get emailMarketingConsentUpdatedAt;
 
   /// Computed full name (SPEC `Customer.full_name`).
-  final String? fullName;
+  @override
+  @override
+  String? get fullName;
 
   /// Usable store-credit total, decimal string (SPEC
   /// `Customer.available_store_credit_total`).
-  final String? availableStoreCreditTotal;
+  @override
+  @override
+  String? get availableStoreCreditTotal;
 
   /// Serializes this user back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -144,32 +167,4 @@ class AuthUser {
     'full_name': fullName,
     'available_store_credit_total': availableStoreCreditTotal,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AuthUser &&
-          id == other.id &&
-          email == other.email &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          phone == other.phone &&
-          acceptsEmailMarketing == other.acceptsEmailMarketing &&
-          emailMarketingConsentUpdatedAt ==
-              other.emailMarketingConsentUpdatedAt &&
-          fullName == other.fullName &&
-          availableStoreCreditTotal == other.availableStoreCreditTotal;
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    email,
-    firstName,
-    lastName,
-    phone,
-    acceptsEmailMarketing,
-    emailMarketingConsentUpdatedAt,
-    fullName,
-    availableStoreCreditTotal,
-  );
 }

@@ -1,7 +1,6 @@
 /// Reference-data models and shared codes for the Spree Store API.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (all consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -22,15 +21,9 @@
 ///   omitted (slated for removal in 6.5; see Limitations in the handoff).
 library;
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'meta.freezed.dart';
 
 /// ISO 3166-1 alpha-2 country code, as Spree accepts it.
 ///
@@ -2896,15 +2889,18 @@ enum ProductFilterType {
 /// Data type of a merchant-defined custom field.
 ///
 /// Source: `packages/sdk/src/types/generated/CustomField.ts`.
-class CustomField {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CustomField with _$CustomField {
+  const CustomField._();
+
   /// Creates a custom field value.
-  const CustomField({
-    required this.id,
-    required this.label,
-    required this.fieldType,
-    required this.key,
-    this.value,
-  });
+  const factory CustomField({
+    required String id,
+    required String label,
+    required CustomFieldType fieldType,
+    required String key,
+    Object? value,
+  }) = _CustomField;
 
   /// Parses a custom field from its JSON shape. Never throws on the
   /// `field_type` value: unrecognized strings map to [CustomFieldType.unknown].
@@ -2917,19 +2913,29 @@ class CustomField {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Merchant-facing label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Declared data type of [value].
-  final CustomFieldType fieldType;
+  @override
+  @override
+  CustomFieldType get fieldType;
 
   /// Merchant-defined key.
-  final String key;
+  @override
+  @override
+  String get key;
 
   /// The raw value; shape depends on [fieldType] (`json` may be any JSON).
-  final Object? value;
+  @override
+  @override
+  Object? get value;
 
   /// Serializes this custom field back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -2939,68 +2945,57 @@ class CustomField {
     'key': key,
     'value': value,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomField &&
-          id == other.id &&
-          label == other.label &&
-          fieldType == other.fieldType &&
-          key == other.key &&
-          value.toString() == other.value.toString();
-
-  @override
-  int get hashCode => Object.hash(id, label, fieldType, key);
 }
 
 /// A state / province of a country.
 ///
 /// Source: `packages/sdk/src/types/generated/State.ts`.
-class State {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class State with _$State {
+  const State._();
+
   /// Creates a state.
-  const State({required this.abbr, required this.name});
+  const factory State({required String abbr, required String name}) = _State;
 
   /// Parses a state from its JSON shape.
   factory State.fromJson(Map<String, Object?> json) =>
       State(abbr: json['abbr'] as String, name: json['name'] as String);
 
   /// ISO 3166-2 subdivision code without country prefix (e.g. `CA`).
-  final String abbr;
+  @override
+  @override
+  String get abbr;
 
   /// State name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Serializes this state back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'abbr': abbr,
     'name': name,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is State && abbr == other.abbr && name == other.name;
-
-  @override
-  int get hashCode => Object.hash(abbr, name);
 }
 
 /// A country the store operates in.
 ///
 /// Source: `packages/sdk/src/types/generated/Country.ts`;
 /// SPEC `store.yaml#/components/schemas/Country`.
-class Country {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Country with _$Country {
+  const Country._();
+
   /// Creates a country.
-  const Country({
-    required this.iso,
-    required this.iso3,
-    required this.name,
-    required this.statesRequired,
-    required this.zipcodeRequired,
-    this.states,
-    this.market,
-  });
+  const factory Country({
+    required CountryCode iso,
+    required String iso3,
+    required String name,
+    required bool statesRequired,
+    required bool zipcodeRequired,
+    List<State>? states,
+    Market? market,
+  }) = _Country;
 
   /// Parses a country from its JSON shape.
   factory Country.fromJson(Map<String, Object?> json) => Country(
@@ -3018,27 +3013,41 @@ class Country {
   );
 
   /// ISO 3166-1 alpha-2 code.
-  final CountryCode iso;
+  @override
+  @override
+  CountryCode get iso;
 
   /// ISO 3166-1 alpha-3 code.
-  final String iso3;
+  @override
+  @override
+  String get iso3;
 
   /// Country name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether an address in this country requires a state.
-  final bool statesRequired;
+  @override
+  @override
+  bool get statesRequired;
 
   /// Whether an address in this country requires a postal code.
-  final bool zipcodeRequired;
+  @override
+  @override
+  bool get zipcodeRequired;
 
   /// Predefined states, when the country has them. Absent (`null`) means the
   /// association was not expanded; an empty list means it has no states.
-  final List<State>? states;
+  @override
+  @override
+  List<State>? get states;
 
   /// Market this country resolves to, when expanded.
-  final Market? market;
+  @override
+  @override
+  Market? get market;
 
   /// Serializes this country back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3050,36 +3059,23 @@ class Country {
     if (states != null) 'states': states!.map((e) => e.toJson()).toList(),
     'market': market?.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Country &&
-          iso == other.iso &&
-          iso3 == other.iso3 &&
-          name == other.name &&
-          statesRequired == other.statesRequired &&
-          zipcodeRequired == other.zipcodeRequired &&
-          _listEquals(states, other.states) &&
-          market == other.market;
-
-  @override
-  int get hashCode =>
-      Object.hash(iso, iso3, name, statesRequired, zipcodeRequired, market);
 }
 
 /// A currency the store prices in.
 ///
 /// Source: `packages/sdk/src/types/generated/Currency.ts`;
 /// SPEC `store.yaml#/components/schemas/Currency`.
-class Currency {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Currency with _$Currency {
+  const Currency._();
+
   /// Creates a currency.
-  const Currency({
-    required this.isoCode,
-    required this.name,
-    required this.symbol,
-    required this.decimalPlaces,
-  });
+  const factory Currency({
+    required CurrencyCode isoCode,
+    required String name,
+    required String symbol,
+    required int decimalPlaces,
+  }) = _Currency;
 
   /// Parses a currency from its JSON shape.
   factory Currency.fromJson(Map<String, Object?> json) => Currency(
@@ -3090,18 +3086,26 @@ class Currency {
   );
 
   /// ISO 4217 code.
-  final CurrencyCode isoCode;
+  @override
+  @override
+  CurrencyCode get isoCode;
 
   /// Currency name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Currency symbol. Deprecated upstream in favor of `Intl` number formatting
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
-  final String symbol;
+  @override
+  @override
+  String get symbol;
 
   /// Number of decimal places for money in this currency.
-  final int decimalPlaces;
+  @override
+  @override
+  int get decimalPlaces;
 
   /// Serializes this currency back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3110,35 +3114,26 @@ class Currency {
     'symbol': symbol,
     'decimal_places': decimalPlaces,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Currency &&
-          isoCode == other.isoCode &&
-          name == other.name &&
-          symbol == other.symbol &&
-          decimalPlaces == other.decimalPlaces;
-
-  @override
-  int get hashCode => Object.hash(isoCode, name, symbol, decimalPlaces);
 }
 
 /// A locale the storefront is translated into.
 ///
 /// Source: `packages/sdk/src/types/generated/Locale.ts`;
 /// SPEC `store.yaml#/components/schemas/Locale`.
-class SpreeLocale {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class SpreeLocale with _$SpreeLocale {
+  const SpreeLocale._();
+
   /// Creates a locale.
   ///
   /// Named [SpreeLocale] (rather than `Locale`) so the core package stays
   /// independent of Flutter's `Locale` (AGENTS.md §4/§7).
-  const SpreeLocale({
-    required this.code,
-    required this.name,
-    required this.isDefault,
-    required this.rtl,
-  });
+  const factory SpreeLocale({
+    required LocaleCode code,
+    required String name,
+    required bool isDefault,
+    required bool rtl,
+  }) = _SpreeLocale;
 
   /// Parses a locale from its JSON shape.
   factory SpreeLocale.fromJson(Map<String, Object?> json) => SpreeLocale(
@@ -3149,17 +3144,25 @@ class SpreeLocale {
   );
 
   /// Locale code.
-  final LocaleCode code;
+  @override
+  @override
+  LocaleCode get code;
 
   /// Locale name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Whether this is the store's default locale.
-  final bool isDefault;
+  @override
+  @override
+  bool get isDefault;
 
   /// Whether this locale reads right-to-left.
-  final bool rtl;
+  @override
+  @override
+  bool get rtl;
 
   /// Serializes this locale back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3168,35 +3171,26 @@ class SpreeLocale {
     'default': isDefault,
     'rtl': rtl,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SpreeLocale &&
-          code == other.code &&
-          name == other.name &&
-          isDefault == other.isDefault &&
-          rtl == other.rtl;
-
-  @override
-  int get hashCode => Object.hash(code, name, isDefault, rtl);
 }
 
 /// A sales channel of the store.
 ///
 /// Source: `packages/sdk/src/types/generated/Channel.ts`;
 /// SPEC `store.yaml#/components/schemas/Channel`.
-class Channel {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Channel with _$Channel {
+  const Channel._();
+
   /// Creates a channel.
-  const Channel({
-    required this.id,
-    required this.name,
-    required this.code,
-    required this.active,
-    required this.isDefault,
-    required this.storefrontAccess,
-    required this.guestCheckout,
-  });
+  const factory Channel({
+    required String id,
+    required String name,
+    required String code,
+    required bool active,
+    required bool isDefault,
+    required String storefrontAccess,
+    required bool guestCheckout,
+  }) = _Channel;
 
   /// Parses a channel from its JSON shape.
   factory Channel.fromJson(Map<String, Object?> json) => Channel(
@@ -3210,25 +3204,39 @@ class Channel {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Channel name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Channel code (sent as `X-Spree-Channel`).
-  final String code;
+  @override
+  @override
+  String get code;
 
   /// Whether the channel accepts traffic.
-  final bool active;
+  @override
+  @override
+  bool get active;
 
   /// Whether this is the store's default channel.
-  final bool isDefault;
+  @override
+  @override
+  bool get isDefault;
 
   /// Storefront access level, as reported by the API (open string).
-  final String storefrontAccess;
+  @override
+  @override
+  String get storefrontAccess;
 
   /// Whether guest checkout is allowed on this channel.
-  final bool guestCheckout;
+  @override
+  @override
+  bool get guestCheckout;
 
   /// Serializes this channel back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3240,29 +3248,6 @@ class Channel {
     'storefront_access': storefrontAccess,
     'guest_checkout': guestCheckout,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Channel &&
-          id == other.id &&
-          name == other.name &&
-          code == other.code &&
-          active == other.active &&
-          isDefault == other.isDefault &&
-          storefrontAccess == other.storefrontAccess &&
-          guestCheckout == other.guestCheckout;
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    name,
-    code,
-    active,
-    isDefault,
-    storefrontAccess,
-    guestCheckout,
-  );
 }
 
 /// Store-level public settings.
@@ -3270,20 +3255,23 @@ class Channel {
 /// Source: `packages/sdk/src/types/generated/Store.ts` (6.0.5 adds
 /// `meta_keywords`, `logo_url`, socials and `customer_support_email`);
 /// SPEC `store.yaml#/components/schemas/Store`.
-class Store {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Store with _$Store {
+  const Store._();
+
   /// Creates the store settings record.
-  const Store({
-    required this.id,
-    required this.name,
-    this.seoTitle,
-    this.metaDescription,
-    this.metaKeywords,
-    this.facebook,
-    this.twitter,
-    this.instagram,
-    this.customerSupportEmail,
-    this.logoUrl,
-  });
+  const factory Store({
+    required String id,
+    required String name,
+    String? seoTitle,
+    String? metaDescription,
+    String? metaKeywords,
+    String? facebook,
+    String? twitter,
+    String? instagram,
+    String? customerSupportEmail,
+    String? logoUrl,
+  }) = _Store;
 
   /// Parses the store settings from their JSON shape.
   factory Store.fromJson(Map<String, Object?> json) => Store(
@@ -3300,34 +3288,54 @@ class Store {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Store name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// SEO title override, when set.
-  final String? seoTitle;
+  @override
+  @override
+  String? get seoTitle;
 
   /// Meta description, when set.
-  final String? metaDescription;
+  @override
+  @override
+  String? get metaDescription;
 
   /// Meta keywords, when set.
-  final String? metaKeywords;
+  @override
+  @override
+  String? get metaKeywords;
 
   /// Facebook page, as entered by the merchant: a handle or a full URL.
-  final String? facebook;
+  @override
+  @override
+  String? get facebook;
 
   /// X (Twitter) account, as entered by the merchant: a handle or a full URL.
-  final String? twitter;
+  @override
+  @override
+  String? get twitter;
 
   /// Instagram account, as entered by the merchant: a handle or a full URL.
-  final String? instagram;
+  @override
+  @override
+  String? get instagram;
 
   /// Customer support email, when set.
-  final String? customerSupportEmail;
+  @override
+  @override
+  String? get customerSupportEmail;
 
   /// Logo URL, when set.
-  final String? logoUrl;
+  @override
+  @override
+  String? get logoUrl;
 
   /// Serializes the store settings back to their JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3342,51 +3350,25 @@ class Store {
     'customer_support_email': customerSupportEmail,
     'logo_url': logoUrl,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Store &&
-          id == other.id &&
-          name == other.name &&
-          seoTitle == other.seoTitle &&
-          metaDescription == other.metaDescription &&
-          metaKeywords == other.metaKeywords &&
-          facebook == other.facebook &&
-          twitter == other.twitter &&
-          instagram == other.instagram &&
-          customerSupportEmail == other.customerSupportEmail &&
-          logoUrl == other.logoUrl;
-
-  @override
-  int get hashCode => Object.hash(
-    id,
-    name,
-    seoTitle,
-    metaDescription,
-    metaKeywords,
-    facebook,
-    twitter,
-    instagram,
-    customerSupportEmail,
-    logoUrl,
-  );
 }
 
 /// A store/seller policy page (terms, returns, …).
 ///
 /// Source: `packages/sdk/src/types/generated/Policy.ts`;
 /// SPEC `store.yaml#/components/schemas/Policy`.
-class Policy {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Policy with _$Policy {
+  const Policy._();
+
   /// Creates a policy.
-  const Policy({
-    required this.id,
-    required this.name,
-    required this.slug,
-    this.body,
-    this.bodyHtml,
-    required this.updatedAt,
-  });
+  const factory Policy({
+    required String id,
+    required String name,
+    required String slug,
+    String? body,
+    String? bodyHtml,
+    required String updatedAt,
+  }) = _Policy;
 
   /// Parses a policy from its JSON shape.
   factory Policy.fromJson(Map<String, Object?> json) => Policy(
@@ -3399,22 +3381,34 @@ class Policy {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Policy name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// URL slug.
-  final String slug;
+  @override
+  @override
+  String get slug;
 
   /// Plain-text body, when set.
-  final String? body;
+  @override
+  @override
+  String? get body;
 
   /// Rendered HTML body, when set.
-  final String? bodyHtml;
+  @override
+  @override
+  String? get bodyHtml;
 
   /// Last update timestamp, as reported by the API (kept as-is).
-  final String updatedAt;
+  @override
+  @override
+  String get updatedAt;
 
   /// Serializes this policy back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3425,40 +3419,29 @@ class Policy {
     'body_html': bodyHtml,
     'updated_at': updatedAt,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Policy &&
-          id == other.id &&
-          name == other.name &&
-          slug == other.slug &&
-          body == other.body &&
-          bodyHtml == other.bodyHtml &&
-          updatedAt == other.updatedAt;
-
-  @override
-  int get hashCode => Object.hash(id, name, slug, body, bodyHtml, updatedAt);
 }
 
 /// A market: currency + locales + countries served together.
 ///
 /// Source: `packages/sdk/src/types/generated/Market.ts`;
 /// SPEC `store.yaml#/components/schemas/Market`.
-class Market {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Market with _$Market {
+  const Market._();
+
   /// Creates a market.
-  const Market({
-    required this.id,
-    required this.name,
-    required this.currency,
-    required this.defaultLocale,
-    required this.taxInclusive,
-    required this.isDefault,
-    required this.countryCodes,
-    required this.countryIsos,
-    required this.supportedLocales,
-    this.countries,
-  });
+  const factory Market({
+    required String id,
+    required String name,
+    required CurrencyCode currency,
+    required LocaleCode defaultLocale,
+    required bool taxInclusive,
+    required bool isDefault,
+    required List<CountryCode> countryCodes,
+    required List<String> countryIsos,
+    required List<LocaleCode> supportedLocales,
+    List<Country>? countries,
+  }) = _Market;
 
   /// Parses a market from its JSON shape.
   factory Market.fromJson(Map<String, Object?> json) => Market(
@@ -3481,35 +3464,55 @@ class Market {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Market name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Pricing currency of the market.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Default locale of the market.
-  final LocaleCode defaultLocale;
+  @override
+  @override
+  LocaleCode get defaultLocale;
 
   /// Whether prices of this market already include tax.
-  final bool taxInclusive;
+  @override
+  @override
+  bool get taxInclusive;
 
   /// Whether this is the store's default market.
-  final bool isDefault;
+  @override
+  @override
+  bool get isDefault;
 
   /// Country codes served by this market.
-  final List<CountryCode> countryCodes;
+  @override
+  @override
+  List<CountryCode> get countryCodes;
 
   /// Legacy country ISOs. Deprecated upstream in favor of [countryCodes]
   /// (removal slated for 6.5) but still serialized; kept as plain strings.
-  final List<String> countryIsos;
+  @override
+  @override
+  List<String> get countryIsos;
 
   /// Locales supported by this market.
-  final List<LocaleCode> supportedLocales;
+  @override
+  @override
+  List<LocaleCode> get supportedLocales;
 
   /// Expanded countries, when the association was expanded.
-  final List<Country>? countries;
+  @override
+  @override
+  List<Country>? get countries;
 
   /// Serializes this market back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -3525,23 +3528,4 @@ class Market {
     if (countries != null)
       'countries': countries!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Market &&
-          id == other.id &&
-          name == other.name &&
-          currency == other.currency &&
-          defaultLocale == other.defaultLocale &&
-          taxInclusive == other.taxInclusive &&
-          isDefault == other.isDefault &&
-          _listEquals(countryCodes, other.countryCodes) &&
-          _listEquals(countryIsos, other.countryIsos) &&
-          _listEquals(supportedLocales, other.supportedLocales) &&
-          _listEquals(countries, other.countries);
-
-  @override
-  int get hashCode =>
-      Object.hash(id, name, currency, defaultLocale, taxInclusive, isDefault);
 }

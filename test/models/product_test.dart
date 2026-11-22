@@ -62,6 +62,15 @@ void main() {
       final product = Product.fromJson(loadFixture('product_expanded.json'));
       expect(Product.fromJson(product.toJson()), equals(product));
     });
+
+    test('copyWith updates a value without changing the original', () {
+      final product = Product.fromJson(loadFixture('product_expanded.json'));
+      final renamed = product.copyWith(name: 'New product name');
+
+      expect(product.name, isNot('New product name'));
+      expect(renamed.name, 'New product name');
+      expect(renamed.price, same(product.price));
+    });
   });
 
   group('Variant / Price edge cases', () {

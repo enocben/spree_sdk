@@ -1,7 +1,6 @@
 /// Customer account models.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -18,67 +17,63 @@
 /// types are the same serializer in both surfaces.
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'cart.dart';
 import 'meta.dart';
 
 export 'cart.dart' show Address, AddressOwner, GiftCard, StoreCredit;
-
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+part 'customer.freezed.dart';
 
 /// A customer group the customer belongs to.
 ///
 /// Source: `packages/sdk/src/types/generated/CustomerGroup.ts`;
 /// SPEC `store.yaml#/components/schemas/CustomerGroup`.
-class CustomerGroup {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class CustomerGroup with _$CustomerGroup {
+  const CustomerGroup._();
+
   /// Creates a customer group.
-  const CustomerGroup({required this.id, required this.name});
+  const factory CustomerGroup({required String id, required String name}) =
+      _CustomerGroup;
 
   /// Parses a customer group from its JSON shape.
   factory CustomerGroup.fromJson(Map<String, Object?> json) =>
       CustomerGroup(id: json['id'] as String, name: json['name'] as String);
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Group name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Serializes this group back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{'id': id, 'name': name};
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomerGroup && id == other.id && name == other.name;
-
-  @override
-  int get hashCode => Object.hash(id, name);
 }
 
 /// A newsletter subscription linked to a customer.
 ///
 /// Source: `packages/sdk/src/types/generated/NewsletterSubscriber.ts`;
 /// SPEC `store.yaml#/components/schemas/NewsletterSubscriber`.
-class NewsletterSubscriber {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class NewsletterSubscriber with _$NewsletterSubscriber {
+  const NewsletterSubscriber._();
+
   /// Creates a newsletter subscriber record.
-  const NewsletterSubscriber({
-    required this.id,
-    required this.email,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.verified,
-    this.verifiedAt,
-    this.customerId,
-    this.customFields,
-  });
+  const factory NewsletterSubscriber({
+    required String id,
+    required String email,
+    required String createdAt,
+    required String updatedAt,
+    required bool verified,
+    String? verifiedAt,
+    String? customerId,
+    List<CustomField>? customFields,
+  }) = _NewsletterSubscriber;
 
   /// Parses a subscriber record from its JSON shape.
   factory NewsletterSubscriber.fromJson(Map<String, Object?> json) =>
@@ -96,28 +91,44 @@ class NewsletterSubscriber {
       );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Subscriber email.
-  final String email;
+  @override
+  @override
+  String get email;
 
   /// Creation timestamp, as reported by the API (kept as-is).
-  final String createdAt;
+  @override
+  @override
+  String get createdAt;
 
   /// Update timestamp, as reported by the API (kept as-is).
-  final String updatedAt;
+  @override
+  @override
+  String get updatedAt;
 
   /// Whether the subscription is verified.
-  final bool verified;
+  @override
+  @override
+  bool get verified;
 
   /// Verification timestamp, when set.
-  final String? verifiedAt;
+  @override
+  @override
+  String? get verifiedAt;
 
   /// Linked customer id, when linked.
-  final String? customerId;
+  @override
+  @override
+  String? get customerId;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this record back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -131,22 +142,6 @@ class NewsletterSubscriber {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NewsletterSubscriber &&
-          id == other.id &&
-          email == other.email &&
-          createdAt == other.createdAt &&
-          updatedAt == other.updatedAt &&
-          verified == other.verified &&
-          verifiedAt == other.verifiedAt &&
-          customerId == other.customerId &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, email, verified, customerId);
 }
 
 /// The authenticated customer profile.
@@ -156,25 +151,28 @@ class NewsletterSubscriber {
 /// Also the documented shape of `AuthResponse.user`
 /// (SPEC `store.yaml#/components/schemas/AuthResponse`; see open-questions
 /// Q4 and `auth.dart` for the narrowed login payload).
-class Customer {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Customer with _$Customer {
+  const Customer._();
+
   /// Creates a customer profile.
-  const Customer({
-    required this.id,
-    required this.email,
-    this.firstName,
-    this.lastName,
-    this.phone,
-    required this.acceptsEmailMarketing,
-    this.emailMarketingConsentUpdatedAt,
-    required this.fullName,
-    required this.availableStoreCreditTotal,
-    required this.addresses,
-    this.defaultBillingAddress,
-    this.defaultShippingAddress,
-    this.newsletterSubscriber,
-    required this.customerGroups,
-    this.customFields,
-  });
+  const factory Customer({
+    required String id,
+    required String email,
+    String? firstName,
+    String? lastName,
+    String? phone,
+    required bool acceptsEmailMarketing,
+    String? emailMarketingConsentUpdatedAt,
+    required String fullName,
+    required String availableStoreCreditTotal,
+    required List<Address> addresses,
+    Address? defaultBillingAddress,
+    Address? defaultShippingAddress,
+    NewsletterSubscriber? newsletterSubscriber,
+    required List<CustomerGroup> customerGroups,
+    List<CustomField>? customFields,
+  }) = _Customer;
 
   /// Parses a customer profile from its JSON shape.
   factory Customer.fromJson(Map<String, Object?> json) => Customer(
@@ -215,50 +213,80 @@ class Customer {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Customer email.
-  final String email;
+  @override
+  @override
+  String get email;
 
   /// First name, when set (SPEC `nullable: true`, required key).
-  final String? firstName;
+  @override
+  @override
+  String? get firstName;
 
   /// Last name, when set (SPEC `nullable: true`, required key).
-  final String? lastName;
+  @override
+  @override
+  String? get lastName;
 
   /// Phone number, when set (SPEC `nullable: true`, required key).
-  final String? phone;
+  @override
+  @override
+  String? get phone;
 
   /// Marketing opt-in flag.
-  final bool acceptsEmailMarketing;
+  @override
+  @override
+  bool get acceptsEmailMarketing;
 
   /// Marketing-consent timestamp, when set.
-  final String? emailMarketingConsentUpdatedAt;
+  @override
+  @override
+  String? get emailMarketingConsentUpdatedAt;
 
   /// Computed full name.
-  final String fullName;
+  @override
+  @override
+  String get fullName;
 
   /// Usable store-credit total, decimal string.
-  final String availableStoreCreditTotal;
+  @override
+  @override
+  String get availableStoreCreditTotal;
 
   /// Address-book entries.
-  final List<Address> addresses;
+  @override
+  @override
+  List<Address> get addresses;
 
   /// Default billing address, when set (SPEC `nullable: true`, required key).
-  final Address? defaultBillingAddress;
+  @override
+  @override
+  Address? get defaultBillingAddress;
 
   /// Default shipping address, when set (SPEC `nullable: true`, required key).
-  final Address? defaultShippingAddress;
+  @override
+  @override
+  Address? get defaultShippingAddress;
 
   /// Linked newsletter subscription, when present (SPEC `nullable: true`,
   /// required key).
-  final NewsletterSubscriber? newsletterSubscriber;
+  @override
+  @override
+  NewsletterSubscriber? get newsletterSubscriber;
 
   /// Customer groups of the customer.
-  final List<CustomerGroup> customerGroups;
+  @override
+  @override
+  List<CustomerGroup> get customerGroups;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this profile back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -279,28 +307,4 @@ class Customer {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Customer &&
-          id == other.id &&
-          email == other.email &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          phone == other.phone &&
-          acceptsEmailMarketing == other.acceptsEmailMarketing &&
-          emailMarketingConsentUpdatedAt ==
-              other.emailMarketingConsentUpdatedAt &&
-          fullName == other.fullName &&
-          availableStoreCreditTotal == other.availableStoreCreditTotal &&
-          _listEquals(addresses, other.addresses) &&
-          defaultBillingAddress == other.defaultBillingAddress &&
-          defaultShippingAddress == other.defaultShippingAddress &&
-          newsletterSubscriber == other.newsletterSubscriber &&
-          _listEquals(customerGroups, other.customerGroups) &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, email, fullName);
 }

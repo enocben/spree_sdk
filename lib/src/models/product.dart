@@ -1,7 +1,6 @@
 /// Catalog product models.
 ///
-/// Hand-written immutable models with manual `fromJson`/`toJson`
-/// (ADR-002: no codegen).
+/// Freezed immutable models with explicit, contract-verified JSON mappings.
 ///
 /// Evidence (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
@@ -19,32 +18,29 @@
 ///   `doc/research/upstream-sdk-inventory.md` §4).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'meta.dart';
 import 'taxons.dart';
 
-/// Compares two lists element-wise; both `null` counts as equal.
-bool _listEquals<T>(List<T>? a, List<T>? b) {
-  if (identical(a, b)) return true;
-  if (a == null || b == null || a.length != b.length) return false;
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] != b[i]) return false;
-  }
-  return true;
-}
+part 'product.freezed.dart';
 
 /// A price in a currency: decimal-string amounts.
 ///
 /// Source: `packages/sdk/src/types/generated/Price.ts`;
 /// SPEC `store.yaml#/components/schemas/Price`.
-class Price {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Price with _$Price {
+  const Price._();
+
   /// Creates a price.
-  const Price({
-    required this.id,
-    this.currency,
-    this.amount,
-    this.compareAtAmount,
-    this.priceListId,
-  });
+  const factory Price({
+    required String id,
+    CurrencyCode? currency,
+    String? amount,
+    String? compareAtAmount,
+    String? priceListId,
+  }) = _Price;
 
   /// Parses a price from its JSON shape.
   factory Price.fromJson(Map<String, Object?> json) => Price(
@@ -58,19 +54,29 @@ class Price {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Pricing currency, when reported.
-  final CurrencyCode? currency;
+  @override
+  @override
+  CurrencyCode? get currency;
 
   /// Amount as a decimal string (never a number), when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Compare-at amount as a decimal string, when reported.
-  final String? compareAtAmount;
+  @override
+  @override
+  String? get compareAtAmount;
 
   /// Owning price list, when reported.
-  final String? priceListId;
+  @override
+  @override
+  String? get priceListId;
 
   /// Serializes this price back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -80,34 +86,23 @@ class Price {
     'compare_at_amount': compareAtAmount,
     'price_list_id': priceListId,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Price &&
-          id == other.id &&
-          currency == other.currency &&
-          amount == other.amount &&
-          compareAtAmount == other.compareAtAmount &&
-          priceListId == other.priceListId;
-
-  @override
-  int get hashCode =>
-      Object.hash(id, currency, amount, compareAtAmount, priceListId);
 }
 
 /// The lowest prior price of a variant (omnibus-style pricing history).
 ///
 /// Source: `packages/sdk/src/types/generated/PriceHistory.ts`;
 /// SPEC `store.yaml#/components/schemas/PriceHistory`.
-class PriceHistory {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class PriceHistory with _$PriceHistory {
+  const PriceHistory._();
+
   /// Creates a price-history entry.
-  const PriceHistory({
-    required this.id,
-    required this.currency,
-    this.amount,
-    required this.recordedAt,
-  });
+  const factory PriceHistory({
+    required String id,
+    required CurrencyCode currency,
+    String? amount,
+    required String recordedAt,
+  }) = _PriceHistory;
 
   /// Parses a price-history entry from its JSON shape.
   factory PriceHistory.fromJson(Map<String, Object?> json) => PriceHistory(
@@ -118,16 +113,24 @@ class PriceHistory {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Pricing currency.
-  final CurrencyCode currency;
+  @override
+  @override
+  CurrencyCode get currency;
 
   /// Amount as a decimal string, when reported.
-  final String? amount;
+  @override
+  @override
+  String? get amount;
 
   /// Recording timestamp, as reported by the API (kept as-is).
-  final String recordedAt;
+  @override
+  @override
+  String get recordedAt;
 
   /// Serializes this entry back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -136,49 +139,40 @@ class PriceHistory {
     'amount': amount,
     'recorded_at': recordedAt,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PriceHistory &&
-          id == other.id &&
-          currency == other.currency &&
-          amount == other.amount &&
-          recordedAt == other.recordedAt;
-
-  @override
-  int get hashCode => Object.hash(id, currency, amount, recordedAt);
 }
 
 /// Media attached to a product or variant.
 ///
 /// Source: `packages/sdk/src/types/generated/Media.ts`;
 /// SPEC `store.yaml#/components/schemas/Media`.
-class Media {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Media with _$Media {
+  const Media._();
+
   /// Creates a media attachment.
-  const Media({
-    required this.id,
-    this.productId,
-    required this.variantIds,
-    required this.position,
-    this.alt,
-    required this.mediaType,
-    this.externalVideoUrl,
-    this.focalPointX,
-    this.focalPointY,
-    this.videoProvider,
-    this.videoEmbedUrl,
-    this.videoUrl,
-    this.posterUrl,
-    this.originalUrl,
-    this.miniUrl,
-    this.smallUrl,
-    this.mediumUrl,
-    this.largeUrl,
-    this.xlargeUrl,
-    this.ogImageUrl,
-    this.customFields,
-  });
+  const factory Media({
+    required String id,
+    String? productId,
+    required List<String> variantIds,
+    required int position,
+    String? alt,
+    required MediaType mediaType,
+    String? externalVideoUrl,
+    double? focalPointX,
+    double? focalPointY,
+    String? videoProvider,
+    String? videoEmbedUrl,
+    String? videoUrl,
+    String? posterUrl,
+    String? originalUrl,
+    String? miniUrl,
+    String? smallUrl,
+    String? mediumUrl,
+    String? largeUrl,
+    String? xlargeUrl,
+    String? ogImageUrl,
+    List<CustomField>? customFields,
+  }) = _Media;
 
   /// Parses media from its JSON shape.
   factory Media.fromJson(Map<String, Object?> json) => Media(
@@ -208,67 +202,109 @@ class Media {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning product id, when reported.
-  final String? productId;
+  @override
+  @override
+  String? get productId;
 
   /// Ids of the variants this media belongs to.
-  final List<String> variantIds;
+  @override
+  @override
+  List<String> get variantIds;
 
   /// Sort position.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Alt text, when set.
-  final String? alt;
+  @override
+  @override
+  String? get alt;
 
   /// Media kind.
-  final MediaType mediaType;
+  @override
+  @override
+  MediaType get mediaType;
 
   /// External video URL, for `externalVideo` media.
-  final String? externalVideoUrl;
+  @override
+  @override
+  String? get externalVideoUrl;
 
   /// Horizontal focal point, when set.
-  final double? focalPointX;
+  @override
+  @override
+  double? get focalPointX;
 
   /// Vertical focal point, when set.
-  final double? focalPointY;
+  @override
+  @override
+  double? get focalPointY;
 
   /// Video provider name, when reported.
-  final String? videoProvider;
+  @override
+  @override
+  String? get videoProvider;
 
   /// Embeddable video URL, when reported.
-  final String? videoEmbedUrl;
+  @override
+  @override
+  String? get videoEmbedUrl;
 
   /// Video file URL, when reported.
-  final String? videoUrl;
+  @override
+  @override
+  String? get videoUrl;
 
   /// Poster image URL, when reported.
-  final String? posterUrl;
+  @override
+  @override
+  String? get posterUrl;
 
   /// Original image URL, when reported.
-  final String? originalUrl;
+  @override
+  @override
+  String? get originalUrl;
 
   /// Mini rendition URL, when reported.
-  final String? miniUrl;
+  @override
+  @override
+  String? get miniUrl;
 
   /// Small rendition URL, when reported.
-  final String? smallUrl;
+  @override
+  @override
+  String? get smallUrl;
 
   /// Medium rendition URL, when reported.
-  final String? mediumUrl;
+  @override
+  @override
+  String? get mediumUrl;
 
   /// Large rendition URL, when reported.
-  final String? largeUrl;
+  @override
+  @override
+  String? get largeUrl;
 
   /// Extra-large rendition URL, when reported.
-  final String? xlargeUrl;
+  @override
+  @override
+  String? get xlargeUrl;
 
   /// Open-graph image URL, when reported.
-  final String? ogImageUrl;
+  @override
+  @override
+  String? get ogImageUrl;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this media back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -295,41 +331,25 @@ class Media {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Media &&
-          id == other.id &&
-          productId == other.productId &&
-          _listEquals(variantIds, other.variantIds) &&
-          position == other.position &&
-          alt == other.alt &&
-          mediaType == other.mediaType &&
-          externalVideoUrl == other.externalVideoUrl &&
-          focalPointX == other.focalPointX &&
-          focalPointY == other.focalPointY &&
-          originalUrl == other.originalUrl &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, productId, position, mediaType);
 }
 
 /// A product option type (e.g. size, color).
 ///
 /// Source: `packages/sdk/src/types/generated/OptionType.ts`;
 /// SPEC `store.yaml#/components/schemas/OptionType`.
-class OptionType {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class OptionType with _$OptionType {
+  const OptionType._();
+
   /// Creates an option type.
-  const OptionType({
-    required this.id,
-    required this.name,
-    required this.label,
-    required this.position,
-    required this.kind,
-    this.customFields,
-  });
+  const factory OptionType({
+    required String id,
+    required String name,
+    required String label,
+    required int position,
+    required OptionTypeKind kind,
+    List<CustomField>? customFields,
+  }) = _OptionType;
 
   /// Parses an option type from its JSON shape.
   factory OptionType.fromJson(Map<String, Object?> json) => OptionType(
@@ -344,22 +364,34 @@ class OptionType {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Option type name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Merchant-facing label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Sort position.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Presentation kind.
-  final OptionTypeKind kind;
+  @override
+  @override
+  OptionTypeKind get kind;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this option type back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -371,40 +403,29 @@ class OptionType {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OptionType &&
-          id == other.id &&
-          name == other.name &&
-          label == other.label &&
-          position == other.position &&
-          kind == other.kind &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, name, label, position, kind);
 }
 
 /// One value of a product option type (e.g. `Red` for color).
 ///
 /// Source: `packages/sdk/src/types/generated/OptionValue.ts`;
 /// SPEC `store.yaml#/components/schemas/OptionValue`.
-class OptionValue {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class OptionValue with _$OptionValue {
+  const OptionValue._();
+
   /// Creates an option value.
-  const OptionValue({
-    required this.id,
-    required this.optionTypeId,
-    required this.name,
-    required this.label,
-    required this.position,
-    this.colorCode,
-    required this.optionTypeName,
-    required this.optionTypeLabel,
-    this.imageUrl,
-    this.customFields,
-  });
+  const factory OptionValue({
+    required String id,
+    required String optionTypeId,
+    required String name,
+    required String label,
+    required int position,
+    String? colorCode,
+    required String optionTypeName,
+    required String optionTypeLabel,
+    String? imageUrl,
+    List<CustomField>? customFields,
+  }) = _OptionValue;
 
   /// Parses an option value from its JSON shape.
   factory OptionValue.fromJson(Map<String, Object?> json) => OptionValue(
@@ -423,34 +444,54 @@ class OptionValue {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning option type id.
-  final String optionTypeId;
+  @override
+  @override
+  String get optionTypeId;
 
   /// Option value name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Merchant-facing label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Sort position.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Swatch color code, when set.
-  final String? colorCode;
+  @override
+  @override
+  String? get colorCode;
 
   /// Denormalized owning option type name.
-  final String optionTypeName;
+  @override
+  @override
+  String get optionTypeName;
 
   /// Denormalized owning option type label.
-  final String optionTypeLabel;
+  @override
+  @override
+  String get optionTypeLabel;
 
   /// Swatch image URL, when set.
-  final String? imageUrl;
+  @override
+  @override
+  String? get imageUrl;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Serializes this option value back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -466,65 +507,50 @@ class OptionValue {
     if (customFields != null)
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OptionValue &&
-          id == other.id &&
-          optionTypeId == other.optionTypeId &&
-          name == other.name &&
-          label == other.label &&
-          position == other.position &&
-          colorCode == other.colorCode &&
-          optionTypeName == other.optionTypeName &&
-          optionTypeLabel == other.optionTypeLabel &&
-          imageUrl == other.imageUrl &&
-          _listEquals(customFields, other.customFields);
-
-  @override
-  int get hashCode => Object.hash(id, optionTypeId, name, position);
 }
 
 /// A purchasable variant of a product.
 ///
 /// Source: `packages/sdk/src/types/generated/Variant.ts`;
 /// SPEC `store.yaml#/components/schemas/Variant`.
-class Variant {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Variant with _$Variant {
+  const Variant._();
+
   /// Creates a variant.
-  const Variant({
-    required this.id,
-    required this.productId,
-    this.sku,
-    required this.optionsText,
-    required this.trackInventory,
-    required this.mediaCount,
-    this.preorderShipsAt,
-    this.thumbnailUrl,
-    required this.purchasable,
-    required this.inStock,
-    required this.backorderable,
-    required this.preorder,
-    this.weight,
-    this.height,
-    this.width,
-    this.depth,
-    required this.weightUnit,
-    required this.dimensionsUnit,
-    required this.minimumOrderQuantity,
-    required this.orderMultiple,
-    required this.purchaseUnit,
-    this.unitsPerCarton,
-    required this.price,
-    this.originalPrice,
-    this.sellerId,
-    this.seller,
-    this.primaryMedia,
-    this.media,
-    required this.optionValues,
-    this.customFields,
-    this.priorPrice,
-  });
+  const factory Variant({
+    required String id,
+    required String productId,
+    String? sku,
+    required String optionsText,
+    required bool trackInventory,
+    required int mediaCount,
+    String? preorderShipsAt,
+    String? thumbnailUrl,
+    required bool purchasable,
+    required bool inStock,
+    required bool backorderable,
+    required bool preorder,
+    double? weight,
+    double? height,
+    double? width,
+    double? depth,
+    required WeightUnit weightUnit,
+    required DimensionUnit dimensionsUnit,
+    required int minimumOrderQuantity,
+    required int orderMultiple,
+    required PurchaseUnit purchaseUnit,
+    int? unitsPerCarton,
+    required Price price,
+    Price? originalPrice,
+    String? sellerId,
+    Seller? seller,
+    Media? primaryMedia,
+    List<Media>? media,
+    required List<OptionValue> optionValues,
+    List<CustomField>? customFields,
+    PriceHistory? priorPrice,
+  }) = _Variant;
 
   /// Parses a variant from its JSON shape.
   factory Variant.fromJson(Map<String, Object?> json) => Variant(
@@ -576,97 +602,159 @@ class Variant {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Owning product id.
-  final String productId;
+  @override
+  @override
+  String get productId;
 
   /// Stock-keeping unit, when set.
-  final String? sku;
+  @override
+  @override
+  String? get sku;
 
   /// Human-readable option summary.
-  final String optionsText;
+  @override
+  @override
+  String get optionsText;
 
   /// Whether inventory is tracked for this variant.
-  final bool trackInventory;
+  @override
+  @override
+  bool get trackInventory;
 
   /// Number of attached media.
-  final int mediaCount;
+  @override
+  @override
+  int get mediaCount;
 
   /// Preorder shipping date, when set.
-  final String? preorderShipsAt;
+  @override
+  @override
+  String? get preorderShipsAt;
 
   /// Thumbnail URL, when set.
-  final String? thumbnailUrl;
+  @override
+  @override
+  String? get thumbnailUrl;
 
   /// Whether this variant can currently be purchased.
-  final bool purchasable;
+  @override
+  @override
+  bool get purchasable;
 
   /// Whether this variant is in stock.
-  final bool inStock;
+  @override
+  @override
+  bool get inStock;
 
   /// Whether this variant can be backordered.
-  final bool backorderable;
+  @override
+  @override
+  bool get backorderable;
 
   /// Whether this variant is a preorder.
-  final bool preorder;
+  @override
+  @override
+  bool get preorder;
 
   /// Weight, when set.
-  final double? weight;
+  @override
+  @override
+  double? get weight;
 
   /// Height, when set.
-  final double? height;
+  @override
+  @override
+  double? get height;
 
   /// Width, when set.
-  final double? width;
+  @override
+  @override
+  double? get width;
 
   /// Depth, when set.
-  final double? depth;
+  @override
+  @override
+  double? get depth;
 
   /// Unit of [weight].
-  final WeightUnit weightUnit;
+  @override
+  @override
+  WeightUnit get weightUnit;
 
   /// Unit of [height]/[width]/[depth].
-  final DimensionUnit dimensionsUnit;
+  @override
+  @override
+  DimensionUnit get dimensionsUnit;
 
   /// Minimum orderable quantity.
-  final int minimumOrderQuantity;
+  @override
+  @override
+  int get minimumOrderQuantity;
 
   /// Quantity multiple orders must respect.
-  final int orderMultiple;
+  @override
+  @override
+  int get orderMultiple;
 
   /// Purchase unit (`unit` or `carton`).
-  final PurchaseUnit purchaseUnit;
+  @override
+  @override
+  PurchaseUnit get purchaseUnit;
 
   /// Units per carton, when set.
-  final int? unitsPerCarton;
+  @override
+  @override
+  int? get unitsPerCarton;
 
   /// Current price.
-  final Price price;
+  @override
+  @override
+  Price get price;
 
   /// Compare-at price, when set.
-  final Price? originalPrice;
+  @override
+  @override
+  Price? get originalPrice;
 
   /// Owning seller id, when set.
-  final String? sellerId;
+  @override
+  @override
+  String? get sellerId;
 
   /// Expanded seller, when requested via `expand`.
-  final Seller? seller;
+  @override
+  @override
+  Seller? get seller;
 
   /// Primary media, when expanded.
-  final Media? primaryMedia;
+  @override
+  @override
+  Media? get primaryMedia;
 
   /// All media, when expanded.
-  final List<Media>? media;
+  @override
+  @override
+  List<Media>? get media;
 
   /// Option values identifying this variant.
-  final List<OptionValue> optionValues;
+  @override
+  @override
+  List<OptionValue> get optionValues;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Lowest prior price, when reported.
-  final PriceHistory? priorPrice;
+  @override
+  @override
+  PriceHistory? get priorPrice;
 
   /// Serializes this variant back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -703,88 +791,52 @@ class Variant {
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
     'prior_price': priorPrice?.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Variant &&
-          id == other.id &&
-          productId == other.productId &&
-          sku == other.sku &&
-          optionsText == other.optionsText &&
-          trackInventory == other.trackInventory &&
-          mediaCount == other.mediaCount &&
-          preorderShipsAt == other.preorderShipsAt &&
-          thumbnailUrl == other.thumbnailUrl &&
-          purchasable == other.purchasable &&
-          inStock == other.inStock &&
-          backorderable == other.backorderable &&
-          preorder == other.preorder &&
-          weight == other.weight &&
-          height == other.height &&
-          width == other.width &&
-          depth == other.depth &&
-          weightUnit == other.weightUnit &&
-          dimensionsUnit == other.dimensionsUnit &&
-          minimumOrderQuantity == other.minimumOrderQuantity &&
-          orderMultiple == other.orderMultiple &&
-          purchaseUnit == other.purchaseUnit &&
-          unitsPerCarton == other.unitsPerCarton &&
-          price == other.price &&
-          originalPrice == other.originalPrice &&
-          sellerId == other.sellerId &&
-          seller == other.seller &&
-          primaryMedia == other.primaryMedia &&
-          _listEquals(media, other.media) &&
-          _listEquals(optionValues, other.optionValues) &&
-          _listEquals(customFields, other.customFields) &&
-          priorPrice == other.priorPrice;
-
-  @override
-  int get hashCode => Object.hash(id, productId, sku, price);
 }
 
 /// A catalog product.
 ///
 /// Source: `packages/sdk/src/types/generated/Product.ts`;
 /// SPEC `store.yaml#/components/schemas/Product`.
-class Product {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class Product with _$Product {
+  const Product._();
+
   /// Creates a product.
-  const Product({
-    required this.id,
-    required this.name,
-    required this.slug,
-    this.metaTitle,
-    this.metaDescription,
-    this.metaKeywords,
-    required this.variantCount,
-    this.availableOn,
-    this.preorderShipsAt,
-    required this.purchasable,
-    required this.preorder,
-    required this.inStock,
-    required this.backorderable,
-    required this.available,
-    this.description,
-    this.descriptionHtml,
-    required this.defaultVariantId,
-    this.buyBoxVariantId,
-    this.thumbnailUrl,
-    required this.tags,
-    required this.price,
-    this.originalPrice,
-    this.sellerId,
-    this.seller,
-    this.primaryMedia,
-    this.media,
-    this.variants,
-    this.defaultVariant,
-    this.optionTypes,
-    this.optionValues,
-    this.categories,
-    this.customFields,
-    this.priorPrice,
-  });
+  const factory Product({
+    required String id,
+    required String name,
+    required String slug,
+    String? metaTitle,
+    String? metaDescription,
+    String? metaKeywords,
+    required int variantCount,
+    String? availableOn,
+    String? preorderShipsAt,
+    required bool purchasable,
+    required bool preorder,
+    required bool inStock,
+    required bool backorderable,
+    required bool available,
+    String? description,
+    String? descriptionHtml,
+    required String defaultVariantId,
+    String? buyBoxVariantId,
+    String? thumbnailUrl,
+    required List<String> tags,
+    required Price price,
+    Price? originalPrice,
+    String? sellerId,
+    Seller? seller,
+    Media? primaryMedia,
+    List<Media>? media,
+    List<Variant>? variants,
+    Variant? defaultVariant,
+    List<OptionType>? optionTypes,
+    List<OptionValue>? optionValues,
+    List<Category>? categories,
+    List<CustomField>? customFields,
+    PriceHistory? priorPrice,
+  }) = _Product;
 
   /// Parses a product from its JSON shape.
   factory Product.fromJson(Map<String, Object?> json) => Product(
@@ -846,103 +898,169 @@ class Product {
   );
 
   /// Unique identifier.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Product name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// URL slug (used by `products.get` in place of the id).
-  final String slug;
+  @override
+  @override
+  String get slug;
 
   /// SEO title override, when set.
-  final String? metaTitle;
+  @override
+  @override
+  String? get metaTitle;
 
   /// Meta description, when set.
-  final String? metaDescription;
+  @override
+  @override
+  String? get metaDescription;
 
   /// Meta keywords, when set.
-  final String? metaKeywords;
+  @override
+  @override
+  String? get metaKeywords;
 
   /// Number of variants.
-  final int variantCount;
+  @override
+  @override
+  int get variantCount;
 
   /// Availability date, when set.
-  final String? availableOn;
+  @override
+  @override
+  String? get availableOn;
 
   /// Preorder shipping date, when set.
-  final String? preorderShipsAt;
+  @override
+  @override
+  String? get preorderShipsAt;
 
   /// Whether the product can currently be purchased.
-  final bool purchasable;
+  @override
+  @override
+  bool get purchasable;
 
   /// Whether the product is a preorder.
-  final bool preorder;
+  @override
+  @override
+  bool get preorder;
 
   /// Whether the product is in stock.
-  final bool inStock;
+  @override
+  @override
+  bool get inStock;
 
   /// Whether the product can be backordered.
-  final bool backorderable;
+  @override
+  @override
+  bool get backorderable;
 
   /// Whether the product is available.
-  final bool available;
+  @override
+  @override
+  bool get available;
 
   /// Plain-text description, when set.
-  final String? description;
+  @override
+  @override
+  String? get description;
 
   /// Rendered HTML description, when set.
-  final String? descriptionHtml;
+  @override
+  @override
+  String? get descriptionHtml;
 
   /// Default variant id.
-  final String defaultVariantId;
+  @override
+  @override
+  String get defaultVariantId;
 
   /// Buy-box variant id, when set.
-  final String? buyBoxVariantId;
+  @override
+  @override
+  String? get buyBoxVariantId;
 
   /// Thumbnail URL, when set.
-  final String? thumbnailUrl;
+  @override
+  @override
+  String? get thumbnailUrl;
 
   /// Merchant-defined tags.
-  final List<String> tags;
+  @override
+  @override
+  List<String> get tags;
 
   /// Current price.
-  final Price price;
+  @override
+  @override
+  Price get price;
 
   /// Compare-at price, when set.
-  final Price? originalPrice;
+  @override
+  @override
+  Price? get originalPrice;
 
   /// Owning seller id, when set.
-  final String? sellerId;
+  @override
+  @override
+  String? get sellerId;
 
   /// Expanded seller, when requested via `expand`.
-  final Seller? seller;
+  @override
+  @override
+  Seller? get seller;
 
   /// Primary media, when expanded.
-  final Media? primaryMedia;
+  @override
+  @override
+  Media? get primaryMedia;
 
   /// All media, when expanded.
-  final List<Media>? media;
+  @override
+  @override
+  List<Media>? get media;
 
   /// All variants, when expanded.
-  final List<Variant>? variants;
+  @override
+  @override
+  List<Variant>? get variants;
 
   /// Expanded default variant, when requested via `expand`.
-  final Variant? defaultVariant;
+  @override
+  @override
+  Variant? get defaultVariant;
 
   /// Expanded option types, when requested via `expand`.
-  final List<OptionType>? optionTypes;
+  @override
+  @override
+  List<OptionType>? get optionTypes;
 
   /// Expanded option values, when requested via `expand`.
-  final List<OptionValue>? optionValues;
+  @override
+  @override
+  List<OptionValue>? get optionValues;
 
   /// Expanded categories, when requested via `expand`.
-  final List<Category>? categories;
+  @override
+  @override
+  List<Category>? get categories;
 
   /// Merchant-defined custom fields, when present.
-  final List<CustomField>? customFields;
+  @override
+  @override
+  List<CustomField>? get customFields;
 
   /// Lowest prior price, when reported.
-  final PriceHistory? priorPrice;
+  @override
+  @override
+  PriceHistory? get priorPrice;
 
   /// Serializes this product back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -984,47 +1102,6 @@ class Product {
       'custom_fields': customFields!.map((e) => e.toJson()).toList(),
     'prior_price': priorPrice?.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Product &&
-          id == other.id &&
-          name == other.name &&
-          slug == other.slug &&
-          metaTitle == other.metaTitle &&
-          metaDescription == other.metaDescription &&
-          metaKeywords == other.metaKeywords &&
-          variantCount == other.variantCount &&
-          availableOn == other.availableOn &&
-          preorderShipsAt == other.preorderShipsAt &&
-          purchasable == other.purchasable &&
-          preorder == other.preorder &&
-          inStock == other.inStock &&
-          backorderable == other.backorderable &&
-          available == other.available &&
-          description == other.description &&
-          descriptionHtml == other.descriptionHtml &&
-          defaultVariantId == other.defaultVariantId &&
-          buyBoxVariantId == other.buyBoxVariantId &&
-          thumbnailUrl == other.thumbnailUrl &&
-          _listEquals(tags, other.tags) &&
-          price == other.price &&
-          originalPrice == other.originalPrice &&
-          sellerId == other.sellerId &&
-          seller == other.seller &&
-          primaryMedia == other.primaryMedia &&
-          _listEquals(media, other.media) &&
-          _listEquals(variants, other.variants) &&
-          defaultVariant == other.defaultVariant &&
-          _listEquals(optionTypes, other.optionTypes) &&
-          _listEquals(optionValues, other.optionValues) &&
-          _listEquals(categories, other.categories) &&
-          _listEquals(customFields, other.customFields) &&
-          priorPrice == other.priorPrice;
-
-  @override
-  int get hashCode => Object.hash(id, name, slug, variantCount, price);
 }
 
 /// Base of the `GET /products/filters` response union.
@@ -1059,14 +1136,18 @@ sealed class ProductFilter {
 /// Price-range facet of the filters response.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterPriceRange.ts`.
-class ProductFilterPriceRange extends ProductFilter {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterPriceRange extends ProductFilter
+    with _$ProductFilterPriceRange {
+  const ProductFilterPriceRange._() : super();
+
   /// Creates a price-range facet.
-  const ProductFilterPriceRange({
-    required this.id,
-    required this.min,
-    required this.max,
-    required this.currency,
-  });
+  const factory ProductFilterPriceRange({
+    required String id,
+    required String min,
+    required String max,
+    required CurrencyCode currency,
+  }) = _ProductFilterPriceRange;
 
   /// Parses a price-range facet from its JSON shape.
   factory ProductFilterPriceRange.fromJson(Map<String, Object?> json) =>
@@ -1078,17 +1159,24 @@ class ProductFilterPriceRange extends ProductFilter {
       );
 
   /// Facet id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Minimum bound, decimal string.
-  final String min;
+  @override
+  @override
+  String get min;
 
   /// Maximum bound, decimal string.
-  final String max;
+  @override
+  @override
+  String get max;
 
   /// Pricing currency of the bounds.
-  final CurrencyCode currency;
-
+  @override
+  @override
+  CurrencyCode get currency;
   @override
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id,
@@ -1097,30 +1185,22 @@ class ProductFilterPriceRange extends ProductFilter {
     'max': max,
     'currency': currency.toJson(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterPriceRange &&
-          id == other.id &&
-          min == other.min &&
-          max == other.max &&
-          currency == other.currency;
-
-  @override
-  int get hashCode => Object.hash(id, min, max, currency);
 }
 
 /// One availability option of the availability facet.
 ///
 /// Source:
 /// `packages/sdk/src/types/generated/ProductFilterAvailabilityOption.ts`.
-class ProductFilterAvailabilityOption {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterAvailabilityOption
+    with _$ProductFilterAvailabilityOption {
+  const ProductFilterAvailabilityOption._();
+
   /// Creates an availability option.
-  const ProductFilterAvailabilityOption({
-    required this.id,
-    required this.count,
-  });
+  const factory ProductFilterAvailabilityOption({
+    required StockAvailability id,
+    required int count,
+  }) = _ProductFilterAvailabilityOption;
 
   /// Parses an availability option from its JSON shape.
   factory ProductFilterAvailabilityOption.fromJson(Map<String, Object?> json) =>
@@ -1130,34 +1210,35 @@ class ProductFilterAvailabilityOption {
       );
 
   /// Availability value.
-  final StockAvailability id;
+  @override
+  @override
+  StockAvailability get id;
 
   /// Matching product count.
-  final int count;
+  @override
+  @override
+  int get count;
 
   /// Serializes this option back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id.toJson(),
     'count': count,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterAvailabilityOption &&
-          id == other.id &&
-          count == other.count;
-
-  @override
-  int get hashCode => Object.hash(id, count);
 }
 
 /// Availability facet of the filters response.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterAvailability.ts`.
-class ProductFilterAvailability extends ProductFilter {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterAvailability extends ProductFilter
+    with _$ProductFilterAvailability {
+  const ProductFilterAvailability._() : super();
+
   /// Creates an availability facet.
-  const ProductFilterAvailability({required this.id, required this.options});
+  const factory ProductFilterAvailability({
+    required String id,
+    required List<ProductFilterAvailabilityOption> options,
+  }) = _ProductFilterAvailability;
 
   /// Parses an availability facet from its JSON shape.
   factory ProductFilterAvailability.fromJson(Map<String, Object?> json) =>
@@ -1173,43 +1254,39 @@ class ProductFilterAvailability extends ProductFilter {
       );
 
   /// Facet id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Availability options with counts.
-  final List<ProductFilterAvailabilityOption> options;
-
+  @override
+  @override
+  List<ProductFilterAvailabilityOption> get options;
   @override
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id,
     'type': ProductFilterType.availability.toJson(),
     'options': options.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterAvailability &&
-          id == other.id &&
-          _listEquals(options, other.options);
-
-  @override
-  int get hashCode => Object.hash(id, Object.hashAll(options));
 }
 
 /// One option value of the option facet.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterOptionValue.ts`.
-class ProductFilterOptionValue {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterOptionValue with _$ProductFilterOptionValue {
+  const ProductFilterOptionValue._();
+
   /// Creates an option-facet value.
-  const ProductFilterOptionValue({
-    required this.id,
-    required this.name,
-    required this.label,
-    required this.position,
-    this.colorCode,
-    this.imageUrl,
-    required this.count,
-  });
+  const factory ProductFilterOptionValue({
+    required String id,
+    required String name,
+    required String label,
+    required int position,
+    String? colorCode,
+    String? imageUrl,
+    required int count,
+  }) = _ProductFilterOptionValue;
 
   /// Parses an option-facet value from its JSON shape.
   factory ProductFilterOptionValue.fromJson(Map<String, Object?> json) =>
@@ -1224,25 +1301,39 @@ class ProductFilterOptionValue {
       );
 
   /// Value id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Value name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Merchant-facing label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Sort position.
-  final int position;
+  @override
+  @override
+  int get position;
 
   /// Swatch color code, when set.
-  final String? colorCode;
+  @override
+  @override
+  String? get colorCode;
 
   /// Swatch image URL, when set.
-  final String? imageUrl;
+  @override
+  @override
+  String? get imageUrl;
 
   /// Matching product count.
-  final int count;
+  @override
+  @override
+  int get count;
 
   /// Serializes this value back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1254,35 +1345,24 @@ class ProductFilterOptionValue {
     'image_url': imageUrl,
     'count': count,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterOptionValue &&
-          id == other.id &&
-          name == other.name &&
-          label == other.label &&
-          position == other.position &&
-          colorCode == other.colorCode &&
-          imageUrl == other.imageUrl &&
-          count == other.count;
-
-  @override
-  int get hashCode => Object.hash(id, name, position, count);
 }
 
 /// Option facet of the filters response.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterOption.ts`.
-class ProductFilterOption extends ProductFilter {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterOption extends ProductFilter
+    with _$ProductFilterOption {
+  const ProductFilterOption._() : super();
+
   /// Creates an option facet.
-  const ProductFilterOption({
-    required this.id,
-    required this.name,
-    required this.label,
-    required this.kind,
-    required this.options,
-  });
+  const factory ProductFilterOption({
+    required String id,
+    required String name,
+    required String label,
+    required OptionTypeKind kind,
+    required List<ProductFilterOptionValue> options,
+  }) = _ProductFilterOption;
 
   /// Parses an option facet from its JSON shape.
   factory ProductFilterOption.fromJson(Map<String, Object?> json) =>
@@ -1300,20 +1380,29 @@ class ProductFilterOption extends ProductFilter {
       );
 
   /// Facet id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Option type name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Merchant-facing label.
-  final String label;
+  @override
+  @override
+  String get label;
 
   /// Presentation kind.
-  final OptionTypeKind kind;
+  @override
+  @override
+  OptionTypeKind get kind;
 
   /// Option values with counts.
-  final List<ProductFilterOptionValue> options;
-
+  @override
+  @override
+  List<ProductFilterOptionValue> get options;
   @override
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id,
@@ -1323,32 +1412,22 @@ class ProductFilterOption extends ProductFilter {
     'kind': kind.toJson(),
     'options': options.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterOption &&
-          id == other.id &&
-          name == other.name &&
-          label == other.label &&
-          kind == other.kind &&
-          _listEquals(options, other.options);
-
-  @override
-  int get hashCode => Object.hash(id, name, kind);
 }
 
 /// One category option of the category facet.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterCategoryOption.ts`.
-class ProductFilterCategoryOption {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterCategoryOption with _$ProductFilterCategoryOption {
+  const ProductFilterCategoryOption._();
+
   /// Creates a category-facet option.
-  const ProductFilterCategoryOption({
-    required this.id,
-    required this.name,
-    required this.permalink,
-    required this.count,
-  });
+  const factory ProductFilterCategoryOption({
+    required String id,
+    required String name,
+    required String permalink,
+    required int count,
+  }) = _ProductFilterCategoryOption;
 
   /// Parses a category-facet option from its JSON shape.
   factory ProductFilterCategoryOption.fromJson(Map<String, Object?> json) =>
@@ -1360,16 +1439,24 @@ class ProductFilterCategoryOption {
       );
 
   /// Category id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Category name.
-  final String name;
+  @override
+  @override
+  String get name;
 
   /// Category permalink.
-  final String permalink;
+  @override
+  @override
+  String get permalink;
 
   /// Matching product count.
-  final int count;
+  @override
+  @override
+  int get count;
 
   /// Serializes this option back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1378,26 +1465,21 @@ class ProductFilterCategoryOption {
     'permalink': permalink,
     'count': count,
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterCategoryOption &&
-          id == other.id &&
-          name == other.name &&
-          permalink == other.permalink &&
-          count == other.count;
-
-  @override
-  int get hashCode => Object.hash(id, name, permalink, count);
 }
 
 /// Category facet of the filters response.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterCategory.ts`.
-class ProductFilterCategory extends ProductFilter {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterCategory extends ProductFilter
+    with _$ProductFilterCategory {
+  const ProductFilterCategory._() : super();
+
   /// Creates a category facet.
-  const ProductFilterCategory({required this.id, required this.options});
+  const factory ProductFilterCategory({
+    required String id,
+    required List<ProductFilterCategoryOption> options,
+  }) = _ProductFilterCategory;
 
   /// Parses a category facet from its JSON shape.
   factory ProductFilterCategory.fromJson(Map<String, Object?> json) =>
@@ -1413,36 +1495,36 @@ class ProductFilterCategory extends ProductFilter {
       );
 
   /// Facet id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Category options with counts.
-  final List<ProductFilterCategoryOption> options;
-
+  @override
+  @override
+  List<ProductFilterCategoryOption> get options;
   @override
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id,
     'type': ProductFilterType.category.toJson(),
     'options': options.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterCategory &&
-          id == other.id &&
-          _listEquals(options, other.options);
-
-  @override
-  int get hashCode => Object.hash(id, Object.hashAll(options));
 }
 
 /// Fallback carrier for a filter with an unrecognized `type`.
 ///
 /// Keeps the raw payload so forward-compatible facets are not lost; see the
 /// unknown-enum rule (ADR-002).
-class ProductFilterUnknown extends ProductFilter {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterUnknown extends ProductFilter
+    with _$ProductFilterUnknown {
+  const ProductFilterUnknown._() : super();
+
   /// Creates an unknown-filter carrier.
-  const ProductFilterUnknown({required this.id, required this.raw});
+  const factory ProductFilterUnknown({
+    required String id,
+    required Map<String, Object?> raw,
+  }) = _ProductFilterUnknown;
 
   /// Parses an unknown filter, keeping the raw payload.
   factory ProductFilterUnknown.fromJson(Map<String, Object?> json) =>
@@ -1452,34 +1534,28 @@ class ProductFilterUnknown extends ProductFilter {
       );
 
   /// Facet id, when present.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// The raw filter payload.
-  final Map<String, Object?> raw;
-
+  @override
+  @override
+  Map<String, Object?> get raw;
   @override
   Map<String, Object?> toJson() => Map<String, Object?>.of(raw);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterUnknown &&
-          id == other.id &&
-          raw.length == other.raw.length &&
-          raw.entries.every(
-            (e) => other.raw[e.key].toString() == e.value.toString(),
-          );
-
-  @override
-  int get hashCode => Object.hash(id, raw.length);
 }
 
 /// One sort option of the filters response.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilterSortOption.ts`.
-class ProductFilterSortOption {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFilterSortOption with _$ProductFilterSortOption {
+  const ProductFilterSortOption._();
+
   /// Creates a sort option.
-  const ProductFilterSortOption({required this.id, this.label});
+  const factory ProductFilterSortOption({required String id, String? label}) =
+      _ProductFilterSortOption;
 
   /// Parses a sort option from its JSON shape.
   factory ProductFilterSortOption.fromJson(Map<String, Object?> json) =>
@@ -1489,23 +1565,17 @@ class ProductFilterSortOption {
       );
 
   /// Sort key.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Merchant-facing label, when set.
-  final String? label;
+  @override
+  @override
+  String? get label;
 
   /// Serializes this sort option back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{'id': id, 'label': label};
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFilterSortOption &&
-          id == other.id &&
-          label == other.label;
-
-  @override
-  int get hashCode => Object.hash(id, label);
 }
 
 /// Response of `GET /products/filters`: facets and sort options describing
@@ -1513,15 +1583,18 @@ class ProductFilterSortOption {
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilters.ts`;
 /// SPEC `store.yaml#/components/schemas/ProductFilters`.
-class ProductFiltersResponse {
+@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+abstract class ProductFiltersResponse with _$ProductFiltersResponse {
+  const ProductFiltersResponse._();
+
   /// Creates a filters response.
-  const ProductFiltersResponse({
-    required this.id,
-    required this.defaultSort,
-    required this.totalCount,
-    required this.filters,
-    required this.sortOptions,
-  });
+  const factory ProductFiltersResponse({
+    required String id,
+    required String defaultSort,
+    required int totalCount,
+    required List<ProductFilter> filters,
+    required List<ProductFilterSortOption> sortOptions,
+  }) = _ProductFiltersResponse;
 
   /// Parses a filters response from its JSON shape.
   factory ProductFiltersResponse.fromJson(Map<String, Object?> json) =>
@@ -1541,19 +1614,29 @@ class ProductFiltersResponse {
       );
 
   /// Response id.
-  final String id;
+  @override
+  @override
+  String get id;
 
   /// Default sort key.
-  final String defaultSort;
+  @override
+  @override
+  String get defaultSort;
 
   /// Total matching product count.
-  final int totalCount;
+  @override
+  @override
+  int get totalCount;
 
   /// Facets describing the listing.
-  final List<ProductFilter> filters;
+  @override
+  @override
+  List<ProductFilter> get filters;
 
   /// Available sort options.
-  final List<ProductFilterSortOption> sortOptions;
+  @override
+  @override
+  List<ProductFilterSortOption> get sortOptions;
 
   /// Serializes this response back to its JSON shape.
   Map<String, Object?> toJson() => <String, Object?>{
@@ -1563,17 +1646,4 @@ class ProductFiltersResponse {
     'filters': filters.map((e) => e.toJson()).toList(),
     'sort_options': sortOptions.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductFiltersResponse &&
-          id == other.id &&
-          defaultSort == other.defaultSort &&
-          totalCount == other.totalCount &&
-          _listEquals(filters, other.filters) &&
-          _listEquals(sortOptions, other.sortOptions);
-
-  @override
-  int get hashCode => Object.hash(id, defaultSort, totalCount);
 }
