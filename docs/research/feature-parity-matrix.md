@@ -79,3 +79,53 @@ D2. Three SPEC routes with no SDK method (`po_document`, `tax_identifier`,
 `digital_links/{token}`).
 D3. `coupon_codes` (idempotency doc) vs `discount_codes` (SDK+SPEC).
 D4. `AuthTokens.user` narrower than SPEC `AuthResponse` example.
+
+## 4. Implementation status (2026-11-22, verified by orchestrator gates)
+
+`dart format` exit 0 (80 files), `dart analyze` No issues found,
+`dart test` 294/294 passed. Commit scope: phases 03+04+05 + barrel.
+
+| Matrix row(s) | Status |
+|---|---|
+| 3 Auth (login/refresh/logout/register/reset) | ✅ implemented + tested (`AuthResource`, 47 group A tests) |
+| 4 Password reset auto-login | ✅ implemented + tested |
+| 5 Products list/get/filters | ✅ implemented + tested (73 group B tests) |
+| 6 Categories/sellers/collections | ✅ implemented + tested |
+| 7 Countries/currencies/locales/channel/store/policies/markets | ✅ implemented + tested |
+| 8 Delivery methods list/pickup_locations | ✅ implemented + tested |
+| 9-10, 18-19, 22-23, 25, 31 (single-gets), 34 (2 DELETEs) | ⏸️ P2 — excluded per owner approval |
+| 11 Carts CRUD/associate/complete + OrderGroup | ✅ implemented + tested |
+| 12 Cart addresses list (JWT-only) | ✅ implemented + tested |
+| 13 Cart items add/update/remove | ✅ implemented + tested |
+| 14 Discount/gift apply/remove | ✅ implemented + tested |
+| 15 Fulfillment rate select, direct payments | ✅ implemented + tested |
+| 16 Payment sessions | ✅ implemented + tested (typed wrapper over raw payload, shape unverified) |
+| 17 Store credits apply/remove | ✅ implemented + tested (decimal-string) |
+| 20 Order get + history | ✅ implemented + tested (68 group C tests) |
+| 21 Returns list/create | ✅ implemented + tested (422 hook, no blind retry) |
+| 24 Claims list/create | ✅ implemented + tested |
+| 26 Newsletter | ✅ implemented + tested |
+| 27-28 Customer profile/addresses | ✅ implemented + tested |
+| 29 GDPR data requests | ✅ implemented + tested |
+| 30 Credit cards/gift cards/store credits/digital links (list) | ✅ implemented + tested |
+| 32 Customer order history | ✅ implemented + tested |
+| 33 Payment setup sessions | ✅ implemented + tested |
+| 34 B2B (minus 2 P2 DELETEs) | ✅ implemented + tested |
+| 35 Wishlists + items | ✅ implemented + tested |
+| 36 Pagination/query utils | ✅ implemented + tested (`ListQuery`, `PaginatedResponse`) |
+| 37 Error model | ✅ implemented + tested (see deviation N1) |
+| 38 Retry/idempotency | ✅ implemented + tested (reads-only default, mutations opt-in) |
+| 39 Localization headers/codes, money-as-string | ✅ implemented + tested |
+| 40 Models (106) + params | ✅ P0 response DTOs + request params implemented + tested (round-trips, unknown-enum fallback) |
+| 1-2, 41-42 (client bootstrap, extensions, webhooks, observability) | ⏳ core client done; extension point + `onRequestComplete` hook deferred to hardening |
+
+Deviations accepted by orchestrator at integration:
+N1. Error base named `SpreeException` (not `SpreeError` sketch in
+file-ownership table 2) — Dart `*Exception` idiom; hierarchy and redaction
+rules unchanged.
+N2. `PaginationMeta` uses verified SPEC fields
+(page/limit/count/pages/from/to/in/previous/next) with `totalCount`/`totalPages`
+aliases — superset of the table-2 sketch.
+N3. Resource accessors live in `lib/src/client_resources.dart` (extension on
+`SpreeClient`) instead of inside `client.dart` — frozen core file untouched;
+public surface identical via `lib/spree_sdk.dart` barrel.

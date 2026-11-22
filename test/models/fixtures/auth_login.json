@@ -1,0 +1,1 @@
+{"refresh_token":"synthetic-refresh-token-value","token":"eyJhbGciOiJIUzI1NiJ9.synthetic-access-token","user":{"accepts_email_marketing":true,"available_store_credit_total":"25.00","email":"sam.buyer@example.com","email_marketing_consent_updated_at":"2026-11-20T10:00:00.000Z","first_name":"Sam","full_name":"Sam Buyer","id":"cust_001","last_name":"Buyer","phone":"+15551234567"}}
