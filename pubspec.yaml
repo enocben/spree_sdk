@@ -1,5 +1,5 @@
 name: spree_sdk
-description: A starting point for Dart libraries or applications.
+description: A strongly typed Dart SDK for the Spree Commerce Store API, for Dart and Flutter applications.
 version: 1.0.0
 license: MIT
 repository: https://github.com/enocben/spree_sdk
