@@ -33,6 +33,7 @@ library;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'params_checkout.freezed.dart';
+part 'params_checkout.g.dart';
 
 /// Parameters for `PATCH /carts/{id}`.
 ///
@@ -44,24 +45,30 @@ abstract class UpdateCartParams with _$UpdateCartParams {
   const UpdateCartParams._();
 
   /// Creates cart-update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory UpdateCartParams({
-    String? email,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) String? email,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _UpdateCartParams;
 
   /// Customer email for the cart, when set.
-  @override
   @override
   String? get email;
 
   /// Additional server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
-    if (email != null) 'email': email,
+    ..._$UpdateCartParamsToJson(this as _UpdateCartParams),
     ...extra,
   };
 }
@@ -76,31 +83,35 @@ abstract class AddLineItemParams with _$AddLineItemParams {
   const AddLineItemParams._();
 
   /// Creates line-item creation parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AddLineItemParams({
-    required String variantId,
-    required int quantity,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String variantId,
+    @JsonKey(includeIfNull: false) required int quantity,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _AddLineItemParams;
 
   /// Variant to add to the cart.
-  @override
   @override
   String get variantId;
 
   /// Quantity to add.
   @override
-  @override
   int get quantity;
 
   /// Additional server fields, forwarded verbatim (see file docs).
-  @override
   @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
-    'variant_id': variantId,
-    'quantity': quantity,
+    ..._$AddLineItemParamsToJson(this as _AddLineItemParams),
     ...extra,
   };
 }
@@ -115,24 +126,30 @@ abstract class UpdateLineItemParams with _$UpdateLineItemParams {
   const UpdateLineItemParams._();
 
   /// Creates line-item update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory UpdateLineItemParams({
-    int? quantity,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) int? quantity,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _UpdateLineItemParams;
 
   /// New quantity, when set.
-  @override
   @override
   int? get quantity;
 
   /// Additional server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
   Map<String, Object?> toJson() => <String, Object?>{
-    if (quantity != null) 'quantity': quantity,
+    ..._$UpdateLineItemParamsToJson(this as _UpdateLineItemParams),
     ...extra,
   };
 }
@@ -148,17 +165,27 @@ abstract class CreatePaymentParams with _$CreatePaymentParams {
   const CreatePaymentParams._();
 
   /// Creates direct-payment parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory CreatePaymentParams({
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _CreatePaymentParams;
 
   /// Server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
-  Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$CreatePaymentParamsToJson(this as _CreatePaymentParams),
+    ...extra,
+  };
 }
 
 /// Parameters for `POST /carts/{id}/payment_sessions`.
@@ -171,17 +198,27 @@ abstract class CreatePaymentSessionParams with _$CreatePaymentSessionParams {
   const CreatePaymentSessionParams._();
 
   /// Creates payment-session creation parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory CreatePaymentSessionParams({
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _CreatePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
-  Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$CreatePaymentSessionParamsToJson(this as _CreatePaymentSessionParams),
+    ...extra,
+  };
 }
 
 /// Parameters for `PATCH /carts/{id}/payment_sessions/{id}`.
@@ -194,17 +231,27 @@ abstract class UpdatePaymentSessionParams with _$UpdatePaymentSessionParams {
   const UpdatePaymentSessionParams._();
 
   /// Creates payment-session update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory UpdatePaymentSessionParams({
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _UpdatePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
-  Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$UpdatePaymentSessionParamsToJson(this as _UpdatePaymentSessionParams),
+    ...extra,
+  };
 }
 
 /// Parameters for `PATCH /carts/{id}/payment_sessions/{id}/complete`.
@@ -218,17 +265,29 @@ abstract class CompletePaymentSessionParams
   const CompletePaymentSessionParams._();
 
   /// Creates payment-session completion parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory CompletePaymentSessionParams({
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _CompletePaymentSessionParams;
 
   /// Server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
-  Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$CompletePaymentSessionParamsToJson(
+      this as _CompletePaymentSessionParams,
+    ),
+    ...extra,
+  };
 }
 
 /// Parameters for `PATCH /carts/{id}/fulfillments/{id}`.
@@ -241,15 +300,25 @@ abstract class UpdateFulfillmentParams with _$UpdateFulfillmentParams {
   const UpdateFulfillmentParams._();
 
   /// Creates fulfillment-update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory UpdateFulfillmentParams({
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _UpdateFulfillmentParams;
 
   /// Server fields, forwarded verbatim (see file docs).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes these parameters to the request body.
-  Map<String, Object?> toJson() => Map<String, Object?>.from(extra);
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$UpdateFulfillmentParamsToJson(this as _UpdateFulfillmentParams),
+    ...extra,
+  };
 }

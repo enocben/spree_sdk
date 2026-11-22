@@ -24,12 +24,14 @@ library;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'meta.freezed.dart';
+part 'meta.g.dart';
 
 /// ISO 3166-1 alpha-2 country code, as Spree accepts it.
 ///
 /// Source: `packages/core/src/code-lists.generated.ts` (`CountryCode`, 240 values).
 /// Reserved-word collisions use descriptive names (`AS` → [americanSamoa],
 /// `DO` → [dominicanRepublic], `IN` → [india], `IS` → [iceland]).
+@JsonEnum(valueField: 'value')
 enum CountryCode {
   /// Wire value `AD`.
   ad('AD'),
@@ -778,6 +780,7 @@ enum CountryCode {
 ///
 /// Source: `packages/core/src/code-lists.generated.ts` (`CurrencyCode`,
 /// 178 values). `TRY` → [turkishLira] (`try` is a Dart reserved word).
+@JsonEnum(valueField: 'value')
 enum CurrencyCode {
   /// Wire value `AED`.
   aed('AED'),
@@ -1340,6 +1343,7 @@ enum CurrencyCode {
 ///
 /// Source: `packages/core/src/code-lists.generated.ts` (`LocaleCode`,
 /// 202 values). `as` → [assamese], `is` → [icelandic] (reserved words).
+@JsonEnum(valueField: 'value')
 enum LocaleCode {
   /// Wire value `aa`.
   aa('aa'),
@@ -1973,6 +1977,7 @@ enum LocaleCode {
 /// Weight unit of variant dimensions.
 ///
 /// Source: `packages/core/src/code-lists.generated.ts` (`WeightUnit`).
+@JsonEnum(valueField: 'value')
 enum WeightUnit {
   /// Wire value `g`.
   g('g'),
@@ -2013,6 +2018,7 @@ enum WeightUnit {
 ///
 /// Source: `packages/core/src/code-lists.generated.ts` (`DimensionUnit`).
 /// `in` → [inch] (`in` is a Dart reserved word).
+@JsonEnum(valueField: 'value')
 enum DimensionUnit {
   /// Wire value `mm`.
   mm('mm'),
@@ -2053,6 +2059,7 @@ enum DimensionUnit {
 ///
 /// Source: `packages/sdk/src/types/generated/Variant.ts` (`PurchaseUnit`),
 /// values `packages/core/src/enums.generated.ts` (`PURCHASE_UNITS`).
+@JsonEnum(valueField: 'value')
 enum PurchaseUnit {
   /// Wire value `unit`.
   unit('unit'),
@@ -2087,6 +2094,7 @@ enum PurchaseUnit {
 ///
 /// Source: `packages/sdk/src/types/generated/Media.ts` (`MediaType`),
 /// values `packages/core/src/enums.generated.ts` (`MEDIA_TYPES`).
+@JsonEnum(valueField: 'value')
 enum MediaType {
   /// Wire value `image`.
   image('image'),
@@ -2124,6 +2132,7 @@ enum MediaType {
 ///
 /// Source: `packages/sdk/src/types/generated/OptionType.ts` (`OptionTypeKind`),
 /// values `packages/core/src/enums.generated.ts` (`OPTION_TYPE_KINDS`).
+@JsonEnum(valueField: 'value')
 enum OptionTypeKind {
   /// Wire value `dropdown`.
   dropdown('dropdown'),
@@ -2162,6 +2171,7 @@ enum OptionTypeKind {
 /// Source: `packages/sdk/src/types/generated/Collection.ts`
 /// (`CollectionSortOrder`), values `packages/core/src/enums.generated.ts`
 /// (`COLLECTION_SORT_ORDERS`).
+@JsonEnum(valueField: 'value')
 enum CollectionSortOrder {
   /// Wire value `manual`.
   manual('manual'),
@@ -2216,6 +2226,7 @@ enum CollectionSortOrder {
 /// Source: `packages/sdk/src/types/generated/AddressOwner.ts`
 /// (`AddressOwnerType`), values `packages/core/src/enums.generated.ts`
 /// (`ADDRESS_OWNER_TYPES`). Built-ins; extensions may add more.
+@JsonEnum(valueField: 'value')
 enum AddressOwnerType {
   /// Wire value `customer`.
   customer('customer'),
@@ -2255,6 +2266,7 @@ enum AddressOwnerType {
 /// Source: `packages/sdk/src/types/generated/Fulfillment.ts`
 /// (`FulfillmentStatus`), values `packages/core/src/enums.generated.ts`
 /// (`FULFILLMENT_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum FulfillmentStatus {
   /// Wire value `unfulfilled`.
   unfulfilled('unfulfilled'),
@@ -2298,6 +2310,7 @@ enum FulfillmentStatus {
 /// (`FulfillmentType`), values `packages/core/src/enums.generated.ts`
 /// (`FULFILLMENT_TYPES`). Matches the `fulfillment_type` query of
 /// `GET /delivery_methods` (contract §3).
+@JsonEnum(valueField: 'value')
 enum FulfillmentType {
   /// Wire value `shipping`.
   shipping('shipping'),
@@ -2340,6 +2353,7 @@ enum FulfillmentType {
 ///
 /// Source: `packages/sdk/src/types/generated/Delivery.ts` (`DeliveryStatus`),
 /// values `packages/core/src/enums.generated.ts` (`DELIVERY_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum DeliveryStatus {
   /// Wire value `pending`.
   pending('pending'),
@@ -2393,6 +2407,7 @@ enum DeliveryStatus {
 /// Source: `packages/sdk/src/types/generated/Payment.ts` (`PaymentStatus`),
 /// values `packages/core/src/enums.generated.ts` (`PAYMENT_STATUSES`).
 /// `voided` carries the wire value `void` (`void` is a Dart reserved word).
+@JsonEnum(valueField: 'value')
 enum PaymentStatus {
   /// Wire value `checkout`.
   checkout('checkout'),
@@ -2446,6 +2461,7 @@ enum PaymentStatus {
 /// Source: `packages/sdk/src/types/generated/Payment.ts`
 /// (`PaymentSourceType`), values `packages/core/src/enums.generated.ts`
 /// (`PAYMENT_SOURCE_TYPES`).
+@JsonEnum(valueField: 'value')
 enum PaymentSourceType {
   /// Wire value `credit_card`.
   creditCard('credit_card'),
@@ -2485,6 +2501,7 @@ enum PaymentSourceType {
 /// Source: `packages/sdk/src/types/generated/PaymentSession.ts`
 /// (`PaymentSessionStatus`), values `packages/core/src/enums.generated.ts`
 /// (`PAYMENT_SESSION_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum PaymentSessionStatus {
   /// Wire value `pending`.
   pending('pending'),
@@ -2533,6 +2550,7 @@ enum PaymentSessionStatus {
 /// Source: `packages/sdk/src/types/generated/Order.ts`
 /// (`OrderFulfillmentStatus`), values `packages/core/src/enums.generated.ts`
 /// (`ORDER_FULFILLMENT_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum OrderFulfillmentStatus {
   /// Wire value `backorder`.
   backorder('backorder'),
@@ -2590,6 +2608,7 @@ enum OrderFulfillmentStatus {
 /// Source: `packages/sdk/src/types/generated/Order.ts`
 /// (`OrderPaymentStatus`), values `packages/core/src/enums.generated.ts`
 /// (`ORDER_PAYMENT_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum OrderPaymentStatus {
   /// Wire value `none`.
   none('none'),
@@ -2643,6 +2662,7 @@ enum OrderPaymentStatus {
 ///
 /// Source: `packages/sdk/src/types/generated/GiftCard.ts` (`GiftCardStatus`),
 /// values `packages/core/src/enums.generated.ts` (`GIFT_CARD_STATUSES`).
+@JsonEnum(valueField: 'value')
 enum GiftCardStatus {
   /// Wire value `active`.
   active('active'),
@@ -2686,6 +2706,7 @@ enum GiftCardStatus {
 ///
 /// Source: `packages/sdk/src/types/generated/Fee.ts` (`FeeKind`),
 /// values `packages/core/src/enums.generated.ts` (`FEE_KINDS`).
+@JsonEnum(valueField: 'value')
 enum FeeKind {
   /// Wire value `surcharge`.
   surcharge('surcharge'),
@@ -2734,6 +2755,7 @@ enum FeeKind {
 ///
 /// Source: `packages/sdk/src/types/generated/Discount.ts` (`DiscountKind`),
 /// values `packages/core/src/enums.generated.ts` (`DISCOUNT_KINDS`).
+@JsonEnum(valueField: 'value')
 enum DiscountKind {
   /// Wire value `promotion`.
   promotion('promotion'),
@@ -2769,6 +2791,7 @@ enum DiscountKind {
 /// Source: `packages/sdk/src/types/generated/ProductFilterAvailabilityOption.ts`
 /// (`StockAvailability`), values `packages/core/src/enums.generated.ts`
 /// (`STOCK_AVAILABILITIES`).
+@JsonEnum(valueField: 'value')
 enum StockAvailability {
   /// Wire value `in_stock`.
   inStock('in_stock'),
@@ -2803,6 +2826,7 @@ enum StockAvailability {
 /// Data type of a merchant-defined custom field.
 ///
 /// Source: `packages/sdk/src/types/generated/CustomField.ts` (`field_type`).
+@JsonEnum(valueField: 'value')
 enum CustomFieldType {
   /// Wire value `short_text`.
   shortText('short_text'),
@@ -2849,6 +2873,7 @@ enum CustomFieldType {
 /// Discriminator of the product-filters union.
 ///
 /// Source: `packages/sdk/src/types/generated/ProductFilter*.ts` (`type`).
+@JsonEnum(valueField: 'value')
 enum ProductFilterType {
   /// Wire value `price_range`.
   priceRange('price_range'),
@@ -2889,14 +2914,16 @@ enum ProductFilterType {
 /// Data type of a merchant-defined custom field.
 ///
 /// Source: `packages/sdk/src/types/generated/CustomField.ts`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class CustomField with _$CustomField {
   const CustomField._();
 
   /// Creates a custom field value.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory CustomField({
     required String id,
     required String label,
+    @JsonKey(unknownEnumValue: CustomFieldType.unknown)
     required CustomFieldType fieldType,
     required String key,
     Object? value,
@@ -2904,173 +2931,126 @@ abstract class CustomField with _$CustomField {
 
   /// Parses a custom field from its JSON shape. Never throws on the
   /// `field_type` value: unrecognized strings map to [CustomFieldType.unknown].
-  factory CustomField.fromJson(Map<String, Object?> json) => CustomField(
-    id: json['id'] as String,
-    label: json['label'] as String,
-    fieldType: CustomFieldType.fromJson(json['field_type']),
-    key: json['key'] as String,
-    value: json['value'],
-  );
+  factory CustomField.fromJson(Map<String, Object?> json) =>
+      _$CustomFieldFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Merchant-facing label.
   @override
-  @override
   String get label;
 
   /// Declared data type of [value].
-  @override
   @override
   CustomFieldType get fieldType;
 
   /// Merchant-defined key.
   @override
-  @override
   String get key;
 
   /// The raw value; shape depends on [fieldType] (`json` may be any JSON).
   @override
-  @override
   Object? get value;
 
   /// Serializes this custom field back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'label': label,
-    'field_type': fieldType.toJson(),
-    'key': key,
-    'value': value,
-  };
 }
 
 /// A state / province of a country.
 ///
 /// Source: `packages/sdk/src/types/generated/State.ts`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class State with _$State {
   const State._();
 
   /// Creates a state.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory State({required String abbr, required String name}) = _State;
 
   /// Parses a state from its JSON shape.
-  factory State.fromJson(Map<String, Object?> json) =>
-      State(abbr: json['abbr'] as String, name: json['name'] as String);
+  factory State.fromJson(Map<String, Object?> json) => _$StateFromJson(json);
 
   /// ISO 3166-2 subdivision code without country prefix (e.g. `CA`).
-  @override
   @override
   String get abbr;
 
   /// State name.
   @override
-  @override
   String get name;
 
   /// Serializes this state back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'abbr': abbr,
-    'name': name,
-  };
 }
 
 /// A country the store operates in.
 ///
 /// Source: `packages/sdk/src/types/generated/Country.ts`;
 /// SPEC `store.yaml#/components/schemas/Country`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Country with _$Country {
   const Country._();
 
   /// Creates a country.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Country({
-    required CountryCode iso,
+    @JsonKey(unknownEnumValue: CountryCode.unknown) required CountryCode iso,
     required String iso3,
     required String name,
     required bool statesRequired,
     required bool zipcodeRequired,
-    List<State>? states,
+    @JsonKey(includeIfNull: false) List<State>? states,
     Market? market,
   }) = _Country;
 
   /// Parses a country from its JSON shape.
-  factory Country.fromJson(Map<String, Object?> json) => Country(
-    iso: CountryCode.fromJson(json['iso']),
-    iso3: json['iso3'] as String,
-    name: json['name'] as String,
-    statesRequired: json['states_required'] as bool,
-    zipcodeRequired: json['zipcode_required'] as bool,
-    states: (json['states'] as List?)
-        ?.map((e) => State.fromJson(e as Map<String, Object?>))
-        .toList(),
-    market: json['market'] == null
-        ? null
-        : Market.fromJson(json['market'] as Map<String, Object?>),
-  );
+  factory Country.fromJson(Map<String, Object?> json) =>
+      _$CountryFromJson(json);
 
   /// ISO 3166-1 alpha-2 code.
-  @override
   @override
   CountryCode get iso;
 
   /// ISO 3166-1 alpha-3 code.
-  @override
   @override
   String get iso3;
 
   /// Country name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
   @override
-  @override
   String get name;
 
   /// Whether an address in this country requires a state.
   @override
-  @override
   bool get statesRequired;
 
   /// Whether an address in this country requires a postal code.
-  @override
   @override
   bool get zipcodeRequired;
 
   /// Predefined states, when the country has them. Absent (`null`) means the
   /// association was not expanded; an empty list means it has no states.
   @override
-  @override
   List<State>? get states;
 
   /// Market this country resolves to, when expanded.
   @override
-  @override
   Market? get market;
 
   /// Serializes this country back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'iso': iso.toJson(),
-    'iso3': iso3,
-    'name': name,
-    'states_required': statesRequired,
-    'zipcode_required': zipcodeRequired,
-    if (states != null) 'states': states!.map((e) => e.toJson()).toList(),
-    'market': market?.toJson(),
-  };
 }
 
 /// A currency the store prices in.
 ///
 /// Source: `packages/sdk/src/types/generated/Currency.ts`;
 /// SPEC `store.yaml#/components/schemas/Currency`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Currency with _$Currency {
   const Currency._();
 
   /// Creates a currency.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Currency({
+    @JsonKey(unknownEnumValue: CurrencyCode.unknown)
     required CurrencyCode isoCode,
     required String name,
     required String symbol,
@@ -3078,49 +3058,35 @@ abstract class Currency with _$Currency {
   }) = _Currency;
 
   /// Parses a currency from its JSON shape.
-  factory Currency.fromJson(Map<String, Object?> json) => Currency(
-    isoCode: CurrencyCode.fromJson(json['iso_code']),
-    name: json['name'] as String,
-    symbol: json['symbol'] as String,
-    decimalPlaces: (json['decimal_places'] as num).toInt(),
-  );
+  factory Currency.fromJson(Map<String, Object?> json) =>
+      _$CurrencyFromJson(json);
 
   /// ISO 4217 code.
-  @override
   @override
   CurrencyCode get isoCode;
 
   /// Currency name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
   @override
-  @override
   String get name;
 
   /// Currency symbol. Deprecated upstream in favor of `Intl` number formatting
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
   @override
-  @override
   String get symbol;
 
   /// Number of decimal places for money in this currency.
   @override
-  @override
   int get decimalPlaces;
 
   /// Serializes this currency back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'iso_code': isoCode.toJson(),
-    'name': name,
-    'symbol': symbol,
-    'decimal_places': decimalPlaces,
-  };
 }
 
 /// A locale the storefront is translated into.
 ///
 /// Source: `packages/sdk/src/types/generated/Locale.ts`;
 /// SPEC `store.yaml#/components/schemas/Locale`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class SpreeLocale with _$SpreeLocale {
   const SpreeLocale._();
 
@@ -3128,126 +3094,91 @@ abstract class SpreeLocale with _$SpreeLocale {
   ///
   /// Named [SpreeLocale] (rather than `Locale`) so the core package stays
   /// independent of Flutter's `Locale` (AGENTS.md §4/§7).
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory SpreeLocale({
-    required LocaleCode code,
+    @JsonKey(unknownEnumValue: LocaleCode.unknown) required LocaleCode code,
     required String name,
-    required bool isDefault,
+    @JsonKey(name: 'default') required bool isDefault,
     required bool rtl,
   }) = _SpreeLocale;
 
   /// Parses a locale from its JSON shape.
-  factory SpreeLocale.fromJson(Map<String, Object?> json) => SpreeLocale(
-    code: LocaleCode.fromJson(json['code']),
-    name: json['name'] as String,
-    isDefault: json['default'] as bool,
-    rtl: json['rtl'] as bool,
-  );
+  factory SpreeLocale.fromJson(Map<String, Object?> json) =>
+      _$SpreeLocaleFromJson(json);
 
   /// Locale code.
-  @override
   @override
   LocaleCode get code;
 
   /// Locale name. Deprecated upstream in favor of `Intl` display names
   /// (removal slated for 6.5) but still serialized; kept as a plain field.
   @override
-  @override
   String get name;
 
   /// Whether this is the store's default locale.
-  @override
   @override
   bool get isDefault;
 
   /// Whether this locale reads right-to-left.
   @override
-  @override
   bool get rtl;
 
   /// Serializes this locale back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'code': code.toJson(),
-    'name': name,
-    'default': isDefault,
-    'rtl': rtl,
-  };
 }
 
 /// A sales channel of the store.
 ///
 /// Source: `packages/sdk/src/types/generated/Channel.ts`;
 /// SPEC `store.yaml#/components/schemas/Channel`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Channel with _$Channel {
   const Channel._();
 
   /// Creates a channel.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Channel({
     required String id,
     required String name,
     required String code,
     required bool active,
-    required bool isDefault,
+    @JsonKey(name: 'default') required bool isDefault,
     required String storefrontAccess,
     required bool guestCheckout,
   }) = _Channel;
 
   /// Parses a channel from its JSON shape.
-  factory Channel.fromJson(Map<String, Object?> json) => Channel(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    code: json['code'] as String,
-    active: json['active'] as bool,
-    isDefault: json['default'] as bool,
-    storefrontAccess: json['storefront_access'] as String,
-    guestCheckout: json['guest_checkout'] as bool,
-  );
+  factory Channel.fromJson(Map<String, Object?> json) =>
+      _$ChannelFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Channel name.
   @override
-  @override
   String get name;
 
   /// Channel code (sent as `X-Spree-Channel`).
-  @override
   @override
   String get code;
 
   /// Whether the channel accepts traffic.
   @override
-  @override
   bool get active;
 
   /// Whether this is the store's default channel.
-  @override
   @override
   bool get isDefault;
 
   /// Storefront access level, as reported by the API (open string).
   @override
-  @override
   String get storefrontAccess;
 
   /// Whether guest checkout is allowed on this channel.
   @override
-  @override
   bool get guestCheckout;
 
   /// Serializes this channel back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'name': name,
-    'code': code,
-    'active': active,
-    'default': isDefault,
-    'storefront_access': storefrontAccess,
-    'guest_checkout': guestCheckout,
-  };
 }
 
 /// Store-level public settings.
@@ -3255,11 +3186,12 @@ abstract class Channel with _$Channel {
 /// Source: `packages/sdk/src/types/generated/Store.ts` (6.0.5 adds
 /// `meta_keywords`, `logo_url`, socials and `customer_support_email`);
 /// SPEC `store.yaml#/components/schemas/Store`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Store with _$Store {
   const Store._();
 
   /// Creates the store settings record.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Store({
     required String id,
     required String name,
@@ -3274,93 +3206,61 @@ abstract class Store with _$Store {
   }) = _Store;
 
   /// Parses the store settings from their JSON shape.
-  factory Store.fromJson(Map<String, Object?> json) => Store(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    seoTitle: json['seo_title'] as String?,
-    metaDescription: json['meta_description'] as String?,
-    metaKeywords: json['meta_keywords'] as String?,
-    facebook: json['facebook'] as String?,
-    twitter: json['twitter'] as String?,
-    instagram: json['instagram'] as String?,
-    customerSupportEmail: json['customer_support_email'] as String?,
-    logoUrl: json['logo_url'] as String?,
-  );
+  factory Store.fromJson(Map<String, Object?> json) => _$StoreFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Store name.
   @override
-  @override
   String get name;
 
   /// SEO title override, when set.
-  @override
   @override
   String? get seoTitle;
 
   /// Meta description, when set.
   @override
-  @override
   String? get metaDescription;
 
   /// Meta keywords, when set.
-  @override
   @override
   String? get metaKeywords;
 
   /// Facebook page, as entered by the merchant: a handle or a full URL.
   @override
-  @override
   String? get facebook;
 
   /// X (Twitter) account, as entered by the merchant: a handle or a full URL.
-  @override
   @override
   String? get twitter;
 
   /// Instagram account, as entered by the merchant: a handle or a full URL.
   @override
-  @override
   String? get instagram;
 
   /// Customer support email, when set.
-  @override
   @override
   String? get customerSupportEmail;
 
   /// Logo URL, when set.
   @override
-  @override
   String? get logoUrl;
 
   /// Serializes the store settings back to their JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'name': name,
-    'seo_title': seoTitle,
-    'meta_description': metaDescription,
-    'meta_keywords': metaKeywords,
-    'facebook': facebook,
-    'twitter': twitter,
-    'instagram': instagram,
-    'customer_support_email': customerSupportEmail,
-    'logo_url': logoUrl,
-  };
 }
 
 /// A store/seller policy page (terms, returns, …).
 ///
 /// Source: `packages/sdk/src/types/generated/Policy.ts`;
 /// SPEC `store.yaml#/components/schemas/Policy`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Policy with _$Policy {
   const Policy._();
 
   /// Creates a policy.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Policy({
     required String id,
     required String name,
@@ -3371,161 +3271,103 @@ abstract class Policy with _$Policy {
   }) = _Policy;
 
   /// Parses a policy from its JSON shape.
-  factory Policy.fromJson(Map<String, Object?> json) => Policy(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    slug: json['slug'] as String,
-    body: json['body'] as String?,
-    bodyHtml: json['body_html'] as String?,
-    updatedAt: json['updated_at'] as String,
-  );
+  factory Policy.fromJson(Map<String, Object?> json) => _$PolicyFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Policy name.
   @override
-  @override
   String get name;
 
   /// URL slug.
-  @override
   @override
   String get slug;
 
   /// Plain-text body, when set.
   @override
-  @override
   String? get body;
 
   /// Rendered HTML body, when set.
-  @override
   @override
   String? get bodyHtml;
 
   /// Last update timestamp, as reported by the API (kept as-is).
   @override
-  @override
   String get updatedAt;
 
   /// Serializes this policy back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'name': name,
-    'slug': slug,
-    'body': body,
-    'body_html': bodyHtml,
-    'updated_at': updatedAt,
-  };
 }
 
 /// A market: currency + locales + countries served together.
 ///
 /// Source: `packages/sdk/src/types/generated/Market.ts`;
 /// SPEC `store.yaml#/components/schemas/Market`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class Market with _$Market {
   const Market._();
 
   /// Creates a market.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory Market({
     required String id,
     required String name,
+    @JsonKey(unknownEnumValue: CurrencyCode.unknown)
     required CurrencyCode currency,
+    @JsonKey(unknownEnumValue: LocaleCode.unknown)
     required LocaleCode defaultLocale,
     required bool taxInclusive,
-    required bool isDefault,
+    @JsonKey(name: 'default') required bool isDefault,
     required List<CountryCode> countryCodes,
     required List<String> countryIsos,
     required List<LocaleCode> supportedLocales,
-    List<Country>? countries,
+    @JsonKey(includeIfNull: false) List<Country>? countries,
   }) = _Market;
 
   /// Parses a market from its JSON shape.
-  factory Market.fromJson(Map<String, Object?> json) => Market(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    currency: CurrencyCode.fromJson(json['currency']),
-    defaultLocale: LocaleCode.fromJson(json['default_locale']),
-    taxInclusive: json['tax_inclusive'] as bool,
-    isDefault: json['default'] as bool,
-    countryCodes: (json['country_codes'] as List)
-        .map(CountryCode.fromJson)
-        .toList(),
-    countryIsos: (json['country_isos'] as List).cast<String>(),
-    supportedLocales: (json['supported_locales'] as List)
-        .map(LocaleCode.fromJson)
-        .toList(),
-    countries: (json['countries'] as List?)
-        ?.map((e) => Country.fromJson(e as Map<String, Object?>))
-        .toList(),
-  );
+  factory Market.fromJson(Map<String, Object?> json) => _$MarketFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Market name.
   @override
-  @override
   String get name;
 
   /// Pricing currency of the market.
-  @override
   @override
   CurrencyCode get currency;
 
   /// Default locale of the market.
   @override
-  @override
   LocaleCode get defaultLocale;
 
   /// Whether prices of this market already include tax.
-  @override
   @override
   bool get taxInclusive;
 
   /// Whether this is the store's default market.
   @override
-  @override
   bool get isDefault;
 
   /// Country codes served by this market.
-  @override
   @override
   List<CountryCode> get countryCodes;
 
   /// Legacy country ISOs. Deprecated upstream in favor of [countryCodes]
   /// (removal slated for 6.5) but still serialized; kept as plain strings.
   @override
-  @override
   List<String> get countryIsos;
 
   /// Locales supported by this market.
-  @override
   @override
   List<LocaleCode> get supportedLocales;
 
   /// Expanded countries, when the association was expanded.
   @override
-  @override
   List<Country>? get countries;
 
   /// Serializes this market back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'name': name,
-    'currency': currency.toJson(),
-    'default_locale': defaultLocale.toJson(),
-    'tax_inclusive': taxInclusive,
-    'default': isDefault,
-    'country_codes': countryCodes.map((e) => e.toJson()).toList(),
-    'country_isos': countryIsos,
-    'supported_locales': supportedLocales.map((e) => e.toJson()).toList(),
-    if (countries != null)
-      'countries': countries!.map((e) => e.toJson()).toList(),
-  };
 }

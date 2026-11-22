@@ -12,16 +12,19 @@ part of 'cart.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$AddressOwner {
 
- String get id; AddressOwnerType get type; String? get name;
+ String get id;@JsonKey(unknownEnumValue: AddressOwnerType.unknown) AddressOwnerType get type; String? get name;
 /// Create a copy of AddressOwner
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $AddressOwnerCopyWith<AddressOwner> get copyWith => _$AddressOwnerCopyWithImpl<AddressOwner>(this as AddressOwner, _$identity);
 
+  /// Serializes this AddressOwner to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressOwner&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as AddressOwner;
@@ -51,7 +54,7 @@ abstract mixin class $AddressOwnerCopyWith<$Res>  {
   factory $AddressOwnerCopyWith(AddressOwner value, $Res Function(AddressOwner) _then) = _$AddressOwnerCopyWithImpl;
 @useResult
 $Res call({
- String id, AddressOwnerType type, String? name
+ String id,@JsonKey(unknownEnumValue: AddressOwnerType.unknown) AddressOwnerType type, String? name
 });
 
 
@@ -158,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  AddressOwnerType type,  String? name)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: AddressOwnerType.unknown)  AddressOwnerType type,  String? name)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AddressOwner() when $default != null:
 return $default(_that.id,_that.type,_that.name);case _:
@@ -179,7 +182,7 @@ return $default(_that.id,_that.type,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  AddressOwnerType type,  String? name)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: AddressOwnerType.unknown)  AddressOwnerType type,  String? name)  $default,) {final _that = this;
 switch (_that) {
 case _AddressOwner():
 return $default(_that.id,_that.type,_that.name);case _:
@@ -199,7 +202,7 @@ return $default(_that.id,_that.type,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  AddressOwnerType type,  String? name)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(unknownEnumValue: AddressOwnerType.unknown)  AddressOwnerType type,  String? name)?  $default,) {final _that = this;
 switch (_that) {
 case _AddressOwner() when $default != null:
 return $default(_that.id,_that.type,_that.name);case _:
@@ -212,13 +215,13 @@ return $default(_that.id,_that.type,_that.name);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _AddressOwner extends AddressOwner {
-  const _AddressOwner({required this.id, required this.type, this.name}): super._();
-  
+  const _AddressOwner({required this.id, @JsonKey(unknownEnumValue: AddressOwnerType.unknown) required this.type, this.name}): super._();
+  factory _AddressOwner.fromJson(Map<String, dynamic> json) => _$AddressOwnerFromJson(json);
 
 @override final  String id;
-@override final  AddressOwnerType type;
+@override@JsonKey(unknownEnumValue: AddressOwnerType.unknown) final  AddressOwnerType type;
 @override final  String? name;
 
 /// Create a copy of AddressOwner
@@ -227,14 +230,17 @@ class _AddressOwner extends AddressOwner {
 @pragma('vm:prefer-inline')
 _$AddressOwnerCopyWith<_AddressOwner> get copyWith => __$AddressOwnerCopyWithImpl<_AddressOwner>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AddressOwnerToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressOwner&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.name, name) || other.name == name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,type,name);
@@ -253,7 +259,7 @@ abstract mixin class _$AddressOwnerCopyWith<$Res> implements $AddressOwnerCopyWi
   factory _$AddressOwnerCopyWith(_AddressOwner value, $Res Function(_AddressOwner) _then) = __$AddressOwnerCopyWithImpl;
 @override @useResult
 $Res call({
- String id, AddressOwnerType type, String? name
+ String id,@JsonKey(unknownEnumValue: AddressOwnerType.unknown) AddressOwnerType type, String? name
 });
 
 
@@ -282,16 +288,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$Address {
 
- String get id; String? get label; String? get firstName; String? get lastName; String get fullName; String? get address1; String? get address2; String? get postalCode; String? get city; String? get phone; String? get company; String get countryName; CountryCode get countryCode; String? get stateText; String? get stateCode; bool get quickCheckout; bool get isDefaultBilling; bool get isDefaultShipping; String? get stateAbbr; String get countryIso; String? get stateName; AddressOwner? get owner; List<CustomField>? get customFields;
+ String get id; String? get label; String? get firstName; String? get lastName; String get fullName; String? get address1; String? get address2; String? get postalCode; String? get city; String? get phone; String? get company; String get countryName;@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode get countryCode; String? get stateText; String? get stateCode; bool get quickCheckout; bool get isDefaultBilling; bool get isDefaultShipping; String? get stateAbbr; String get countryIso; String? get stateName; AddressOwner? get owner;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Address
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $AddressCopyWith<Address> get copyWith => _$AddressCopyWithImpl<Address>(this as Address, _$identity);
 
+  /// Serializes this Address to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -300,7 +309,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Address&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.firstName, _this.firstName) || other.firstName == _this.firstName)&&(identical(other.lastName, _this.lastName) || other.lastName == _this.lastName)&&(identical(other.fullName, _this.fullName) || other.fullName == _this.fullName)&&(identical(other.address1, _this.address1) || other.address1 == _this.address1)&&(identical(other.address2, _this.address2) || other.address2 == _this.address2)&&(identical(other.postalCode, _this.postalCode) || other.postalCode == _this.postalCode)&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.company, _this.company) || other.company == _this.company)&&(identical(other.countryName, _this.countryName) || other.countryName == _this.countryName)&&(identical(other.countryCode, _this.countryCode) || other.countryCode == _this.countryCode)&&(identical(other.stateText, _this.stateText) || other.stateText == _this.stateText)&&(identical(other.stateCode, _this.stateCode) || other.stateCode == _this.stateCode)&&(identical(other.quickCheckout, _this.quickCheckout) || other.quickCheckout == _this.quickCheckout)&&(identical(other.isDefaultBilling, _this.isDefaultBilling) || other.isDefaultBilling == _this.isDefaultBilling)&&(identical(other.isDefaultShipping, _this.isDefaultShipping) || other.isDefaultShipping == _this.isDefaultShipping)&&(identical(other.stateAbbr, _this.stateAbbr) || other.stateAbbr == _this.stateAbbr)&&(identical(other.countryIso, _this.countryIso) || other.countryIso == _this.countryIso)&&(identical(other.stateName, _this.stateName) || other.stateName == _this.stateName)&&(identical(other.owner, _this.owner) || other.owner == _this.owner)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Address;
@@ -321,7 +330,7 @@ abstract mixin class $AddressCopyWith<$Res>  {
   factory $AddressCopyWith(Address value, $Res Function(Address) _then) = _$AddressCopyWithImpl;
 @useResult
 $Res call({
- String id, String? label, String? firstName, String? lastName, String fullName, String? address1, String? address2, String? postalCode, String? city, String? phone, String? company, String countryName, CountryCode countryCode, String? stateText, String? stateCode, bool quickCheckout, bool isDefaultBilling, bool isDefaultShipping, String? stateAbbr, String countryIso, String? stateName, AddressOwner? owner, List<CustomField>? customFields
+ String id, String? label, String? firstName, String? lastName, String fullName, String? address1, String? address2, String? postalCode, String? city, String? phone, String? company, String countryName,@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode countryCode, String? stateText, String? stateCode, bool quickCheckout, bool isDefaultBilling, bool isDefaultShipping, String? stateAbbr, String countryIso, String? stateName, AddressOwner? owner,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -460,7 +469,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName,  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Address() when $default != null:
 return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullName,_that.address1,_that.address2,_that.postalCode,_that.city,_that.phone,_that.company,_that.countryName,_that.countryCode,_that.stateText,_that.stateCode,_that.quickCheckout,_that.isDefaultBilling,_that.isDefaultShipping,_that.stateAbbr,_that.countryIso,_that.stateName,_that.owner,_that.customFields);case _:
@@ -481,7 +490,7 @@ return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullNa
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName,  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Address():
 return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullName,_that.address1,_that.address2,_that.postalCode,_that.city,_that.phone,_that.company,_that.countryName,_that.countryCode,_that.stateText,_that.stateCode,_that.quickCheckout,_that.isDefaultBilling,_that.isDefaultShipping,_that.stateAbbr,_that.countryIso,_that.stateName,_that.owner,_that.customFields);case _:
@@ -501,7 +510,7 @@ return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullNa
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName,  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? label,  String? firstName,  String? lastName,  String fullName,  String? address1,  String? address2,  String? postalCode,  String? city,  String? phone,  String? company,  String countryName, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode countryCode,  String? stateText,  String? stateCode,  bool quickCheckout,  bool isDefaultBilling,  bool isDefaultShipping,  String? stateAbbr,  String countryIso,  String? stateName,  AddressOwner? owner, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Address() when $default != null:
 return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullName,_that.address1,_that.address2,_that.postalCode,_that.city,_that.phone,_that.company,_that.countryName,_that.countryCode,_that.stateText,_that.stateCode,_that.quickCheckout,_that.isDefaultBilling,_that.isDefaultShipping,_that.stateAbbr,_that.countryIso,_that.stateName,_that.owner,_that.customFields);case _:
@@ -514,10 +523,10 @@ return $default(_that.id,_that.label,_that.firstName,_that.lastName,_that.fullNa
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Address extends Address {
-  const _Address({required this.id, this.label, this.firstName, this.lastName, required this.fullName, this.address1, this.address2, this.postalCode, this.city, this.phone, this.company, required this.countryName, required this.countryCode, this.stateText, this.stateCode, required this.quickCheckout, required this.isDefaultBilling, required this.isDefaultShipping, this.stateAbbr, required this.countryIso, this.stateName, this.owner, this.customFields}): super._();
-  
+  const _Address({required this.id, this.label, this.firstName, this.lastName, required this.fullName, this.address1, this.address2, this.postalCode, this.city, this.phone, this.company, required this.countryName, @JsonKey(unknownEnumValue: CountryCode.unknown) required this.countryCode, this.stateText, this.stateCode, required this.quickCheckout, required this.isDefaultBilling, required this.isDefaultShipping, this.stateAbbr, required this.countryIso, this.stateName, this.owner, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 
 @override final  String id;
 @override final  String? label;
@@ -531,7 +540,7 @@ class _Address extends Address {
 @override final  String? phone;
 @override final  String? company;
 @override final  String countryName;
-@override final  CountryCode countryCode;
+@override@JsonKey(unknownEnumValue: CountryCode.unknown) final  CountryCode countryCode;
 @override final  String? stateText;
 @override final  String? stateCode;
 @override final  bool quickCheckout;
@@ -541,7 +550,7 @@ class _Address extends Address {
 @override final  String countryIso;
 @override final  String? stateName;
 @override final  AddressOwner? owner;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Address
 /// with the given fields replaced by the non-null parameter values.
@@ -549,14 +558,17 @@ class _Address extends Address {
 @pragma('vm:prefer-inline')
 _$AddressCopyWith<_Address> get copyWith => __$AddressCopyWithImpl<_Address>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AddressToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Address&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.address1, address1) || other.address1 == address1)&&(identical(other.address2, address2) || other.address2 == address2)&&(identical(other.postalCode, postalCode) || other.postalCode == postalCode)&&(identical(other.city, city) || other.city == city)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.company, company) || other.company == company)&&(identical(other.countryName, countryName) || other.countryName == countryName)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.stateText, stateText) || other.stateText == stateText)&&(identical(other.stateCode, stateCode) || other.stateCode == stateCode)&&(identical(other.quickCheckout, quickCheckout) || other.quickCheckout == quickCheckout)&&(identical(other.isDefaultBilling, isDefaultBilling) || other.isDefaultBilling == isDefaultBilling)&&(identical(other.isDefaultShipping, isDefaultShipping) || other.isDefaultShipping == isDefaultShipping)&&(identical(other.stateAbbr, stateAbbr) || other.stateAbbr == stateAbbr)&&(identical(other.countryIso, countryIso) || other.countryIso == countryIso)&&(identical(other.stateName, stateName) || other.stateName == stateName)&&(identical(other.owner, owner) || other.owner == owner)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,label,firstName,lastName,fullName,address1,address2,postalCode,city,phone,company,countryName,countryCode,stateText,stateCode,quickCheckout,isDefaultBilling,isDefaultShipping,stateAbbr,countryIso,stateName,owner,const DeepCollectionEquality().hash(customFields)]);
@@ -575,7 +587,7 @@ abstract mixin class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
   factory _$AddressCopyWith(_Address value, $Res Function(_Address) _then) = __$AddressCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? label, String? firstName, String? lastName, String fullName, String? address1, String? address2, String? postalCode, String? city, String? phone, String? company, String countryName, CountryCode countryCode, String? stateText, String? stateCode, bool quickCheckout, bool isDefaultBilling, bool isDefaultShipping, String? stateAbbr, String countryIso, String? stateName, AddressOwner? owner, List<CustomField>? customFields
+ String id, String? label, String? firstName, String? lastName, String fullName, String? address1, String? address2, String? postalCode, String? city, String? phone, String? company, String countryName,@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode countryCode, String? stateText, String? stateCode, bool quickCheckout, bool isDefaultBilling, bool isDefaultShipping, String? stateAbbr, String countryIso, String? stateName, AddressOwner? owner,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -636,6 +648,7 @@ $AddressOwnerCopyWith<$Res>? get owner {
 }
 }
 
+
 /// @nodoc
 mixin _$CartWarning {
 
@@ -646,6 +659,8 @@ mixin _$CartWarning {
 @pragma('vm:prefer-inline')
 $CartWarningCopyWith<CartWarning> get copyWith => _$CartWarningCopyWithImpl<CartWarning>(this as CartWarning, _$identity);
 
+  /// Serializes this CartWarning to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -654,7 +669,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is CartWarning&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.lineItemId, _this.lineItemId) || other.lineItemId == _this.lineItemId)&&(identical(other.variantId, _this.variantId) || other.variantId == _this.variantId)&&(identical(other.itemIndex, _this.itemIndex) || other.itemIndex == _this.itemIndex));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CartWarning;
@@ -838,10 +853,10 @@ return $default(_that.code,_that.message,_that.lineItemId,_that.variantId,_that.
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _CartWarning extends CartWarning {
   const _CartWarning({required this.code, required this.message, this.lineItemId, this.variantId, this.itemIndex}): super._();
-  
+  factory _CartWarning.fromJson(Map<String, dynamic> json) => _$CartWarningFromJson(json);
 
 @override final  String code;
 @override final  String message;
@@ -855,14 +870,17 @@ class _CartWarning extends CartWarning {
 @pragma('vm:prefer-inline')
 _$CartWarningCopyWith<_CartWarning> get copyWith => __$CartWarningCopyWithImpl<_CartWarning>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CartWarningToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartWarning&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message)&&(identical(other.lineItemId, lineItemId) || other.lineItemId == lineItemId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.itemIndex, itemIndex) || other.itemIndex == itemIndex));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,code,message,lineItemId,variantId,itemIndex);
@@ -912,6 +930,7 @@ as int?,
 
 }
 
+
 /// @nodoc
 mixin _$CheckoutRequirement {
 
@@ -922,6 +941,8 @@ mixin _$CheckoutRequirement {
 @pragma('vm:prefer-inline')
 $CheckoutRequirementCopyWith<CheckoutRequirement> get copyWith => _$CheckoutRequirementCopyWithImpl<CheckoutRequirement>(this as CheckoutRequirement, _$identity);
 
+  /// Serializes this CheckoutRequirement to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -930,7 +951,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is CheckoutRequirement&&(identical(other.step, _this.step) || other.step == _this.step)&&(identical(other.field, _this.field) || other.field == _this.field)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CheckoutRequirement;
@@ -1113,10 +1134,10 @@ return $default(_that.step,_that.field,_that.code,_that.message);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _CheckoutRequirement extends CheckoutRequirement {
   const _CheckoutRequirement({required this.step, required this.field, required this.code, required this.message}): super._();
-  
+  factory _CheckoutRequirement.fromJson(Map<String, dynamic> json) => _$CheckoutRequirementFromJson(json);
 
 @override final  String step;
 @override final  String field;
@@ -1129,14 +1150,17 @@ class _CheckoutRequirement extends CheckoutRequirement {
 @pragma('vm:prefer-inline')
 _$CheckoutRequirementCopyWith<_CheckoutRequirement> get copyWith => __$CheckoutRequirementCopyWithImpl<_CheckoutRequirement>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CheckoutRequirementToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _CheckoutRequirement&&(identical(other.step, step) || other.step == step)&&(identical(other.field, field) || other.field == field)&&(identical(other.code, code) || other.code == code)&&(identical(other.message, message) || other.message == message));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,step,field,code,message);
@@ -1185,6 +1209,7 @@ as String,
 
 }
 
+
 /// @nodoc
 mixin _$TaxLine {
 
@@ -1195,6 +1220,8 @@ mixin _$TaxLine {
 @pragma('vm:prefer-inline')
 $TaxLineCopyWith<TaxLine> get copyWith => _$TaxLineCopyWithImpl<TaxLine>(this as TaxLine, _$identity);
 
+  /// Serializes this TaxLine to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1203,7 +1230,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is TaxLine&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.included, _this.included) || other.included == _this.included)&&(identical(other.credit, _this.credit) || other.credit == _this.credit)&&(identical(other.rate, _this.rate) || other.rate == _this.rate)&&(identical(other.taxRateId, _this.taxRateId) || other.taxRateId == _this.taxRateId)&&(identical(other.lineItemId, _this.lineItemId) || other.lineItemId == _this.lineItemId)&&(identical(other.fulfillmentId, _this.fulfillmentId) || other.fulfillmentId == _this.fulfillmentId)&&(identical(other.feeId, _this.feeId) || other.feeId == _this.feeId)&&(identical(other.returnLineItemId, _this.returnLineItemId) || other.returnLineItemId == _this.returnLineItemId)&&(identical(other.claimLineItemId, _this.claimLineItemId) || other.claimLineItemId == _this.claimLineItemId)&&(identical(other.exchangeLineItemId, _this.exchangeLineItemId) || other.exchangeLineItemId == _this.exchangeLineItemId)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as TaxLine;
@@ -1395,10 +1422,10 @@ return $default(_that.id,_that.label,_that.included,_that.credit,_that.rate,_tha
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _TaxLine extends TaxLine {
   const _TaxLine({required this.id, required this.label, required this.included, required this.credit, this.rate, this.taxRateId, this.lineItemId, this.fulfillmentId, this.feeId, this.returnLineItemId, this.claimLineItemId, this.exchangeLineItemId, this.amount}): super._();
-  
+  factory _TaxLine.fromJson(Map<String, dynamic> json) => _$TaxLineFromJson(json);
 
 @override final  String id;
 @override final  String label;
@@ -1420,14 +1447,17 @@ class _TaxLine extends TaxLine {
 @pragma('vm:prefer-inline')
 _$TaxLineCopyWith<_TaxLine> get copyWith => __$TaxLineCopyWithImpl<_TaxLine>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$TaxLineToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _TaxLine&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&(identical(other.included, included) || other.included == included)&&(identical(other.credit, credit) || other.credit == credit)&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.taxRateId, taxRateId) || other.taxRateId == taxRateId)&&(identical(other.lineItemId, lineItemId) || other.lineItemId == lineItemId)&&(identical(other.fulfillmentId, fulfillmentId) || other.fulfillmentId == fulfillmentId)&&(identical(other.feeId, feeId) || other.feeId == feeId)&&(identical(other.returnLineItemId, returnLineItemId) || other.returnLineItemId == returnLineItemId)&&(identical(other.claimLineItemId, claimLineItemId) || other.claimLineItemId == claimLineItemId)&&(identical(other.exchangeLineItemId, exchangeLineItemId) || other.exchangeLineItemId == exchangeLineItemId)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,label,included,credit,rate,taxRateId,lineItemId,fulfillmentId,feeId,returnLineItemId,claimLineItemId,exchangeLineItemId,amount);
@@ -1485,6 +1515,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$AppliedPromotion {
 
@@ -1495,6 +1526,8 @@ mixin _$AppliedPromotion {
 @pragma('vm:prefer-inline')
 $AppliedPromotionCopyWith<AppliedPromotion> get copyWith => _$AppliedPromotionCopyWithImpl<AppliedPromotion>(this as AppliedPromotion, _$identity);
 
+  /// Serializes this AppliedPromotion to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1503,7 +1536,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is AppliedPromotion&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.promotionId, _this.promotionId) || other.promotionId == _this.promotionId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as AppliedPromotion;
@@ -1688,10 +1721,10 @@ return $default(_that.id,_that.promotionId,_that.name,_that.description,_that.co
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _AppliedPromotion extends AppliedPromotion {
   const _AppliedPromotion({required this.id, required this.promotionId, required this.name, this.description, this.code, this.amount}): super._();
-  
+  factory _AppliedPromotion.fromJson(Map<String, dynamic> json) => _$AppliedPromotionFromJson(json);
 
 @override final  String id;
 @override final  String promotionId;
@@ -1706,14 +1739,17 @@ class _AppliedPromotion extends AppliedPromotion {
 @pragma('vm:prefer-inline')
 _$AppliedPromotionCopyWith<_AppliedPromotion> get copyWith => __$AppliedPromotionCopyWithImpl<_AppliedPromotion>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AppliedPromotionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppliedPromotion&&(identical(other.id, id) || other.id == id)&&(identical(other.promotionId, promotionId) || other.promotionId == promotionId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.code, code) || other.code == code)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,promotionId,name,description,code,amount);
@@ -1764,16 +1800,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$DiscountCode {
 
- String get id; String get label; DiscountKind get kind; String? get code; String? get valueType; String? get value; String? get promotionId; String? get lineItemId; String? get fulfillmentId; String? get amount;
+ String get id; String get label;@JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown) DiscountKind get kind; String? get code; String? get valueType; String? get value; String? get promotionId; String? get lineItemId; String? get fulfillmentId; String? get amount;
 /// Create a copy of DiscountCode
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $DiscountCodeCopyWith<DiscountCode> get copyWith => _$DiscountCodeCopyWithImpl<DiscountCode>(this as DiscountCode, _$identity);
 
+  /// Serializes this DiscountCode to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1782,7 +1821,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is DiscountCode&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.valueType, _this.valueType) || other.valueType == _this.valueType)&&(identical(other.value, _this.value) || other.value == _this.value)&&(identical(other.promotionId, _this.promotionId) || other.promotionId == _this.promotionId)&&(identical(other.lineItemId, _this.lineItemId) || other.lineItemId == _this.lineItemId)&&(identical(other.fulfillmentId, _this.fulfillmentId) || other.fulfillmentId == _this.fulfillmentId)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as DiscountCode;
@@ -1803,7 +1842,7 @@ abstract mixin class $DiscountCodeCopyWith<$Res>  {
   factory $DiscountCodeCopyWith(DiscountCode value, $Res Function(DiscountCode) _then) = _$DiscountCodeCopyWithImpl;
 @useResult
 $Res call({
- String id, String label, DiscountKind kind, String? code, String? valueType, String? value, String? promotionId, String? lineItemId, String? fulfillmentId, String? amount
+ String id, String label,@JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown) DiscountKind kind, String? code, String? valueType, String? value, String? promotionId, String? lineItemId, String? fulfillmentId, String? amount
 });
 
 
@@ -1917,7 +1956,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label,  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown)  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DiscountCode() when $default != null:
 return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that.value,_that.promotionId,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -1938,7 +1977,7 @@ return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label,  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown)  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)  $default,) {final _that = this;
 switch (_that) {
 case _DiscountCode():
 return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that.value,_that.promotionId,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -1958,7 +1997,7 @@ return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label,  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label, @JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown)  DiscountKind kind,  String? code,  String? valueType,  String? value,  String? promotionId,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,) {final _that = this;
 switch (_that) {
 case _DiscountCode() when $default != null:
 return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that.value,_that.promotionId,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -1971,14 +2010,14 @@ return $default(_that.id,_that.label,_that.kind,_that.code,_that.valueType,_that
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _DiscountCode extends DiscountCode {
-  const _DiscountCode({required this.id, required this.label, required this.kind, this.code, this.valueType, this.value, this.promotionId, this.lineItemId, this.fulfillmentId, this.amount}): super._();
-  
+  const _DiscountCode({this.id = '', this.label = '', @JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown) this.kind = DiscountKind.unknown, this.code, this.valueType, this.value, this.promotionId, this.lineItemId, this.fulfillmentId, this.amount}): super._();
+  factory _DiscountCode.fromJson(Map<String, dynamic> json) => _$DiscountCodeFromJson(json);
 
-@override final  String id;
-@override final  String label;
-@override final  DiscountKind kind;
+@override@JsonKey() final  String id;
+@override@JsonKey() final  String label;
+@override@JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown) final  DiscountKind kind;
 @override final  String? code;
 @override final  String? valueType;
 @override final  String? value;
@@ -1993,14 +2032,17 @@ class _DiscountCode extends DiscountCode {
 @pragma('vm:prefer-inline')
 _$DiscountCodeCopyWith<_DiscountCode> get copyWith => __$DiscountCodeCopyWithImpl<_DiscountCode>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$DiscountCodeToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiscountCode&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.code, code) || other.code == code)&&(identical(other.valueType, valueType) || other.valueType == valueType)&&(identical(other.value, value) || other.value == value)&&(identical(other.promotionId, promotionId) || other.promotionId == promotionId)&&(identical(other.lineItemId, lineItemId) || other.lineItemId == lineItemId)&&(identical(other.fulfillmentId, fulfillmentId) || other.fulfillmentId == fulfillmentId)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,label,kind,code,valueType,value,promotionId,lineItemId,fulfillmentId,amount);
@@ -2019,7 +2061,7 @@ abstract mixin class _$DiscountCodeCopyWith<$Res> implements $DiscountCodeCopyWi
   factory _$DiscountCodeCopyWith(_DiscountCode value, $Res Function(_DiscountCode) _then) = __$DiscountCodeCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String label, DiscountKind kind, String? code, String? valueType, String? value, String? promotionId, String? lineItemId, String? fulfillmentId, String? amount
+ String id, String label,@JsonKey(unknownEnumValue: DiscountKind.unknown, defaultValue: DiscountKind.unknown) DiscountKind kind, String? code, String? valueType, String? value, String? promotionId, String? lineItemId, String? fulfillmentId, String? amount
 });
 
 
@@ -2055,16 +2097,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$Fee {
 
- String get id; String get label; FeeKind get kind; String? get lineItemId; String? get fulfillmentId; String? get amount;
+ String get id; String get label;@JsonKey(unknownEnumValue: FeeKind.unknown) FeeKind get kind; String? get lineItemId; String? get fulfillmentId; String? get amount;
 /// Create a copy of Fee
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $FeeCopyWith<Fee> get copyWith => _$FeeCopyWithImpl<Fee>(this as Fee, _$identity);
 
+  /// Serializes this Fee to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -2073,7 +2118,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Fee&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&(identical(other.lineItemId, _this.lineItemId) || other.lineItemId == _this.lineItemId)&&(identical(other.fulfillmentId, _this.fulfillmentId) || other.fulfillmentId == _this.fulfillmentId)&&(identical(other.amount, _this.amount) || other.amount == _this.amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Fee;
@@ -2094,7 +2139,7 @@ abstract mixin class $FeeCopyWith<$Res>  {
   factory $FeeCopyWith(Fee value, $Res Function(Fee) _then) = _$FeeCopyWithImpl;
 @useResult
 $Res call({
- String id, String label, FeeKind kind, String? lineItemId, String? fulfillmentId, String? amount
+ String id, String label,@JsonKey(unknownEnumValue: FeeKind.unknown) FeeKind kind, String? lineItemId, String? fulfillmentId, String? amount
 });
 
 
@@ -2204,7 +2249,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label,  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: FeeKind.unknown)  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Fee() when $default != null:
 return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -2225,7 +2270,7 @@ return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillme
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label,  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: FeeKind.unknown)  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)  $default,) {final _that = this;
 switch (_that) {
 case _Fee():
 return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -2245,7 +2290,7 @@ return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillme
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label,  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label, @JsonKey(unknownEnumValue: FeeKind.unknown)  FeeKind kind,  String? lineItemId,  String? fulfillmentId,  String? amount)?  $default,) {final _that = this;
 switch (_that) {
 case _Fee() when $default != null:
 return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillmentId,_that.amount);case _:
@@ -2258,14 +2303,14 @@ return $default(_that.id,_that.label,_that.kind,_that.lineItemId,_that.fulfillme
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Fee extends Fee {
-  const _Fee({required this.id, required this.label, required this.kind, this.lineItemId, this.fulfillmentId, this.amount}): super._();
-  
+  const _Fee({required this.id, required this.label, @JsonKey(unknownEnumValue: FeeKind.unknown) required this.kind, this.lineItemId, this.fulfillmentId, this.amount}): super._();
+  factory _Fee.fromJson(Map<String, dynamic> json) => _$FeeFromJson(json);
 
 @override final  String id;
 @override final  String label;
-@override final  FeeKind kind;
+@override@JsonKey(unknownEnumValue: FeeKind.unknown) final  FeeKind kind;
 @override final  String? lineItemId;
 @override final  String? fulfillmentId;
 @override final  String? amount;
@@ -2276,14 +2321,17 @@ class _Fee extends Fee {
 @pragma('vm:prefer-inline')
 _$FeeCopyWith<_Fee> get copyWith => __$FeeCopyWithImpl<_Fee>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$FeeToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Fee&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.lineItemId, lineItemId) || other.lineItemId == lineItemId)&&(identical(other.fulfillmentId, fulfillmentId) || other.fulfillmentId == fulfillmentId)&&(identical(other.amount, amount) || other.amount == amount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,label,kind,lineItemId,fulfillmentId,amount);
@@ -2302,7 +2350,7 @@ abstract mixin class _$FeeCopyWith<$Res> implements $FeeCopyWith<$Res> {
   factory _$FeeCopyWith(_Fee value, $Res Function(_Fee) _then) = __$FeeCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String label, FeeKind kind, String? lineItemId, String? fulfillmentId, String? amount
+ String id, String label,@JsonKey(unknownEnumValue: FeeKind.unknown) FeeKind kind, String? lineItemId, String? fulfillmentId, String? amount
 });
 
 
@@ -2334,6 +2382,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$DigitalLink {
 
@@ -2344,6 +2393,8 @@ mixin _$DigitalLink {
 @pragma('vm:prefer-inline')
 $DigitalLinkCopyWith<DigitalLink> get copyWith => _$DigitalLinkCopyWithImpl<DigitalLink>(this as DigitalLink, _$identity);
 
+  /// Serializes this DigitalLink to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -2352,7 +2403,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is DigitalLink&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.accessCounter, _this.accessCounter) || other.accessCounter == _this.accessCounter)&&(identical(other.filename, _this.filename) || other.filename == _this.filename)&&(identical(other.contentType, _this.contentType) || other.contentType == _this.contentType)&&(identical(other.downloadUrl, _this.downloadUrl) || other.downloadUrl == _this.downloadUrl)&&(identical(other.expiresAt, _this.expiresAt) || other.expiresAt == _this.expiresAt)&&(identical(other.authorizable, _this.authorizable) || other.authorizable == _this.authorizable)&&(identical(other.expired, _this.expired) || other.expired == _this.expired)&&(identical(other.accessLimitExceeded, _this.accessLimitExceeded) || other.accessLimitExceeded == _this.accessLimitExceeded));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as DigitalLink;
@@ -2540,10 +2591,10 @@ return $default(_that.id,_that.accessCounter,_that.filename,_that.contentType,_t
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _DigitalLink extends DigitalLink {
   const _DigitalLink({required this.id, required this.accessCounter, required this.filename, required this.contentType, required this.downloadUrl, this.expiresAt, required this.authorizable, required this.expired, required this.accessLimitExceeded}): super._();
-  
+  factory _DigitalLink.fromJson(Map<String, dynamic> json) => _$DigitalLinkFromJson(json);
 
 @override final  String id;
 @override final  int accessCounter;
@@ -2561,14 +2612,17 @@ class _DigitalLink extends DigitalLink {
 @pragma('vm:prefer-inline')
 _$DigitalLinkCopyWith<_DigitalLink> get copyWith => __$DigitalLinkCopyWithImpl<_DigitalLink>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$DigitalLinkToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _DigitalLink&&(identical(other.id, id) || other.id == id)&&(identical(other.accessCounter, accessCounter) || other.accessCounter == accessCounter)&&(identical(other.filename, filename) || other.filename == filename)&&(identical(other.contentType, contentType) || other.contentType == contentType)&&(identical(other.downloadUrl, downloadUrl) || other.downloadUrl == downloadUrl)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.authorizable, authorizable) || other.authorizable == authorizable)&&(identical(other.expired, expired) || other.expired == expired)&&(identical(other.accessLimitExceeded, accessLimitExceeded) || other.accessLimitExceeded == accessLimitExceeded));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,accessCounter,filename,contentType,downloadUrl,expiresAt,authorizable,expired,accessLimitExceeded);
@@ -2622,16 +2676,19 @@ as bool,
 
 }
 
+
 /// @nodoc
 mixin _$LineItem {
 
- String get id; String get variantId; String? get sellerId; bool get preorder; String? get preorderShipsAt; int get quantity; CurrencyCode get currency; String get name; String get slug; String get optionsText; String? get price; String? get total; String? get adjustmentTotal; String? get additionalTaxTotal; String? get includedTaxTotal; String? get discountTotal; String? get preTaxAmount; String? get discountedAmount; String? get compareAtAmount; String? get thumbnailUrl; Seller? get seller; List<OptionValue> get optionValues; List<DigitalLink>? get digitalLinks; List<TaxLine>? get taxLines; List<CustomField>? get customFields;
+ String get id; String get variantId; String? get sellerId; bool get preorder; String? get preorderShipsAt; int get quantity;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency; String get name; String get slug; String get optionsText; String? get price; String? get total; String? get adjustmentTotal; String? get additionalTaxTotal; String? get includedTaxTotal; String? get discountTotal; String? get preTaxAmount; String? get discountedAmount; String? get compareAtAmount; String? get thumbnailUrl; Seller? get seller; List<OptionValue> get optionValues;@JsonKey(includeIfNull: false) List<DigitalLink>? get digitalLinks;@JsonKey(includeIfNull: false) List<TaxLine>? get taxLines;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of LineItem
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $LineItemCopyWith<LineItem> get copyWith => _$LineItemCopyWithImpl<LineItem>(this as LineItem, _$identity);
 
+  /// Serializes this LineItem to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -2640,7 +2697,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is LineItem&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.variantId, _this.variantId) || other.variantId == _this.variantId)&&(identical(other.sellerId, _this.sellerId) || other.sellerId == _this.sellerId)&&(identical(other.preorder, _this.preorder) || other.preorder == _this.preorder)&&(identical(other.preorderShipsAt, _this.preorderShipsAt) || other.preorderShipsAt == _this.preorderShipsAt)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.optionsText, _this.optionsText) || other.optionsText == _this.optionsText)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.adjustmentTotal, _this.adjustmentTotal) || other.adjustmentTotal == _this.adjustmentTotal)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.discountTotal, _this.discountTotal) || other.discountTotal == _this.discountTotal)&&(identical(other.preTaxAmount, _this.preTaxAmount) || other.preTaxAmount == _this.preTaxAmount)&&(identical(other.discountedAmount, _this.discountedAmount) || other.discountedAmount == _this.discountedAmount)&&(identical(other.compareAtAmount, _this.compareAtAmount) || other.compareAtAmount == _this.compareAtAmount)&&(identical(other.thumbnailUrl, _this.thumbnailUrl) || other.thumbnailUrl == _this.thumbnailUrl)&&(identical(other.seller, _this.seller) || other.seller == _this.seller)&&const DeepCollectionEquality().equals(other.optionValues, _this.optionValues)&&const DeepCollectionEquality().equals(other.digitalLinks, _this.digitalLinks)&&const DeepCollectionEquality().equals(other.taxLines, _this.taxLines)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as LineItem;
@@ -2661,7 +2718,7 @@ abstract mixin class $LineItemCopyWith<$Res>  {
   factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) _then) = _$LineItemCopyWithImpl;
 @useResult
 $Res call({
- String id, String variantId, String? sellerId, bool preorder, String? preorderShipsAt, int quantity, CurrencyCode currency, String name, String slug, String optionsText, String? price, String? total, String? adjustmentTotal, String? additionalTaxTotal, String? includedTaxTotal, String? discountTotal, String? preTaxAmount, String? discountedAmount, String? compareAtAmount, String? thumbnailUrl, Seller? seller, List<OptionValue> optionValues, List<DigitalLink>? digitalLinks, List<TaxLine>? taxLines, List<CustomField>? customFields
+ String id, String variantId, String? sellerId, bool preorder, String? preorderShipsAt, int quantity,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String name, String slug, String optionsText, String? price, String? total, String? adjustmentTotal, String? additionalTaxTotal, String? includedTaxTotal, String? discountTotal, String? preTaxAmount, String? discountedAmount, String? compareAtAmount, String? thumbnailUrl, Seller? seller, List<OptionValue> optionValues,@JsonKey(includeIfNull: false) List<DigitalLink>? digitalLinks,@JsonKey(includeIfNull: false) List<TaxLine>? taxLines,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -2802,7 +2859,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity,  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues,  List<DigitalLink>? digitalLinks,  List<TaxLine>? taxLines,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<DigitalLink>? digitalLinks, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LineItem() when $default != null:
 return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.preorderShipsAt,_that.quantity,_that.currency,_that.name,_that.slug,_that.optionsText,_that.price,_that.total,_that.adjustmentTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.discountTotal,_that.preTaxAmount,_that.discountedAmount,_that.compareAtAmount,_that.thumbnailUrl,_that.seller,_that.optionValues,_that.digitalLinks,_that.taxLines,_that.customFields);case _:
@@ -2823,7 +2880,7 @@ return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.pre
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity,  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues,  List<DigitalLink>? digitalLinks,  List<TaxLine>? taxLines,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<DigitalLink>? digitalLinks, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _LineItem():
 return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.preorderShipsAt,_that.quantity,_that.currency,_that.name,_that.slug,_that.optionsText,_that.price,_that.total,_that.adjustmentTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.discountTotal,_that.preTaxAmount,_that.discountedAmount,_that.compareAtAmount,_that.thumbnailUrl,_that.seller,_that.optionValues,_that.digitalLinks,_that.taxLines,_that.customFields);case _:
@@ -2843,7 +2900,7 @@ return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.pre
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity,  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues,  List<DigitalLink>? digitalLinks,  List<TaxLine>? taxLines,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String variantId,  String? sellerId,  bool preorder,  String? preorderShipsAt,  int quantity, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String name,  String slug,  String optionsText,  String? price,  String? total,  String? adjustmentTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? discountTotal,  String? preTaxAmount,  String? discountedAmount,  String? compareAtAmount,  String? thumbnailUrl,  Seller? seller,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<DigitalLink>? digitalLinks, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _LineItem() when $default != null:
 return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.preorderShipsAt,_that.quantity,_that.currency,_that.name,_that.slug,_that.optionsText,_that.price,_that.total,_that.adjustmentTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.discountTotal,_that.preTaxAmount,_that.discountedAmount,_that.compareAtAmount,_that.thumbnailUrl,_that.seller,_that.optionValues,_that.digitalLinks,_that.taxLines,_that.customFields);case _:
@@ -2856,10 +2913,10 @@ return $default(_that.id,_that.variantId,_that.sellerId,_that.preorder,_that.pre
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _LineItem extends LineItem {
-  const _LineItem({required this.id, required this.variantId, this.sellerId, required this.preorder, this.preorderShipsAt, required this.quantity, required this.currency, required this.name, required this.slug, required this.optionsText, this.price, this.total, this.adjustmentTotal, this.additionalTaxTotal, this.includedTaxTotal, this.discountTotal, this.preTaxAmount, this.discountedAmount, this.compareAtAmount, this.thumbnailUrl, this.seller, required this.optionValues, this.digitalLinks, this.taxLines, this.customFields}): super._();
-  
+  const _LineItem({required this.id, required this.variantId, this.sellerId, required this.preorder, this.preorderShipsAt, required this.quantity, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, required this.name, required this.slug, required this.optionsText, this.price, this.total, this.adjustmentTotal, this.additionalTaxTotal, this.includedTaxTotal, this.discountTotal, this.preTaxAmount, this.discountedAmount, this.compareAtAmount, this.thumbnailUrl, this.seller, required this.optionValues, @JsonKey(includeIfNull: false) this.digitalLinks, @JsonKey(includeIfNull: false) this.taxLines, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _LineItem.fromJson(Map<String, dynamic> json) => _$LineItemFromJson(json);
 
 @override final  String id;
 @override final  String variantId;
@@ -2867,7 +2924,7 @@ class _LineItem extends LineItem {
 @override final  bool preorder;
 @override final  String? preorderShipsAt;
 @override final  int quantity;
-@override final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
 @override final  String name;
 @override final  String slug;
 @override final  String optionsText;
@@ -2883,9 +2940,9 @@ class _LineItem extends LineItem {
 @override final  String? thumbnailUrl;
 @override final  Seller? seller;
 @override final  List<OptionValue> optionValues;
-@override final  List<DigitalLink>? digitalLinks;
-@override final  List<TaxLine>? taxLines;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<DigitalLink>? digitalLinks;
+@override@JsonKey(includeIfNull: false) final  List<TaxLine>? taxLines;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of LineItem
 /// with the given fields replaced by the non-null parameter values.
@@ -2893,14 +2950,17 @@ class _LineItem extends LineItem {
 @pragma('vm:prefer-inline')
 _$LineItemCopyWith<_LineItem> get copyWith => __$LineItemCopyWithImpl<_LineItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$LineItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _LineItem&&(identical(other.id, id) || other.id == id)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.sellerId, sellerId) || other.sellerId == sellerId)&&(identical(other.preorder, preorder) || other.preorder == preorder)&&(identical(other.preorderShipsAt, preorderShipsAt) || other.preorderShipsAt == preorderShipsAt)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.optionsText, optionsText) || other.optionsText == optionsText)&&(identical(other.price, price) || other.price == price)&&(identical(other.total, total) || other.total == total)&&(identical(other.adjustmentTotal, adjustmentTotal) || other.adjustmentTotal == adjustmentTotal)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.discountTotal, discountTotal) || other.discountTotal == discountTotal)&&(identical(other.preTaxAmount, preTaxAmount) || other.preTaxAmount == preTaxAmount)&&(identical(other.discountedAmount, discountedAmount) || other.discountedAmount == discountedAmount)&&(identical(other.compareAtAmount, compareAtAmount) || other.compareAtAmount == compareAtAmount)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.seller, seller) || other.seller == seller)&&const DeepCollectionEquality().equals(other.optionValues, optionValues)&&const DeepCollectionEquality().equals(other.digitalLinks, digitalLinks)&&const DeepCollectionEquality().equals(other.taxLines, taxLines)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,variantId,sellerId,preorder,preorderShipsAt,quantity,currency,name,slug,optionsText,price,total,adjustmentTotal,additionalTaxTotal,includedTaxTotal,discountTotal,preTaxAmount,discountedAmount,compareAtAmount,thumbnailUrl,seller,const DeepCollectionEquality().hash(optionValues),const DeepCollectionEquality().hash(digitalLinks),const DeepCollectionEquality().hash(taxLines),const DeepCollectionEquality().hash(customFields)]);
@@ -2919,7 +2979,7 @@ abstract mixin class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res>
   factory _$LineItemCopyWith(_LineItem value, $Res Function(_LineItem) _then) = __$LineItemCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String variantId, String? sellerId, bool preorder, String? preorderShipsAt, int quantity, CurrencyCode currency, String name, String slug, String optionsText, String? price, String? total, String? adjustmentTotal, String? additionalTaxTotal, String? includedTaxTotal, String? discountTotal, String? preTaxAmount, String? discountedAmount, String? compareAtAmount, String? thumbnailUrl, Seller? seller, List<OptionValue> optionValues, List<DigitalLink>? digitalLinks, List<TaxLine>? taxLines, List<CustomField>? customFields
+ String id, String variantId, String? sellerId, bool preorder, String? preorderShipsAt, int quantity,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String name, String slug, String optionsText, String? price, String? total, String? adjustmentTotal, String? additionalTaxTotal, String? includedTaxTotal, String? discountTotal, String? preTaxAmount, String? discountedAmount, String? compareAtAmount, String? thumbnailUrl, Seller? seller, List<OptionValue> optionValues,@JsonKey(includeIfNull: false) List<DigitalLink>? digitalLinks,@JsonKey(includeIfNull: false) List<TaxLine>? taxLines,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -2982,6 +3042,7 @@ $SellerCopyWith<$Res>? get seller {
 }
 }
 
+
 /// @nodoc
 mixin _$FreightSummary {
 
@@ -2992,6 +3053,8 @@ mixin _$FreightSummary {
 @pragma('vm:prefer-inline')
 $FreightSummaryCopyWith<FreightSummary> get copyWith => _$FreightSummaryCopyWithImpl<FreightSummary>(this as FreightSummary, _$identity);
 
+  /// Serializes this FreightSummary to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3000,7 +3063,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is FreightSummary&&(identical(other.totalUnits, _this.totalUnits) || other.totalUnits == _this.totalUnits)&&(identical(other.totalCartons, _this.totalCartons) || other.totalCartons == _this.totalCartons)&&(identical(other.totalPallets, _this.totalPallets) || other.totalPallets == _this.totalPallets)&&(identical(other.totalVolume, _this.totalVolume) || other.totalVolume == _this.totalVolume)&&(identical(other.totalWeight, _this.totalWeight) || other.totalWeight == _this.totalWeight)&&(identical(other.complete, _this.complete) || other.complete == _this.complete));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as FreightSummary;
@@ -3185,10 +3248,10 @@ return $default(_that.totalUnits,_that.totalCartons,_that.totalPallets,_that.tot
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _FreightSummary extends FreightSummary {
   const _FreightSummary({required this.totalUnits, required this.totalCartons, this.totalPallets, required this.totalVolume, required this.totalWeight, required this.complete}): super._();
-  
+  factory _FreightSummary.fromJson(Map<String, dynamic> json) => _$FreightSummaryFromJson(json);
 
 @override final  int totalUnits;
 @override final  int totalCartons;
@@ -3203,14 +3266,17 @@ class _FreightSummary extends FreightSummary {
 @pragma('vm:prefer-inline')
 _$FreightSummaryCopyWith<_FreightSummary> get copyWith => __$FreightSummaryCopyWithImpl<_FreightSummary>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$FreightSummaryToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _FreightSummary&&(identical(other.totalUnits, totalUnits) || other.totalUnits == totalUnits)&&(identical(other.totalCartons, totalCartons) || other.totalCartons == totalCartons)&&(identical(other.totalPallets, totalPallets) || other.totalPallets == totalPallets)&&(identical(other.totalVolume, totalVolume) || other.totalVolume == totalVolume)&&(identical(other.totalWeight, totalWeight) || other.totalWeight == totalWeight)&&(identical(other.complete, complete) || other.complete == complete));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,totalUnits,totalCartons,totalPallets,totalVolume,totalWeight,complete);
@@ -3261,16 +3327,19 @@ as bool,
 
 }
 
+
 /// @nodoc
 mixin _$StockLocation {
 
- String get id; String get name; String? get address1; String? get city; String? get zipcode; CountryCode? get countryCode; String? get countryName; String? get stateCode; String? get stateText; String? get countryIso; String? get stateAbbr; int? get pickupReadyInMinutes; String? get pickupInstructions;
+ String get id; String get name; String? get address1; String? get city; String? get zipcode;@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode? get countryCode; String? get countryName; String? get stateCode; String? get stateText; String? get countryIso; String? get stateAbbr; int? get pickupReadyInMinutes; String? get pickupInstructions;
 /// Create a copy of StockLocation
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $StockLocationCopyWith<StockLocation> get copyWith => _$StockLocationCopyWithImpl<StockLocation>(this as StockLocation, _$identity);
 
+  /// Serializes this StockLocation to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3279,7 +3348,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is StockLocation&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.address1, _this.address1) || other.address1 == _this.address1)&&(identical(other.city, _this.city) || other.city == _this.city)&&(identical(other.zipcode, _this.zipcode) || other.zipcode == _this.zipcode)&&(identical(other.countryCode, _this.countryCode) || other.countryCode == _this.countryCode)&&(identical(other.countryName, _this.countryName) || other.countryName == _this.countryName)&&(identical(other.stateCode, _this.stateCode) || other.stateCode == _this.stateCode)&&(identical(other.stateText, _this.stateText) || other.stateText == _this.stateText)&&(identical(other.countryIso, _this.countryIso) || other.countryIso == _this.countryIso)&&(identical(other.stateAbbr, _this.stateAbbr) || other.stateAbbr == _this.stateAbbr)&&(identical(other.pickupReadyInMinutes, _this.pickupReadyInMinutes) || other.pickupReadyInMinutes == _this.pickupReadyInMinutes)&&(identical(other.pickupInstructions, _this.pickupInstructions) || other.pickupInstructions == _this.pickupInstructions));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as StockLocation;
@@ -3300,7 +3369,7 @@ abstract mixin class $StockLocationCopyWith<$Res>  {
   factory $StockLocationCopyWith(StockLocation value, $Res Function(StockLocation) _then) = _$StockLocationCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String? address1, String? city, String? zipcode, CountryCode? countryCode, String? countryName, String? stateCode, String? stateText, String? countryIso, String? stateAbbr, int? pickupReadyInMinutes, String? pickupInstructions
+ String id, String name, String? address1, String? city, String? zipcode,@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode? countryCode, String? countryName, String? stateCode, String? stateText, String? countryIso, String? stateAbbr, int? pickupReadyInMinutes, String? pickupInstructions
 });
 
 
@@ -3417,7 +3486,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? address1,  String? city,  String? zipcode,  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? address1,  String? city,  String? zipcode, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StockLocation() when $default != null:
 return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_that.countryCode,_that.countryName,_that.stateCode,_that.stateText,_that.countryIso,_that.stateAbbr,_that.pickupReadyInMinutes,_that.pickupInstructions);case _:
@@ -3438,7 +3507,7 @@ return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? address1,  String? city,  String? zipcode,  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? address1,  String? city,  String? zipcode, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)  $default,) {final _that = this;
 switch (_that) {
 case _StockLocation():
 return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_that.countryCode,_that.countryName,_that.stateCode,_that.stateText,_that.countryIso,_that.stateAbbr,_that.pickupReadyInMinutes,_that.pickupInstructions);case _:
@@ -3458,7 +3527,7 @@ return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? address1,  String? city,  String? zipcode,  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? address1,  String? city,  String? zipcode, @JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode? countryCode,  String? countryName,  String? stateCode,  String? stateText,  String? countryIso,  String? stateAbbr,  int? pickupReadyInMinutes,  String? pickupInstructions)?  $default,) {final _that = this;
 switch (_that) {
 case _StockLocation() when $default != null:
 return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_that.countryCode,_that.countryName,_that.stateCode,_that.stateText,_that.countryIso,_that.stateAbbr,_that.pickupReadyInMinutes,_that.pickupInstructions);case _:
@@ -3471,17 +3540,17 @@ return $default(_that.id,_that.name,_that.address1,_that.city,_that.zipcode,_tha
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _StockLocation extends StockLocation {
-  const _StockLocation({required this.id, required this.name, this.address1, this.city, this.zipcode, this.countryCode, this.countryName, this.stateCode, this.stateText, this.countryIso, this.stateAbbr, this.pickupReadyInMinutes, this.pickupInstructions}): super._();
-  
+  const _StockLocation({required this.id, required this.name, this.address1, this.city, this.zipcode, @JsonKey(unknownEnumValue: CountryCode.unknown) this.countryCode, this.countryName, this.stateCode, this.stateText, this.countryIso, this.stateAbbr, this.pickupReadyInMinutes, this.pickupInstructions}): super._();
+  factory _StockLocation.fromJson(Map<String, dynamic> json) => _$StockLocationFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String? address1;
 @override final  String? city;
 @override final  String? zipcode;
-@override final  CountryCode? countryCode;
+@override@JsonKey(unknownEnumValue: CountryCode.unknown) final  CountryCode? countryCode;
 @override final  String? countryName;
 @override final  String? stateCode;
 @override final  String? stateText;
@@ -3496,14 +3565,17 @@ class _StockLocation extends StockLocation {
 @pragma('vm:prefer-inline')
 _$StockLocationCopyWith<_StockLocation> get copyWith => __$StockLocationCopyWithImpl<_StockLocation>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$StockLocationToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _StockLocation&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.address1, address1) || other.address1 == address1)&&(identical(other.city, city) || other.city == city)&&(identical(other.zipcode, zipcode) || other.zipcode == zipcode)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.countryName, countryName) || other.countryName == countryName)&&(identical(other.stateCode, stateCode) || other.stateCode == stateCode)&&(identical(other.stateText, stateText) || other.stateText == stateText)&&(identical(other.countryIso, countryIso) || other.countryIso == countryIso)&&(identical(other.stateAbbr, stateAbbr) || other.stateAbbr == stateAbbr)&&(identical(other.pickupReadyInMinutes, pickupReadyInMinutes) || other.pickupReadyInMinutes == pickupReadyInMinutes)&&(identical(other.pickupInstructions, pickupInstructions) || other.pickupInstructions == pickupInstructions));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,address1,city,zipcode,countryCode,countryName,stateCode,stateText,countryIso,stateAbbr,pickupReadyInMinutes,pickupInstructions);
@@ -3522,7 +3594,7 @@ abstract mixin class _$StockLocationCopyWith<$Res> implements $StockLocationCopy
   factory _$StockLocationCopyWith(_StockLocation value, $Res Function(_StockLocation) _then) = __$StockLocationCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String? address1, String? city, String? zipcode, CountryCode? countryCode, String? countryName, String? stateCode, String? stateText, String? countryIso, String? stateAbbr, int? pickupReadyInMinutes, String? pickupInstructions
+ String id, String name, String? address1, String? city, String? zipcode,@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode? countryCode, String? countryName, String? stateCode, String? stateText, String? countryIso, String? stateAbbr, int? pickupReadyInMinutes, String? pickupInstructions
 });
 
 
@@ -3561,16 +3633,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$DeliveryMethod {
 
- String get id; String get name; String? get code; int? get estimatedTransitBusinessDaysMin; int? get estimatedTransitBusinessDaysMax; bool get digital; bool get pickup; bool get pickupPoint; List<CustomField>? get customFields;
+ String get id; String get name; String? get code; int? get estimatedTransitBusinessDaysMin; int? get estimatedTransitBusinessDaysMax; bool get digital; bool get pickup; bool get pickupPoint;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of DeliveryMethod
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $DeliveryMethodCopyWith<DeliveryMethod> get copyWith => _$DeliveryMethodCopyWithImpl<DeliveryMethod>(this as DeliveryMethod, _$identity);
 
+  /// Serializes this DeliveryMethod to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3579,7 +3654,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is DeliveryMethod&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.estimatedTransitBusinessDaysMin, _this.estimatedTransitBusinessDaysMin) || other.estimatedTransitBusinessDaysMin == _this.estimatedTransitBusinessDaysMin)&&(identical(other.estimatedTransitBusinessDaysMax, _this.estimatedTransitBusinessDaysMax) || other.estimatedTransitBusinessDaysMax == _this.estimatedTransitBusinessDaysMax)&&(identical(other.digital, _this.digital) || other.digital == _this.digital)&&(identical(other.pickup, _this.pickup) || other.pickup == _this.pickup)&&(identical(other.pickupPoint, _this.pickupPoint) || other.pickupPoint == _this.pickupPoint)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as DeliveryMethod;
@@ -3600,7 +3675,7 @@ abstract mixin class $DeliveryMethodCopyWith<$Res>  {
   factory $DeliveryMethodCopyWith(DeliveryMethod value, $Res Function(DeliveryMethod) _then) = _$DeliveryMethodCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String? code, int? estimatedTransitBusinessDaysMin, int? estimatedTransitBusinessDaysMax, bool digital, bool pickup, bool pickupPoint, List<CustomField>? customFields
+ String id, String name, String? code, int? estimatedTransitBusinessDaysMin, int? estimatedTransitBusinessDaysMax, bool digital, bool pickup, bool pickupPoint,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -3713,7 +3788,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DeliveryMethod() when $default != null:
 return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDaysMin,_that.estimatedTransitBusinessDaysMax,_that.digital,_that.pickup,_that.pickupPoint,_that.customFields);case _:
@@ -3734,7 +3809,7 @@ return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDay
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _DeliveryMethod():
 return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDaysMin,_that.estimatedTransitBusinessDaysMax,_that.digital,_that.pickup,_that.pickupPoint,_that.customFields);case _:
@@ -3754,7 +3829,7 @@ return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDay
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? code,  int? estimatedTransitBusinessDaysMin,  int? estimatedTransitBusinessDaysMax,  bool digital,  bool pickup,  bool pickupPoint, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _DeliveryMethod() when $default != null:
 return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDaysMin,_that.estimatedTransitBusinessDaysMax,_that.digital,_that.pickup,_that.pickupPoint,_that.customFields);case _:
@@ -3767,10 +3842,10 @@ return $default(_that.id,_that.name,_that.code,_that.estimatedTransitBusinessDay
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _DeliveryMethod extends DeliveryMethod {
-  const _DeliveryMethod({required this.id, required this.name, this.code, this.estimatedTransitBusinessDaysMin, this.estimatedTransitBusinessDaysMax, required this.digital, required this.pickup, required this.pickupPoint, this.customFields}): super._();
-  
+  const _DeliveryMethod({required this.id, required this.name, this.code, this.estimatedTransitBusinessDaysMin, this.estimatedTransitBusinessDaysMax, required this.digital, required this.pickup, required this.pickupPoint, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _DeliveryMethod.fromJson(Map<String, dynamic> json) => _$DeliveryMethodFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -3780,7 +3855,7 @@ class _DeliveryMethod extends DeliveryMethod {
 @override final  bool digital;
 @override final  bool pickup;
 @override final  bool pickupPoint;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of DeliveryMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -3788,14 +3863,17 @@ class _DeliveryMethod extends DeliveryMethod {
 @pragma('vm:prefer-inline')
 _$DeliveryMethodCopyWith<_DeliveryMethod> get copyWith => __$DeliveryMethodCopyWithImpl<_DeliveryMethod>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$DeliveryMethodToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeliveryMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.estimatedTransitBusinessDaysMin, estimatedTransitBusinessDaysMin) || other.estimatedTransitBusinessDaysMin == estimatedTransitBusinessDaysMin)&&(identical(other.estimatedTransitBusinessDaysMax, estimatedTransitBusinessDaysMax) || other.estimatedTransitBusinessDaysMax == estimatedTransitBusinessDaysMax)&&(identical(other.digital, digital) || other.digital == digital)&&(identical(other.pickup, pickup) || other.pickup == pickup)&&(identical(other.pickupPoint, pickupPoint) || other.pickupPoint == pickupPoint)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,code,estimatedTransitBusinessDaysMin,estimatedTransitBusinessDaysMax,digital,pickup,pickupPoint,const DeepCollectionEquality().hash(customFields));
@@ -3814,7 +3892,7 @@ abstract mixin class _$DeliveryMethodCopyWith<$Res> implements $DeliveryMethodCo
   factory _$DeliveryMethodCopyWith(_DeliveryMethod value, $Res Function(_DeliveryMethod) _then) = __$DeliveryMethodCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String? code, int? estimatedTransitBusinessDaysMin, int? estimatedTransitBusinessDaysMax, bool digital, bool pickup, bool pickupPoint, List<CustomField>? customFields
+ String id, String name, String? code, int? estimatedTransitBusinessDaysMin, int? estimatedTransitBusinessDaysMax, bool digital, bool pickup, bool pickupPoint,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -3849,16 +3927,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Delivery {
 
- String get id; String get trackingNumber; String? get carrier; String? get carrierName; String? get service; DeliveryStatus get status; String? get trackingUrl; String? get estimatedDeliveryAt; String? get deliveredAt;
+ String get id; String get trackingNumber; String? get carrier; String? get carrierName; String? get service;@JsonKey(unknownEnumValue: DeliveryStatus.unknown) DeliveryStatus get status; String? get trackingUrl; String? get estimatedDeliveryAt; String? get deliveredAt;
 /// Create a copy of Delivery
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $DeliveryCopyWith<Delivery> get copyWith => _$DeliveryCopyWithImpl<Delivery>(this as Delivery, _$identity);
 
+  /// Serializes this Delivery to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3867,7 +3948,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Delivery&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.trackingNumber, _this.trackingNumber) || other.trackingNumber == _this.trackingNumber)&&(identical(other.carrier, _this.carrier) || other.carrier == _this.carrier)&&(identical(other.carrierName, _this.carrierName) || other.carrierName == _this.carrierName)&&(identical(other.service, _this.service) || other.service == _this.service)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.trackingUrl, _this.trackingUrl) || other.trackingUrl == _this.trackingUrl)&&(identical(other.estimatedDeliveryAt, _this.estimatedDeliveryAt) || other.estimatedDeliveryAt == _this.estimatedDeliveryAt)&&(identical(other.deliveredAt, _this.deliveredAt) || other.deliveredAt == _this.deliveredAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Delivery;
@@ -3888,7 +3969,7 @@ abstract mixin class $DeliveryCopyWith<$Res>  {
   factory $DeliveryCopyWith(Delivery value, $Res Function(Delivery) _then) = _$DeliveryCopyWithImpl;
 @useResult
 $Res call({
- String id, String trackingNumber, String? carrier, String? carrierName, String? service, DeliveryStatus status, String? trackingUrl, String? estimatedDeliveryAt, String? deliveredAt
+ String id, String trackingNumber, String? carrier, String? carrierName, String? service,@JsonKey(unknownEnumValue: DeliveryStatus.unknown) DeliveryStatus status, String? trackingUrl, String? estimatedDeliveryAt, String? deliveredAt
 });
 
 
@@ -4001,7 +4082,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service,  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service, @JsonKey(unknownEnumValue: DeliveryStatus.unknown)  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Delivery() when $default != null:
 return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_that.service,_that.status,_that.trackingUrl,_that.estimatedDeliveryAt,_that.deliveredAt);case _:
@@ -4022,7 +4103,7 @@ return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service,  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service, @JsonKey(unknownEnumValue: DeliveryStatus.unknown)  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)  $default,) {final _that = this;
 switch (_that) {
 case _Delivery():
 return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_that.service,_that.status,_that.trackingUrl,_that.estimatedDeliveryAt,_that.deliveredAt);case _:
@@ -4042,7 +4123,7 @@ return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service,  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String trackingNumber,  String? carrier,  String? carrierName,  String? service, @JsonKey(unknownEnumValue: DeliveryStatus.unknown)  DeliveryStatus status,  String? trackingUrl,  String? estimatedDeliveryAt,  String? deliveredAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Delivery() when $default != null:
 return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_that.service,_that.status,_that.trackingUrl,_that.estimatedDeliveryAt,_that.deliveredAt);case _:
@@ -4055,17 +4136,17 @@ return $default(_that.id,_that.trackingNumber,_that.carrier,_that.carrierName,_t
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Delivery extends Delivery {
-  const _Delivery({required this.id, required this.trackingNumber, this.carrier, this.carrierName, this.service, required this.status, this.trackingUrl, this.estimatedDeliveryAt, this.deliveredAt}): super._();
-  
+  const _Delivery({required this.id, required this.trackingNumber, this.carrier, this.carrierName, this.service, @JsonKey(unknownEnumValue: DeliveryStatus.unknown) required this.status, this.trackingUrl, this.estimatedDeliveryAt, this.deliveredAt}): super._();
+  factory _Delivery.fromJson(Map<String, dynamic> json) => _$DeliveryFromJson(json);
 
 @override final  String id;
 @override final  String trackingNumber;
 @override final  String? carrier;
 @override final  String? carrierName;
 @override final  String? service;
-@override final  DeliveryStatus status;
+@override@JsonKey(unknownEnumValue: DeliveryStatus.unknown) final  DeliveryStatus status;
 @override final  String? trackingUrl;
 @override final  String? estimatedDeliveryAt;
 @override final  String? deliveredAt;
@@ -4076,14 +4157,17 @@ class _Delivery extends Delivery {
 @pragma('vm:prefer-inline')
 _$DeliveryCopyWith<_Delivery> get copyWith => __$DeliveryCopyWithImpl<_Delivery>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$DeliveryToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Delivery&&(identical(other.id, id) || other.id == id)&&(identical(other.trackingNumber, trackingNumber) || other.trackingNumber == trackingNumber)&&(identical(other.carrier, carrier) || other.carrier == carrier)&&(identical(other.carrierName, carrierName) || other.carrierName == carrierName)&&(identical(other.service, service) || other.service == service)&&(identical(other.status, status) || other.status == status)&&(identical(other.trackingUrl, trackingUrl) || other.trackingUrl == trackingUrl)&&(identical(other.estimatedDeliveryAt, estimatedDeliveryAt) || other.estimatedDeliveryAt == estimatedDeliveryAt)&&(identical(other.deliveredAt, deliveredAt) || other.deliveredAt == deliveredAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,trackingNumber,carrier,carrierName,service,status,trackingUrl,estimatedDeliveryAt,deliveredAt);
@@ -4102,7 +4186,7 @@ abstract mixin class _$DeliveryCopyWith<$Res> implements $DeliveryCopyWith<$Res>
   factory _$DeliveryCopyWith(_Delivery value, $Res Function(_Delivery) _then) = __$DeliveryCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String trackingNumber, String? carrier, String? carrierName, String? service, DeliveryStatus status, String? trackingUrl, String? estimatedDeliveryAt, String? deliveredAt
+ String id, String trackingNumber, String? carrier, String? carrierName, String? service,@JsonKey(unknownEnumValue: DeliveryStatus.unknown) DeliveryStatus status, String? trackingUrl, String? estimatedDeliveryAt, String? deliveredAt
 });
 
 
@@ -4137,6 +4221,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$DeliveryRate {
 
@@ -4147,6 +4232,8 @@ mixin _$DeliveryRate {
 @pragma('vm:prefer-inline')
 $DeliveryRateCopyWith<DeliveryRate> get copyWith => _$DeliveryRateCopyWithImpl<DeliveryRate>(this as DeliveryRate, _$identity);
 
+  /// Serializes this DeliveryRate to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -4155,7 +4242,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is DeliveryRate&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.deliveryMethodId, _this.deliveryMethodId) || other.deliveryMethodId == _this.deliveryMethodId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.selected, _this.selected) || other.selected == _this.selected)&&(identical(other.cost, _this.cost) || other.cost == _this.cost)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.taxTotal, _this.taxTotal) || other.taxTotal == _this.taxTotal)&&(identical(other.carrier, _this.carrier) || other.carrier == _this.carrier)&&(identical(other.serviceLevel, _this.serviceLevel) || other.serviceLevel == _this.serviceLevel)&&(identical(other.estimatedDeliveryDate, _this.estimatedDeliveryDate) || other.estimatedDeliveryDate == _this.estimatedDeliveryDate)&&(identical(other.unpriced, _this.unpriced) || other.unpriced == _this.unpriced)&&(identical(other.freightSummary, _this.freightSummary) || other.freightSummary == _this.freightSummary)&&(identical(other.deliveryMethod, _this.deliveryMethod) || other.deliveryMethod == _this.deliveryMethod));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as DeliveryRate;
@@ -4370,10 +4457,10 @@ return $default(_that.id,_that.deliveryMethodId,_that.name,_that.selected,_that.
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _DeliveryRate extends DeliveryRate {
   const _DeliveryRate({required this.id, required this.deliveryMethodId, required this.name, required this.selected, this.cost, this.total, this.additionalTaxTotal, this.includedTaxTotal, this.taxTotal, this.carrier, this.serviceLevel, this.estimatedDeliveryDate, required this.unpriced, this.freightSummary, required this.deliveryMethod}): super._();
-  
+  factory _DeliveryRate.fromJson(Map<String, dynamic> json) => _$DeliveryRateFromJson(json);
 
 @override final  String id;
 @override final  String deliveryMethodId;
@@ -4397,14 +4484,17 @@ class _DeliveryRate extends DeliveryRate {
 @pragma('vm:prefer-inline')
 _$DeliveryRateCopyWith<_DeliveryRate> get copyWith => __$DeliveryRateCopyWithImpl<_DeliveryRate>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$DeliveryRateToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeliveryRate&&(identical(other.id, id) || other.id == id)&&(identical(other.deliveryMethodId, deliveryMethodId) || other.deliveryMethodId == deliveryMethodId)&&(identical(other.name, name) || other.name == name)&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.total, total) || other.total == total)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal)&&(identical(other.carrier, carrier) || other.carrier == carrier)&&(identical(other.serviceLevel, serviceLevel) || other.serviceLevel == serviceLevel)&&(identical(other.estimatedDeliveryDate, estimatedDeliveryDate) || other.estimatedDeliveryDate == estimatedDeliveryDate)&&(identical(other.unpriced, unpriced) || other.unpriced == unpriced)&&(identical(other.freightSummary, freightSummary) || other.freightSummary == freightSummary)&&(identical(other.deliveryMethod, deliveryMethod) || other.deliveryMethod == deliveryMethod));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,deliveryMethodId,name,selected,cost,total,additionalTaxTotal,includedTaxTotal,taxTotal,carrier,serviceLevel,estimatedDeliveryDate,unpriced,freightSummary,deliveryMethod);
@@ -4485,6 +4575,7 @@ $DeliveryMethodCopyWith<$Res> get deliveryMethod {
 }
 }
 
+
 /// @nodoc
 mixin _$FulfillmentItem {
 
@@ -4495,6 +4586,8 @@ mixin _$FulfillmentItem {
 @pragma('vm:prefer-inline')
 $FulfillmentItemCopyWith<FulfillmentItem> get copyWith => _$FulfillmentItemCopyWithImpl<FulfillmentItem>(this as FulfillmentItem, _$identity);
 
+  /// Serializes this FulfillmentItem to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -4503,7 +4596,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is FulfillmentItem&&(identical(other.itemId, _this.itemId) || other.itemId == _this.itemId)&&(identical(other.variantId, _this.variantId) || other.variantId == _this.variantId)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as FulfillmentItem;
@@ -4685,10 +4778,10 @@ return $default(_that.itemId,_that.variantId,_that.quantity);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _FulfillmentItem extends FulfillmentItem {
   const _FulfillmentItem({required this.itemId, required this.variantId, required this.quantity}): super._();
-  
+  factory _FulfillmentItem.fromJson(Map<String, dynamic> json) => _$FulfillmentItemFromJson(json);
 
 @override final  String itemId;
 @override final  String variantId;
@@ -4700,14 +4793,17 @@ class _FulfillmentItem extends FulfillmentItem {
 @pragma('vm:prefer-inline')
 _$FulfillmentItemCopyWith<_FulfillmentItem> get copyWith => __$FulfillmentItemCopyWithImpl<_FulfillmentItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$FulfillmentItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _FulfillmentItem&&(identical(other.itemId, itemId) || other.itemId == itemId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.quantity, quantity) || other.quantity == quantity));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,itemId,variantId,quantity);
@@ -4755,16 +4851,19 @@ as int,
 
 }
 
+
 /// @nodoc
 mixin _$Fulfillment {
 
- String get id; String get number; String? get tracking; String? get trackingUrl; Map<String, Object?>? get pickupPointData; String? get selectedDeliveryRateId; bool get unpriced; String? get cost; String? get total; String? get discountTotal; String? get additionalTaxTotal; String? get includedTaxTotal; String? get taxTotal; FulfillmentStatus get status; FulfillmentType get fulfillmentType; String? get fulfilledAt; String? get deliveredAt; List<FulfillmentItem> get items; List<Delivery> get deliveries; DeliveryMethod get deliveryMethod; StockLocation get stockLocation; List<DeliveryRate> get deliveryRates; List<TaxLine>? get taxLines; List<CustomField>? get customFields;
+ String get id; String get number; String? get tracking; String? get trackingUrl; Map<String, Object?>? get pickupPointData; String? get selectedDeliveryRateId; bool get unpriced; String? get cost; String? get total; String? get discountTotal; String? get additionalTaxTotal; String? get includedTaxTotal; String? get taxTotal;@JsonKey(unknownEnumValue: FulfillmentStatus.unknown) FulfillmentStatus get status;@JsonKey(unknownEnumValue: FulfillmentType.unknown) FulfillmentType get fulfillmentType; String? get fulfilledAt; String? get deliveredAt; List<FulfillmentItem> get items; List<Delivery> get deliveries; DeliveryMethod get deliveryMethod; StockLocation get stockLocation; List<DeliveryRate> get deliveryRates;@JsonKey(includeIfNull: false) List<TaxLine>? get taxLines;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Fulfillment
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $FulfillmentCopyWith<Fulfillment> get copyWith => _$FulfillmentCopyWithImpl<Fulfillment>(this as Fulfillment, _$identity);
 
+  /// Serializes this Fulfillment to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -4773,7 +4872,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Fulfillment&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.tracking, _this.tracking) || other.tracking == _this.tracking)&&(identical(other.trackingUrl, _this.trackingUrl) || other.trackingUrl == _this.trackingUrl)&&const DeepCollectionEquality().equals(other.pickupPointData, _this.pickupPointData)&&(identical(other.selectedDeliveryRateId, _this.selectedDeliveryRateId) || other.selectedDeliveryRateId == _this.selectedDeliveryRateId)&&(identical(other.unpriced, _this.unpriced) || other.unpriced == _this.unpriced)&&(identical(other.cost, _this.cost) || other.cost == _this.cost)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.discountTotal, _this.discountTotal) || other.discountTotal == _this.discountTotal)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.taxTotal, _this.taxTotal) || other.taxTotal == _this.taxTotal)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.fulfillmentType, _this.fulfillmentType) || other.fulfillmentType == _this.fulfillmentType)&&(identical(other.fulfilledAt, _this.fulfilledAt) || other.fulfilledAt == _this.fulfilledAt)&&(identical(other.deliveredAt, _this.deliveredAt) || other.deliveredAt == _this.deliveredAt)&&const DeepCollectionEquality().equals(other.items, _this.items)&&const DeepCollectionEquality().equals(other.deliveries, _this.deliveries)&&(identical(other.deliveryMethod, _this.deliveryMethod) || other.deliveryMethod == _this.deliveryMethod)&&(identical(other.stockLocation, _this.stockLocation) || other.stockLocation == _this.stockLocation)&&const DeepCollectionEquality().equals(other.deliveryRates, _this.deliveryRates)&&const DeepCollectionEquality().equals(other.taxLines, _this.taxLines)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Fulfillment;
@@ -4794,7 +4893,7 @@ abstract mixin class $FulfillmentCopyWith<$Res>  {
   factory $FulfillmentCopyWith(Fulfillment value, $Res Function(Fulfillment) _then) = _$FulfillmentCopyWithImpl;
 @useResult
 $Res call({
- String id, String number, String? tracking, String? trackingUrl, Map<String, Object?>? pickupPointData, String? selectedDeliveryRateId, bool unpriced, String? cost, String? total, String? discountTotal, String? additionalTaxTotal, String? includedTaxTotal, String? taxTotal, FulfillmentStatus status, FulfillmentType fulfillmentType, String? fulfilledAt, String? deliveredAt, List<FulfillmentItem> items, List<Delivery> deliveries, DeliveryMethod deliveryMethod, StockLocation stockLocation, List<DeliveryRate> deliveryRates, List<TaxLine>? taxLines, List<CustomField>? customFields
+ String id, String number, String? tracking, String? trackingUrl, Map<String, Object?>? pickupPointData, String? selectedDeliveryRateId, bool unpriced, String? cost, String? total, String? discountTotal, String? additionalTaxTotal, String? includedTaxTotal, String? taxTotal,@JsonKey(unknownEnumValue: FulfillmentStatus.unknown) FulfillmentStatus status,@JsonKey(unknownEnumValue: FulfillmentType.unknown) FulfillmentType fulfillmentType, String? fulfilledAt, String? deliveredAt, List<FulfillmentItem> items, List<Delivery> deliveries, DeliveryMethod deliveryMethod, StockLocation stockLocation, List<DeliveryRate> deliveryRates,@JsonKey(includeIfNull: false) List<TaxLine>? taxLines,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -4940,7 +5039,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal,  FulfillmentStatus status,  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates,  List<TaxLine>? taxLines,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal, @JsonKey(unknownEnumValue: FulfillmentStatus.unknown)  FulfillmentStatus status, @JsonKey(unknownEnumValue: FulfillmentType.unknown)  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Fulfillment() when $default != null:
 return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pickupPointData,_that.selectedDeliveryRateId,_that.unpriced,_that.cost,_that.total,_that.discountTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.taxTotal,_that.status,_that.fulfillmentType,_that.fulfilledAt,_that.deliveredAt,_that.items,_that.deliveries,_that.deliveryMethod,_that.stockLocation,_that.deliveryRates,_that.taxLines,_that.customFields);case _:
@@ -4961,7 +5060,7 @@ return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pic
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal,  FulfillmentStatus status,  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates,  List<TaxLine>? taxLines,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal, @JsonKey(unknownEnumValue: FulfillmentStatus.unknown)  FulfillmentStatus status, @JsonKey(unknownEnumValue: FulfillmentType.unknown)  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Fulfillment():
 return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pickupPointData,_that.selectedDeliveryRateId,_that.unpriced,_that.cost,_that.total,_that.discountTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.taxTotal,_that.status,_that.fulfillmentType,_that.fulfilledAt,_that.deliveredAt,_that.items,_that.deliveries,_that.deliveryMethod,_that.stockLocation,_that.deliveryRates,_that.taxLines,_that.customFields);case _:
@@ -4981,7 +5080,7 @@ return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pic
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal,  FulfillmentStatus status,  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates,  List<TaxLine>? taxLines,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String number,  String? tracking,  String? trackingUrl,  Map<String, Object?>? pickupPointData,  String? selectedDeliveryRateId,  bool unpriced,  String? cost,  String? total,  String? discountTotal,  String? additionalTaxTotal,  String? includedTaxTotal,  String? taxTotal, @JsonKey(unknownEnumValue: FulfillmentStatus.unknown)  FulfillmentStatus status, @JsonKey(unknownEnumValue: FulfillmentType.unknown)  FulfillmentType fulfillmentType,  String? fulfilledAt,  String? deliveredAt,  List<FulfillmentItem> items,  List<Delivery> deliveries,  DeliveryMethod deliveryMethod,  StockLocation stockLocation,  List<DeliveryRate> deliveryRates, @JsonKey(includeIfNull: false)  List<TaxLine>? taxLines, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Fulfillment() when $default != null:
 return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pickupPointData,_that.selectedDeliveryRateId,_that.unpriced,_that.cost,_that.total,_that.discountTotal,_that.additionalTaxTotal,_that.includedTaxTotal,_that.taxTotal,_that.status,_that.fulfillmentType,_that.fulfilledAt,_that.deliveredAt,_that.items,_that.deliveries,_that.deliveryMethod,_that.stockLocation,_that.deliveryRates,_that.taxLines,_that.customFields);case _:
@@ -4994,10 +5093,10 @@ return $default(_that.id,_that.number,_that.tracking,_that.trackingUrl,_that.pic
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Fulfillment extends Fulfillment {
-  const _Fulfillment({required this.id, required this.number, this.tracking, this.trackingUrl, this.pickupPointData, this.selectedDeliveryRateId, required this.unpriced, this.cost, this.total, this.discountTotal, this.additionalTaxTotal, this.includedTaxTotal, this.taxTotal, required this.status, required this.fulfillmentType, this.fulfilledAt, this.deliveredAt, required this.items, required this.deliveries, required this.deliveryMethod, required this.stockLocation, required this.deliveryRates, this.taxLines, this.customFields}): super._();
-  
+  const _Fulfillment({required this.id, required this.number, this.tracking, this.trackingUrl, this.pickupPointData, this.selectedDeliveryRateId, required this.unpriced, this.cost, this.total, this.discountTotal, this.additionalTaxTotal, this.includedTaxTotal, this.taxTotal, @JsonKey(unknownEnumValue: FulfillmentStatus.unknown) required this.status, @JsonKey(unknownEnumValue: FulfillmentType.unknown) required this.fulfillmentType, this.fulfilledAt, this.deliveredAt, required this.items, required this.deliveries, required this.deliveryMethod, required this.stockLocation, required this.deliveryRates, @JsonKey(includeIfNull: false) this.taxLines, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Fulfillment.fromJson(Map<String, dynamic> json) => _$FulfillmentFromJson(json);
 
 @override final  String id;
 @override final  String number;
@@ -5012,8 +5111,8 @@ class _Fulfillment extends Fulfillment {
 @override final  String? additionalTaxTotal;
 @override final  String? includedTaxTotal;
 @override final  String? taxTotal;
-@override final  FulfillmentStatus status;
-@override final  FulfillmentType fulfillmentType;
+@override@JsonKey(unknownEnumValue: FulfillmentStatus.unknown) final  FulfillmentStatus status;
+@override@JsonKey(unknownEnumValue: FulfillmentType.unknown) final  FulfillmentType fulfillmentType;
 @override final  String? fulfilledAt;
 @override final  String? deliveredAt;
 @override final  List<FulfillmentItem> items;
@@ -5021,8 +5120,8 @@ class _Fulfillment extends Fulfillment {
 @override final  DeliveryMethod deliveryMethod;
 @override final  StockLocation stockLocation;
 @override final  List<DeliveryRate> deliveryRates;
-@override final  List<TaxLine>? taxLines;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<TaxLine>? taxLines;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Fulfillment
 /// with the given fields replaced by the non-null parameter values.
@@ -5030,14 +5129,17 @@ class _Fulfillment extends Fulfillment {
 @pragma('vm:prefer-inline')
 _$FulfillmentCopyWith<_Fulfillment> get copyWith => __$FulfillmentCopyWithImpl<_Fulfillment>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$FulfillmentToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Fulfillment&&(identical(other.id, id) || other.id == id)&&(identical(other.number, number) || other.number == number)&&(identical(other.tracking, tracking) || other.tracking == tracking)&&(identical(other.trackingUrl, trackingUrl) || other.trackingUrl == trackingUrl)&&const DeepCollectionEquality().equals(other.pickupPointData, pickupPointData)&&(identical(other.selectedDeliveryRateId, selectedDeliveryRateId) || other.selectedDeliveryRateId == selectedDeliveryRateId)&&(identical(other.unpriced, unpriced) || other.unpriced == unpriced)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.total, total) || other.total == total)&&(identical(other.discountTotal, discountTotal) || other.discountTotal == discountTotal)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal)&&(identical(other.status, status) || other.status == status)&&(identical(other.fulfillmentType, fulfillmentType) || other.fulfillmentType == fulfillmentType)&&(identical(other.fulfilledAt, fulfilledAt) || other.fulfilledAt == fulfilledAt)&&(identical(other.deliveredAt, deliveredAt) || other.deliveredAt == deliveredAt)&&const DeepCollectionEquality().equals(other.items, items)&&const DeepCollectionEquality().equals(other.deliveries, deliveries)&&(identical(other.deliveryMethod, deliveryMethod) || other.deliveryMethod == deliveryMethod)&&(identical(other.stockLocation, stockLocation) || other.stockLocation == stockLocation)&&const DeepCollectionEquality().equals(other.deliveryRates, deliveryRates)&&const DeepCollectionEquality().equals(other.taxLines, taxLines)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,number,tracking,trackingUrl,const DeepCollectionEquality().hash(pickupPointData),selectedDeliveryRateId,unpriced,cost,total,discountTotal,additionalTaxTotal,includedTaxTotal,taxTotal,status,fulfillmentType,fulfilledAt,deliveredAt,const DeepCollectionEquality().hash(items),const DeepCollectionEquality().hash(deliveries),deliveryMethod,stockLocation,const DeepCollectionEquality().hash(deliveryRates),const DeepCollectionEquality().hash(taxLines),const DeepCollectionEquality().hash(customFields)]);
@@ -5056,7 +5158,7 @@ abstract mixin class _$FulfillmentCopyWith<$Res> implements $FulfillmentCopyWith
   factory _$FulfillmentCopyWith(_Fulfillment value, $Res Function(_Fulfillment) _then) = __$FulfillmentCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String number, String? tracking, String? trackingUrl, Map<String, Object?>? pickupPointData, String? selectedDeliveryRateId, bool unpriced, String? cost, String? total, String? discountTotal, String? additionalTaxTotal, String? includedTaxTotal, String? taxTotal, FulfillmentStatus status, FulfillmentType fulfillmentType, String? fulfilledAt, String? deliveredAt, List<FulfillmentItem> items, List<Delivery> deliveries, DeliveryMethod deliveryMethod, StockLocation stockLocation, List<DeliveryRate> deliveryRates, List<TaxLine>? taxLines, List<CustomField>? customFields
+ String id, String number, String? tracking, String? trackingUrl, Map<String, Object?>? pickupPointData, String? selectedDeliveryRateId, bool unpriced, String? cost, String? total, String? discountTotal, String? additionalTaxTotal, String? includedTaxTotal, String? taxTotal,@JsonKey(unknownEnumValue: FulfillmentStatus.unknown) FulfillmentStatus status,@JsonKey(unknownEnumValue: FulfillmentType.unknown) FulfillmentType fulfillmentType, String? fulfilledAt, String? deliveredAt, List<FulfillmentItem> items, List<Delivery> deliveries, DeliveryMethod deliveryMethod, StockLocation stockLocation, List<DeliveryRate> deliveryRates,@JsonKey(includeIfNull: false) List<TaxLine>? taxLines,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5124,16 +5226,19 @@ $StockLocationCopyWith<$Res> get stockLocation {
 }
 }
 
+
 /// @nodoc
 mixin _$PaymentMethod {
 
- String get id; String get name; String? get description; String get type; bool get sessionRequired; bool get sourceRequired; List<CustomField>? get customFields;
+ String get id; String get name; String? get description; String get type; bool get sessionRequired; bool get sourceRequired;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PaymentMethodCopyWith<PaymentMethod> get copyWith => _$PaymentMethodCopyWithImpl<PaymentMethod>(this as PaymentMethod, _$identity);
 
+  /// Serializes this PaymentMethod to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -5142,7 +5247,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentMethod&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.sessionRequired, _this.sessionRequired) || other.sessionRequired == _this.sessionRequired)&&(identical(other.sourceRequired, _this.sourceRequired) || other.sourceRequired == _this.sourceRequired)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as PaymentMethod;
@@ -5163,7 +5268,7 @@ abstract mixin class $PaymentMethodCopyWith<$Res>  {
   factory $PaymentMethodCopyWith(PaymentMethod value, $Res Function(PaymentMethod) _then) = _$PaymentMethodCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String? description, String type, bool sessionRequired, bool sourceRequired, List<CustomField>? customFields
+ String id, String name, String? description, String type, bool sessionRequired, bool sourceRequired,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5274,7 +5379,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRequired,_that.sourceRequired,_that.customFields);case _:
@@ -5295,7 +5400,7 @@ return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRe
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod():
 return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRequired,_that.sourceRequired,_that.customFields);case _:
@@ -5315,7 +5420,7 @@ return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRe
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? description,  String type,  bool sessionRequired,  bool sourceRequired, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _PaymentMethod() when $default != null:
 return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRequired,_that.sourceRequired,_that.customFields);case _:
@@ -5328,10 +5433,10 @@ return $default(_that.id,_that.name,_that.description,_that.type,_that.sessionRe
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _PaymentMethod extends PaymentMethod {
-  const _PaymentMethod({required this.id, required this.name, this.description, required this.type, required this.sessionRequired, required this.sourceRequired, this.customFields}): super._();
-  
+  const _PaymentMethod({required this.id, required this.name, this.description, required this.type, required this.sessionRequired, required this.sourceRequired, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -5339,7 +5444,7 @@ class _PaymentMethod extends PaymentMethod {
 @override final  String type;
 @override final  bool sessionRequired;
 @override final  bool sourceRequired;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of PaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -5347,14 +5452,17 @@ class _PaymentMethod extends PaymentMethod {
 @pragma('vm:prefer-inline')
 _$PaymentMethodCopyWith<_PaymentMethod> get copyWith => __$PaymentMethodCopyWithImpl<_PaymentMethod>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentMethodToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentMethod&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.type, type) || other.type == type)&&(identical(other.sessionRequired, sessionRequired) || other.sessionRequired == sessionRequired)&&(identical(other.sourceRequired, sourceRequired) || other.sourceRequired == sourceRequired)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,description,type,sessionRequired,sourceRequired,const DeepCollectionEquality().hash(customFields));
@@ -5373,7 +5481,7 @@ abstract mixin class _$PaymentMethodCopyWith<$Res> implements $PaymentMethodCopy
   factory _$PaymentMethodCopyWith(_PaymentMethod value, $Res Function(_PaymentMethod) _then) = __$PaymentMethodCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String? description, String type, bool sessionRequired, bool sourceRequired, List<CustomField>? customFields
+ String id, String name, String? description, String type, bool sessionRequired, bool sourceRequired,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5406,16 +5514,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Payment {
 
- String get id; String get paymentMethodId; String? get responseCode; String get number; PaymentStatus get status; String? get amount; PaymentSourceType? get sourceType; String? get sourceId; Map<String, Object?>? get source; PaymentMethod get paymentMethod; List<CustomField>? get customFields;
+ String get id; String get paymentMethodId; String? get responseCode; String get number;@JsonKey(unknownEnumValue: PaymentStatus.unknown) PaymentStatus get status; String? get amount;@JsonKey(unknownEnumValue: PaymentSourceType.unknown) PaymentSourceType? get sourceType; String? get sourceId; Map<String, Object?>? get source; PaymentMethod get paymentMethod;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Payment
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PaymentCopyWith<Payment> get copyWith => _$PaymentCopyWithImpl<Payment>(this as Payment, _$identity);
 
+  /// Serializes this Payment to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -5424,7 +5535,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Payment&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.paymentMethodId, _this.paymentMethodId) || other.paymentMethodId == _this.paymentMethodId)&&(identical(other.responseCode, _this.responseCode) || other.responseCode == _this.responseCode)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.sourceType, _this.sourceType) || other.sourceType == _this.sourceType)&&(identical(other.sourceId, _this.sourceId) || other.sourceId == _this.sourceId)&&const DeepCollectionEquality().equals(other.source, _this.source)&&(identical(other.paymentMethod, _this.paymentMethod) || other.paymentMethod == _this.paymentMethod)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Payment;
@@ -5445,7 +5556,7 @@ abstract mixin class $PaymentCopyWith<$Res>  {
   factory $PaymentCopyWith(Payment value, $Res Function(Payment) _then) = _$PaymentCopyWithImpl;
 @useResult
 $Res call({
- String id, String paymentMethodId, String? responseCode, String number, PaymentStatus status, String? amount, PaymentSourceType? sourceType, String? sourceId, Map<String, Object?>? source, PaymentMethod paymentMethod, List<CustomField>? customFields
+ String id, String paymentMethodId, String? responseCode, String number,@JsonKey(unknownEnumValue: PaymentStatus.unknown) PaymentStatus status, String? amount,@JsonKey(unknownEnumValue: PaymentSourceType.unknown) PaymentSourceType? sourceType, String? sourceId, Map<String, Object?>? source, PaymentMethod paymentMethod,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5569,7 +5680,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String paymentMethodId,  String? responseCode,  String number,  PaymentStatus status,  String? amount,  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String paymentMethodId,  String? responseCode,  String number, @JsonKey(unknownEnumValue: PaymentStatus.unknown)  PaymentStatus status,  String? amount, @JsonKey(unknownEnumValue: PaymentSourceType.unknown)  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Payment() when $default != null:
 return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_that.status,_that.amount,_that.sourceType,_that.sourceId,_that.source,_that.paymentMethod,_that.customFields);case _:
@@ -5590,7 +5701,7 @@ return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String paymentMethodId,  String? responseCode,  String number,  PaymentStatus status,  String? amount,  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String paymentMethodId,  String? responseCode,  String number, @JsonKey(unknownEnumValue: PaymentStatus.unknown)  PaymentStatus status,  String? amount, @JsonKey(unknownEnumValue: PaymentSourceType.unknown)  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Payment():
 return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_that.status,_that.amount,_that.sourceType,_that.sourceId,_that.source,_that.paymentMethod,_that.customFields);case _:
@@ -5610,7 +5721,7 @@ return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String paymentMethodId,  String? responseCode,  String number,  PaymentStatus status,  String? amount,  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String paymentMethodId,  String? responseCode,  String number, @JsonKey(unknownEnumValue: PaymentStatus.unknown)  PaymentStatus status,  String? amount, @JsonKey(unknownEnumValue: PaymentSourceType.unknown)  PaymentSourceType? sourceType,  String? sourceId,  Map<String, Object?>? source,  PaymentMethod paymentMethod, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Payment() when $default != null:
 return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_that.status,_that.amount,_that.sourceType,_that.sourceId,_that.source,_that.paymentMethod,_that.customFields);case _:
@@ -5623,22 +5734,22 @@ return $default(_that.id,_that.paymentMethodId,_that.responseCode,_that.number,_
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Payment extends Payment {
-  const _Payment({required this.id, required this.paymentMethodId, this.responseCode, required this.number, required this.status, this.amount, this.sourceType, this.sourceId, this.source, required this.paymentMethod, this.customFields}): super._();
-  
+  const _Payment({required this.id, required this.paymentMethodId, this.responseCode, required this.number, @JsonKey(unknownEnumValue: PaymentStatus.unknown) required this.status, this.amount, @JsonKey(unknownEnumValue: PaymentSourceType.unknown) this.sourceType, this.sourceId, this.source, required this.paymentMethod, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Payment.fromJson(Map<String, dynamic> json) => _$PaymentFromJson(json);
 
 @override final  String id;
 @override final  String paymentMethodId;
 @override final  String? responseCode;
 @override final  String number;
-@override final  PaymentStatus status;
+@override@JsonKey(unknownEnumValue: PaymentStatus.unknown) final  PaymentStatus status;
 @override final  String? amount;
-@override final  PaymentSourceType? sourceType;
+@override@JsonKey(unknownEnumValue: PaymentSourceType.unknown) final  PaymentSourceType? sourceType;
 @override final  String? sourceId;
 @override final  Map<String, Object?>? source;
 @override final  PaymentMethod paymentMethod;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Payment
 /// with the given fields replaced by the non-null parameter values.
@@ -5646,14 +5757,17 @@ class _Payment extends Payment {
 @pragma('vm:prefer-inline')
 _$PaymentCopyWith<_Payment> get copyWith => __$PaymentCopyWithImpl<_Payment>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PaymentToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Payment&&(identical(other.id, id) || other.id == id)&&(identical(other.paymentMethodId, paymentMethodId) || other.paymentMethodId == paymentMethodId)&&(identical(other.responseCode, responseCode) || other.responseCode == responseCode)&&(identical(other.number, number) || other.number == number)&&(identical(other.status, status) || other.status == status)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.sourceType, sourceType) || other.sourceType == sourceType)&&(identical(other.sourceId, sourceId) || other.sourceId == sourceId)&&const DeepCollectionEquality().equals(other.source, source)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,paymentMethodId,responseCode,number,status,amount,sourceType,sourceId,const DeepCollectionEquality().hash(source),paymentMethod,const DeepCollectionEquality().hash(customFields));
@@ -5672,7 +5786,7 @@ abstract mixin class _$PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   factory _$PaymentCopyWith(_Payment value, $Res Function(_Payment) _then) = __$PaymentCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String paymentMethodId, String? responseCode, String number, PaymentStatus status, String? amount, PaymentSourceType? sourceType, String? sourceId, Map<String, Object?>? source, PaymentMethod paymentMethod, List<CustomField>? customFields
+ String id, String paymentMethodId, String? responseCode, String number,@JsonKey(unknownEnumValue: PaymentStatus.unknown) PaymentStatus status, String? amount,@JsonKey(unknownEnumValue: PaymentSourceType.unknown) PaymentSourceType? sourceType, String? sourceId, Map<String, Object?>? source, PaymentMethod paymentMethod,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5718,16 +5832,19 @@ $PaymentMethodCopyWith<$Res> get paymentMethod {
 }
 }
 
+
 /// @nodoc
 mixin _$GiftCard {
 
- String get id; String get code; GiftCardStatus get status; CurrencyCode get currency; String? get amount; String? get amountUsed; String? get amountAuthorized; String? get amountRemaining; String? get expiresAt; String? get redeemedAt; bool get expired; bool get active; List<CustomField>? get customFields;
+ String get id; String get code;@JsonKey(unknownEnumValue: GiftCardStatus.unknown) GiftCardStatus get status;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency; String? get amount; String? get amountUsed; String? get amountAuthorized; String? get amountRemaining; String? get expiresAt; String? get redeemedAt; bool get expired; bool get active;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of GiftCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $GiftCardCopyWith<GiftCard> get copyWith => _$GiftCardCopyWithImpl<GiftCard>(this as GiftCard, _$identity);
 
+  /// Serializes this GiftCard to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -5736,7 +5853,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is GiftCard&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.amountUsed, _this.amountUsed) || other.amountUsed == _this.amountUsed)&&(identical(other.amountAuthorized, _this.amountAuthorized) || other.amountAuthorized == _this.amountAuthorized)&&(identical(other.amountRemaining, _this.amountRemaining) || other.amountRemaining == _this.amountRemaining)&&(identical(other.expiresAt, _this.expiresAt) || other.expiresAt == _this.expiresAt)&&(identical(other.redeemedAt, _this.redeemedAt) || other.redeemedAt == _this.redeemedAt)&&(identical(other.expired, _this.expired) || other.expired == _this.expired)&&(identical(other.active, _this.active) || other.active == _this.active)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as GiftCard;
@@ -5757,7 +5874,7 @@ abstract mixin class $GiftCardCopyWith<$Res>  {
   factory $GiftCardCopyWith(GiftCard value, $Res Function(GiftCard) _then) = _$GiftCardCopyWithImpl;
 @useResult
 $Res call({
- String id, String code, GiftCardStatus status, CurrencyCode currency, String? amount, String? amountUsed, String? amountAuthorized, String? amountRemaining, String? expiresAt, String? redeemedAt, bool expired, bool active, List<CustomField>? customFields
+ String id, String code,@JsonKey(unknownEnumValue: GiftCardStatus.unknown) GiftCardStatus status,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? amount, String? amountUsed, String? amountAuthorized, String? amountRemaining, String? expiresAt, String? redeemedAt, bool expired, bool active,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -5874,7 +5991,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String code,  GiftCardStatus status,  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String code, @JsonKey(unknownEnumValue: GiftCardStatus.unknown)  GiftCardStatus status, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GiftCard() when $default != null:
 return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_that.amountUsed,_that.amountAuthorized,_that.amountRemaining,_that.expiresAt,_that.redeemedAt,_that.expired,_that.active,_that.customFields);case _:
@@ -5895,7 +6012,7 @@ return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String code,  GiftCardStatus status,  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String code, @JsonKey(unknownEnumValue: GiftCardStatus.unknown)  GiftCardStatus status, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _GiftCard():
 return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_that.amountUsed,_that.amountAuthorized,_that.amountRemaining,_that.expiresAt,_that.redeemedAt,_that.expired,_that.active,_that.customFields);case _:
@@ -5915,7 +6032,7 @@ return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String code,  GiftCardStatus status,  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String code, @JsonKey(unknownEnumValue: GiftCardStatus.unknown)  GiftCardStatus status, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String? amountUsed,  String? amountAuthorized,  String? amountRemaining,  String? expiresAt,  String? redeemedAt,  bool expired,  bool active, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _GiftCard() when $default != null:
 return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_that.amountUsed,_that.amountAuthorized,_that.amountRemaining,_that.expiresAt,_that.redeemedAt,_that.expired,_that.active,_that.customFields);case _:
@@ -5928,15 +6045,15 @@ return $default(_that.id,_that.code,_that.status,_that.currency,_that.amount,_th
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _GiftCard extends GiftCard {
-  const _GiftCard({required this.id, required this.code, required this.status, required this.currency, this.amount, this.amountUsed, this.amountAuthorized, this.amountRemaining, this.expiresAt, this.redeemedAt, required this.expired, required this.active, this.customFields}): super._();
-  
+  const _GiftCard({required this.id, required this.code, @JsonKey(unknownEnumValue: GiftCardStatus.unknown) required this.status, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, this.amount, this.amountUsed, this.amountAuthorized, this.amountRemaining, this.expiresAt, this.redeemedAt, required this.expired, required this.active, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _GiftCard.fromJson(Map<String, dynamic> json) => _$GiftCardFromJson(json);
 
 @override final  String id;
 @override final  String code;
-@override final  GiftCardStatus status;
-@override final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: GiftCardStatus.unknown) final  GiftCardStatus status;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
 @override final  String? amount;
 @override final  String? amountUsed;
 @override final  String? amountAuthorized;
@@ -5945,7 +6062,7 @@ class _GiftCard extends GiftCard {
 @override final  String? redeemedAt;
 @override final  bool expired;
 @override final  bool active;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of GiftCard
 /// with the given fields replaced by the non-null parameter values.
@@ -5953,14 +6070,17 @@ class _GiftCard extends GiftCard {
 @pragma('vm:prefer-inline')
 _$GiftCardCopyWith<_GiftCard> get copyWith => __$GiftCardCopyWithImpl<_GiftCard>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$GiftCardToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _GiftCard&&(identical(other.id, id) || other.id == id)&&(identical(other.code, code) || other.code == code)&&(identical(other.status, status) || other.status == status)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.amountUsed, amountUsed) || other.amountUsed == amountUsed)&&(identical(other.amountAuthorized, amountAuthorized) || other.amountAuthorized == amountAuthorized)&&(identical(other.amountRemaining, amountRemaining) || other.amountRemaining == amountRemaining)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt)&&(identical(other.redeemedAt, redeemedAt) || other.redeemedAt == redeemedAt)&&(identical(other.expired, expired) || other.expired == expired)&&(identical(other.active, active) || other.active == active)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,code,status,currency,amount,amountUsed,amountAuthorized,amountRemaining,expiresAt,redeemedAt,expired,active,const DeepCollectionEquality().hash(customFields));
@@ -5979,7 +6099,7 @@ abstract mixin class _$GiftCardCopyWith<$Res> implements $GiftCardCopyWith<$Res>
   factory _$GiftCardCopyWith(_GiftCard value, $Res Function(_GiftCard) _then) = __$GiftCardCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String code, GiftCardStatus status, CurrencyCode currency, String? amount, String? amountUsed, String? amountAuthorized, String? amountRemaining, String? expiresAt, String? redeemedAt, bool expired, bool active, List<CustomField>? customFields
+ String id, String code,@JsonKey(unknownEnumValue: GiftCardStatus.unknown) GiftCardStatus status,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? amount, String? amountUsed, String? amountAuthorized, String? amountRemaining, String? expiresAt, String? redeemedAt, bool expired, bool active,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -6018,16 +6138,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$StoreCredit {
 
- String get id; String? get amount; String? get amountUsed; String? get amountRemaining; CurrencyCode get currency; List<CustomField>? get customFields;
+ String get id; String? get amount; String? get amountUsed; String? get amountRemaining;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of StoreCredit
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $StoreCreditCopyWith<StoreCredit> get copyWith => _$StoreCreditCopyWithImpl<StoreCredit>(this as StoreCredit, _$identity);
 
+  /// Serializes this StoreCredit to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -6036,7 +6159,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is StoreCredit&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.amountUsed, _this.amountUsed) || other.amountUsed == _this.amountUsed)&&(identical(other.amountRemaining, _this.amountRemaining) || other.amountRemaining == _this.amountRemaining)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as StoreCredit;
@@ -6057,7 +6180,7 @@ abstract mixin class $StoreCreditCopyWith<$Res>  {
   factory $StoreCreditCopyWith(StoreCredit value, $Res Function(StoreCredit) _then) = _$StoreCreditCopyWithImpl;
 @useResult
 $Res call({
- String id, String? amount, String? amountUsed, String? amountRemaining, CurrencyCode currency, List<CustomField>? customFields
+ String id, String? amount, String? amountUsed, String? amountRemaining,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -6167,7 +6290,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining,  CurrencyCode currency,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StoreCredit() when $default != null:
 return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_that.currency,_that.customFields);case _:
@@ -6188,7 +6311,7 @@ return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining,  CurrencyCode currency,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _StoreCredit():
 return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_that.currency,_that.customFields);case _:
@@ -6208,7 +6331,7 @@ return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining,  CurrencyCode currency,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? amount,  String? amountUsed,  String? amountRemaining, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _StoreCredit() when $default != null:
 return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_that.currency,_that.customFields);case _:
@@ -6221,17 +6344,17 @@ return $default(_that.id,_that.amount,_that.amountUsed,_that.amountRemaining,_th
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _StoreCredit extends StoreCredit {
-  const _StoreCredit({required this.id, this.amount, this.amountUsed, this.amountRemaining, required this.currency, this.customFields}): super._();
-  
+  const _StoreCredit({required this.id, this.amount, this.amountUsed, this.amountRemaining, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _StoreCredit.fromJson(Map<String, dynamic> json) => _$StoreCreditFromJson(json);
 
 @override final  String id;
 @override final  String? amount;
 @override final  String? amountUsed;
 @override final  String? amountRemaining;
-@override final  CurrencyCode currency;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of StoreCredit
 /// with the given fields replaced by the non-null parameter values.
@@ -6239,14 +6362,17 @@ class _StoreCredit extends StoreCredit {
 @pragma('vm:prefer-inline')
 _$StoreCreditCopyWith<_StoreCredit> get copyWith => __$StoreCreditCopyWithImpl<_StoreCredit>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$StoreCreditToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _StoreCredit&&(identical(other.id, id) || other.id == id)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.amountUsed, amountUsed) || other.amountUsed == amountUsed)&&(identical(other.amountRemaining, amountRemaining) || other.amountRemaining == amountRemaining)&&(identical(other.currency, currency) || other.currency == currency)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,amount,amountUsed,amountRemaining,currency,const DeepCollectionEquality().hash(customFields));
@@ -6265,7 +6391,7 @@ abstract mixin class _$StoreCreditCopyWith<$Res> implements $StoreCreditCopyWith
   factory _$StoreCreditCopyWith(_StoreCredit value, $Res Function(_StoreCredit) _then) = __$StoreCreditCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? amount, String? amountUsed, String? amountRemaining, CurrencyCode currency, List<CustomField>? customFields
+ String id, String? amount, String? amountUsed, String? amountRemaining,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -6297,16 +6423,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Cart {
 
- String? get marketId; String? get channelId; String? get preferredStockLocationId; String? get companyId; String? get companyName; bool get poNumberRequired; String? get poDocumentFilename; int? get poDocumentByteSize; String get number; String get token; String? get email; String? get customerNote; String? get poNumber; CurrencyCode get currency; LocaleCode? get locale; int get totalQuantity; List<CartWarning> get warnings; String? get couponCode; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments; String? get adjustmentTotal; String get currentStep; List<String> get completedSteps; List<CheckoutRequirement> get requirements; String? get orderMinimum; String? get orderMinimumShortfall; bool? get belowOrderMinimum; FreightSummary? get freightSummary; bool get shippingEqBillingAddress; List<AppliedPromotion> get discounts; List<Fee> get fees; List<LineItem> get items; List<Fulfillment> get fulfillments; Address? get billingAddress; Address? get shippingAddress; List<PaymentMethod> get paymentMethods; GiftCard? get giftCard; Market? get market;
+ String? get marketId; String? get channelId; String? get preferredStockLocationId; String? get companyId; String? get companyName; bool get poNumberRequired; String? get poDocumentFilename; int? get poDocumentByteSize; String get number; String get token; String? get email; String? get customerNote; String? get poNumber;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency;@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? get locale; int get totalQuantity; List<CartWarning> get warnings; String? get couponCode; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments; String? get adjustmentTotal; String get currentStep; List<String> get completedSteps; List<CheckoutRequirement> get requirements; String? get orderMinimum; String? get orderMinimumShortfall; bool? get belowOrderMinimum; FreightSummary? get freightSummary; bool get shippingEqBillingAddress; List<AppliedPromotion> get discounts; List<Fee> get fees; List<LineItem> get items; List<Fulfillment> get fulfillments; Address? get billingAddress; Address? get shippingAddress; List<PaymentMethod> get paymentMethods; GiftCard? get giftCard; Market? get market;
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CartCopyWith<Cart> get copyWith => _$CartCopyWithImpl<Cart>(this as Cart, _$identity);
 
+  /// Serializes this Cart to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -6315,7 +6444,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Cart&&(identical(other.marketId, _this.marketId) || other.marketId == _this.marketId)&&(identical(other.channelId, _this.channelId) || other.channelId == _this.channelId)&&(identical(other.preferredStockLocationId, _this.preferredStockLocationId) || other.preferredStockLocationId == _this.preferredStockLocationId)&&(identical(other.companyId, _this.companyId) || other.companyId == _this.companyId)&&(identical(other.companyName, _this.companyName) || other.companyName == _this.companyName)&&(identical(other.poNumberRequired, _this.poNumberRequired) || other.poNumberRequired == _this.poNumberRequired)&&(identical(other.poDocumentFilename, _this.poDocumentFilename) || other.poDocumentFilename == _this.poDocumentFilename)&&(identical(other.poDocumentByteSize, _this.poDocumentByteSize) || other.poDocumentByteSize == _this.poDocumentByteSize)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.token, _this.token) || other.token == _this.token)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.customerNote, _this.customerNote) || other.customerNote == _this.customerNote)&&(identical(other.poNumber, _this.poNumber) || other.poNumber == _this.poNumber)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.locale, _this.locale) || other.locale == _this.locale)&&(identical(other.totalQuantity, _this.totalQuantity) || other.totalQuantity == _this.totalQuantity)&&const DeepCollectionEquality().equals(other.warnings, _this.warnings)&&(identical(other.couponCode, _this.couponCode) || other.couponCode == _this.couponCode)&&(identical(other.itemTotal, _this.itemTotal) || other.itemTotal == _this.itemTotal)&&(identical(other.discountTotal, _this.discountTotal) || other.discountTotal == _this.discountTotal)&&(identical(other.taxTotal, _this.taxTotal) || other.taxTotal == _this.taxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.deliveryTotal, _this.deliveryTotal) || other.deliveryTotal == _this.deliveryTotal)&&(identical(other.feeTotal, _this.feeTotal) || other.feeTotal == _this.feeTotal)&&(identical(other.giftCardTotal, _this.giftCardTotal) || other.giftCardTotal == _this.giftCardTotal)&&(identical(other.storeCreditTotal, _this.storeCreditTotal) || other.storeCreditTotal == _this.storeCreditTotal)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.amountDue, _this.amountDue) || other.amountDue == _this.amountDue)&&(identical(other.coveredByStoreCredit, _this.coveredByStoreCredit) || other.coveredByStoreCredit == _this.coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, _this.payments)&&(identical(other.adjustmentTotal, _this.adjustmentTotal) || other.adjustmentTotal == _this.adjustmentTotal)&&(identical(other.currentStep, _this.currentStep) || other.currentStep == _this.currentStep)&&const DeepCollectionEquality().equals(other.completedSteps, _this.completedSteps)&&const DeepCollectionEquality().equals(other.requirements, _this.requirements)&&(identical(other.orderMinimum, _this.orderMinimum) || other.orderMinimum == _this.orderMinimum)&&(identical(other.orderMinimumShortfall, _this.orderMinimumShortfall) || other.orderMinimumShortfall == _this.orderMinimumShortfall)&&(identical(other.belowOrderMinimum, _this.belowOrderMinimum) || other.belowOrderMinimum == _this.belowOrderMinimum)&&(identical(other.freightSummary, _this.freightSummary) || other.freightSummary == _this.freightSummary)&&(identical(other.shippingEqBillingAddress, _this.shippingEqBillingAddress) || other.shippingEqBillingAddress == _this.shippingEqBillingAddress)&&const DeepCollectionEquality().equals(other.discounts, _this.discounts)&&const DeepCollectionEquality().equals(other.fees, _this.fees)&&const DeepCollectionEquality().equals(other.items, _this.items)&&const DeepCollectionEquality().equals(other.fulfillments, _this.fulfillments)&&(identical(other.billingAddress, _this.billingAddress) || other.billingAddress == _this.billingAddress)&&(identical(other.shippingAddress, _this.shippingAddress) || other.shippingAddress == _this.shippingAddress)&&const DeepCollectionEquality().equals(other.paymentMethods, _this.paymentMethods)&&(identical(other.giftCard, _this.giftCard) || other.giftCard == _this.giftCard)&&(identical(other.market, _this.market) || other.market == _this.market));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Cart;
@@ -6336,7 +6465,7 @@ abstract mixin class $CartCopyWith<$Res>  {
   factory $CartCopyWith(Cart value, $Res Function(Cart) _then) = _$CartCopyWithImpl;
 @useResult
 $Res call({
- String? marketId, String? channelId, String? preferredStockLocationId, String? companyId, String? companyName, bool poNumberRequired, String? poDocumentFilename, int? poDocumentByteSize, String number, String token, String? email, String? customerNote, String? poNumber, CurrencyCode currency, LocaleCode? locale, int totalQuantity, List<CartWarning> warnings, String? couponCode, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, String currentStep, List<String> completedSteps, List<CheckoutRequirement> requirements, String? orderMinimum, String? orderMinimumShortfall, bool? belowOrderMinimum, FreightSummary? freightSummary, bool shippingEqBillingAddress, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, List<PaymentMethod> paymentMethods, GiftCard? giftCard, Market? market
+ String? marketId, String? channelId, String? preferredStockLocationId, String? companyId, String? companyName, bool poNumberRequired, String? poDocumentFilename, int? poDocumentByteSize, String number, String token, String? email, String? customerNote, String? poNumber,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? locale, int totalQuantity, List<CartWarning> warnings, String? couponCode, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, String currentStep, List<String> completedSteps, List<CheckoutRequirement> requirements, String? orderMinimum, String? orderMinimumShortfall, bool? belowOrderMinimum, FreightSummary? freightSummary, bool shippingEqBillingAddress, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, List<PaymentMethod> paymentMethods, GiftCard? giftCard, Market? market
 });
 
 
@@ -6549,7 +6678,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
 return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_that.companyId,_that.companyName,_that.poNumberRequired,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.token,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.warnings,_that.couponCode,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.currentStep,_that.completedSteps,_that.requirements,_that.orderMinimum,_that.orderMinimumShortfall,_that.belowOrderMinimum,_that.freightSummary,_that.shippingEqBillingAddress,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.paymentMethods,_that.giftCard,_that.market);case _:
@@ -6570,7 +6699,7 @@ return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)  $default,) {final _that = this;
 switch (_that) {
 case _Cart():
 return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_that.companyId,_that.companyName,_that.poNumberRequired,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.token,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.warnings,_that.couponCode,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.currentStep,_that.completedSteps,_that.requirements,_that.orderMinimum,_that.orderMinimumShortfall,_that.belowOrderMinimum,_that.freightSummary,_that.shippingEqBillingAddress,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.paymentMethods,_that.giftCard,_that.market);case _:
@@ -6590,7 +6719,7 @@ return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? marketId,  String? channelId,  String? preferredStockLocationId,  String? companyId,  String? companyName,  bool poNumberRequired,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String token,  String? email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  List<CartWarning> warnings,  String? couponCode,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  String currentStep,  List<String> completedSteps,  List<CheckoutRequirement> requirements,  String? orderMinimum,  String? orderMinimumShortfall,  bool? belowOrderMinimum,  FreightSummary? freightSummary,  bool shippingEqBillingAddress,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  List<PaymentMethod> paymentMethods,  GiftCard? giftCard,  Market? market)?  $default,) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
 return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_that.companyId,_that.companyName,_that.poNumberRequired,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.token,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.warnings,_that.couponCode,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.currentStep,_that.completedSteps,_that.requirements,_that.orderMinimum,_that.orderMinimumShortfall,_that.belowOrderMinimum,_that.freightSummary,_that.shippingEqBillingAddress,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.paymentMethods,_that.giftCard,_that.market);case _:
@@ -6603,10 +6732,10 @@ return $default(_that.marketId,_that.channelId,_that.preferredStockLocationId,_t
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Cart extends Cart {
-  const _Cart({this.marketId, this.channelId, this.preferredStockLocationId, this.companyId, this.companyName, required this.poNumberRequired, this.poDocumentFilename, this.poDocumentByteSize, required this.number, required this.token, this.email, this.customerNote, this.poNumber, required this.currency, this.locale, required this.totalQuantity, required this.warnings, this.couponCode, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, this.adjustmentTotal, required this.currentStep, required this.completedSteps, required this.requirements, this.orderMinimum, this.orderMinimumShortfall, this.belowOrderMinimum, this.freightSummary, required this.shippingEqBillingAddress, required this.discounts, required this.fees, required this.items, required this.fulfillments, this.billingAddress, this.shippingAddress, required this.paymentMethods, this.giftCard, this.market}): super._();
-  
+  const _Cart({this.marketId, this.channelId, this.preferredStockLocationId, this.companyId, this.companyName, required this.poNumberRequired, this.poDocumentFilename, this.poDocumentByteSize, required this.number, required this.token, this.email, this.customerNote, this.poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, @JsonKey(unknownEnumValue: LocaleCode.unknown) this.locale, required this.totalQuantity, required this.warnings, this.couponCode, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, this.adjustmentTotal, required this.currentStep, required this.completedSteps, required this.requirements, this.orderMinimum, this.orderMinimumShortfall, this.belowOrderMinimum, this.freightSummary, required this.shippingEqBillingAddress, required this.discounts, required this.fees, required this.items, required this.fulfillments, this.billingAddress, this.shippingAddress, required this.paymentMethods, this.giftCard, this.market}): super._();
+  factory _Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
 
 @override final  String? marketId;
 @override final  String? channelId;
@@ -6621,8 +6750,8 @@ class _Cart extends Cart {
 @override final  String? email;
 @override final  String? customerNote;
 @override final  String? poNumber;
-@override final  CurrencyCode currency;
-@override final  LocaleCode? locale;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: LocaleCode.unknown) final  LocaleCode? locale;
 @override final  int totalQuantity;
 @override final  List<CartWarning> warnings;
 @override final  String? couponCode;
@@ -6664,14 +6793,17 @@ class _Cart extends Cart {
 @pragma('vm:prefer-inline')
 _$CartCopyWith<_Cart> get copyWith => __$CartCopyWithImpl<_Cart>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CartToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.marketId, marketId) || other.marketId == marketId)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.preferredStockLocationId, preferredStockLocationId) || other.preferredStockLocationId == preferredStockLocationId)&&(identical(other.companyId, companyId) || other.companyId == companyId)&&(identical(other.companyName, companyName) || other.companyName == companyName)&&(identical(other.poNumberRequired, poNumberRequired) || other.poNumberRequired == poNumberRequired)&&(identical(other.poDocumentFilename, poDocumentFilename) || other.poDocumentFilename == poDocumentFilename)&&(identical(other.poDocumentByteSize, poDocumentByteSize) || other.poDocumentByteSize == poDocumentByteSize)&&(identical(other.number, number) || other.number == number)&&(identical(other.token, token) || other.token == token)&&(identical(other.email, email) || other.email == email)&&(identical(other.customerNote, customerNote) || other.customerNote == customerNote)&&(identical(other.poNumber, poNumber) || other.poNumber == poNumber)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.locale, locale) || other.locale == locale)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&const DeepCollectionEquality().equals(other.warnings, warnings)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.itemTotal, itemTotal) || other.itemTotal == itemTotal)&&(identical(other.discountTotal, discountTotal) || other.discountTotal == discountTotal)&&(identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.deliveryTotal, deliveryTotal) || other.deliveryTotal == deliveryTotal)&&(identical(other.feeTotal, feeTotal) || other.feeTotal == feeTotal)&&(identical(other.giftCardTotal, giftCardTotal) || other.giftCardTotal == giftCardTotal)&&(identical(other.storeCreditTotal, storeCreditTotal) || other.storeCreditTotal == storeCreditTotal)&&(identical(other.total, total) || other.total == total)&&(identical(other.amountDue, amountDue) || other.amountDue == amountDue)&&(identical(other.coveredByStoreCredit, coveredByStoreCredit) || other.coveredByStoreCredit == coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, payments)&&(identical(other.adjustmentTotal, adjustmentTotal) || other.adjustmentTotal == adjustmentTotal)&&(identical(other.currentStep, currentStep) || other.currentStep == currentStep)&&const DeepCollectionEquality().equals(other.completedSteps, completedSteps)&&const DeepCollectionEquality().equals(other.requirements, requirements)&&(identical(other.orderMinimum, orderMinimum) || other.orderMinimum == orderMinimum)&&(identical(other.orderMinimumShortfall, orderMinimumShortfall) || other.orderMinimumShortfall == orderMinimumShortfall)&&(identical(other.belowOrderMinimum, belowOrderMinimum) || other.belowOrderMinimum == belowOrderMinimum)&&(identical(other.freightSummary, freightSummary) || other.freightSummary == freightSummary)&&(identical(other.shippingEqBillingAddress, shippingEqBillingAddress) || other.shippingEqBillingAddress == shippingEqBillingAddress)&&const DeepCollectionEquality().equals(other.discounts, discounts)&&const DeepCollectionEquality().equals(other.fees, fees)&&const DeepCollectionEquality().equals(other.items, items)&&const DeepCollectionEquality().equals(other.fulfillments, fulfillments)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&const DeepCollectionEquality().equals(other.paymentMethods, paymentMethods)&&(identical(other.giftCard, giftCard) || other.giftCard == giftCard)&&(identical(other.market, market) || other.market == market));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,marketId,channelId,preferredStockLocationId,companyId,companyName,poNumberRequired,poDocumentFilename,poDocumentByteSize,number,token,email,customerNote,poNumber,currency,locale,totalQuantity,const DeepCollectionEquality().hash(warnings),couponCode,itemTotal,discountTotal,taxTotal,includedTaxTotal,additionalTaxTotal,deliveryTotal,feeTotal,giftCardTotal,storeCreditTotal,total,amountDue,coveredByStoreCredit,const DeepCollectionEquality().hash(payments),adjustmentTotal,currentStep,const DeepCollectionEquality().hash(completedSteps),const DeepCollectionEquality().hash(requirements),orderMinimum,orderMinimumShortfall,belowOrderMinimum,freightSummary,shippingEqBillingAddress,const DeepCollectionEquality().hash(discounts),const DeepCollectionEquality().hash(fees),const DeepCollectionEquality().hash(items),const DeepCollectionEquality().hash(fulfillments),billingAddress,shippingAddress,const DeepCollectionEquality().hash(paymentMethods),giftCard,market]);
@@ -6690,7 +6822,7 @@ abstract mixin class _$CartCopyWith<$Res> implements $CartCopyWith<$Res> {
   factory _$CartCopyWith(_Cart value, $Res Function(_Cart) _then) = __$CartCopyWithImpl;
 @override @useResult
 $Res call({
- String? marketId, String? channelId, String? preferredStockLocationId, String? companyId, String? companyName, bool poNumberRequired, String? poDocumentFilename, int? poDocumentByteSize, String number, String token, String? email, String? customerNote, String? poNumber, CurrencyCode currency, LocaleCode? locale, int totalQuantity, List<CartWarning> warnings, String? couponCode, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, String currentStep, List<String> completedSteps, List<CheckoutRequirement> requirements, String? orderMinimum, String? orderMinimumShortfall, bool? belowOrderMinimum, FreightSummary? freightSummary, bool shippingEqBillingAddress, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, List<PaymentMethod> paymentMethods, GiftCard? giftCard, Market? market
+ String? marketId, String? channelId, String? preferredStockLocationId, String? companyId, String? companyName, bool poNumberRequired, String? poDocumentFilename, int? poDocumentByteSize, String number, String token, String? email, String? customerNote, String? poNumber,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? locale, int totalQuantity, List<CartWarning> warnings, String? couponCode, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, String currentStep, List<String> completedSteps, List<CheckoutRequirement> requirements, String? orderMinimum, String? orderMinimumShortfall, bool? belowOrderMinimum, FreightSummary? freightSummary, bool shippingEqBillingAddress, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, List<PaymentMethod> paymentMethods, GiftCard? giftCard, Market? market
 });
 
 

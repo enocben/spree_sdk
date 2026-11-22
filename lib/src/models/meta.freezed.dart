@@ -12,16 +12,19 @@ part of 'meta.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$CustomField {
 
- String get id; String get label; CustomFieldType get fieldType; String get key; Object? get value;
+ String get id; String get label;@JsonKey(unknownEnumValue: CustomFieldType.unknown) CustomFieldType get fieldType; String get key; Object? get value;
 /// Create a copy of CustomField
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CustomFieldCopyWith<CustomField> get copyWith => _$CustomFieldCopyWithImpl<CustomField>(this as CustomField, _$identity);
 
+  /// Serializes this CustomField to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomField&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.fieldType, _this.fieldType) || other.fieldType == _this.fieldType)&&(identical(other.key, _this.key) || other.key == _this.key)&&const DeepCollectionEquality().equals(other.value, _this.value));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CustomField;
@@ -51,7 +54,7 @@ abstract mixin class $CustomFieldCopyWith<$Res>  {
   factory $CustomFieldCopyWith(CustomField value, $Res Function(CustomField) _then) = _$CustomFieldCopyWithImpl;
 @useResult
 $Res call({
- String id, String label, CustomFieldType fieldType, String key, Object? value
+ String id, String label,@JsonKey(unknownEnumValue: CustomFieldType.unknown) CustomFieldType fieldType, String key, Object? value
 });
 
 
@@ -159,7 +162,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label,  CustomFieldType fieldType,  String key,  Object? value)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: CustomFieldType.unknown)  CustomFieldType fieldType,  String key,  Object? value)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CustomField() when $default != null:
 return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case _:
@@ -180,7 +183,7 @@ return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label,  CustomFieldType fieldType,  String key,  Object? value)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String label, @JsonKey(unknownEnumValue: CustomFieldType.unknown)  CustomFieldType fieldType,  String key,  Object? value)  $default,) {final _that = this;
 switch (_that) {
 case _CustomField():
 return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case _:
@@ -200,7 +203,7 @@ return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label,  CustomFieldType fieldType,  String key,  Object? value)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String label, @JsonKey(unknownEnumValue: CustomFieldType.unknown)  CustomFieldType fieldType,  String key,  Object? value)?  $default,) {final _that = this;
 switch (_that) {
 case _CustomField() when $default != null:
 return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case _:
@@ -213,14 +216,14 @@ return $default(_that.id,_that.label,_that.fieldType,_that.key,_that.value);case
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _CustomField extends CustomField {
-  const _CustomField({required this.id, required this.label, required this.fieldType, required this.key, this.value}): super._();
-  
+  const _CustomField({required this.id, required this.label, @JsonKey(unknownEnumValue: CustomFieldType.unknown) required this.fieldType, required this.key, this.value}): super._();
+  factory _CustomField.fromJson(Map<String, dynamic> json) => _$CustomFieldFromJson(json);
 
 @override final  String id;
 @override final  String label;
-@override final  CustomFieldType fieldType;
+@override@JsonKey(unknownEnumValue: CustomFieldType.unknown) final  CustomFieldType fieldType;
 @override final  String key;
 @override final  Object? value;
 
@@ -230,14 +233,17 @@ class _CustomField extends CustomField {
 @pragma('vm:prefer-inline')
 _$CustomFieldCopyWith<_CustomField> get copyWith => __$CustomFieldCopyWithImpl<_CustomField>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CustomFieldToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomField&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&(identical(other.fieldType, fieldType) || other.fieldType == fieldType)&&(identical(other.key, key) || other.key == key)&&const DeepCollectionEquality().equals(other.value, value));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,label,fieldType,key,const DeepCollectionEquality().hash(value));
@@ -256,7 +262,7 @@ abstract mixin class _$CustomFieldCopyWith<$Res> implements $CustomFieldCopyWith
   factory _$CustomFieldCopyWith(_CustomField value, $Res Function(_CustomField) _then) = __$CustomFieldCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String label, CustomFieldType fieldType, String key, Object? value
+ String id, String label,@JsonKey(unknownEnumValue: CustomFieldType.unknown) CustomFieldType fieldType, String key, Object? value
 });
 
 
@@ -286,6 +292,7 @@ as String,value: freezed == value ? _self.value : value ,
 
 }
 
+
 /// @nodoc
 mixin _$State {
 
@@ -296,6 +303,8 @@ mixin _$State {
 @pragma('vm:prefer-inline')
 $StateCopyWith<State> get copyWith => _$StateCopyWithImpl<State>(this as State, _$identity);
 
+  /// Serializes this State to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -304,7 +313,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is State&&(identical(other.abbr, _this.abbr) || other.abbr == _this.abbr)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as State;
@@ -485,10 +494,10 @@ return $default(_that.abbr,_that.name);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _State extends State {
   const _State({required this.abbr, required this.name}): super._();
-  
+  factory _State.fromJson(Map<String, dynamic> json) => _$StateFromJson(json);
 
 @override final  String abbr;
 @override final  String name;
@@ -499,14 +508,17 @@ class _State extends State {
 @pragma('vm:prefer-inline')
 _$StateCopyWith<_State> get copyWith => __$StateCopyWithImpl<_State>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$StateToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _State&&(identical(other.abbr, abbr) || other.abbr == abbr)&&(identical(other.name, name) || other.name == name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,abbr,name);
@@ -553,16 +565,19 @@ as String,
 
 }
 
+
 /// @nodoc
 mixin _$Country {
 
- CountryCode get iso; String get iso3; String get name; bool get statesRequired; bool get zipcodeRequired; List<State>? get states; Market? get market;
+@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode get iso; String get iso3; String get name; bool get statesRequired; bool get zipcodeRequired;@JsonKey(includeIfNull: false) List<State>? get states; Market? get market;
 /// Create a copy of Country
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CountryCopyWith<Country> get copyWith => _$CountryCopyWithImpl<Country>(this as Country, _$identity);
 
+  /// Serializes this Country to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -571,7 +586,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Country&&(identical(other.iso, _this.iso) || other.iso == _this.iso)&&(identical(other.iso3, _this.iso3) || other.iso3 == _this.iso3)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.statesRequired, _this.statesRequired) || other.statesRequired == _this.statesRequired)&&(identical(other.zipcodeRequired, _this.zipcodeRequired) || other.zipcodeRequired == _this.zipcodeRequired)&&const DeepCollectionEquality().equals(other.states, _this.states)&&(identical(other.market, _this.market) || other.market == _this.market));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Country;
@@ -592,7 +607,7 @@ abstract mixin class $CountryCopyWith<$Res>  {
   factory $CountryCopyWith(Country value, $Res Function(Country) _then) = _$CountryCopyWithImpl;
 @useResult
 $Res call({
- CountryCode iso, String iso3, String name, bool statesRequired, bool zipcodeRequired, List<State>? states, Market? market
+@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode iso, String iso3, String name, bool statesRequired, bool zipcodeRequired,@JsonKey(includeIfNull: false) List<State>? states, Market? market
 });
 
 
@@ -715,7 +730,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired,  List<State>? states,  Market? market)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired, @JsonKey(includeIfNull: false)  List<State>? states,  Market? market)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Country() when $default != null:
 return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipcodeRequired,_that.states,_that.market);case _:
@@ -736,7 +751,7 @@ return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipco
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired,  List<State>? states,  Market? market)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired, @JsonKey(includeIfNull: false)  List<State>? states,  Market? market)  $default,) {final _that = this;
 switch (_that) {
 case _Country():
 return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipcodeRequired,_that.states,_that.market);case _:
@@ -756,7 +771,7 @@ return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipco
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired,  List<State>? states,  Market? market)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: CountryCode.unknown)  CountryCode iso,  String iso3,  String name,  bool statesRequired,  bool zipcodeRequired, @JsonKey(includeIfNull: false)  List<State>? states,  Market? market)?  $default,) {final _that = this;
 switch (_that) {
 case _Country() when $default != null:
 return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipcodeRequired,_that.states,_that.market);case _:
@@ -769,17 +784,17 @@ return $default(_that.iso,_that.iso3,_that.name,_that.statesRequired,_that.zipco
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Country extends Country {
-  const _Country({required this.iso, required this.iso3, required this.name, required this.statesRequired, required this.zipcodeRequired, this.states, this.market}): super._();
-  
+  const _Country({@JsonKey(unknownEnumValue: CountryCode.unknown) required this.iso, required this.iso3, required this.name, required this.statesRequired, required this.zipcodeRequired, @JsonKey(includeIfNull: false) this.states, this.market}): super._();
+  factory _Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
 
-@override final  CountryCode iso;
+@override@JsonKey(unknownEnumValue: CountryCode.unknown) final  CountryCode iso;
 @override final  String iso3;
 @override final  String name;
 @override final  bool statesRequired;
 @override final  bool zipcodeRequired;
-@override final  List<State>? states;
+@override@JsonKey(includeIfNull: false) final  List<State>? states;
 @override final  Market? market;
 
 /// Create a copy of Country
@@ -788,14 +803,17 @@ class _Country extends Country {
 @pragma('vm:prefer-inline')
 _$CountryCopyWith<_Country> get copyWith => __$CountryCopyWithImpl<_Country>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CountryToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Country&&(identical(other.iso, iso) || other.iso == iso)&&(identical(other.iso3, iso3) || other.iso3 == iso3)&&(identical(other.name, name) || other.name == name)&&(identical(other.statesRequired, statesRequired) || other.statesRequired == statesRequired)&&(identical(other.zipcodeRequired, zipcodeRequired) || other.zipcodeRequired == zipcodeRequired)&&const DeepCollectionEquality().equals(other.states, states)&&(identical(other.market, market) || other.market == market));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,iso,iso3,name,statesRequired,zipcodeRequired,const DeepCollectionEquality().hash(states),market);
@@ -814,7 +832,7 @@ abstract mixin class _$CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
   factory _$CountryCopyWith(_Country value, $Res Function(_Country) _then) = __$CountryCopyWithImpl;
 @override @useResult
 $Res call({
- CountryCode iso, String iso3, String name, bool statesRequired, bool zipcodeRequired, List<State>? states, Market? market
+@JsonKey(unknownEnumValue: CountryCode.unknown) CountryCode iso, String iso3, String name, bool statesRequired, bool zipcodeRequired,@JsonKey(includeIfNull: false) List<State>? states, Market? market
 });
 
 
@@ -859,16 +877,19 @@ $MarketCopyWith<$Res>? get market {
 }
 }
 
+
 /// @nodoc
 mixin _$Currency {
 
- CurrencyCode get isoCode; String get name; String get symbol; int get decimalPlaces;
+@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get isoCode; String get name; String get symbol; int get decimalPlaces;
 /// Create a copy of Currency
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CurrencyCopyWith<Currency> get copyWith => _$CurrencyCopyWithImpl<Currency>(this as Currency, _$identity);
 
+  /// Serializes this Currency to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -877,7 +898,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Currency&&(identical(other.isoCode, _this.isoCode) || other.isoCode == _this.isoCode)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.symbol, _this.symbol) || other.symbol == _this.symbol)&&(identical(other.decimalPlaces, _this.decimalPlaces) || other.decimalPlaces == _this.decimalPlaces));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Currency;
@@ -898,7 +919,7 @@ abstract mixin class $CurrencyCopyWith<$Res>  {
   factory $CurrencyCopyWith(Currency value, $Res Function(Currency) _then) = _$CurrencyCopyWithImpl;
 @useResult
 $Res call({
- CurrencyCode isoCode, String name, String symbol, int decimalPlaces
+@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode isoCode, String name, String symbol, int decimalPlaces
 });
 
 
@@ -1006,7 +1027,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Currency() when $default != null:
 return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case _:
@@ -1027,7 +1048,7 @@ return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)  $default,) {final _that = this;
 switch (_that) {
 case _Currency():
 return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case _:
@@ -1047,7 +1068,7 @@ return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case 
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode isoCode,  String name,  String symbol,  int decimalPlaces)?  $default,) {final _that = this;
 switch (_that) {
 case _Currency() when $default != null:
 return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case _:
@@ -1060,12 +1081,12 @@ return $default(_that.isoCode,_that.name,_that.symbol,_that.decimalPlaces);case 
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Currency extends Currency {
-  const _Currency({required this.isoCode, required this.name, required this.symbol, required this.decimalPlaces}): super._();
-  
+  const _Currency({@JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.isoCode, required this.name, required this.symbol, required this.decimalPlaces}): super._();
+  factory _Currency.fromJson(Map<String, dynamic> json) => _$CurrencyFromJson(json);
 
-@override final  CurrencyCode isoCode;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode isoCode;
 @override final  String name;
 @override final  String symbol;
 @override final  int decimalPlaces;
@@ -1076,14 +1097,17 @@ class _Currency extends Currency {
 @pragma('vm:prefer-inline')
 _$CurrencyCopyWith<_Currency> get copyWith => __$CurrencyCopyWithImpl<_Currency>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CurrencyToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Currency&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.symbol, symbol) || other.symbol == symbol)&&(identical(other.decimalPlaces, decimalPlaces) || other.decimalPlaces == decimalPlaces));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,isoCode,name,symbol,decimalPlaces);
@@ -1102,7 +1126,7 @@ abstract mixin class _$CurrencyCopyWith<$Res> implements $CurrencyCopyWith<$Res>
   factory _$CurrencyCopyWith(_Currency value, $Res Function(_Currency) _then) = __$CurrencyCopyWithImpl;
 @override @useResult
 $Res call({
- CurrencyCode isoCode, String name, String symbol, int decimalPlaces
+@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode isoCode, String name, String symbol, int decimalPlaces
 });
 
 
@@ -1132,16 +1156,19 @@ as int,
 
 }
 
+
 /// @nodoc
 mixin _$SpreeLocale {
 
- LocaleCode get code; String get name; bool get isDefault; bool get rtl;
+@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode get code; String get name;@JsonKey(name: 'default') bool get isDefault; bool get rtl;
 /// Create a copy of SpreeLocale
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SpreeLocaleCopyWith<SpreeLocale> get copyWith => _$SpreeLocaleCopyWithImpl<SpreeLocale>(this as SpreeLocale, _$identity);
 
+  /// Serializes this SpreeLocale to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1150,7 +1177,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is SpreeLocale&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.isDefault, _this.isDefault) || other.isDefault == _this.isDefault)&&(identical(other.rtl, _this.rtl) || other.rtl == _this.rtl));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as SpreeLocale;
@@ -1171,7 +1198,7 @@ abstract mixin class $SpreeLocaleCopyWith<$Res>  {
   factory $SpreeLocaleCopyWith(SpreeLocale value, $Res Function(SpreeLocale) _then) = _$SpreeLocaleCopyWithImpl;
 @useResult
 $Res call({
- LocaleCode code, String name, bool isDefault, bool rtl
+@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode code, String name,@JsonKey(name: 'default') bool isDefault, bool rtl
 });
 
 
@@ -1279,7 +1306,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LocaleCode code,  String name,  bool isDefault,  bool rtl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode code,  String name, @JsonKey(name: 'default')  bool isDefault,  bool rtl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SpreeLocale() when $default != null:
 return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
@@ -1300,7 +1327,7 @@ return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LocaleCode code,  String name,  bool isDefault,  bool rtl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode code,  String name, @JsonKey(name: 'default')  bool isDefault,  bool rtl)  $default,) {final _that = this;
 switch (_that) {
 case _SpreeLocale():
 return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
@@ -1320,7 +1347,7 @@ return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LocaleCode code,  String name,  bool isDefault,  bool rtl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode code,  String name, @JsonKey(name: 'default')  bool isDefault,  bool rtl)?  $default,) {final _that = this;
 switch (_that) {
 case _SpreeLocale() when $default != null:
 return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
@@ -1333,14 +1360,14 @@ return $default(_that.code,_that.name,_that.isDefault,_that.rtl);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _SpreeLocale extends SpreeLocale {
-  const _SpreeLocale({required this.code, required this.name, required this.isDefault, required this.rtl}): super._();
-  
+  const _SpreeLocale({@JsonKey(unknownEnumValue: LocaleCode.unknown) required this.code, required this.name, @JsonKey(name: 'default') required this.isDefault, required this.rtl}): super._();
+  factory _SpreeLocale.fromJson(Map<String, dynamic> json) => _$SpreeLocaleFromJson(json);
 
-@override final  LocaleCode code;
+@override@JsonKey(unknownEnumValue: LocaleCode.unknown) final  LocaleCode code;
 @override final  String name;
-@override final  bool isDefault;
+@override@JsonKey(name: 'default') final  bool isDefault;
 @override final  bool rtl;
 
 /// Create a copy of SpreeLocale
@@ -1349,14 +1376,17 @@ class _SpreeLocale extends SpreeLocale {
 @pragma('vm:prefer-inline')
 _$SpreeLocaleCopyWith<_SpreeLocale> get copyWith => __$SpreeLocaleCopyWithImpl<_SpreeLocale>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$SpreeLocaleToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _SpreeLocale&&(identical(other.code, code) || other.code == code)&&(identical(other.name, name) || other.name == name)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.rtl, rtl) || other.rtl == rtl));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,code,name,isDefault,rtl);
@@ -1375,7 +1405,7 @@ abstract mixin class _$SpreeLocaleCopyWith<$Res> implements $SpreeLocaleCopyWith
   factory _$SpreeLocaleCopyWith(_SpreeLocale value, $Res Function(_SpreeLocale) _then) = __$SpreeLocaleCopyWithImpl;
 @override @useResult
 $Res call({
- LocaleCode code, String name, bool isDefault, bool rtl
+@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode code, String name,@JsonKey(name: 'default') bool isDefault, bool rtl
 });
 
 
@@ -1405,16 +1435,19 @@ as bool,
 
 }
 
+
 /// @nodoc
 mixin _$Channel {
 
- String get id; String get name; String get code; bool get active; bool get isDefault; String get storefrontAccess; bool get guestCheckout;
+ String get id; String get name; String get code; bool get active;@JsonKey(name: 'default') bool get isDefault; String get storefrontAccess; bool get guestCheckout;
 /// Create a copy of Channel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ChannelCopyWith<Channel> get copyWith => _$ChannelCopyWithImpl<Channel>(this as Channel, _$identity);
 
+  /// Serializes this Channel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1423,7 +1456,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Channel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.code, _this.code) || other.code == _this.code)&&(identical(other.active, _this.active) || other.active == _this.active)&&(identical(other.isDefault, _this.isDefault) || other.isDefault == _this.isDefault)&&(identical(other.storefrontAccess, _this.storefrontAccess) || other.storefrontAccess == _this.storefrontAccess)&&(identical(other.guestCheckout, _this.guestCheckout) || other.guestCheckout == _this.guestCheckout));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Channel;
@@ -1444,7 +1477,7 @@ abstract mixin class $ChannelCopyWith<$Res>  {
   factory $ChannelCopyWith(Channel value, $Res Function(Channel) _then) = _$ChannelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String code, bool active, bool isDefault, String storefrontAccess, bool guestCheckout
+ String id, String name, String code, bool active,@JsonKey(name: 'default') bool isDefault, String storefrontAccess, bool guestCheckout
 });
 
 
@@ -1555,7 +1588,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String code,  bool active,  bool isDefault,  String storefrontAccess,  bool guestCheckout)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String code,  bool active, @JsonKey(name: 'default')  bool isDefault,  String storefrontAccess,  bool guestCheckout)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Channel() when $default != null:
 return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_that.storefrontAccess,_that.guestCheckout);case _:
@@ -1576,7 +1609,7 @@ return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String code,  bool active,  bool isDefault,  String storefrontAccess,  bool guestCheckout)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String code,  bool active, @JsonKey(name: 'default')  bool isDefault,  String storefrontAccess,  bool guestCheckout)  $default,) {final _that = this;
 switch (_that) {
 case _Channel():
 return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_that.storefrontAccess,_that.guestCheckout);case _:
@@ -1596,7 +1629,7 @@ return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String code,  bool active,  bool isDefault,  String storefrontAccess,  bool guestCheckout)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String code,  bool active, @JsonKey(name: 'default')  bool isDefault,  String storefrontAccess,  bool guestCheckout)?  $default,) {final _that = this;
 switch (_that) {
 case _Channel() when $default != null:
 return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_that.storefrontAccess,_that.guestCheckout);case _:
@@ -1609,16 +1642,16 @@ return $default(_that.id,_that.name,_that.code,_that.active,_that.isDefault,_tha
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Channel extends Channel {
-  const _Channel({required this.id, required this.name, required this.code, required this.active, required this.isDefault, required this.storefrontAccess, required this.guestCheckout}): super._();
-  
+  const _Channel({required this.id, required this.name, required this.code, required this.active, @JsonKey(name: 'default') required this.isDefault, required this.storefrontAccess, required this.guestCheckout}): super._();
+  factory _Channel.fromJson(Map<String, dynamic> json) => _$ChannelFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String code;
 @override final  bool active;
-@override final  bool isDefault;
+@override@JsonKey(name: 'default') final  bool isDefault;
 @override final  String storefrontAccess;
 @override final  bool guestCheckout;
 
@@ -1628,14 +1661,17 @@ class _Channel extends Channel {
 @pragma('vm:prefer-inline')
 _$ChannelCopyWith<_Channel> get copyWith => __$ChannelCopyWithImpl<_Channel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ChannelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Channel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.active, active) || other.active == active)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&(identical(other.storefrontAccess, storefrontAccess) || other.storefrontAccess == storefrontAccess)&&(identical(other.guestCheckout, guestCheckout) || other.guestCheckout == guestCheckout));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,code,active,isDefault,storefrontAccess,guestCheckout);
@@ -1654,7 +1690,7 @@ abstract mixin class _$ChannelCopyWith<$Res> implements $ChannelCopyWith<$Res> {
   factory _$ChannelCopyWith(_Channel value, $Res Function(_Channel) _then) = __$ChannelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String code, bool active, bool isDefault, String storefrontAccess, bool guestCheckout
+ String id, String name, String code, bool active,@JsonKey(name: 'default') bool isDefault, String storefrontAccess, bool guestCheckout
 });
 
 
@@ -1687,6 +1723,7 @@ as bool,
 
 }
 
+
 /// @nodoc
 mixin _$Store {
 
@@ -1697,6 +1734,8 @@ mixin _$Store {
 @pragma('vm:prefer-inline')
 $StoreCopyWith<Store> get copyWith => _$StoreCopyWithImpl<Store>(this as Store, _$identity);
 
+  /// Serializes this Store to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1705,7 +1744,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Store&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.seoTitle, _this.seoTitle) || other.seoTitle == _this.seoTitle)&&(identical(other.metaDescription, _this.metaDescription) || other.metaDescription == _this.metaDescription)&&(identical(other.metaKeywords, _this.metaKeywords) || other.metaKeywords == _this.metaKeywords)&&(identical(other.facebook, _this.facebook) || other.facebook == _this.facebook)&&(identical(other.twitter, _this.twitter) || other.twitter == _this.twitter)&&(identical(other.instagram, _this.instagram) || other.instagram == _this.instagram)&&(identical(other.customerSupportEmail, _this.customerSupportEmail) || other.customerSupportEmail == _this.customerSupportEmail)&&(identical(other.logoUrl, _this.logoUrl) || other.logoUrl == _this.logoUrl));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Store;
@@ -1894,10 +1933,10 @@ return $default(_that.id,_that.name,_that.seoTitle,_that.metaDescription,_that.m
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Store extends Store {
   const _Store({required this.id, required this.name, this.seoTitle, this.metaDescription, this.metaKeywords, this.facebook, this.twitter, this.instagram, this.customerSupportEmail, this.logoUrl}): super._();
-  
+  factory _Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -1916,14 +1955,17 @@ class _Store extends Store {
 @pragma('vm:prefer-inline')
 _$StoreCopyWith<_Store> get copyWith => __$StoreCopyWithImpl<_Store>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$StoreToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Store&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.seoTitle, seoTitle) || other.seoTitle == seoTitle)&&(identical(other.metaDescription, metaDescription) || other.metaDescription == metaDescription)&&(identical(other.metaKeywords, metaKeywords) || other.metaKeywords == metaKeywords)&&(identical(other.facebook, facebook) || other.facebook == facebook)&&(identical(other.twitter, twitter) || other.twitter == twitter)&&(identical(other.instagram, instagram) || other.instagram == instagram)&&(identical(other.customerSupportEmail, customerSupportEmail) || other.customerSupportEmail == customerSupportEmail)&&(identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,seoTitle,metaDescription,metaKeywords,facebook,twitter,instagram,customerSupportEmail,logoUrl);
@@ -1978,6 +2020,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$Policy {
 
@@ -1988,6 +2031,8 @@ mixin _$Policy {
 @pragma('vm:prefer-inline')
 $PolicyCopyWith<Policy> get copyWith => _$PolicyCopyWithImpl<Policy>(this as Policy, _$identity);
 
+  /// Serializes this Policy to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1996,7 +2041,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Policy&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.body, _this.body) || other.body == _this.body)&&(identical(other.bodyHtml, _this.bodyHtml) || other.bodyHtml == _this.bodyHtml)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Policy;
@@ -2181,10 +2226,10 @@ return $default(_that.id,_that.name,_that.slug,_that.body,_that.bodyHtml,_that.u
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Policy extends Policy {
   const _Policy({required this.id, required this.name, required this.slug, this.body, this.bodyHtml, required this.updatedAt}): super._();
-  
+  factory _Policy.fromJson(Map<String, dynamic> json) => _$PolicyFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -2199,14 +2244,17 @@ class _Policy extends Policy {
 @pragma('vm:prefer-inline')
 _$PolicyCopyWith<_Policy> get copyWith => __$PolicyCopyWithImpl<_Policy>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PolicyToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Policy&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.body, body) || other.body == body)&&(identical(other.bodyHtml, bodyHtml) || other.bodyHtml == bodyHtml)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,slug,body,bodyHtml,updatedAt);
@@ -2257,16 +2305,19 @@ as String,
 
 }
 
+
 /// @nodoc
 mixin _$Market {
 
- String get id; String get name; CurrencyCode get currency; LocaleCode get defaultLocale; bool get taxInclusive; bool get isDefault; List<CountryCode> get countryCodes; List<String> get countryIsos; List<LocaleCode> get supportedLocales; List<Country>? get countries;
+ String get id; String get name;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency;@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode get defaultLocale; bool get taxInclusive;@JsonKey(name: 'default') bool get isDefault; List<CountryCode> get countryCodes; List<String> get countryIsos; List<LocaleCode> get supportedLocales;@JsonKey(includeIfNull: false) List<Country>? get countries;
 /// Create a copy of Market
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $MarketCopyWith<Market> get copyWith => _$MarketCopyWithImpl<Market>(this as Market, _$identity);
 
+  /// Serializes this Market to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -2275,7 +2326,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Market&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.defaultLocale, _this.defaultLocale) || other.defaultLocale == _this.defaultLocale)&&(identical(other.taxInclusive, _this.taxInclusive) || other.taxInclusive == _this.taxInclusive)&&(identical(other.isDefault, _this.isDefault) || other.isDefault == _this.isDefault)&&const DeepCollectionEquality().equals(other.countryCodes, _this.countryCodes)&&const DeepCollectionEquality().equals(other.countryIsos, _this.countryIsos)&&const DeepCollectionEquality().equals(other.supportedLocales, _this.supportedLocales)&&const DeepCollectionEquality().equals(other.countries, _this.countries));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Market;
@@ -2296,7 +2347,7 @@ abstract mixin class $MarketCopyWith<$Res>  {
   factory $MarketCopyWith(Market value, $Res Function(Market) _then) = _$MarketCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, CurrencyCode currency, LocaleCode defaultLocale, bool taxInclusive, bool isDefault, List<CountryCode> countryCodes, List<String> countryIsos, List<LocaleCode> supportedLocales, List<Country>? countries
+ String id, String name,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode defaultLocale, bool taxInclusive,@JsonKey(name: 'default') bool isDefault, List<CountryCode> countryCodes, List<String> countryIsos, List<LocaleCode> supportedLocales,@JsonKey(includeIfNull: false) List<Country>? countries
 });
 
 
@@ -2410,7 +2461,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  CurrencyCode currency,  LocaleCode defaultLocale,  bool taxInclusive,  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales,  List<Country>? countries)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode defaultLocale,  bool taxInclusive, @JsonKey(name: 'default')  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales, @JsonKey(includeIfNull: false)  List<Country>? countries)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Market() when $default != null:
 return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.taxInclusive,_that.isDefault,_that.countryCodes,_that.countryIsos,_that.supportedLocales,_that.countries);case _:
@@ -2431,7 +2482,7 @@ return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.tax
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  CurrencyCode currency,  LocaleCode defaultLocale,  bool taxInclusive,  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales,  List<Country>? countries)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode defaultLocale,  bool taxInclusive, @JsonKey(name: 'default')  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales, @JsonKey(includeIfNull: false)  List<Country>? countries)  $default,) {final _that = this;
 switch (_that) {
 case _Market():
 return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.taxInclusive,_that.isDefault,_that.countryCodes,_that.countryIsos,_that.supportedLocales,_that.countries);case _:
@@ -2451,7 +2502,7 @@ return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.tax
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  CurrencyCode currency,  LocaleCode defaultLocale,  bool taxInclusive,  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales,  List<Country>? countries)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode defaultLocale,  bool taxInclusive, @JsonKey(name: 'default')  bool isDefault,  List<CountryCode> countryCodes,  List<String> countryIsos,  List<LocaleCode> supportedLocales, @JsonKey(includeIfNull: false)  List<Country>? countries)?  $default,) {final _that = this;
 switch (_that) {
 case _Market() when $default != null:
 return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.taxInclusive,_that.isDefault,_that.countryCodes,_that.countryIsos,_that.supportedLocales,_that.countries);case _:
@@ -2464,21 +2515,21 @@ return $default(_that.id,_that.name,_that.currency,_that.defaultLocale,_that.tax
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Market extends Market {
-  const _Market({required this.id, required this.name, required this.currency, required this.defaultLocale, required this.taxInclusive, required this.isDefault, required this.countryCodes, required this.countryIsos, required this.supportedLocales, this.countries}): super._();
-  
+  const _Market({required this.id, required this.name, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, @JsonKey(unknownEnumValue: LocaleCode.unknown) required this.defaultLocale, required this.taxInclusive, @JsonKey(name: 'default') required this.isDefault, required this.countryCodes, required this.countryIsos, required this.supportedLocales, @JsonKey(includeIfNull: false) this.countries}): super._();
+  factory _Market.fromJson(Map<String, dynamic> json) => _$MarketFromJson(json);
 
 @override final  String id;
 @override final  String name;
-@override final  CurrencyCode currency;
-@override final  LocaleCode defaultLocale;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: LocaleCode.unknown) final  LocaleCode defaultLocale;
 @override final  bool taxInclusive;
-@override final  bool isDefault;
+@override@JsonKey(name: 'default') final  bool isDefault;
 @override final  List<CountryCode> countryCodes;
 @override final  List<String> countryIsos;
 @override final  List<LocaleCode> supportedLocales;
-@override final  List<Country>? countries;
+@override@JsonKey(includeIfNull: false) final  List<Country>? countries;
 
 /// Create a copy of Market
 /// with the given fields replaced by the non-null parameter values.
@@ -2486,14 +2537,17 @@ class _Market extends Market {
 @pragma('vm:prefer-inline')
 _$MarketCopyWith<_Market> get copyWith => __$MarketCopyWithImpl<_Market>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$MarketToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Market&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.defaultLocale, defaultLocale) || other.defaultLocale == defaultLocale)&&(identical(other.taxInclusive, taxInclusive) || other.taxInclusive == taxInclusive)&&(identical(other.isDefault, isDefault) || other.isDefault == isDefault)&&const DeepCollectionEquality().equals(other.countryCodes, countryCodes)&&const DeepCollectionEquality().equals(other.countryIsos, countryIsos)&&const DeepCollectionEquality().equals(other.supportedLocales, supportedLocales)&&const DeepCollectionEquality().equals(other.countries, countries));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,currency,defaultLocale,taxInclusive,isDefault,const DeepCollectionEquality().hash(countryCodes),const DeepCollectionEquality().hash(countryIsos),const DeepCollectionEquality().hash(supportedLocales),const DeepCollectionEquality().hash(countries));
@@ -2512,7 +2566,7 @@ abstract mixin class _$MarketCopyWith<$Res> implements $MarketCopyWith<$Res> {
   factory _$MarketCopyWith(_Market value, $Res Function(_Market) _then) = __$MarketCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, CurrencyCode currency, LocaleCode defaultLocale, bool taxInclusive, bool isDefault, List<CountryCode> countryCodes, List<String> countryIsos, List<LocaleCode> supportedLocales, List<Country>? countries
+ String id, String name,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode defaultLocale, bool taxInclusive,@JsonKey(name: 'default') bool isDefault, List<CountryCode> countryCodes, List<String> countryIsos, List<LocaleCode> supportedLocales,@JsonKey(includeIfNull: false) List<Country>? countries
 });
 
 

@@ -18,10 +18,11 @@ Models must match actual JSON shapes/nullability, stay independent of transport/
 ## Decision
 
 1. **Use Freezed for all concrete data models and request parameter objects**, with `freezed_annotation` in `dependencies` and `freezed` plus `build_runner` in `dev_dependencies`.
-2. **Keep wire serialization explicit**: `fromJson`/`toJson` remain hand-written so numeric conversions, unknown-enum fallbacks, null omission, and field names continue to match verified contracts. The `ProductFilter` dispatcher and wire enums remain ordinary Dart types.
-3. Keep JSON contract tests around every mapping. Do not use generated serializers until custom converters and exact field-omission behavior are verified for the affected model.
-4. Do not adopt `built_value`; its builder and serializer setup add ceremony without a demonstrated need.
-5. Conventions (binding regardless of manual/codegen):
+2. **Generate JSON serialization with `json_serializable`**. Keep the public Freezed `fromJson` factories as thin entry points to generated functions; do not hand-write field-by-field mappings.
+3. Keep contract-specific behavior explicit where generated field mappings cannot express it: open-enum fallbacks, the `ProductFilter` discriminator/unknown-facet dispatch, and request `extra` maps that must be flattened into the request body. These adapters must remain narrowly scoped and covered by request/serialization tests.
+4. Keep JSON contract tests around every mapping, including missing/null distinctions, null omission, enum fallbacks, and nested model behavior.
+5. Do not adopt `built_value`; its builder and serializer setup add ceremony without a demonstrated need.
+6. Conventions (binding regardless of manual/codegen):
    - Fields nullable exactly where the API omits or nulls them (per contract evidence, not guessing).
    - Missing vs explicit-null distinguished only where behavior depends on it (e.g. PATCH semantics) — documented per model.
    - Unknown enum strings → documented `unknown` fallback value, never throw.
@@ -35,12 +36,15 @@ Versions resolved on 2026-11-23; all are compatible with this package's Dart `^3
 |---|---:|---|---|
 | [`freezed_annotation`](https://pub.dev/packages/freezed_annotation) | 3.1.0 | Runtime annotations referenced by model source | MIT; published by verified `dash-overflow.net`; Dart-compatible and no Flutter runtime dependency |
 | [`freezed`](https://pub.dev/packages/freezed) | 4.0.3 | Generates immutable value classes, equality, and `copyWith` | MIT; verified `dash-overflow.net`; published 2026-10-17; generator runs as a development tool |
+| [`json_annotation`](https://pub.dev/packages/json_annotation) | 4.12.0 | Runtime annotations and helpers for generated JSON serializers | BSD-3-Clause; maintained in the Dart JSON serialization repository; Dart-only, no Flutter dependency |
+| [`json_serializable`](https://pub.dev/packages/json_serializable) | 6.15.2 | Generates model JSON mappings from the Freezed declarations | BSD-3-Clause; actively maintained with the Dart JSON serialization tooling; development-only |
 | [`build_runner`](https://pub.dev/packages/build_runner) | 2.17.1 | Runs code generators | BSD-3-Clause; verified `tools.dart.dev`; published 2026-10-14; development tool for Linux, macOS, and Windows |
 
-`freezed_annotation` is the only direct runtime dependency in this set. The generator and build tools are development-only, so they do not add Flutter or build-tool dependencies to SDK consumers. `json_serializable` was considered but is not included: handwritten JSON mappings are retained to preserve the explicit Store API contract. Alternatives considered were hand-written value classes (no tooling but more boilerplate), `json_serializable` alone (does not generate equality or `copyWith`), and `built_value` (more ceremony). Package versions, publisher, platform, and license details were checked on the linked pub.dev pages on 2026-11-23.
+`freezed_annotation` and `json_annotation` are runtime dependencies; the generators and build tools are development-only. They add no Flutter dependency to SDK consumers. Alternatives considered were hand-written value classes (no tooling but substantially more boilerplate), `json_serializable` alone (does not generate equality or `copyWith`), and `built_value` (more ceremony). Package versions come from the resolved package constraints in `pubspec.lock`.
 
 ## Consequences
 
 - Concrete model declarations now use Freezed-generated value semantics and `copyWith`; generated `*.freezed.dart` files are checked in.
-- Developers must run `dart run build_runner build --delete-conflicting-outputs` after changing a Freezed model declaration.
-- JSON parsing and serialization remain hand-written and contract-tested.
+- Developers must run `dart run build_runner build --delete-conflicting-outputs` after changing a Freezed model declaration or JSON annotation.
+- Generated `*.freezed.dart` and `*.g.dart` files are checked in and must be reviewed with the source model.
+- Contract-specific adapters are retained only where needed for flattened fields, open enums, discriminated filters, and flattened request `extra` maps.

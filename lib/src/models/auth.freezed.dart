@@ -12,6 +12,7 @@ part of 'auth.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$AuthTokens {
 
@@ -22,6 +23,8 @@ mixin _$AuthTokens {
 @pragma('vm:prefer-inline')
 $AuthTokensCopyWith<AuthTokens> get copyWith => _$AuthTokensCopyWithImpl<AuthTokens>(this as AuthTokens, _$identity);
 
+  /// Serializes this AuthTokens to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthTokens&&(identical(other.token, _this.token) || other.token == _this.token)&&(identical(other.refreshToken, _this.refreshToken) || other.refreshToken == _this.refreshToken)&&(identical(other.user, _this.user) || other.user == _this.user));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as AuthTokens;
@@ -221,10 +224,10 @@ return $default(_that.token,_that.refreshToken,_that.user);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _AuthTokens extends AuthTokens {
   const _AuthTokens({required this.token, required this.refreshToken, required this.user}): super._();
-  
+  factory _AuthTokens.fromJson(Map<String, dynamic> json) => _$AuthTokensFromJson(json);
 
 @override final  String token;
 @override final  String refreshToken;
@@ -236,14 +239,17 @@ class _AuthTokens extends AuthTokens {
 @pragma('vm:prefer-inline')
 _$AuthTokensCopyWith<_AuthTokens> get copyWith => __$AuthTokensCopyWithImpl<_AuthTokens>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AuthTokensToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthTokens&&(identical(other.token, token) || other.token == token)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken)&&(identical(other.user, user) || other.user == user));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,token,refreshToken,user);
@@ -300,6 +306,7 @@ $AuthUserCopyWith<$Res> get user {
 }
 }
 
+
 /// @nodoc
 mixin _$AuthUser {
 
@@ -310,6 +317,8 @@ mixin _$AuthUser {
 @pragma('vm:prefer-inline')
 $AuthUserCopyWith<AuthUser> get copyWith => _$AuthUserCopyWithImpl<AuthUser>(this as AuthUser, _$identity);
 
+  /// Serializes this AuthUser to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -318,7 +327,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthUser&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.firstName, _this.firstName) || other.firstName == _this.firstName)&&(identical(other.lastName, _this.lastName) || other.lastName == _this.lastName)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.acceptsEmailMarketing, _this.acceptsEmailMarketing) || other.acceptsEmailMarketing == _this.acceptsEmailMarketing)&&(identical(other.emailMarketingConsentUpdatedAt, _this.emailMarketingConsentUpdatedAt) || other.emailMarketingConsentUpdatedAt == _this.emailMarketingConsentUpdatedAt)&&(identical(other.fullName, _this.fullName) || other.fullName == _this.fullName)&&(identical(other.availableStoreCreditTotal, _this.availableStoreCreditTotal) || other.availableStoreCreditTotal == _this.availableStoreCreditTotal));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as AuthUser;
@@ -506,10 +515,10 @@ return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _AuthUser extends AuthUser {
   const _AuthUser({required this.id, required this.email, this.firstName, this.lastName, this.phone, this.acceptsEmailMarketing, this.emailMarketingConsentUpdatedAt, this.fullName, this.availableStoreCreditTotal}): super._();
-  
+  factory _AuthUser.fromJson(Map<String, dynamic> json) => _$AuthUserFromJson(json);
 
 @override final  String id;
 @override final  String email;
@@ -527,14 +536,17 @@ class _AuthUser extends AuthUser {
 @pragma('vm:prefer-inline')
 _$AuthUserCopyWith<_AuthUser> get copyWith => __$AuthUserCopyWithImpl<_AuthUser>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AuthUserToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthUser&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.acceptsEmailMarketing, acceptsEmailMarketing) || other.acceptsEmailMarketing == acceptsEmailMarketing)&&(identical(other.emailMarketingConsentUpdatedAt, emailMarketingConsentUpdatedAt) || other.emailMarketingConsentUpdatedAt == emailMarketingConsentUpdatedAt)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.availableStoreCreditTotal, availableStoreCreditTotal) || other.availableStoreCreditTotal == availableStoreCreditTotal));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,email,firstName,lastName,phone,acceptsEmailMarketing,emailMarketingConsentUpdatedAt,fullName,availableStoreCreditTotal);

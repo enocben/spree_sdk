@@ -12,16 +12,19 @@ part of 'taxons.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$Category {
 
- String get id; String get name; String get permalink; int get position; int get depth; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get childrenCount; String? get parentId; String get description; String get descriptionHtml; String? get imageUrl; String? get squareImageUrl; bool get isRoot; bool get isChild; bool get isLeaf; Category? get parent; List<Category>? get children; List<Category>? get ancestors; List<CustomField>? get customFields;
+ String get id; String get name; String get permalink; int get position; int get depth; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get childrenCount; String? get parentId; String get description; String get descriptionHtml; String? get imageUrl; String? get squareImageUrl; bool get isRoot; bool get isChild; bool get isLeaf; Category? get parent;@JsonKey(includeIfNull: false) List<Category>? get children;@JsonKey(includeIfNull: false) List<Category>? get ancestors;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Category
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CategoryCopyWith<Category> get copyWith => _$CategoryCopyWithImpl<Category>(this as Category, _$identity);
 
+  /// Serializes this Category to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Category&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.permalink, _this.permalink) || other.permalink == _this.permalink)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.depth, _this.depth) || other.depth == _this.depth)&&(identical(other.metaTitle, _this.metaTitle) || other.metaTitle == _this.metaTitle)&&(identical(other.metaDescription, _this.metaDescription) || other.metaDescription == _this.metaDescription)&&(identical(other.metaKeywords, _this.metaKeywords) || other.metaKeywords == _this.metaKeywords)&&(identical(other.childrenCount, _this.childrenCount) || other.childrenCount == _this.childrenCount)&&(identical(other.parentId, _this.parentId) || other.parentId == _this.parentId)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.descriptionHtml, _this.descriptionHtml) || other.descriptionHtml == _this.descriptionHtml)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.squareImageUrl, _this.squareImageUrl) || other.squareImageUrl == _this.squareImageUrl)&&(identical(other.isRoot, _this.isRoot) || other.isRoot == _this.isRoot)&&(identical(other.isChild, _this.isChild) || other.isChild == _this.isChild)&&(identical(other.isLeaf, _this.isLeaf) || other.isLeaf == _this.isLeaf)&&(identical(other.parent, _this.parent) || other.parent == _this.parent)&&const DeepCollectionEquality().equals(other.children, _this.children)&&const DeepCollectionEquality().equals(other.ancestors, _this.ancestors)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Category;
@@ -51,7 +54,7 @@ abstract mixin class $CategoryCopyWith<$Res>  {
   factory $CategoryCopyWith(Category value, $Res Function(Category) _then) = _$CategoryCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String permalink, int position, int depth, String? metaTitle, String? metaDescription, String? metaKeywords, int childrenCount, String? parentId, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, bool isRoot, bool isChild, bool isLeaf, Category? parent, List<Category>? children, List<Category>? ancestors, List<CustomField>? customFields
+ String id, String name, String permalink, int position, int depth, String? metaTitle, String? metaDescription, String? metaKeywords, int childrenCount, String? parentId, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, bool isRoot, bool isChild, bool isLeaf, Category? parent,@JsonKey(includeIfNull: false) List<Category>? children,@JsonKey(includeIfNull: false) List<Category>? ancestors,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -188,7 +191,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent,  List<Category>? children,  List<Category>? ancestors,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent, @JsonKey(includeIfNull: false)  List<Category>? children, @JsonKey(includeIfNull: false)  List<Category>? ancestors, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Category() when $default != null:
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.childrenCount,_that.parentId,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.isRoot,_that.isChild,_that.isLeaf,_that.parent,_that.children,_that.ancestors,_that.customFields);case _:
@@ -209,7 +212,7 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent,  List<Category>? children,  List<Category>? ancestors,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent, @JsonKey(includeIfNull: false)  List<Category>? children, @JsonKey(includeIfNull: false)  List<Category>? ancestors, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Category():
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.childrenCount,_that.parentId,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.isRoot,_that.isChild,_that.isLeaf,_that.parent,_that.children,_that.ancestors,_that.customFields);case _:
@@ -229,7 +232,7 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent,  List<Category>? children,  List<Category>? ancestors,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String permalink,  int position,  int depth,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int childrenCount,  String? parentId,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  bool isRoot,  bool isChild,  bool isLeaf,  Category? parent, @JsonKey(includeIfNull: false)  List<Category>? children, @JsonKey(includeIfNull: false)  List<Category>? ancestors, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Category() when $default != null:
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.childrenCount,_that.parentId,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.isRoot,_that.isChild,_that.isLeaf,_that.parent,_that.children,_that.ancestors,_that.customFields);case _:
@@ -242,10 +245,10 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.depth,_
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Category extends Category {
-  const _Category({required this.id, required this.name, required this.permalink, required this.position, required this.depth, this.metaTitle, this.metaDescription, this.metaKeywords, required this.childrenCount, this.parentId, required this.description, required this.descriptionHtml, this.imageUrl, this.squareImageUrl, required this.isRoot, required this.isChild, required this.isLeaf, this.parent, this.children, this.ancestors, this.customFields}): super._();
-  
+  const _Category({required this.id, required this.name, required this.permalink, required this.position, required this.depth, this.metaTitle, this.metaDescription, this.metaKeywords, required this.childrenCount, this.parentId, required this.description, required this.descriptionHtml, this.imageUrl, this.squareImageUrl, required this.isRoot, required this.isChild, required this.isLeaf, this.parent, @JsonKey(includeIfNull: false) this.children, @JsonKey(includeIfNull: false) this.ancestors, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -265,9 +268,9 @@ class _Category extends Category {
 @override final  bool isChild;
 @override final  bool isLeaf;
 @override final  Category? parent;
-@override final  List<Category>? children;
-@override final  List<Category>? ancestors;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<Category>? children;
+@override@JsonKey(includeIfNull: false) final  List<Category>? ancestors;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Category
 /// with the given fields replaced by the non-null parameter values.
@@ -275,14 +278,17 @@ class _Category extends Category {
 @pragma('vm:prefer-inline')
 _$CategoryCopyWith<_Category> get copyWith => __$CategoryCopyWithImpl<_Category>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CategoryToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Category&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.permalink, permalink) || other.permalink == permalink)&&(identical(other.position, position) || other.position == position)&&(identical(other.depth, depth) || other.depth == depth)&&(identical(other.metaTitle, metaTitle) || other.metaTitle == metaTitle)&&(identical(other.metaDescription, metaDescription) || other.metaDescription == metaDescription)&&(identical(other.metaKeywords, metaKeywords) || other.metaKeywords == metaKeywords)&&(identical(other.childrenCount, childrenCount) || other.childrenCount == childrenCount)&&(identical(other.parentId, parentId) || other.parentId == parentId)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.squareImageUrl, squareImageUrl) || other.squareImageUrl == squareImageUrl)&&(identical(other.isRoot, isRoot) || other.isRoot == isRoot)&&(identical(other.isChild, isChild) || other.isChild == isChild)&&(identical(other.isLeaf, isLeaf) || other.isLeaf == isLeaf)&&(identical(other.parent, parent) || other.parent == parent)&&const DeepCollectionEquality().equals(other.children, children)&&const DeepCollectionEquality().equals(other.ancestors, ancestors)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,name,permalink,position,depth,metaTitle,metaDescription,metaKeywords,childrenCount,parentId,description,descriptionHtml,imageUrl,squareImageUrl,isRoot,isChild,isLeaf,parent,const DeepCollectionEquality().hash(children),const DeepCollectionEquality().hash(ancestors),const DeepCollectionEquality().hash(customFields)]);
@@ -301,7 +307,7 @@ abstract mixin class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res>
   factory _$CategoryCopyWith(_Category value, $Res Function(_Category) _then) = __$CategoryCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String permalink, int position, int depth, String? metaTitle, String? metaDescription, String? metaKeywords, int childrenCount, String? parentId, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, bool isRoot, bool isChild, bool isLeaf, Category? parent, List<Category>? children, List<Category>? ancestors, List<CustomField>? customFields
+ String id, String name, String permalink, int position, int depth, String? metaTitle, String? metaDescription, String? metaKeywords, int childrenCount, String? parentId, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, bool isRoot, bool isChild, bool isLeaf, Category? parent,@JsonKey(includeIfNull: false) List<Category>? children,@JsonKey(includeIfNull: false) List<Category>? ancestors,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -360,16 +366,19 @@ $CategoryCopyWith<$Res>? get parent {
 }
 }
 
+
 /// @nodoc
 mixin _$Seller {
 
- String get id; String get name; String get slug; String get about; String get aboutHtml; String? get logoUrl; String? get squareLogoUrl; String? get coverPhotoUrl; List<Policy>? get policies; List<CustomField>? get customFields;
+ String get id; String get name; String get slug; String get about; String get aboutHtml; String? get logoUrl; String? get squareLogoUrl; String? get coverPhotoUrl;@JsonKey(includeIfNull: false) List<Policy>? get policies;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Seller
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SellerCopyWith<Seller> get copyWith => _$SellerCopyWithImpl<Seller>(this as Seller, _$identity);
 
+  /// Serializes this Seller to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -378,7 +387,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Seller&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.about, _this.about) || other.about == _this.about)&&(identical(other.aboutHtml, _this.aboutHtml) || other.aboutHtml == _this.aboutHtml)&&(identical(other.logoUrl, _this.logoUrl) || other.logoUrl == _this.logoUrl)&&(identical(other.squareLogoUrl, _this.squareLogoUrl) || other.squareLogoUrl == _this.squareLogoUrl)&&(identical(other.coverPhotoUrl, _this.coverPhotoUrl) || other.coverPhotoUrl == _this.coverPhotoUrl)&&const DeepCollectionEquality().equals(other.policies, _this.policies)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Seller;
@@ -399,7 +408,7 @@ abstract mixin class $SellerCopyWith<$Res>  {
   factory $SellerCopyWith(Seller value, $Res Function(Seller) _then) = _$SellerCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String slug, String about, String aboutHtml, String? logoUrl, String? squareLogoUrl, String? coverPhotoUrl, List<Policy>? policies, List<CustomField>? customFields
+ String id, String name, String slug, String about, String aboutHtml, String? logoUrl, String? squareLogoUrl, String? coverPhotoUrl,@JsonKey(includeIfNull: false) List<Policy>? policies,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -513,7 +522,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl,  List<Policy>? policies,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl, @JsonKey(includeIfNull: false)  List<Policy>? policies, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Seller() when $default != null:
 return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that.logoUrl,_that.squareLogoUrl,_that.coverPhotoUrl,_that.policies,_that.customFields);case _:
@@ -534,7 +543,7 @@ return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl,  List<Policy>? policies,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl, @JsonKey(includeIfNull: false)  List<Policy>? policies, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Seller():
 return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that.logoUrl,_that.squareLogoUrl,_that.coverPhotoUrl,_that.policies,_that.customFields);case _:
@@ -554,7 +563,7 @@ return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl,  List<Policy>? policies,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String slug,  String about,  String aboutHtml,  String? logoUrl,  String? squareLogoUrl,  String? coverPhotoUrl, @JsonKey(includeIfNull: false)  List<Policy>? policies, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Seller() when $default != null:
 return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that.logoUrl,_that.squareLogoUrl,_that.coverPhotoUrl,_that.policies,_that.customFields);case _:
@@ -567,10 +576,10 @@ return $default(_that.id,_that.name,_that.slug,_that.about,_that.aboutHtml,_that
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Seller extends Seller {
-  const _Seller({required this.id, required this.name, required this.slug, required this.about, required this.aboutHtml, this.logoUrl, this.squareLogoUrl, this.coverPhotoUrl, this.policies, this.customFields}): super._();
-  
+  const _Seller({required this.id, required this.name, required this.slug, required this.about, required this.aboutHtml, this.logoUrl, this.squareLogoUrl, this.coverPhotoUrl, @JsonKey(includeIfNull: false) this.policies, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Seller.fromJson(Map<String, dynamic> json) => _$SellerFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -580,8 +589,8 @@ class _Seller extends Seller {
 @override final  String? logoUrl;
 @override final  String? squareLogoUrl;
 @override final  String? coverPhotoUrl;
-@override final  List<Policy>? policies;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<Policy>? policies;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Seller
 /// with the given fields replaced by the non-null parameter values.
@@ -589,14 +598,17 @@ class _Seller extends Seller {
 @pragma('vm:prefer-inline')
 _$SellerCopyWith<_Seller> get copyWith => __$SellerCopyWithImpl<_Seller>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$SellerToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Seller&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.about, about) || other.about == about)&&(identical(other.aboutHtml, aboutHtml) || other.aboutHtml == aboutHtml)&&(identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl)&&(identical(other.squareLogoUrl, squareLogoUrl) || other.squareLogoUrl == squareLogoUrl)&&(identical(other.coverPhotoUrl, coverPhotoUrl) || other.coverPhotoUrl == coverPhotoUrl)&&const DeepCollectionEquality().equals(other.policies, policies)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,slug,about,aboutHtml,logoUrl,squareLogoUrl,coverPhotoUrl,const DeepCollectionEquality().hash(policies),const DeepCollectionEquality().hash(customFields));
@@ -615,7 +627,7 @@ abstract mixin class _$SellerCopyWith<$Res> implements $SellerCopyWith<$Res> {
   factory _$SellerCopyWith(_Seller value, $Res Function(_Seller) _then) = __$SellerCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String slug, String about, String aboutHtml, String? logoUrl, String? squareLogoUrl, String? coverPhotoUrl, List<Policy>? policies, List<CustomField>? customFields
+ String id, String name, String slug, String about, String aboutHtml, String? logoUrl, String? squareLogoUrl, String? coverPhotoUrl,@JsonKey(includeIfNull: false) List<Policy>? policies,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -651,16 +663,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Collection {
 
- String get id; String get name; String get permalink; int get position; CollectionSortOrder get sortOrder; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get productsCount; String get description; String get descriptionHtml; String? get imageUrl; String? get squareImageUrl; List<CustomField>? get customFields;
+ String get id; String get name; String get permalink; int get position;@JsonKey(unknownEnumValue: CollectionSortOrder.unknown) CollectionSortOrder get sortOrder; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get productsCount; String get description; String get descriptionHtml; String? get imageUrl; String? get squareImageUrl;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Collection
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CollectionCopyWith<Collection> get copyWith => _$CollectionCopyWithImpl<Collection>(this as Collection, _$identity);
 
+  /// Serializes this Collection to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -669,7 +684,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Collection&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.permalink, _this.permalink) || other.permalink == _this.permalink)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.sortOrder, _this.sortOrder) || other.sortOrder == _this.sortOrder)&&(identical(other.metaTitle, _this.metaTitle) || other.metaTitle == _this.metaTitle)&&(identical(other.metaDescription, _this.metaDescription) || other.metaDescription == _this.metaDescription)&&(identical(other.metaKeywords, _this.metaKeywords) || other.metaKeywords == _this.metaKeywords)&&(identical(other.productsCount, _this.productsCount) || other.productsCount == _this.productsCount)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.descriptionHtml, _this.descriptionHtml) || other.descriptionHtml == _this.descriptionHtml)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.squareImageUrl, _this.squareImageUrl) || other.squareImageUrl == _this.squareImageUrl)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Collection;
@@ -690,7 +705,7 @@ abstract mixin class $CollectionCopyWith<$Res>  {
   factory $CollectionCopyWith(Collection value, $Res Function(Collection) _then) = _$CollectionCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String permalink, int position, CollectionSortOrder sortOrder, String? metaTitle, String? metaDescription, String? metaKeywords, int productsCount, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, List<CustomField>? customFields
+ String id, String name, String permalink, int position,@JsonKey(unknownEnumValue: CollectionSortOrder.unknown) CollectionSortOrder sortOrder, String? metaTitle, String? metaDescription, String? metaKeywords, int productsCount, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -808,7 +823,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position, @JsonKey(unknownEnumValue: CollectionSortOrder.unknown)  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Collection() when $default != null:
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrder,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.productsCount,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.customFields);case _:
@@ -829,7 +844,7 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrd
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position,  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String permalink,  int position, @JsonKey(unknownEnumValue: CollectionSortOrder.unknown)  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Collection():
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrder,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.productsCount,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.customFields);case _:
@@ -849,7 +864,7 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrd
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String permalink,  int position,  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String permalink,  int position, @JsonKey(unknownEnumValue: CollectionSortOrder.unknown)  CollectionSortOrder sortOrder,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int productsCount,  String description,  String descriptionHtml,  String? imageUrl,  String? squareImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Collection() when $default != null:
 return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrder,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.productsCount,_that.description,_that.descriptionHtml,_that.imageUrl,_that.squareImageUrl,_that.customFields);case _:
@@ -862,16 +877,16 @@ return $default(_that.id,_that.name,_that.permalink,_that.position,_that.sortOrd
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Collection extends Collection {
-  const _Collection({required this.id, required this.name, required this.permalink, required this.position, required this.sortOrder, this.metaTitle, this.metaDescription, this.metaKeywords, required this.productsCount, required this.description, required this.descriptionHtml, this.imageUrl, this.squareImageUrl, this.customFields}): super._();
-  
+  const _Collection({required this.id, required this.name, required this.permalink, required this.position, @JsonKey(unknownEnumValue: CollectionSortOrder.unknown) required this.sortOrder, this.metaTitle, this.metaDescription, this.metaKeywords, required this.productsCount, required this.description, required this.descriptionHtml, this.imageUrl, this.squareImageUrl, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Collection.fromJson(Map<String, dynamic> json) => _$CollectionFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String permalink;
 @override final  int position;
-@override final  CollectionSortOrder sortOrder;
+@override@JsonKey(unknownEnumValue: CollectionSortOrder.unknown) final  CollectionSortOrder sortOrder;
 @override final  String? metaTitle;
 @override final  String? metaDescription;
 @override final  String? metaKeywords;
@@ -880,7 +895,7 @@ class _Collection extends Collection {
 @override final  String descriptionHtml;
 @override final  String? imageUrl;
 @override final  String? squareImageUrl;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Collection
 /// with the given fields replaced by the non-null parameter values.
@@ -888,14 +903,17 @@ class _Collection extends Collection {
 @pragma('vm:prefer-inline')
 _$CollectionCopyWith<_Collection> get copyWith => __$CollectionCopyWithImpl<_Collection>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CollectionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Collection&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.permalink, permalink) || other.permalink == permalink)&&(identical(other.position, position) || other.position == position)&&(identical(other.sortOrder, sortOrder) || other.sortOrder == sortOrder)&&(identical(other.metaTitle, metaTitle) || other.metaTitle == metaTitle)&&(identical(other.metaDescription, metaDescription) || other.metaDescription == metaDescription)&&(identical(other.metaKeywords, metaKeywords) || other.metaKeywords == metaKeywords)&&(identical(other.productsCount, productsCount) || other.productsCount == productsCount)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.squareImageUrl, squareImageUrl) || other.squareImageUrl == squareImageUrl)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,permalink,position,sortOrder,metaTitle,metaDescription,metaKeywords,productsCount,description,descriptionHtml,imageUrl,squareImageUrl,const DeepCollectionEquality().hash(customFields));
@@ -914,7 +932,7 @@ abstract mixin class _$CollectionCopyWith<$Res> implements $CollectionCopyWith<$
   factory _$CollectionCopyWith(_Collection value, $Res Function(_Collection) _then) = __$CollectionCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String permalink, int position, CollectionSortOrder sortOrder, String? metaTitle, String? metaDescription, String? metaKeywords, int productsCount, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl, List<CustomField>? customFields
+ String id, String name, String permalink, int position,@JsonKey(unknownEnumValue: CollectionSortOrder.unknown) CollectionSortOrder sortOrder, String? metaTitle, String? metaDescription, String? metaKeywords, int productsCount, String description, String descriptionHtml, String? imageUrl, String? squareImageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 

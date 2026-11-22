@@ -299,7 +299,8 @@ dart analyze
 dart test
 ```
 
-For Freezed model changes, regenerate checked-in value-class code with:
+For Freezed model or JSON annotation changes, regenerate the checked-in
+value-class and JSON serialization code with:
 
 ```bash
 dart run build_runner build --delete-conflicting-outputs

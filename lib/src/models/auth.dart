@@ -23,17 +23,19 @@ library;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth.freezed.dart';
+part 'auth.g.dart';
 
 /// Credentials returned by `POST /auth/login` (and `POST /auth/refresh`,
 /// `POST /customers`, `PATCH /password_resets/{token}`).
 ///
 /// Source: `packages/sdk/src/types/index.ts` (`AuthTokens`);
 /// SPEC `store.yaml#/components/schemas/AuthResponse`.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class AuthTokens with _$AuthTokens {
   const AuthTokens._();
 
   /// Creates an auth token triple.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory AuthTokens({
     required String token,
     required String refreshToken,
@@ -41,33 +43,22 @@ abstract class AuthTokens with _$AuthTokens {
   }) = _AuthTokens;
 
   /// Parses auth tokens from their JSON shape.
-  factory AuthTokens.fromJson(Map<String, Object?> json) => AuthTokens(
-    token: json['token'] as String,
-    refreshToken: json['refresh_token'] as String,
-    user: AuthUser.fromJson(json['user'] as Map<String, Object?>),
-  );
+  factory AuthTokens.fromJson(Map<String, Object?> json) =>
+      _$AuthTokensFromJson(json);
 
   /// JWT access token (sent as `Authorization: Bearer …`).
-  @override
   @override
   String get token;
 
   /// Refresh token (rotated on every refresh; see contract §1).
   @override
-  @override
   String get refreshToken;
 
   /// The authenticated customer (documented superset, see [AuthUser]).
   @override
-  @override
   AuthUser get user;
 
   /// Serializes these tokens back to their JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'token': token,
-    'refresh_token': refreshToken,
-    'user': user.toJson(),
-  };
 }
 
 /// The customer embedded in [AuthTokens].
@@ -77,11 +68,12 @@ abstract class AuthTokens with _$AuthTokens {
 /// class models the documented superset: the SDK fields plus the
 /// SPEC-documented customer fields, all SPEC extras nullable so payloads
 /// matching either shape parse safely.
-@Freezed(fromJson: false, toJson: false, makeCollectionsUnmodifiable: false)
+@Freezed(fromJson: true, toJson: true, makeCollectionsUnmodifiable: false)
 abstract class AuthUser with _$AuthUser {
   const AuthUser._();
 
   /// Creates the embedded auth user.
+  @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory AuthUser({
     required String id,
     required String email,
@@ -95,76 +87,46 @@ abstract class AuthUser with _$AuthUser {
   }) = _AuthUser;
 
   /// Parses the embedded user from its JSON shape.
-  factory AuthUser.fromJson(Map<String, Object?> json) => AuthUser(
-    id: json['id'] as String,
-    email: json['email'] as String,
-    firstName: json['first_name'] as String?,
-    lastName: json['last_name'] as String?,
-    phone: json['phone'] as String?,
-    acceptsEmailMarketing: json['accepts_email_marketing'] as bool?,
-    emailMarketingConsentUpdatedAt:
-        json['email_marketing_consent_updated_at'] as String?,
-    fullName: json['full_name'] as String?,
-    availableStoreCreditTotal: json['available_store_credit_total'] as String?,
-  );
+  factory AuthUser.fromJson(Map<String, Object?> json) =>
+      _$AuthUserFromJson(json);
 
   /// Unique identifier.
-  @override
   @override
   String get id;
 
   /// Customer email.
   @override
-  @override
   String get email;
 
   /// First name, when set.
-  @override
   @override
   String? get firstName;
 
   /// Last name, when set.
   @override
-  @override
   String? get lastName;
 
   /// Phone number (SPEC `Customer.phone`).
   @override
-  @override
   String? get phone;
 
   /// Marketing opt-in flag (SPEC `Customer.accepts_email_marketing`).
-  @override
   @override
   bool? get acceptsEmailMarketing;
 
   /// Marketing-consent timestamp (SPEC
   /// `Customer.email_marketing_consent_updated_at`).
   @override
-  @override
   String? get emailMarketingConsentUpdatedAt;
 
   /// Computed full name (SPEC `Customer.full_name`).
-  @override
   @override
   String? get fullName;
 
   /// Usable store-credit total, decimal string (SPEC
   /// `Customer.available_store_credit_total`).
   @override
-  @override
   String? get availableStoreCreditTotal;
 
   /// Serializes this user back to its JSON shape.
-  Map<String, Object?> toJson() => <String, Object?>{
-    'id': id,
-    'email': email,
-    'first_name': firstName,
-    'last_name': lastName,
-    'phone': phone,
-    'accepts_email_marketing': acceptsEmailMarketing,
-    'email_marketing_consent_updated_at': emailMarketingConsentUpdatedAt,
-    'full_name': fullName,
-    'available_store_credit_total': availableStoreCreditTotal,
-  };
 }

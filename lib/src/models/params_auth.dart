@@ -27,17 +27,7 @@ library;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'params_auth.freezed.dart';
-
-/// Base helper: drops `null` values from a wire body.
-Map<String, Object?> _withoutNulls(Map<String, Object?> body) {
-  final Map<String, Object?> out = <String, Object?>{};
-  body.forEach((String key, Object? value) {
-    if (value != null) {
-      out[key] = value;
-    }
-  });
-  return out;
-}
+part 'params_auth.g.dart';
 
 /// Body for `POST /auth/login`.
 ///
@@ -49,40 +39,42 @@ abstract class LoginParams with _$LoginParams {
   const LoginParams._();
 
   /// Creates login credentials.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory LoginParams({
-    required String email,
-    required String password,
-    @Default('email') String? provider,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String email,
+    @JsonKey(includeIfNull: false) required String password,
+    @JsonKey(includeIfNull: false) @Default('email') String? provider,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _LoginParams;
 
   /// Customer email.
-  @override
   @override
   String get email;
 
   /// Customer password.
   @override
-  @override
   String get password;
 
   /// Authentication strategy name (documented default `'email'`).
-  @override
   @override
   String? get provider;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'provider': provider,
-    'email': email,
-    'password': password,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$LoginParamsToJson(this as _LoginParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `POST /customers` (registration, auto-login).
@@ -96,54 +88,52 @@ abstract class RegisterParams with _$RegisterParams {
   const RegisterParams._();
 
   /// Creates registration parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory RegisterParams({
-    required String email,
-    required String password,
-    String? passwordConfirmation,
-    String? firstName,
-    String? lastName,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String email,
+    @JsonKey(includeIfNull: false) required String password,
+    @JsonKey(includeIfNull: false) String? passwordConfirmation,
+    @JsonKey(includeIfNull: false) String? firstName,
+    @JsonKey(includeIfNull: false) String? lastName,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _RegisterParams;
 
   /// Customer email.
-  @override
   @override
   String get email;
 
   /// Customer password.
   @override
-  @override
   String get password;
 
   /// Password confirmation, when the storefront sends one.
-  @override
   @override
   String? get passwordConfirmation;
 
   /// First name, when collected at registration.
   @override
-  @override
   String? get firstName;
 
   /// Last name, when collected at registration.
-  @override
   @override
   String? get lastName;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'email': email,
-    'password': password,
-    'password_confirmation': passwordConfirmation,
-    'first_name': firstName,
-    'last_name': lastName,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$RegisterParamsToJson(this as _RegisterParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `PATCH /customers/me`.
@@ -157,54 +147,52 @@ abstract class UpdateCustomerParams with _$UpdateCustomerParams {
   const UpdateCustomerParams._();
 
   /// Creates customer-update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory UpdateCustomerParams({
-    String? email,
-    String? firstName,
-    String? lastName,
-    String? phone,
-    bool? acceptsEmailMarketing,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) String? email,
+    @JsonKey(includeIfNull: false) String? firstName,
+    @JsonKey(includeIfNull: false) String? lastName,
+    @JsonKey(includeIfNull: false) String? phone,
+    @JsonKey(includeIfNull: false) bool? acceptsEmailMarketing,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _UpdateCustomerParams;
 
   /// New email, when the store allows changing it here.
-  @override
   @override
   String? get email;
 
   /// New first name.
   @override
-  @override
   String? get firstName;
 
   /// New last name.
-  @override
   @override
   String? get lastName;
 
   /// New phone number.
   @override
-  @override
   String? get phone;
 
   /// Marketing opt-in flag.
-  @override
   @override
   bool? get acceptsEmailMarketing;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'email': email,
-    'first_name': firstName,
-    'last_name': lastName,
-    'phone': phone,
-    'accepts_email_marketing': acceptsEmailMarketing,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$UpdateCustomerParamsToJson(this as _UpdateCustomerParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for address create (`POST /customers/me/addresses`) and update
@@ -220,103 +208,87 @@ abstract class AddressParams with _$AddressParams {
   const AddressParams._();
 
   /// Creates address parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory AddressParams({
-    String? label,
-    String? firstName,
-    String? lastName,
-    String? address1,
-    String? address2,
-    String? city,
-    String? postalCode,
-    String? phone,
-    String? company,
-    String? countryIso,
-    String? stateName,
-    String? stateAbbr,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) String? label,
+    @JsonKey(includeIfNull: false) String? firstName,
+    @JsonKey(includeIfNull: false) String? lastName,
+    @JsonKey(includeIfNull: false) String? address1,
+    @JsonKey(includeIfNull: false) String? address2,
+    @JsonKey(includeIfNull: false) String? city,
+    @JsonKey(includeIfNull: false) String? postalCode,
+    @JsonKey(includeIfNull: false) String? phone,
+    @JsonKey(includeIfNull: false) String? company,
+    @JsonKey(includeIfNull: false) String? countryIso,
+    @JsonKey(includeIfNull: false) String? stateName,
+    @JsonKey(includeIfNull: false) String? stateAbbr,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _AddressParams;
 
   /// Address-book label.
-  @override
   @override
   String? get label;
 
   /// First name.
   @override
-  @override
   String? get firstName;
 
   /// Last name.
-  @override
   @override
   String? get lastName;
 
   /// Street line 1.
   @override
-  @override
   String? get address1;
 
   /// Street line 2.
-  @override
   @override
   String? get address2;
 
   /// City.
   @override
-  @override
   String? get city;
 
   /// Postal code.
-  @override
   @override
   String? get postalCode;
 
   /// Phone number.
   @override
-  @override
   String? get phone;
 
   /// Company.
-  @override
   @override
   String? get company;
 
   /// ISO country code (SPEC `country_iso`).
   @override
-  @override
   String? get countryIso;
 
   /// State name (SPEC `state_name`).
-  @override
   @override
   String? get stateName;
 
   /// State abbreviation (SPEC `state_abbr`, deprecated upstream).
   @override
-  @override
   String? get stateAbbr;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'label': label,
-    'first_name': firstName,
-    'last_name': lastName,
-    'address1': address1,
-    'address2': address2,
-    'city': city,
-    'postal_code': postalCode,
-    'phone': phone,
-    'company': company,
-    'country_iso': countryIso,
-    'state_name': stateName,
-    'state_abbr': stateAbbr,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$AddressParamsToJson(this as _AddressParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `POST /password_resets` (request reset email).
@@ -330,33 +302,37 @@ abstract class RequestPasswordResetParams with _$RequestPasswordResetParams {
   const RequestPasswordResetParams._();
 
   /// Creates password-reset request parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory RequestPasswordResetParams({
-    required String email,
-    String? redirectUrl,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String email,
+    @JsonKey(includeIfNull: false) String? redirectUrl,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _RequestPasswordResetParams;
 
   /// Account email.
-  @override
   @override
   String get email;
 
   /// Redirect URL appended with the reset token, when the storefront uses one.
   @override
-  @override
   String? get redirectUrl;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'email': email,
-    'redirect_url': redirectUrl,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$RequestPasswordResetParamsToJson(this as _RequestPasswordResetParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `PATCH /password_resets/{token}` (consume reset token,
@@ -370,33 +346,37 @@ abstract class ResetPasswordParams with _$ResetPasswordParams {
   const ResetPasswordParams._();
 
   /// Creates password-reset update parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory ResetPasswordParams({
-    required String password,
-    String? passwordConfirmation,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String password,
+    @JsonKey(includeIfNull: false) String? passwordConfirmation,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _ResetPasswordParams;
 
   /// New password.
-  @override
   @override
   String get password;
 
   /// New-password confirmation, when the storefront sends one.
   @override
-  @override
   String? get passwordConfirmation;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'password': password,
-    'password_confirmation': passwordConfirmation,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$ResetPasswordParamsToJson(this as _ResetPasswordParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `POST /newsletter_subscribers`.
@@ -410,33 +390,37 @@ abstract class NewsletterSubscribeParams with _$NewsletterSubscribeParams {
   const NewsletterSubscribeParams._();
 
   /// Creates newsletter-subscribe parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory NewsletterSubscribeParams({
-    required String email,
-    String? redirectUrl,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String email,
+    @JsonKey(includeIfNull: false) String? redirectUrl,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _NewsletterSubscribeParams;
 
   /// Subscriber email.
-  @override
   @override
   String get email;
 
   /// Redirect URL for the confirmation email link, when used.
   @override
-  @override
   String? get redirectUrl;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'email': email,
-    'redirect_url': redirectUrl,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$NewsletterSubscribeParamsToJson(this as _NewsletterSubscribeParams),
     ...extra,
-  });
+  };
 }
 
 /// Body for `POST /newsletter_subscribers/verify`.
@@ -451,24 +435,32 @@ abstract class NewsletterVerifyParams with _$NewsletterVerifyParams {
   const NewsletterVerifyParams._();
 
   /// Creates newsletter-verify parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory NewsletterVerifyParams({
-    required String token,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String token,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _NewsletterVerifyParams;
 
   /// Verification token from the confirmation email.
-  @override
   @override
   String get token;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() =>
-      _withoutNulls(<String, Object?>{'token': token, ...extra});
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$NewsletterVerifyParamsToJson(this as _NewsletterVerifyParams),
+    ...extra,
+  };
 }
 
 /// Body for `POST /newsletter_subscribers/request_unsubscribe`.
@@ -482,33 +474,39 @@ abstract class NewsletterUnsubscribeRequestParams
   const NewsletterUnsubscribeRequestParams._();
 
   /// Creates unsubscribe-request parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory NewsletterUnsubscribeRequestParams({
-    required String email,
-    String? redirectUrl,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) required String email,
+    @JsonKey(includeIfNull: false) String? redirectUrl,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _NewsletterUnsubscribeRequestParams;
 
   /// Subscriber email.
-  @override
   @override
   String get email;
 
   /// Redirect URL for the unsubscribe email link, when used.
   @override
-  @override
   String? get redirectUrl;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'email': email,
-    'redirect_url': redirectUrl,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$NewsletterUnsubscribeRequestParamsToJson(
+      this as _NewsletterUnsubscribeRequestParams,
+    ),
     ...extra,
-  });
+  };
 }
 
 /// Body for `POST /customers/me/data_requests`.
@@ -523,38 +521,40 @@ abstract class CreateDataRequestParams with _$CreateDataRequestParams {
   const CreateDataRequestParams._();
 
   /// Creates data-request parameters.
+  @JsonSerializable(
+    createFactory: false,
+    fieldRename: FieldRename.snake,
+    explicitToJson: true,
+    includeIfNull: false,
+  )
   const factory CreateDataRequestParams({
-    String? type,
-    String? redirectUrl,
-    String? currentPassword,
-    @Default(<String, Object?>{}) Map<String, Object?> extra,
+    @JsonKey(includeIfNull: false) String? type,
+    @JsonKey(includeIfNull: false) String? redirectUrl,
+    @JsonKey(includeIfNull: false) String? currentPassword,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(<String, Object?>{})
+    Map<String, Object?> extra,
   }) = _CreateDataRequestParams;
 
   /// Request type (server-defined; e.g. export/erasure — unpinned).
-  @override
   @override
   String? get type;
 
   /// Redirect URL the confirmation email link appends the token to.
   @override
-  @override
   String? get redirectUrl;
 
   /// Current password (required by the server for erasure requests).
-  @override
   @override
   String? get currentPassword;
 
   /// Additional documented body fields (never invented by the SDK).
   @override
-  @override
   Map<String, Object?> get extra;
 
   /// Serializes this body, omitting nulls.
-  Map<String, Object?> toJson() => _withoutNulls(<String, Object?>{
-    'type': type,
-    'redirect_url': redirectUrl,
-    'current_password': currentPassword,
+  Map<String, Object?> toJson() => <String, Object?>{
+    ..._$CreateDataRequestParamsToJson(this as _CreateDataRequestParams),
     ...extra,
-  });
+  };
 }

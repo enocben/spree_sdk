@@ -12,16 +12,19 @@ part of 'order.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$Order {
 
- String? get marketId; String? get withdrawalPeriodEndsAt; bool get withinWithdrawalPeriod; bool get shippingEqBillingAddress; String? get cartId; String? get channelId; String? get companyId; String? get companyName; String? get poDocumentFilename; int? get poDocumentByteSize; String get number; String get email; String? get customerNote; String? get poNumber; CurrencyCode get currency; LocaleCode? get locale; int get totalQuantity; String? get couponCode; OrderFulfillmentStatus? get fulfillmentStatus; OrderPaymentStatus? get paymentStatus; String? get completedAt; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments; String? get adjustmentTotal; List<AppliedPromotion> get discounts; List<Fee> get fees; List<LineItem> get items; List<Fulfillment> get fulfillments; Address? get billingAddress; Address? get shippingAddress; GiftCard? get giftCard; Market? get market; List<CustomField>? get customFields;
+ String? get marketId; String? get withdrawalPeriodEndsAt; bool get withinWithdrawalPeriod; bool get shippingEqBillingAddress; String? get cartId; String? get channelId; String? get companyId; String? get companyName; String? get poDocumentFilename; int? get poDocumentByteSize; String get number; String get email; String? get customerNote; String? get poNumber;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency;@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? get locale; int get totalQuantity; String? get couponCode;@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? get fulfillmentStatus;@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? get paymentStatus; String? get completedAt; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments; String? get adjustmentTotal; List<AppliedPromotion> get discounts; List<Fee> get fees; List<LineItem> get items; List<Fulfillment> get fulfillments; Address? get billingAddress; Address? get shippingAddress; GiftCard? get giftCard; Market? get market;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $OrderCopyWith<Order> get copyWith => _$OrderCopyWithImpl<Order>(this as Order, _$identity);
 
+  /// Serializes this Order to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Order&&(identical(other.marketId, _this.marketId) || other.marketId == _this.marketId)&&(identical(other.withdrawalPeriodEndsAt, _this.withdrawalPeriodEndsAt) || other.withdrawalPeriodEndsAt == _this.withdrawalPeriodEndsAt)&&(identical(other.withinWithdrawalPeriod, _this.withinWithdrawalPeriod) || other.withinWithdrawalPeriod == _this.withinWithdrawalPeriod)&&(identical(other.shippingEqBillingAddress, _this.shippingEqBillingAddress) || other.shippingEqBillingAddress == _this.shippingEqBillingAddress)&&(identical(other.cartId, _this.cartId) || other.cartId == _this.cartId)&&(identical(other.channelId, _this.channelId) || other.channelId == _this.channelId)&&(identical(other.companyId, _this.companyId) || other.companyId == _this.companyId)&&(identical(other.companyName, _this.companyName) || other.companyName == _this.companyName)&&(identical(other.poDocumentFilename, _this.poDocumentFilename) || other.poDocumentFilename == _this.poDocumentFilename)&&(identical(other.poDocumentByteSize, _this.poDocumentByteSize) || other.poDocumentByteSize == _this.poDocumentByteSize)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.customerNote, _this.customerNote) || other.customerNote == _this.customerNote)&&(identical(other.poNumber, _this.poNumber) || other.poNumber == _this.poNumber)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.locale, _this.locale) || other.locale == _this.locale)&&(identical(other.totalQuantity, _this.totalQuantity) || other.totalQuantity == _this.totalQuantity)&&(identical(other.couponCode, _this.couponCode) || other.couponCode == _this.couponCode)&&(identical(other.fulfillmentStatus, _this.fulfillmentStatus) || other.fulfillmentStatus == _this.fulfillmentStatus)&&(identical(other.paymentStatus, _this.paymentStatus) || other.paymentStatus == _this.paymentStatus)&&(identical(other.completedAt, _this.completedAt) || other.completedAt == _this.completedAt)&&(identical(other.itemTotal, _this.itemTotal) || other.itemTotal == _this.itemTotal)&&(identical(other.discountTotal, _this.discountTotal) || other.discountTotal == _this.discountTotal)&&(identical(other.taxTotal, _this.taxTotal) || other.taxTotal == _this.taxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.deliveryTotal, _this.deliveryTotal) || other.deliveryTotal == _this.deliveryTotal)&&(identical(other.feeTotal, _this.feeTotal) || other.feeTotal == _this.feeTotal)&&(identical(other.giftCardTotal, _this.giftCardTotal) || other.giftCardTotal == _this.giftCardTotal)&&(identical(other.storeCreditTotal, _this.storeCreditTotal) || other.storeCreditTotal == _this.storeCreditTotal)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.amountDue, _this.amountDue) || other.amountDue == _this.amountDue)&&(identical(other.coveredByStoreCredit, _this.coveredByStoreCredit) || other.coveredByStoreCredit == _this.coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, _this.payments)&&(identical(other.adjustmentTotal, _this.adjustmentTotal) || other.adjustmentTotal == _this.adjustmentTotal)&&const DeepCollectionEquality().equals(other.discounts, _this.discounts)&&const DeepCollectionEquality().equals(other.fees, _this.fees)&&const DeepCollectionEquality().equals(other.items, _this.items)&&const DeepCollectionEquality().equals(other.fulfillments, _this.fulfillments)&&(identical(other.billingAddress, _this.billingAddress) || other.billingAddress == _this.billingAddress)&&(identical(other.shippingAddress, _this.shippingAddress) || other.shippingAddress == _this.shippingAddress)&&(identical(other.giftCard, _this.giftCard) || other.giftCard == _this.giftCard)&&(identical(other.market, _this.market) || other.market == _this.market)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Order;
@@ -51,7 +54,7 @@ abstract mixin class $OrderCopyWith<$Res>  {
   factory $OrderCopyWith(Order value, $Res Function(Order) _then) = _$OrderCopyWithImpl;
 @useResult
 $Res call({
- String? marketId, String? withdrawalPeriodEndsAt, bool withinWithdrawalPeriod, bool shippingEqBillingAddress, String? cartId, String? channelId, String? companyId, String? companyName, String? poDocumentFilename, int? poDocumentByteSize, String number, String email, String? customerNote, String? poNumber, CurrencyCode currency, LocaleCode? locale, int totalQuantity, String? couponCode, OrderFulfillmentStatus? fulfillmentStatus, OrderPaymentStatus? paymentStatus, String? completedAt, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, GiftCard? giftCard, Market? market, List<CustomField>? customFields
+ String? marketId, String? withdrawalPeriodEndsAt, bool withinWithdrawalPeriod, bool shippingEqBillingAddress, String? cartId, String? channelId, String? companyId, String? companyName, String? poDocumentFilename, int? poDocumentByteSize, String number, String email, String? customerNote, String? poNumber,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? locale, int totalQuantity, String? couponCode,@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? fulfillmentStatus,@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? paymentStatus, String? completedAt, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, GiftCard? giftCard, Market? market,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -247,7 +250,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  String? couponCode,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  String? couponCode, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
 return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdrawalPeriod,_that.shippingEqBillingAddress,_that.cartId,_that.channelId,_that.companyId,_that.companyName,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.couponCode,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.giftCard,_that.market,_that.customFields);case _:
@@ -268,7 +271,7 @@ return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdraw
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  String? couponCode,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  String? couponCode, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Order():
 return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdrawalPeriod,_that.shippingEqBillingAddress,_that.cartId,_that.channelId,_that.companyId,_that.companyName,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.couponCode,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.giftCard,_that.market,_that.customFields);case _:
@@ -288,7 +291,7 @@ return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdraw
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber,  CurrencyCode currency,  LocaleCode? locale,  int totalQuantity,  String? couponCode,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? marketId,  String? withdrawalPeriodEndsAt,  bool withinWithdrawalPeriod,  bool shippingEqBillingAddress,  String? cartId,  String? channelId,  String? companyId,  String? companyName,  String? poDocumentFilename,  int? poDocumentByteSize,  String number,  String email,  String? customerNote,  String? poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency, @JsonKey(unknownEnumValue: LocaleCode.unknown)  LocaleCode? locale,  int totalQuantity,  String? couponCode, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  String? adjustmentTotal,  List<AppliedPromotion> discounts,  List<Fee> fees,  List<LineItem> items,  List<Fulfillment> fulfillments,  Address? billingAddress,  Address? shippingAddress,  GiftCard? giftCard,  Market? market, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
 return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdrawalPeriod,_that.shippingEqBillingAddress,_that.cartId,_that.channelId,_that.companyId,_that.companyName,_that.poDocumentFilename,_that.poDocumentByteSize,_that.number,_that.email,_that.customerNote,_that.poNumber,_that.currency,_that.locale,_that.totalQuantity,_that.couponCode,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.adjustmentTotal,_that.discounts,_that.fees,_that.items,_that.fulfillments,_that.billingAddress,_that.shippingAddress,_that.giftCard,_that.market,_that.customFields);case _:
@@ -301,10 +304,10 @@ return $default(_that.marketId,_that.withdrawalPeriodEndsAt,_that.withinWithdraw
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Order extends Order {
-  const _Order({this.marketId, this.withdrawalPeriodEndsAt, required this.withinWithdrawalPeriod, required this.shippingEqBillingAddress, this.cartId, this.channelId, this.companyId, this.companyName, this.poDocumentFilename, this.poDocumentByteSize, required this.number, required this.email, this.customerNote, this.poNumber, required this.currency, this.locale, required this.totalQuantity, this.couponCode, this.fulfillmentStatus, this.paymentStatus, this.completedAt, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, this.adjustmentTotal, required this.discounts, required this.fees, required this.items, required this.fulfillments, this.billingAddress, this.shippingAddress, this.giftCard, this.market, this.customFields}): super._();
-  
+  const _Order({this.marketId, this.withdrawalPeriodEndsAt, required this.withinWithdrawalPeriod, required this.shippingEqBillingAddress, this.cartId, this.channelId, this.companyId, this.companyName, this.poDocumentFilename, this.poDocumentByteSize, required this.number, required this.email, this.customerNote, this.poNumber, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, @JsonKey(unknownEnumValue: LocaleCode.unknown) this.locale, required this.totalQuantity, this.couponCode, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) this.fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) this.paymentStatus, this.completedAt, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, this.adjustmentTotal, required this.discounts, required this.fees, required this.items, required this.fulfillments, this.billingAddress, this.shippingAddress, this.giftCard, this.market, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
 @override final  String? marketId;
 @override final  String? withdrawalPeriodEndsAt;
@@ -320,12 +323,12 @@ class _Order extends Order {
 @override final  String email;
 @override final  String? customerNote;
 @override final  String? poNumber;
-@override final  CurrencyCode currency;
-@override final  LocaleCode? locale;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: LocaleCode.unknown) final  LocaleCode? locale;
 @override final  int totalQuantity;
 @override final  String? couponCode;
-@override final  OrderFulfillmentStatus? fulfillmentStatus;
-@override final  OrderPaymentStatus? paymentStatus;
+@override@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) final  OrderFulfillmentStatus? fulfillmentStatus;
+@override@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) final  OrderPaymentStatus? paymentStatus;
 @override final  String? completedAt;
 @override final  String? itemTotal;
 @override final  String? discountTotal;
@@ -349,7 +352,7 @@ class _Order extends Order {
 @override final  Address? shippingAddress;
 @override final  GiftCard? giftCard;
 @override final  Market? market;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
@@ -357,14 +360,17 @@ class _Order extends Order {
 @pragma('vm:prefer-inline')
 _$OrderCopyWith<_Order> get copyWith => __$OrderCopyWithImpl<_Order>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Order&&(identical(other.marketId, marketId) || other.marketId == marketId)&&(identical(other.withdrawalPeriodEndsAt, withdrawalPeriodEndsAt) || other.withdrawalPeriodEndsAt == withdrawalPeriodEndsAt)&&(identical(other.withinWithdrawalPeriod, withinWithdrawalPeriod) || other.withinWithdrawalPeriod == withinWithdrawalPeriod)&&(identical(other.shippingEqBillingAddress, shippingEqBillingAddress) || other.shippingEqBillingAddress == shippingEqBillingAddress)&&(identical(other.cartId, cartId) || other.cartId == cartId)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.companyId, companyId) || other.companyId == companyId)&&(identical(other.companyName, companyName) || other.companyName == companyName)&&(identical(other.poDocumentFilename, poDocumentFilename) || other.poDocumentFilename == poDocumentFilename)&&(identical(other.poDocumentByteSize, poDocumentByteSize) || other.poDocumentByteSize == poDocumentByteSize)&&(identical(other.number, number) || other.number == number)&&(identical(other.email, email) || other.email == email)&&(identical(other.customerNote, customerNote) || other.customerNote == customerNote)&&(identical(other.poNumber, poNumber) || other.poNumber == poNumber)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.locale, locale) || other.locale == locale)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.paymentStatus, paymentStatus) || other.paymentStatus == paymentStatus)&&(identical(other.completedAt, completedAt) || other.completedAt == completedAt)&&(identical(other.itemTotal, itemTotal) || other.itemTotal == itemTotal)&&(identical(other.discountTotal, discountTotal) || other.discountTotal == discountTotal)&&(identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.deliveryTotal, deliveryTotal) || other.deliveryTotal == deliveryTotal)&&(identical(other.feeTotal, feeTotal) || other.feeTotal == feeTotal)&&(identical(other.giftCardTotal, giftCardTotal) || other.giftCardTotal == giftCardTotal)&&(identical(other.storeCreditTotal, storeCreditTotal) || other.storeCreditTotal == storeCreditTotal)&&(identical(other.total, total) || other.total == total)&&(identical(other.amountDue, amountDue) || other.amountDue == amountDue)&&(identical(other.coveredByStoreCredit, coveredByStoreCredit) || other.coveredByStoreCredit == coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, payments)&&(identical(other.adjustmentTotal, adjustmentTotal) || other.adjustmentTotal == adjustmentTotal)&&const DeepCollectionEquality().equals(other.discounts, discounts)&&const DeepCollectionEquality().equals(other.fees, fees)&&const DeepCollectionEquality().equals(other.items, items)&&const DeepCollectionEquality().equals(other.fulfillments, fulfillments)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&(identical(other.giftCard, giftCard) || other.giftCard == giftCard)&&(identical(other.market, market) || other.market == market)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,marketId,withdrawalPeriodEndsAt,withinWithdrawalPeriod,shippingEqBillingAddress,cartId,channelId,companyId,companyName,poDocumentFilename,poDocumentByteSize,number,email,customerNote,poNumber,currency,locale,totalQuantity,couponCode,fulfillmentStatus,paymentStatus,completedAt,itemTotal,discountTotal,taxTotal,includedTaxTotal,additionalTaxTotal,deliveryTotal,feeTotal,giftCardTotal,storeCreditTotal,total,amountDue,coveredByStoreCredit,const DeepCollectionEquality().hash(payments),adjustmentTotal,const DeepCollectionEquality().hash(discounts),const DeepCollectionEquality().hash(fees),const DeepCollectionEquality().hash(items),const DeepCollectionEquality().hash(fulfillments),billingAddress,shippingAddress,giftCard,market,const DeepCollectionEquality().hash(customFields)]);
@@ -383,7 +389,7 @@ abstract mixin class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
   factory _$OrderCopyWith(_Order value, $Res Function(_Order) _then) = __$OrderCopyWithImpl;
 @override @useResult
 $Res call({
- String? marketId, String? withdrawalPeriodEndsAt, bool withinWithdrawalPeriod, bool shippingEqBillingAddress, String? cartId, String? channelId, String? companyId, String? companyName, String? poDocumentFilename, int? poDocumentByteSize, String number, String email, String? customerNote, String? poNumber, CurrencyCode currency, LocaleCode? locale, int totalQuantity, String? couponCode, OrderFulfillmentStatus? fulfillmentStatus, OrderPaymentStatus? paymentStatus, String? completedAt, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, GiftCard? giftCard, Market? market, List<CustomField>? customFields
+ String? marketId, String? withdrawalPeriodEndsAt, bool withinWithdrawalPeriod, bool shippingEqBillingAddress, String? cartId, String? channelId, String? companyId, String? companyName, String? poDocumentFilename, int? poDocumentByteSize, String number, String email, String? customerNote, String? poNumber,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency,@JsonKey(unknownEnumValue: LocaleCode.unknown) LocaleCode? locale, int totalQuantity, String? couponCode,@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? fulfillmentStatus,@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? paymentStatus, String? completedAt, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, String? adjustmentTotal, List<AppliedPromotion> discounts, List<Fee> fees, List<LineItem> items, List<Fulfillment> fulfillments, Address? billingAddress, Address? shippingAddress, GiftCard? giftCard, Market? market,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -501,16 +507,19 @@ $MarketCopyWith<$Res>? get market {
 }
 }
 
+
 /// @nodoc
 mixin _$OrderGroup {
 
- String get id; String get number; String? get email; CurrencyCode get currency; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments; OrderFulfillmentStatus? get fulfillmentStatus; OrderPaymentStatus? get paymentStatus; String? get completedAt; Address? get billingAddress; Address? get shippingAddress; List<Order> get orders;
+ String get id; String get number; String? get email;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency; String? get itemTotal; String? get discountTotal; String? get taxTotal; String? get includedTaxTotal; String? get additionalTaxTotal; String? get deliveryTotal; String? get feeTotal; String? get giftCardTotal; String? get storeCreditTotal; String? get total; String? get amountDue; bool get coveredByStoreCredit; List<Payment> get payments;@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? get fulfillmentStatus;@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? get paymentStatus; String? get completedAt; Address? get billingAddress; Address? get shippingAddress; List<Order> get orders;
 /// Create a copy of OrderGroup
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $OrderGroupCopyWith<OrderGroup> get copyWith => _$OrderGroupCopyWithImpl<OrderGroup>(this as OrderGroup, _$identity);
 
+  /// Serializes this OrderGroup to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -519,7 +528,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderGroup&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.number, _this.number) || other.number == _this.number)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.itemTotal, _this.itemTotal) || other.itemTotal == _this.itemTotal)&&(identical(other.discountTotal, _this.discountTotal) || other.discountTotal == _this.discountTotal)&&(identical(other.taxTotal, _this.taxTotal) || other.taxTotal == _this.taxTotal)&&(identical(other.includedTaxTotal, _this.includedTaxTotal) || other.includedTaxTotal == _this.includedTaxTotal)&&(identical(other.additionalTaxTotal, _this.additionalTaxTotal) || other.additionalTaxTotal == _this.additionalTaxTotal)&&(identical(other.deliveryTotal, _this.deliveryTotal) || other.deliveryTotal == _this.deliveryTotal)&&(identical(other.feeTotal, _this.feeTotal) || other.feeTotal == _this.feeTotal)&&(identical(other.giftCardTotal, _this.giftCardTotal) || other.giftCardTotal == _this.giftCardTotal)&&(identical(other.storeCreditTotal, _this.storeCreditTotal) || other.storeCreditTotal == _this.storeCreditTotal)&&(identical(other.total, _this.total) || other.total == _this.total)&&(identical(other.amountDue, _this.amountDue) || other.amountDue == _this.amountDue)&&(identical(other.coveredByStoreCredit, _this.coveredByStoreCredit) || other.coveredByStoreCredit == _this.coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, _this.payments)&&(identical(other.fulfillmentStatus, _this.fulfillmentStatus) || other.fulfillmentStatus == _this.fulfillmentStatus)&&(identical(other.paymentStatus, _this.paymentStatus) || other.paymentStatus == _this.paymentStatus)&&(identical(other.completedAt, _this.completedAt) || other.completedAt == _this.completedAt)&&(identical(other.billingAddress, _this.billingAddress) || other.billingAddress == _this.billingAddress)&&(identical(other.shippingAddress, _this.shippingAddress) || other.shippingAddress == _this.shippingAddress)&&const DeepCollectionEquality().equals(other.orders, _this.orders));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as OrderGroup;
@@ -540,7 +549,7 @@ abstract mixin class $OrderGroupCopyWith<$Res>  {
   factory $OrderGroupCopyWith(OrderGroup value, $Res Function(OrderGroup) _then) = _$OrderGroupCopyWithImpl;
 @useResult
 $Res call({
- String id, String number, String? email, CurrencyCode currency, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, OrderFulfillmentStatus? fulfillmentStatus, OrderPaymentStatus? paymentStatus, String? completedAt, Address? billingAddress, Address? shippingAddress, List<Order> orders
+ String id, String number, String? email,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments,@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? fulfillmentStatus,@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? paymentStatus, String? completedAt, Address? billingAddress, Address? shippingAddress, List<Order> orders
 });
 
 
@@ -691,7 +700,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String number,  String? email,  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String number,  String? email, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OrderGroup() when $default != null:
 return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.billingAddress,_that.shippingAddress,_that.orders);case _:
@@ -712,7 +721,7 @@ return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String number,  String? email,  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String number,  String? email, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)  $default,) {final _that = this;
 switch (_that) {
 case _OrderGroup():
 return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.billingAddress,_that.shippingAddress,_that.orders);case _:
@@ -732,7 +741,7 @@ return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String number,  String? email,  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments,  OrderFulfillmentStatus? fulfillmentStatus,  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String number,  String? email, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? itemTotal,  String? discountTotal,  String? taxTotal,  String? includedTaxTotal,  String? additionalTaxTotal,  String? deliveryTotal,  String? feeTotal,  String? giftCardTotal,  String? storeCreditTotal,  String? total,  String? amountDue,  bool coveredByStoreCredit,  List<Payment> payments, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown)  OrderFulfillmentStatus? fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown)  OrderPaymentStatus? paymentStatus,  String? completedAt,  Address? billingAddress,  Address? shippingAddress,  List<Order> orders)?  $default,) {final _that = this;
 switch (_that) {
 case _OrderGroup() when $default != null:
 return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal,_that.discountTotal,_that.taxTotal,_that.includedTaxTotal,_that.additionalTaxTotal,_that.deliveryTotal,_that.feeTotal,_that.giftCardTotal,_that.storeCreditTotal,_that.total,_that.amountDue,_that.coveredByStoreCredit,_that.payments,_that.fulfillmentStatus,_that.paymentStatus,_that.completedAt,_that.billingAddress,_that.shippingAddress,_that.orders);case _:
@@ -745,15 +754,15 @@ return $default(_that.id,_that.number,_that.email,_that.currency,_that.itemTotal
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _OrderGroup extends OrderGroup {
-  const _OrderGroup({required this.id, required this.number, this.email, required this.currency, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, this.fulfillmentStatus, this.paymentStatus, this.completedAt, this.billingAddress, this.shippingAddress, required this.orders}): super._();
-  
+  const _OrderGroup({required this.id, required this.number, this.email, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, this.itemTotal, this.discountTotal, this.taxTotal, this.includedTaxTotal, this.additionalTaxTotal, this.deliveryTotal, this.feeTotal, this.giftCardTotal, this.storeCreditTotal, this.total, this.amountDue, required this.coveredByStoreCredit, required this.payments, @JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) this.fulfillmentStatus, @JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) this.paymentStatus, this.completedAt, this.billingAddress, this.shippingAddress, required this.orders}): super._();
+  factory _OrderGroup.fromJson(Map<String, dynamic> json) => _$OrderGroupFromJson(json);
 
 @override final  String id;
 @override final  String number;
 @override final  String? email;
-@override final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
 @override final  String? itemTotal;
 @override final  String? discountTotal;
 @override final  String? taxTotal;
@@ -767,8 +776,8 @@ class _OrderGroup extends OrderGroup {
 @override final  String? amountDue;
 @override final  bool coveredByStoreCredit;
 @override final  List<Payment> payments;
-@override final  OrderFulfillmentStatus? fulfillmentStatus;
-@override final  OrderPaymentStatus? paymentStatus;
+@override@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) final  OrderFulfillmentStatus? fulfillmentStatus;
+@override@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) final  OrderPaymentStatus? paymentStatus;
 @override final  String? completedAt;
 @override final  Address? billingAddress;
 @override final  Address? shippingAddress;
@@ -780,14 +789,17 @@ class _OrderGroup extends OrderGroup {
 @pragma('vm:prefer-inline')
 _$OrderGroupCopyWith<_OrderGroup> get copyWith => __$OrderGroupCopyWithImpl<_OrderGroup>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$OrderGroupToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderGroup&&(identical(other.id, id) || other.id == id)&&(identical(other.number, number) || other.number == number)&&(identical(other.email, email) || other.email == email)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.itemTotal, itemTotal) || other.itemTotal == itemTotal)&&(identical(other.discountTotal, discountTotal) || other.discountTotal == discountTotal)&&(identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal)&&(identical(other.includedTaxTotal, includedTaxTotal) || other.includedTaxTotal == includedTaxTotal)&&(identical(other.additionalTaxTotal, additionalTaxTotal) || other.additionalTaxTotal == additionalTaxTotal)&&(identical(other.deliveryTotal, deliveryTotal) || other.deliveryTotal == deliveryTotal)&&(identical(other.feeTotal, feeTotal) || other.feeTotal == feeTotal)&&(identical(other.giftCardTotal, giftCardTotal) || other.giftCardTotal == giftCardTotal)&&(identical(other.storeCreditTotal, storeCreditTotal) || other.storeCreditTotal == storeCreditTotal)&&(identical(other.total, total) || other.total == total)&&(identical(other.amountDue, amountDue) || other.amountDue == amountDue)&&(identical(other.coveredByStoreCredit, coveredByStoreCredit) || other.coveredByStoreCredit == coveredByStoreCredit)&&const DeepCollectionEquality().equals(other.payments, payments)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.paymentStatus, paymentStatus) || other.paymentStatus == paymentStatus)&&(identical(other.completedAt, completedAt) || other.completedAt == completedAt)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&const DeepCollectionEquality().equals(other.orders, orders));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,number,email,currency,itemTotal,discountTotal,taxTotal,includedTaxTotal,additionalTaxTotal,deliveryTotal,feeTotal,giftCardTotal,storeCreditTotal,total,amountDue,coveredByStoreCredit,const DeepCollectionEquality().hash(payments),fulfillmentStatus,paymentStatus,completedAt,billingAddress,shippingAddress,const DeepCollectionEquality().hash(orders)]);
@@ -806,7 +818,7 @@ abstract mixin class _$OrderGroupCopyWith<$Res> implements $OrderGroupCopyWith<$
   factory _$OrderGroupCopyWith(_OrderGroup value, $Res Function(_OrderGroup) _then) = __$OrderGroupCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String number, String? email, CurrencyCode currency, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments, OrderFulfillmentStatus? fulfillmentStatus, OrderPaymentStatus? paymentStatus, String? completedAt, Address? billingAddress, Address? shippingAddress, List<Order> orders
+ String id, String number, String? email,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? itemTotal, String? discountTotal, String? taxTotal, String? includedTaxTotal, String? additionalTaxTotal, String? deliveryTotal, String? feeTotal, String? giftCardTotal, String? storeCreditTotal, String? total, String? amountDue, bool coveredByStoreCredit, List<Payment> payments,@JsonKey(unknownEnumValue: OrderFulfillmentStatus.unknown) OrderFulfillmentStatus? fulfillmentStatus,@JsonKey(unknownEnumValue: OrderPaymentStatus.unknown) OrderPaymentStatus? paymentStatus, String? completedAt, Address? billingAddress, Address? shippingAddress, List<Order> orders
 });
 
 

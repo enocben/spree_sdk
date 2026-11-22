@@ -12,16 +12,19 @@ part of 'product.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$Price {
 
- String get id; CurrencyCode? get currency; String? get amount; String? get compareAtAmount; String? get priceListId;
+ String get id;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode? get currency; String? get amount; String? get compareAtAmount; String? get priceListId;
 /// Create a copy of Price
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PriceCopyWith<Price> get copyWith => _$PriceCopyWithImpl<Price>(this as Price, _$identity);
 
+  /// Serializes this Price to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Price&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.compareAtAmount, _this.compareAtAmount) || other.compareAtAmount == _this.compareAtAmount)&&(identical(other.priceListId, _this.priceListId) || other.priceListId == _this.priceListId));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Price;
@@ -51,7 +54,7 @@ abstract mixin class $PriceCopyWith<$Res>  {
   factory $PriceCopyWith(Price value, $Res Function(Price) _then) = _$PriceCopyWithImpl;
 @useResult
 $Res call({
- String id, CurrencyCode? currency, String? amount, String? compareAtAmount, String? priceListId
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode? currency, String? amount, String? compareAtAmount, String? priceListId
 });
 
 
@@ -160,7 +163,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Price() when $default != null:
 return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that.priceListId);case _:
@@ -181,7 +184,7 @@ return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)  $default,) {final _that = this;
 switch (_that) {
 case _Price():
 return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that.priceListId);case _:
@@ -201,7 +204,7 @@ return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode? currency,  String? amount,  String? compareAtAmount,  String? priceListId)?  $default,) {final _that = this;
 switch (_that) {
 case _Price() when $default != null:
 return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that.priceListId);case _:
@@ -214,13 +217,13 @@ return $default(_that.id,_that.currency,_that.amount,_that.compareAtAmount,_that
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Price extends Price {
-  const _Price({required this.id, this.currency, this.amount, this.compareAtAmount, this.priceListId}): super._();
-  
+  const _Price({required this.id, @JsonKey(unknownEnumValue: CurrencyCode.unknown) this.currency, this.amount, this.compareAtAmount, this.priceListId}): super._();
+  factory _Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
 
 @override final  String id;
-@override final  CurrencyCode? currency;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode? currency;
 @override final  String? amount;
 @override final  String? compareAtAmount;
 @override final  String? priceListId;
@@ -231,14 +234,17 @@ class _Price extends Price {
 @pragma('vm:prefer-inline')
 _$PriceCopyWith<_Price> get copyWith => __$PriceCopyWithImpl<_Price>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PriceToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Price&&(identical(other.id, id) || other.id == id)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.compareAtAmount, compareAtAmount) || other.compareAtAmount == compareAtAmount)&&(identical(other.priceListId, priceListId) || other.priceListId == priceListId));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,currency,amount,compareAtAmount,priceListId);
@@ -257,7 +263,7 @@ abstract mixin class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
   factory _$PriceCopyWith(_Price value, $Res Function(_Price) _then) = __$PriceCopyWithImpl;
 @override @useResult
 $Res call({
- String id, CurrencyCode? currency, String? amount, String? compareAtAmount, String? priceListId
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode? currency, String? amount, String? compareAtAmount, String? priceListId
 });
 
 
@@ -288,16 +294,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$PriceHistory {
 
- String get id; CurrencyCode get currency; String? get amount; String get recordedAt;
+ String get id;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency; String? get amount; String get recordedAt;
 /// Create a copy of PriceHistory
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PriceHistoryCopyWith<PriceHistory> get copyWith => _$PriceHistoryCopyWithImpl<PriceHistory>(this as PriceHistory, _$identity);
 
+  /// Serializes this PriceHistory to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -306,7 +315,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PriceHistory&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.currency, _this.currency) || other.currency == _this.currency)&&(identical(other.amount, _this.amount) || other.amount == _this.amount)&&(identical(other.recordedAt, _this.recordedAt) || other.recordedAt == _this.recordedAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as PriceHistory;
@@ -327,7 +336,7 @@ abstract mixin class $PriceHistoryCopyWith<$Res>  {
   factory $PriceHistoryCopyWith(PriceHistory value, $Res Function(PriceHistory) _then) = _$PriceHistoryCopyWithImpl;
 @useResult
 $Res call({
- String id, CurrencyCode currency, String? amount, String recordedAt
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? amount, String recordedAt
 });
 
 
@@ -435,7 +444,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  CurrencyCode currency,  String? amount,  String recordedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String recordedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PriceHistory() when $default != null:
 return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
@@ -456,7 +465,7 @@ return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  CurrencyCode currency,  String? amount,  String recordedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String recordedAt)  $default,) {final _that = this;
 switch (_that) {
 case _PriceHistory():
 return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
@@ -476,7 +485,7 @@ return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  CurrencyCode currency,  String? amount,  String recordedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency,  String? amount,  String recordedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _PriceHistory() when $default != null:
 return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
@@ -489,13 +498,13 @@ return $default(_that.id,_that.currency,_that.amount,_that.recordedAt);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _PriceHistory extends PriceHistory {
-  const _PriceHistory({required this.id, required this.currency, this.amount, required this.recordedAt}): super._();
-  
+  const _PriceHistory({required this.id, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency, this.amount, required this.recordedAt}): super._();
+  factory _PriceHistory.fromJson(Map<String, dynamic> json) => _$PriceHistoryFromJson(json);
 
 @override final  String id;
-@override final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
 @override final  String? amount;
 @override final  String recordedAt;
 
@@ -505,14 +514,17 @@ class _PriceHistory extends PriceHistory {
 @pragma('vm:prefer-inline')
 _$PriceHistoryCopyWith<_PriceHistory> get copyWith => __$PriceHistoryCopyWithImpl<_PriceHistory>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PriceHistoryToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _PriceHistory&&(identical(other.id, id) || other.id == id)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.recordedAt, recordedAt) || other.recordedAt == recordedAt));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,currency,amount,recordedAt);
@@ -531,7 +543,7 @@ abstract mixin class _$PriceHistoryCopyWith<$Res> implements $PriceHistoryCopyWi
   factory _$PriceHistoryCopyWith(_PriceHistory value, $Res Function(_PriceHistory) _then) = __$PriceHistoryCopyWithImpl;
 @override @useResult
 $Res call({
- String id, CurrencyCode currency, String? amount, String recordedAt
+ String id,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency, String? amount, String recordedAt
 });
 
 
@@ -561,16 +573,19 @@ as String,
 
 }
 
+
 /// @nodoc
 mixin _$Media {
 
- String get id; String? get productId; List<String> get variantIds; int get position; String? get alt; MediaType get mediaType; String? get externalVideoUrl; double? get focalPointX; double? get focalPointY; String? get videoProvider; String? get videoEmbedUrl; String? get videoUrl; String? get posterUrl; String? get originalUrl; String? get miniUrl; String? get smallUrl; String? get mediumUrl; String? get largeUrl; String? get xlargeUrl; String? get ogImageUrl; List<CustomField>? get customFields;
+ String get id; String? get productId; List<String> get variantIds; int get position; String? get alt;@JsonKey(unknownEnumValue: MediaType.unknown) MediaType get mediaType; String? get externalVideoUrl; double? get focalPointX; double? get focalPointY; String? get videoProvider; String? get videoEmbedUrl; String? get videoUrl; String? get posterUrl; String? get originalUrl; String? get miniUrl; String? get smallUrl; String? get mediumUrl; String? get largeUrl; String? get xlargeUrl; String? get ogImageUrl;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Media
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $MediaCopyWith<Media> get copyWith => _$MediaCopyWithImpl<Media>(this as Media, _$identity);
 
+  /// Serializes this Media to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -579,7 +594,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Media&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.productId, _this.productId) || other.productId == _this.productId)&&const DeepCollectionEquality().equals(other.variantIds, _this.variantIds)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.alt, _this.alt) || other.alt == _this.alt)&&(identical(other.mediaType, _this.mediaType) || other.mediaType == _this.mediaType)&&(identical(other.externalVideoUrl, _this.externalVideoUrl) || other.externalVideoUrl == _this.externalVideoUrl)&&(identical(other.focalPointX, _this.focalPointX) || other.focalPointX == _this.focalPointX)&&(identical(other.focalPointY, _this.focalPointY) || other.focalPointY == _this.focalPointY)&&(identical(other.videoProvider, _this.videoProvider) || other.videoProvider == _this.videoProvider)&&(identical(other.videoEmbedUrl, _this.videoEmbedUrl) || other.videoEmbedUrl == _this.videoEmbedUrl)&&(identical(other.videoUrl, _this.videoUrl) || other.videoUrl == _this.videoUrl)&&(identical(other.posterUrl, _this.posterUrl) || other.posterUrl == _this.posterUrl)&&(identical(other.originalUrl, _this.originalUrl) || other.originalUrl == _this.originalUrl)&&(identical(other.miniUrl, _this.miniUrl) || other.miniUrl == _this.miniUrl)&&(identical(other.smallUrl, _this.smallUrl) || other.smallUrl == _this.smallUrl)&&(identical(other.mediumUrl, _this.mediumUrl) || other.mediumUrl == _this.mediumUrl)&&(identical(other.largeUrl, _this.largeUrl) || other.largeUrl == _this.largeUrl)&&(identical(other.xlargeUrl, _this.xlargeUrl) || other.xlargeUrl == _this.xlargeUrl)&&(identical(other.ogImageUrl, _this.ogImageUrl) || other.ogImageUrl == _this.ogImageUrl)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Media;
@@ -600,7 +615,7 @@ abstract mixin class $MediaCopyWith<$Res>  {
   factory $MediaCopyWith(Media value, $Res Function(Media) _then) = _$MediaCopyWithImpl;
 @useResult
 $Res call({
- String id, String? productId, List<String> variantIds, int position, String? alt, MediaType mediaType, String? externalVideoUrl, double? focalPointX, double? focalPointY, String? videoProvider, String? videoEmbedUrl, String? videoUrl, String? posterUrl, String? originalUrl, String? miniUrl, String? smallUrl, String? mediumUrl, String? largeUrl, String? xlargeUrl, String? ogImageUrl, List<CustomField>? customFields
+ String id, String? productId, List<String> variantIds, int position, String? alt,@JsonKey(unknownEnumValue: MediaType.unknown) MediaType mediaType, String? externalVideoUrl, double? focalPointX, double? focalPointY, String? videoProvider, String? videoEmbedUrl, String? videoUrl, String? posterUrl, String? originalUrl, String? miniUrl, String? smallUrl, String? mediumUrl, String? largeUrl, String? xlargeUrl, String? ogImageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -725,7 +740,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt,  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt, @JsonKey(unknownEnumValue: MediaType.unknown)  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Media() when $default != null:
 return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.alt,_that.mediaType,_that.externalVideoUrl,_that.focalPointX,_that.focalPointY,_that.videoProvider,_that.videoEmbedUrl,_that.videoUrl,_that.posterUrl,_that.originalUrl,_that.miniUrl,_that.smallUrl,_that.mediumUrl,_that.largeUrl,_that.xlargeUrl,_that.ogImageUrl,_that.customFields);case _:
@@ -746,7 +761,7 @@ return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.a
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt,  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt, @JsonKey(unknownEnumValue: MediaType.unknown)  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Media():
 return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.alt,_that.mediaType,_that.externalVideoUrl,_that.focalPointX,_that.focalPointY,_that.videoProvider,_that.videoEmbedUrl,_that.videoUrl,_that.posterUrl,_that.originalUrl,_that.miniUrl,_that.smallUrl,_that.mediumUrl,_that.largeUrl,_that.xlargeUrl,_that.ogImageUrl,_that.customFields);case _:
@@ -766,7 +781,7 @@ return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.a
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt,  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? productId,  List<String> variantIds,  int position,  String? alt, @JsonKey(unknownEnumValue: MediaType.unknown)  MediaType mediaType,  String? externalVideoUrl,  double? focalPointX,  double? focalPointY,  String? videoProvider,  String? videoEmbedUrl,  String? videoUrl,  String? posterUrl,  String? originalUrl,  String? miniUrl,  String? smallUrl,  String? mediumUrl,  String? largeUrl,  String? xlargeUrl,  String? ogImageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Media() when $default != null:
 return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.alt,_that.mediaType,_that.externalVideoUrl,_that.focalPointX,_that.focalPointY,_that.videoProvider,_that.videoEmbedUrl,_that.videoUrl,_that.posterUrl,_that.originalUrl,_that.miniUrl,_that.smallUrl,_that.mediumUrl,_that.largeUrl,_that.xlargeUrl,_that.ogImageUrl,_that.customFields);case _:
@@ -779,17 +794,17 @@ return $default(_that.id,_that.productId,_that.variantIds,_that.position,_that.a
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Media extends Media {
-  const _Media({required this.id, this.productId, required this.variantIds, required this.position, this.alt, required this.mediaType, this.externalVideoUrl, this.focalPointX, this.focalPointY, this.videoProvider, this.videoEmbedUrl, this.videoUrl, this.posterUrl, this.originalUrl, this.miniUrl, this.smallUrl, this.mediumUrl, this.largeUrl, this.xlargeUrl, this.ogImageUrl, this.customFields}): super._();
-  
+  const _Media({required this.id, this.productId, required this.variantIds, required this.position, this.alt, @JsonKey(unknownEnumValue: MediaType.unknown) required this.mediaType, this.externalVideoUrl, this.focalPointX, this.focalPointY, this.videoProvider, this.videoEmbedUrl, this.videoUrl, this.posterUrl, this.originalUrl, this.miniUrl, this.smallUrl, this.mediumUrl, this.largeUrl, this.xlargeUrl, this.ogImageUrl, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
 
 @override final  String id;
 @override final  String? productId;
 @override final  List<String> variantIds;
 @override final  int position;
 @override final  String? alt;
-@override final  MediaType mediaType;
+@override@JsonKey(unknownEnumValue: MediaType.unknown) final  MediaType mediaType;
 @override final  String? externalVideoUrl;
 @override final  double? focalPointX;
 @override final  double? focalPointY;
@@ -804,7 +819,7 @@ class _Media extends Media {
 @override final  String? largeUrl;
 @override final  String? xlargeUrl;
 @override final  String? ogImageUrl;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Media
 /// with the given fields replaced by the non-null parameter values.
@@ -812,14 +827,17 @@ class _Media extends Media {
 @pragma('vm:prefer-inline')
 _$MediaCopyWith<_Media> get copyWith => __$MediaCopyWithImpl<_Media>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$MediaToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Media&&(identical(other.id, id) || other.id == id)&&(identical(other.productId, productId) || other.productId == productId)&&const DeepCollectionEquality().equals(other.variantIds, variantIds)&&(identical(other.position, position) || other.position == position)&&(identical(other.alt, alt) || other.alt == alt)&&(identical(other.mediaType, mediaType) || other.mediaType == mediaType)&&(identical(other.externalVideoUrl, externalVideoUrl) || other.externalVideoUrl == externalVideoUrl)&&(identical(other.focalPointX, focalPointX) || other.focalPointX == focalPointX)&&(identical(other.focalPointY, focalPointY) || other.focalPointY == focalPointY)&&(identical(other.videoProvider, videoProvider) || other.videoProvider == videoProvider)&&(identical(other.videoEmbedUrl, videoEmbedUrl) || other.videoEmbedUrl == videoEmbedUrl)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl)&&(identical(other.posterUrl, posterUrl) || other.posterUrl == posterUrl)&&(identical(other.originalUrl, originalUrl) || other.originalUrl == originalUrl)&&(identical(other.miniUrl, miniUrl) || other.miniUrl == miniUrl)&&(identical(other.smallUrl, smallUrl) || other.smallUrl == smallUrl)&&(identical(other.mediumUrl, mediumUrl) || other.mediumUrl == mediumUrl)&&(identical(other.largeUrl, largeUrl) || other.largeUrl == largeUrl)&&(identical(other.xlargeUrl, xlargeUrl) || other.xlargeUrl == xlargeUrl)&&(identical(other.ogImageUrl, ogImageUrl) || other.ogImageUrl == ogImageUrl)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,productId,const DeepCollectionEquality().hash(variantIds),position,alt,mediaType,externalVideoUrl,focalPointX,focalPointY,videoProvider,videoEmbedUrl,videoUrl,posterUrl,originalUrl,miniUrl,smallUrl,mediumUrl,largeUrl,xlargeUrl,ogImageUrl,const DeepCollectionEquality().hash(customFields)]);
@@ -838,7 +856,7 @@ abstract mixin class _$MediaCopyWith<$Res> implements $MediaCopyWith<$Res> {
   factory _$MediaCopyWith(_Media value, $Res Function(_Media) _then) = __$MediaCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? productId, List<String> variantIds, int position, String? alt, MediaType mediaType, String? externalVideoUrl, double? focalPointX, double? focalPointY, String? videoProvider, String? videoEmbedUrl, String? videoUrl, String? posterUrl, String? originalUrl, String? miniUrl, String? smallUrl, String? mediumUrl, String? largeUrl, String? xlargeUrl, String? ogImageUrl, List<CustomField>? customFields
+ String id, String? productId, List<String> variantIds, int position, String? alt,@JsonKey(unknownEnumValue: MediaType.unknown) MediaType mediaType, String? externalVideoUrl, double? focalPointX, double? focalPointY, String? videoProvider, String? videoEmbedUrl, String? videoUrl, String? posterUrl, String? originalUrl, String? miniUrl, String? smallUrl, String? mediumUrl, String? largeUrl, String? xlargeUrl, String? ogImageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -885,16 +903,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$OptionType {
 
- String get id; String get name; String get label; int get position; OptionTypeKind get kind; List<CustomField>? get customFields;
+ String get id; String get name; String get label; int get position;@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind get kind;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of OptionType
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $OptionTypeCopyWith<OptionType> get copyWith => _$OptionTypeCopyWithImpl<OptionType>(this as OptionType, _$identity);
 
+  /// Serializes this OptionType to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -903,7 +924,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is OptionType&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as OptionType;
@@ -924,7 +945,7 @@ abstract mixin class $OptionTypeCopyWith<$Res>  {
   factory $OptionTypeCopyWith(OptionType value, $Res Function(OptionType) _then) = _$OptionTypeCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String label, int position, OptionTypeKind kind, List<CustomField>? customFields
+ String id, String name, String label, int position,@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind kind,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -1034,7 +1055,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String label,  int position,  OptionTypeKind kind,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String label,  int position, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OptionType() when $default != null:
 return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.customFields);case _:
@@ -1055,7 +1076,7 @@ return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String label,  int position,  OptionTypeKind kind,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String label,  int position, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _OptionType():
 return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.customFields);case _:
@@ -1075,7 +1096,7 @@ return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String label,  int position,  OptionTypeKind kind,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String label,  int position, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _OptionType() when $default != null:
 return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.customFields);case _:
@@ -1088,17 +1109,17 @@ return $default(_that.id,_that.name,_that.label,_that.position,_that.kind,_that.
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _OptionType extends OptionType {
-  const _OptionType({required this.id, required this.name, required this.label, required this.position, required this.kind, this.customFields}): super._();
-  
+  const _OptionType({required this.id, required this.name, required this.label, required this.position, @JsonKey(unknownEnumValue: OptionTypeKind.unknown) required this.kind, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _OptionType.fromJson(Map<String, dynamic> json) => _$OptionTypeFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String label;
 @override final  int position;
-@override final  OptionTypeKind kind;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(unknownEnumValue: OptionTypeKind.unknown) final  OptionTypeKind kind;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of OptionType
 /// with the given fields replaced by the non-null parameter values.
@@ -1106,14 +1127,17 @@ class _OptionType extends OptionType {
 @pragma('vm:prefer-inline')
 _$OptionTypeCopyWith<_OptionType> get copyWith => __$OptionTypeCopyWithImpl<_OptionType>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$OptionTypeToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _OptionType&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.label, label) || other.label == label)&&(identical(other.position, position) || other.position == position)&&(identical(other.kind, kind) || other.kind == kind)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,label,position,kind,const DeepCollectionEquality().hash(customFields));
@@ -1132,7 +1156,7 @@ abstract mixin class _$OptionTypeCopyWith<$Res> implements $OptionTypeCopyWith<$
   factory _$OptionTypeCopyWith(_OptionType value, $Res Function(_OptionType) _then) = __$OptionTypeCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String label, int position, OptionTypeKind kind, List<CustomField>? customFields
+ String id, String name, String label, int position,@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind kind,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -1164,16 +1188,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$OptionValue {
 
- String get id; String get optionTypeId; String get name; String get label; int get position; String? get colorCode; String get optionTypeName; String get optionTypeLabel; String? get imageUrl; List<CustomField>? get customFields;
+ String get id; String get optionTypeId; String get name; String get label; int get position; String? get colorCode; String get optionTypeName; String get optionTypeLabel; String? get imageUrl;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of OptionValue
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $OptionValueCopyWith<OptionValue> get copyWith => _$OptionValueCopyWithImpl<OptionValue>(this as OptionValue, _$identity);
 
+  /// Serializes this OptionValue to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1182,7 +1209,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is OptionValue&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.optionTypeId, _this.optionTypeId) || other.optionTypeId == _this.optionTypeId)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.colorCode, _this.colorCode) || other.colorCode == _this.colorCode)&&(identical(other.optionTypeName, _this.optionTypeName) || other.optionTypeName == _this.optionTypeName)&&(identical(other.optionTypeLabel, _this.optionTypeLabel) || other.optionTypeLabel == _this.optionTypeLabel)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as OptionValue;
@@ -1203,7 +1230,7 @@ abstract mixin class $OptionValueCopyWith<$Res>  {
   factory $OptionValueCopyWith(OptionValue value, $Res Function(OptionValue) _then) = _$OptionValueCopyWithImpl;
 @useResult
 $Res call({
- String id, String optionTypeId, String name, String label, int position, String? colorCode, String optionTypeName, String optionTypeLabel, String? imageUrl, List<CustomField>? customFields
+ String id, String optionTypeId, String name, String label, int position, String? colorCode, String optionTypeName, String optionTypeLabel, String? imageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -1317,7 +1344,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OptionValue() when $default != null:
 return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.position,_that.colorCode,_that.optionTypeName,_that.optionTypeLabel,_that.imageUrl,_that.customFields);case _:
@@ -1338,7 +1365,7 @@ return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.positio
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _OptionValue():
 return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.position,_that.colorCode,_that.optionTypeName,_that.optionTypeLabel,_that.imageUrl,_that.customFields);case _:
@@ -1358,7 +1385,7 @@ return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.positio
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String optionTypeId,  String name,  String label,  int position,  String? colorCode,  String optionTypeName,  String optionTypeLabel,  String? imageUrl, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _OptionValue() when $default != null:
 return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.position,_that.colorCode,_that.optionTypeName,_that.optionTypeLabel,_that.imageUrl,_that.customFields);case _:
@@ -1371,10 +1398,10 @@ return $default(_that.id,_that.optionTypeId,_that.name,_that.label,_that.positio
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _OptionValue extends OptionValue {
-  const _OptionValue({required this.id, required this.optionTypeId, required this.name, required this.label, required this.position, this.colorCode, required this.optionTypeName, required this.optionTypeLabel, this.imageUrl, this.customFields}): super._();
-  
+  const _OptionValue({required this.id, required this.optionTypeId, required this.name, required this.label, required this.position, this.colorCode, required this.optionTypeName, required this.optionTypeLabel, this.imageUrl, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _OptionValue.fromJson(Map<String, dynamic> json) => _$OptionValueFromJson(json);
 
 @override final  String id;
 @override final  String optionTypeId;
@@ -1385,7 +1412,7 @@ class _OptionValue extends OptionValue {
 @override final  String optionTypeName;
 @override final  String optionTypeLabel;
 @override final  String? imageUrl;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of OptionValue
 /// with the given fields replaced by the non-null parameter values.
@@ -1393,14 +1420,17 @@ class _OptionValue extends OptionValue {
 @pragma('vm:prefer-inline')
 _$OptionValueCopyWith<_OptionValue> get copyWith => __$OptionValueCopyWithImpl<_OptionValue>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$OptionValueToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _OptionValue&&(identical(other.id, id) || other.id == id)&&(identical(other.optionTypeId, optionTypeId) || other.optionTypeId == optionTypeId)&&(identical(other.name, name) || other.name == name)&&(identical(other.label, label) || other.label == label)&&(identical(other.position, position) || other.position == position)&&(identical(other.colorCode, colorCode) || other.colorCode == colorCode)&&(identical(other.optionTypeName, optionTypeName) || other.optionTypeName == optionTypeName)&&(identical(other.optionTypeLabel, optionTypeLabel) || other.optionTypeLabel == optionTypeLabel)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,optionTypeId,name,label,position,colorCode,optionTypeName,optionTypeLabel,imageUrl,const DeepCollectionEquality().hash(customFields));
@@ -1419,7 +1449,7 @@ abstract mixin class _$OptionValueCopyWith<$Res> implements $OptionValueCopyWith
   factory _$OptionValueCopyWith(_OptionValue value, $Res Function(_OptionValue) _then) = __$OptionValueCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String optionTypeId, String name, String label, int position, String? colorCode, String optionTypeName, String optionTypeLabel, String? imageUrl, List<CustomField>? customFields
+ String id, String optionTypeId, String name, String label, int position, String? colorCode, String optionTypeName, String optionTypeLabel, String? imageUrl,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -1455,16 +1485,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Variant {
 
- String get id; String get productId; String? get sku; String get optionsText; bool get trackInventory; int get mediaCount; String? get preorderShipsAt; String? get thumbnailUrl; bool get purchasable; bool get inStock; bool get backorderable; bool get preorder; double? get weight; double? get height; double? get width; double? get depth; WeightUnit get weightUnit; DimensionUnit get dimensionsUnit; int get minimumOrderQuantity; int get orderMultiple; PurchaseUnit get purchaseUnit; int? get unitsPerCarton; Price get price; Price? get originalPrice; String? get sellerId; Seller? get seller; Media? get primaryMedia; List<Media>? get media; List<OptionValue> get optionValues; List<CustomField>? get customFields; PriceHistory? get priorPrice;
+ String get id; String get productId; String? get sku; String get optionsText; bool get trackInventory; int get mediaCount; String? get preorderShipsAt; String? get thumbnailUrl; bool get purchasable; bool get inStock; bool get backorderable; bool get preorder; double? get weight; double? get height; double? get width; double? get depth;@JsonKey(unknownEnumValue: WeightUnit.unknown) WeightUnit get weightUnit;@JsonKey(unknownEnumValue: DimensionUnit.unknown) DimensionUnit get dimensionsUnit; int get minimumOrderQuantity; int get orderMultiple;@JsonKey(unknownEnumValue: PurchaseUnit.unknown) PurchaseUnit get purchaseUnit; int? get unitsPerCarton; Price get price; Price? get originalPrice; String? get sellerId; Seller? get seller; Media? get primaryMedia;@JsonKey(includeIfNull: false) List<Media>? get media; List<OptionValue> get optionValues;@JsonKey(includeIfNull: false) List<CustomField>? get customFields; PriceHistory? get priorPrice;
 /// Create a copy of Variant
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $VariantCopyWith<Variant> get copyWith => _$VariantCopyWithImpl<Variant>(this as Variant, _$identity);
 
+  /// Serializes this Variant to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1473,7 +1506,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Variant&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.productId, _this.productId) || other.productId == _this.productId)&&(identical(other.sku, _this.sku) || other.sku == _this.sku)&&(identical(other.optionsText, _this.optionsText) || other.optionsText == _this.optionsText)&&(identical(other.trackInventory, _this.trackInventory) || other.trackInventory == _this.trackInventory)&&(identical(other.mediaCount, _this.mediaCount) || other.mediaCount == _this.mediaCount)&&(identical(other.preorderShipsAt, _this.preorderShipsAt) || other.preorderShipsAt == _this.preorderShipsAt)&&(identical(other.thumbnailUrl, _this.thumbnailUrl) || other.thumbnailUrl == _this.thumbnailUrl)&&(identical(other.purchasable, _this.purchasable) || other.purchasable == _this.purchasable)&&(identical(other.inStock, _this.inStock) || other.inStock == _this.inStock)&&(identical(other.backorderable, _this.backorderable) || other.backorderable == _this.backorderable)&&(identical(other.preorder, _this.preorder) || other.preorder == _this.preorder)&&(identical(other.weight, _this.weight) || other.weight == _this.weight)&&(identical(other.height, _this.height) || other.height == _this.height)&&(identical(other.width, _this.width) || other.width == _this.width)&&(identical(other.depth, _this.depth) || other.depth == _this.depth)&&(identical(other.weightUnit, _this.weightUnit) || other.weightUnit == _this.weightUnit)&&(identical(other.dimensionsUnit, _this.dimensionsUnit) || other.dimensionsUnit == _this.dimensionsUnit)&&(identical(other.minimumOrderQuantity, _this.minimumOrderQuantity) || other.minimumOrderQuantity == _this.minimumOrderQuantity)&&(identical(other.orderMultiple, _this.orderMultiple) || other.orderMultiple == _this.orderMultiple)&&(identical(other.purchaseUnit, _this.purchaseUnit) || other.purchaseUnit == _this.purchaseUnit)&&(identical(other.unitsPerCarton, _this.unitsPerCarton) || other.unitsPerCarton == _this.unitsPerCarton)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.originalPrice, _this.originalPrice) || other.originalPrice == _this.originalPrice)&&(identical(other.sellerId, _this.sellerId) || other.sellerId == _this.sellerId)&&(identical(other.seller, _this.seller) || other.seller == _this.seller)&&(identical(other.primaryMedia, _this.primaryMedia) || other.primaryMedia == _this.primaryMedia)&&const DeepCollectionEquality().equals(other.media, _this.media)&&const DeepCollectionEquality().equals(other.optionValues, _this.optionValues)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields)&&(identical(other.priorPrice, _this.priorPrice) || other.priorPrice == _this.priorPrice));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Variant;
@@ -1494,7 +1527,7 @@ abstract mixin class $VariantCopyWith<$Res>  {
   factory $VariantCopyWith(Variant value, $Res Function(Variant) _then) = _$VariantCopyWithImpl;
 @useResult
 $Res call({
- String id, String productId, String? sku, String optionsText, bool trackInventory, int mediaCount, String? preorderShipsAt, String? thumbnailUrl, bool purchasable, bool inStock, bool backorderable, bool preorder, double? weight, double? height, double? width, double? depth, WeightUnit weightUnit, DimensionUnit dimensionsUnit, int minimumOrderQuantity, int orderMultiple, PurchaseUnit purchaseUnit, int? unitsPerCarton, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia, List<Media>? media, List<OptionValue> optionValues, List<CustomField>? customFields, PriceHistory? priorPrice
+ String id, String productId, String? sku, String optionsText, bool trackInventory, int mediaCount, String? preorderShipsAt, String? thumbnailUrl, bool purchasable, bool inStock, bool backorderable, bool preorder, double? weight, double? height, double? width, double? depth,@JsonKey(unknownEnumValue: WeightUnit.unknown) WeightUnit weightUnit,@JsonKey(unknownEnumValue: DimensionUnit.unknown) DimensionUnit dimensionsUnit, int minimumOrderQuantity, int orderMultiple,@JsonKey(unknownEnumValue: PurchaseUnit.unknown) PurchaseUnit purchaseUnit, int? unitsPerCarton, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia,@JsonKey(includeIfNull: false) List<Media>? media, List<OptionValue> optionValues,@JsonKey(includeIfNull: false) List<CustomField>? customFields, PriceHistory? priorPrice
 });
 
 
@@ -1686,7 +1719,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth,  WeightUnit weightUnit,  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple,  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<OptionValue> optionValues,  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth, @JsonKey(unknownEnumValue: WeightUnit.unknown)  WeightUnit weightUnit, @JsonKey(unknownEnumValue: DimensionUnit.unknown)  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple, @JsonKey(unknownEnumValue: PurchaseUnit.unknown)  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Variant() when $default != null:
 return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.trackInventory,_that.mediaCount,_that.preorderShipsAt,_that.thumbnailUrl,_that.purchasable,_that.inStock,_that.backorderable,_that.preorder,_that.weight,_that.height,_that.width,_that.depth,_that.weightUnit,_that.dimensionsUnit,_that.minimumOrderQuantity,_that.orderMultiple,_that.purchaseUnit,_that.unitsPerCarton,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.optionValues,_that.customFields,_that.priorPrice);case _:
@@ -1707,7 +1740,7 @@ return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.track
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth,  WeightUnit weightUnit,  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple,  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<OptionValue> optionValues,  List<CustomField>? customFields,  PriceHistory? priorPrice)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth, @JsonKey(unknownEnumValue: WeightUnit.unknown)  WeightUnit weightUnit, @JsonKey(unknownEnumValue: DimensionUnit.unknown)  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple, @JsonKey(unknownEnumValue: PurchaseUnit.unknown)  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)  $default,) {final _that = this;
 switch (_that) {
 case _Variant():
 return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.trackInventory,_that.mediaCount,_that.preorderShipsAt,_that.thumbnailUrl,_that.purchasable,_that.inStock,_that.backorderable,_that.preorder,_that.weight,_that.height,_that.width,_that.depth,_that.weightUnit,_that.dimensionsUnit,_that.minimumOrderQuantity,_that.orderMultiple,_that.purchaseUnit,_that.unitsPerCarton,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.optionValues,_that.customFields,_that.priorPrice);case _:
@@ -1727,7 +1760,7 @@ return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.track
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth,  WeightUnit weightUnit,  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple,  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<OptionValue> optionValues,  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String productId,  String? sku,  String optionsText,  bool trackInventory,  int mediaCount,  String? preorderShipsAt,  String? thumbnailUrl,  bool purchasable,  bool inStock,  bool backorderable,  bool preorder,  double? weight,  double? height,  double? width,  double? depth, @JsonKey(unknownEnumValue: WeightUnit.unknown)  WeightUnit weightUnit, @JsonKey(unknownEnumValue: DimensionUnit.unknown)  DimensionUnit dimensionsUnit,  int minimumOrderQuantity,  int orderMultiple, @JsonKey(unknownEnumValue: PurchaseUnit.unknown)  PurchaseUnit purchaseUnit,  int? unitsPerCarton,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media,  List<OptionValue> optionValues, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,) {final _that = this;
 switch (_that) {
 case _Variant() when $default != null:
 return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.trackInventory,_that.mediaCount,_that.preorderShipsAt,_that.thumbnailUrl,_that.purchasable,_that.inStock,_that.backorderable,_that.preorder,_that.weight,_that.height,_that.width,_that.depth,_that.weightUnit,_that.dimensionsUnit,_that.minimumOrderQuantity,_that.orderMultiple,_that.purchaseUnit,_that.unitsPerCarton,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.optionValues,_that.customFields,_that.priorPrice);case _:
@@ -1740,10 +1773,10 @@ return $default(_that.id,_that.productId,_that.sku,_that.optionsText,_that.track
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Variant extends Variant {
-  const _Variant({required this.id, required this.productId, this.sku, required this.optionsText, required this.trackInventory, required this.mediaCount, this.preorderShipsAt, this.thumbnailUrl, required this.purchasable, required this.inStock, required this.backorderable, required this.preorder, this.weight, this.height, this.width, this.depth, required this.weightUnit, required this.dimensionsUnit, required this.minimumOrderQuantity, required this.orderMultiple, required this.purchaseUnit, this.unitsPerCarton, required this.price, this.originalPrice, this.sellerId, this.seller, this.primaryMedia, this.media, required this.optionValues, this.customFields, this.priorPrice}): super._();
-  
+  const _Variant({required this.id, required this.productId, this.sku, required this.optionsText, required this.trackInventory, required this.mediaCount, this.preorderShipsAt, this.thumbnailUrl, required this.purchasable, required this.inStock, required this.backorderable, required this.preorder, this.weight, this.height, this.width, this.depth, @JsonKey(unknownEnumValue: WeightUnit.unknown) required this.weightUnit, @JsonKey(unknownEnumValue: DimensionUnit.unknown) required this.dimensionsUnit, required this.minimumOrderQuantity, required this.orderMultiple, @JsonKey(unknownEnumValue: PurchaseUnit.unknown) required this.purchaseUnit, this.unitsPerCarton, required this.price, this.originalPrice, this.sellerId, this.seller, this.primaryMedia, @JsonKey(includeIfNull: false) this.media, required this.optionValues, @JsonKey(includeIfNull: false) this.customFields, this.priorPrice}): super._();
+  factory _Variant.fromJson(Map<String, dynamic> json) => _$VariantFromJson(json);
 
 @override final  String id;
 @override final  String productId;
@@ -1761,20 +1794,20 @@ class _Variant extends Variant {
 @override final  double? height;
 @override final  double? width;
 @override final  double? depth;
-@override final  WeightUnit weightUnit;
-@override final  DimensionUnit dimensionsUnit;
+@override@JsonKey(unknownEnumValue: WeightUnit.unknown) final  WeightUnit weightUnit;
+@override@JsonKey(unknownEnumValue: DimensionUnit.unknown) final  DimensionUnit dimensionsUnit;
 @override final  int minimumOrderQuantity;
 @override final  int orderMultiple;
-@override final  PurchaseUnit purchaseUnit;
+@override@JsonKey(unknownEnumValue: PurchaseUnit.unknown) final  PurchaseUnit purchaseUnit;
 @override final  int? unitsPerCarton;
 @override final  Price price;
 @override final  Price? originalPrice;
 @override final  String? sellerId;
 @override final  Seller? seller;
 @override final  Media? primaryMedia;
-@override final  List<Media>? media;
+@override@JsonKey(includeIfNull: false) final  List<Media>? media;
 @override final  List<OptionValue> optionValues;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 @override final  PriceHistory? priorPrice;
 
 /// Create a copy of Variant
@@ -1783,14 +1816,17 @@ class _Variant extends Variant {
 @pragma('vm:prefer-inline')
 _$VariantCopyWith<_Variant> get copyWith => __$VariantCopyWithImpl<_Variant>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$VariantToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Variant&&(identical(other.id, id) || other.id == id)&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.sku, sku) || other.sku == sku)&&(identical(other.optionsText, optionsText) || other.optionsText == optionsText)&&(identical(other.trackInventory, trackInventory) || other.trackInventory == trackInventory)&&(identical(other.mediaCount, mediaCount) || other.mediaCount == mediaCount)&&(identical(other.preorderShipsAt, preorderShipsAt) || other.preorderShipsAt == preorderShipsAt)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.purchasable, purchasable) || other.purchasable == purchasable)&&(identical(other.inStock, inStock) || other.inStock == inStock)&&(identical(other.backorderable, backorderable) || other.backorderable == backorderable)&&(identical(other.preorder, preorder) || other.preorder == preorder)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.height, height) || other.height == height)&&(identical(other.width, width) || other.width == width)&&(identical(other.depth, depth) || other.depth == depth)&&(identical(other.weightUnit, weightUnit) || other.weightUnit == weightUnit)&&(identical(other.dimensionsUnit, dimensionsUnit) || other.dimensionsUnit == dimensionsUnit)&&(identical(other.minimumOrderQuantity, minimumOrderQuantity) || other.minimumOrderQuantity == minimumOrderQuantity)&&(identical(other.orderMultiple, orderMultiple) || other.orderMultiple == orderMultiple)&&(identical(other.purchaseUnit, purchaseUnit) || other.purchaseUnit == purchaseUnit)&&(identical(other.unitsPerCarton, unitsPerCarton) || other.unitsPerCarton == unitsPerCarton)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.sellerId, sellerId) || other.sellerId == sellerId)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.primaryMedia, primaryMedia) || other.primaryMedia == primaryMedia)&&const DeepCollectionEquality().equals(other.media, media)&&const DeepCollectionEquality().equals(other.optionValues, optionValues)&&const DeepCollectionEquality().equals(other.customFields, customFields)&&(identical(other.priorPrice, priorPrice) || other.priorPrice == priorPrice));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,productId,sku,optionsText,trackInventory,mediaCount,preorderShipsAt,thumbnailUrl,purchasable,inStock,backorderable,preorder,weight,height,width,depth,weightUnit,dimensionsUnit,minimumOrderQuantity,orderMultiple,purchaseUnit,unitsPerCarton,price,originalPrice,sellerId,seller,primaryMedia,const DeepCollectionEquality().hash(media),const DeepCollectionEquality().hash(optionValues),const DeepCollectionEquality().hash(customFields),priorPrice]);
@@ -1809,7 +1845,7 @@ abstract mixin class _$VariantCopyWith<$Res> implements $VariantCopyWith<$Res> {
   factory _$VariantCopyWith(_Variant value, $Res Function(_Variant) _then) = __$VariantCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String productId, String? sku, String optionsText, bool trackInventory, int mediaCount, String? preorderShipsAt, String? thumbnailUrl, bool purchasable, bool inStock, bool backorderable, bool preorder, double? weight, double? height, double? width, double? depth, WeightUnit weightUnit, DimensionUnit dimensionsUnit, int minimumOrderQuantity, int orderMultiple, PurchaseUnit purchaseUnit, int? unitsPerCarton, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia, List<Media>? media, List<OptionValue> optionValues, List<CustomField>? customFields, PriceHistory? priorPrice
+ String id, String productId, String? sku, String optionsText, bool trackInventory, int mediaCount, String? preorderShipsAt, String? thumbnailUrl, bool purchasable, bool inStock, bool backorderable, bool preorder, double? weight, double? height, double? width, double? depth,@JsonKey(unknownEnumValue: WeightUnit.unknown) WeightUnit weightUnit,@JsonKey(unknownEnumValue: DimensionUnit.unknown) DimensionUnit dimensionsUnit, int minimumOrderQuantity, int orderMultiple,@JsonKey(unknownEnumValue: PurchaseUnit.unknown) PurchaseUnit purchaseUnit, int? unitsPerCarton, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia,@JsonKey(includeIfNull: false) List<Media>? media, List<OptionValue> optionValues,@JsonKey(includeIfNull: false) List<CustomField>? customFields, PriceHistory? priorPrice
 });
 
 
@@ -1923,16 +1959,19 @@ $PriceHistoryCopyWith<$Res>? get priorPrice {
 }
 }
 
+
 /// @nodoc
 mixin _$Product {
 
- String get id; String get name; String get slug; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get variantCount; String? get availableOn; String? get preorderShipsAt; bool get purchasable; bool get preorder; bool get inStock; bool get backorderable; bool get available; String? get description; String? get descriptionHtml; String get defaultVariantId; String? get buyBoxVariantId; String? get thumbnailUrl; List<String> get tags; Price get price; Price? get originalPrice; String? get sellerId; Seller? get seller; Media? get primaryMedia; List<Media>? get media; List<Variant>? get variants; Variant? get defaultVariant; List<OptionType>? get optionTypes; List<OptionValue>? get optionValues; List<Category>? get categories; List<CustomField>? get customFields; PriceHistory? get priorPrice;
+ String get id; String get name; String get slug; String? get metaTitle; String? get metaDescription; String? get metaKeywords; int get variantCount; String? get availableOn; String? get preorderShipsAt; bool get purchasable; bool get preorder; bool get inStock; bool get backorderable; bool get available; String? get description; String? get descriptionHtml; String get defaultVariantId; String? get buyBoxVariantId; String? get thumbnailUrl; List<String> get tags; Price get price; Price? get originalPrice; String? get sellerId; Seller? get seller; Media? get primaryMedia;@JsonKey(includeIfNull: false) List<Media>? get media;@JsonKey(includeIfNull: false) List<Variant>? get variants; Variant? get defaultVariant;@JsonKey(includeIfNull: false) List<OptionType>? get optionTypes;@JsonKey(includeIfNull: false) List<OptionValue>? get optionValues;@JsonKey(includeIfNull: false) List<Category>? get categories;@JsonKey(includeIfNull: false) List<CustomField>? get customFields; PriceHistory? get priorPrice;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as Product, _$identity);
 
+  /// Serializes this Product to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1941,7 +1980,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.metaTitle, _this.metaTitle) || other.metaTitle == _this.metaTitle)&&(identical(other.metaDescription, _this.metaDescription) || other.metaDescription == _this.metaDescription)&&(identical(other.metaKeywords, _this.metaKeywords) || other.metaKeywords == _this.metaKeywords)&&(identical(other.variantCount, _this.variantCount) || other.variantCount == _this.variantCount)&&(identical(other.availableOn, _this.availableOn) || other.availableOn == _this.availableOn)&&(identical(other.preorderShipsAt, _this.preorderShipsAt) || other.preorderShipsAt == _this.preorderShipsAt)&&(identical(other.purchasable, _this.purchasable) || other.purchasable == _this.purchasable)&&(identical(other.preorder, _this.preorder) || other.preorder == _this.preorder)&&(identical(other.inStock, _this.inStock) || other.inStock == _this.inStock)&&(identical(other.backorderable, _this.backorderable) || other.backorderable == _this.backorderable)&&(identical(other.available, _this.available) || other.available == _this.available)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.descriptionHtml, _this.descriptionHtml) || other.descriptionHtml == _this.descriptionHtml)&&(identical(other.defaultVariantId, _this.defaultVariantId) || other.defaultVariantId == _this.defaultVariantId)&&(identical(other.buyBoxVariantId, _this.buyBoxVariantId) || other.buyBoxVariantId == _this.buyBoxVariantId)&&(identical(other.thumbnailUrl, _this.thumbnailUrl) || other.thumbnailUrl == _this.thumbnailUrl)&&const DeepCollectionEquality().equals(other.tags, _this.tags)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.originalPrice, _this.originalPrice) || other.originalPrice == _this.originalPrice)&&(identical(other.sellerId, _this.sellerId) || other.sellerId == _this.sellerId)&&(identical(other.seller, _this.seller) || other.seller == _this.seller)&&(identical(other.primaryMedia, _this.primaryMedia) || other.primaryMedia == _this.primaryMedia)&&const DeepCollectionEquality().equals(other.media, _this.media)&&const DeepCollectionEquality().equals(other.variants, _this.variants)&&(identical(other.defaultVariant, _this.defaultVariant) || other.defaultVariant == _this.defaultVariant)&&const DeepCollectionEquality().equals(other.optionTypes, _this.optionTypes)&&const DeepCollectionEquality().equals(other.optionValues, _this.optionValues)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields)&&(identical(other.priorPrice, _this.priorPrice) || other.priorPrice == _this.priorPrice));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Product;
@@ -1962,7 +2001,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String slug, String? metaTitle, String? metaDescription, String? metaKeywords, int variantCount, String? availableOn, String? preorderShipsAt, bool purchasable, bool preorder, bool inStock, bool backorderable, bool available, String? description, String? descriptionHtml, String defaultVariantId, String? buyBoxVariantId, String? thumbnailUrl, List<String> tags, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia, List<Media>? media, List<Variant>? variants, Variant? defaultVariant, List<OptionType>? optionTypes, List<OptionValue>? optionValues, List<Category>? categories, List<CustomField>? customFields, PriceHistory? priorPrice
+ String id, String name, String slug, String? metaTitle, String? metaDescription, String? metaKeywords, int variantCount, String? availableOn, String? preorderShipsAt, bool purchasable, bool preorder, bool inStock, bool backorderable, bool available, String? description, String? descriptionHtml, String defaultVariantId, String? buyBoxVariantId, String? thumbnailUrl, List<String> tags, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia,@JsonKey(includeIfNull: false) List<Media>? media,@JsonKey(includeIfNull: false) List<Variant>? variants, Variant? defaultVariant,@JsonKey(includeIfNull: false) List<OptionType>? optionTypes,@JsonKey(includeIfNull: false) List<OptionValue>? optionValues,@JsonKey(includeIfNull: false) List<Category>? categories,@JsonKey(includeIfNull: false) List<CustomField>? customFields, PriceHistory? priorPrice
 });
 
 
@@ -2168,7 +2207,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<Variant>? variants,  Variant? defaultVariant,  List<OptionType>? optionTypes,  List<OptionValue>? optionValues,  List<Category>? categories,  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media, @JsonKey(includeIfNull: false)  List<Variant>? variants,  Variant? defaultVariant, @JsonKey(includeIfNull: false)  List<OptionType>? optionTypes, @JsonKey(includeIfNull: false)  List<OptionValue>? optionValues, @JsonKey(includeIfNull: false)  List<Category>? categories, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.variantCount,_that.availableOn,_that.preorderShipsAt,_that.purchasable,_that.preorder,_that.inStock,_that.backorderable,_that.available,_that.description,_that.descriptionHtml,_that.defaultVariantId,_that.buyBoxVariantId,_that.thumbnailUrl,_that.tags,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.variants,_that.defaultVariant,_that.optionTypes,_that.optionValues,_that.categories,_that.customFields,_that.priorPrice);case _:
@@ -2189,7 +2228,7 @@ return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<Variant>? variants,  Variant? defaultVariant,  List<OptionType>? optionTypes,  List<OptionValue>? optionValues,  List<Category>? categories,  List<CustomField>? customFields,  PriceHistory? priorPrice)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media, @JsonKey(includeIfNull: false)  List<Variant>? variants,  Variant? defaultVariant, @JsonKey(includeIfNull: false)  List<OptionType>? optionTypes, @JsonKey(includeIfNull: false)  List<OptionValue>? optionValues, @JsonKey(includeIfNull: false)  List<Category>? categories, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
 return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.variantCount,_that.availableOn,_that.preorderShipsAt,_that.purchasable,_that.preorder,_that.inStock,_that.backorderable,_that.available,_that.description,_that.descriptionHtml,_that.defaultVariantId,_that.buyBoxVariantId,_that.thumbnailUrl,_that.tags,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.variants,_that.defaultVariant,_that.optionTypes,_that.optionValues,_that.categories,_that.customFields,_that.priorPrice);case _:
@@ -2209,7 +2248,7 @@ return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia,  List<Media>? media,  List<Variant>? variants,  Variant? defaultVariant,  List<OptionType>? optionTypes,  List<OptionValue>? optionValues,  List<Category>? categories,  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String slug,  String? metaTitle,  String? metaDescription,  String? metaKeywords,  int variantCount,  String? availableOn,  String? preorderShipsAt,  bool purchasable,  bool preorder,  bool inStock,  bool backorderable,  bool available,  String? description,  String? descriptionHtml,  String defaultVariantId,  String? buyBoxVariantId,  String? thumbnailUrl,  List<String> tags,  Price price,  Price? originalPrice,  String? sellerId,  Seller? seller,  Media? primaryMedia, @JsonKey(includeIfNull: false)  List<Media>? media, @JsonKey(includeIfNull: false)  List<Variant>? variants,  Variant? defaultVariant, @JsonKey(includeIfNull: false)  List<OptionType>? optionTypes, @JsonKey(includeIfNull: false)  List<OptionValue>? optionValues, @JsonKey(includeIfNull: false)  List<Category>? categories, @JsonKey(includeIfNull: false)  List<CustomField>? customFields,  PriceHistory? priorPrice)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescription,_that.metaKeywords,_that.variantCount,_that.availableOn,_that.preorderShipsAt,_that.purchasable,_that.preorder,_that.inStock,_that.backorderable,_that.available,_that.description,_that.descriptionHtml,_that.defaultVariantId,_that.buyBoxVariantId,_that.thumbnailUrl,_that.tags,_that.price,_that.originalPrice,_that.sellerId,_that.seller,_that.primaryMedia,_that.media,_that.variants,_that.defaultVariant,_that.optionTypes,_that.optionValues,_that.categories,_that.customFields,_that.priorPrice);case _:
@@ -2222,10 +2261,10 @@ return $default(_that.id,_that.name,_that.slug,_that.metaTitle,_that.metaDescrip
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Product extends Product {
-  const _Product({required this.id, required this.name, required this.slug, this.metaTitle, this.metaDescription, this.metaKeywords, required this.variantCount, this.availableOn, this.preorderShipsAt, required this.purchasable, required this.preorder, required this.inStock, required this.backorderable, required this.available, this.description, this.descriptionHtml, required this.defaultVariantId, this.buyBoxVariantId, this.thumbnailUrl, required this.tags, required this.price, this.originalPrice, this.sellerId, this.seller, this.primaryMedia, this.media, this.variants, this.defaultVariant, this.optionTypes, this.optionValues, this.categories, this.customFields, this.priorPrice}): super._();
-  
+  const _Product({required this.id, required this.name, required this.slug, this.metaTitle, this.metaDescription, this.metaKeywords, required this.variantCount, this.availableOn, this.preorderShipsAt, required this.purchasable, required this.preorder, required this.inStock, required this.backorderable, required this.available, this.description, this.descriptionHtml, required this.defaultVariantId, this.buyBoxVariantId, this.thumbnailUrl, required this.tags, required this.price, this.originalPrice, this.sellerId, this.seller, this.primaryMedia, @JsonKey(includeIfNull: false) this.media, @JsonKey(includeIfNull: false) this.variants, this.defaultVariant, @JsonKey(includeIfNull: false) this.optionTypes, @JsonKey(includeIfNull: false) this.optionValues, @JsonKey(includeIfNull: false) this.categories, @JsonKey(includeIfNull: false) this.customFields, this.priorPrice}): super._();
+  factory _Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -2252,13 +2291,13 @@ class _Product extends Product {
 @override final  String? sellerId;
 @override final  Seller? seller;
 @override final  Media? primaryMedia;
-@override final  List<Media>? media;
-@override final  List<Variant>? variants;
+@override@JsonKey(includeIfNull: false) final  List<Media>? media;
+@override@JsonKey(includeIfNull: false) final  List<Variant>? variants;
 @override final  Variant? defaultVariant;
-@override final  List<OptionType>? optionTypes;
-@override final  List<OptionValue>? optionValues;
-@override final  List<Category>? categories;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<OptionType>? optionTypes;
+@override@JsonKey(includeIfNull: false) final  List<OptionValue>? optionValues;
+@override@JsonKey(includeIfNull: false) final  List<Category>? categories;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 @override final  PriceHistory? priorPrice;
 
 /// Create a copy of Product
@@ -2267,14 +2306,17 @@ class _Product extends Product {
 @pragma('vm:prefer-inline')
 _$ProductCopyWith<_Product> get copyWith => __$ProductCopyWithImpl<_Product>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.metaTitle, metaTitle) || other.metaTitle == metaTitle)&&(identical(other.metaDescription, metaDescription) || other.metaDescription == metaDescription)&&(identical(other.metaKeywords, metaKeywords) || other.metaKeywords == metaKeywords)&&(identical(other.variantCount, variantCount) || other.variantCount == variantCount)&&(identical(other.availableOn, availableOn) || other.availableOn == availableOn)&&(identical(other.preorderShipsAt, preorderShipsAt) || other.preorderShipsAt == preorderShipsAt)&&(identical(other.purchasable, purchasable) || other.purchasable == purchasable)&&(identical(other.preorder, preorder) || other.preorder == preorder)&&(identical(other.inStock, inStock) || other.inStock == inStock)&&(identical(other.backorderable, backorderable) || other.backorderable == backorderable)&&(identical(other.available, available) || other.available == available)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.defaultVariantId, defaultVariantId) || other.defaultVariantId == defaultVariantId)&&(identical(other.buyBoxVariantId, buyBoxVariantId) || other.buyBoxVariantId == buyBoxVariantId)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&const DeepCollectionEquality().equals(other.tags, tags)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.sellerId, sellerId) || other.sellerId == sellerId)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.primaryMedia, primaryMedia) || other.primaryMedia == primaryMedia)&&const DeepCollectionEquality().equals(other.media, media)&&const DeepCollectionEquality().equals(other.variants, variants)&&(identical(other.defaultVariant, defaultVariant) || other.defaultVariant == defaultVariant)&&const DeepCollectionEquality().equals(other.optionTypes, optionTypes)&&const DeepCollectionEquality().equals(other.optionValues, optionValues)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.customFields, customFields)&&(identical(other.priorPrice, priorPrice) || other.priorPrice == priorPrice));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hashAll([runtimeType,id,name,slug,metaTitle,metaDescription,metaKeywords,variantCount,availableOn,preorderShipsAt,purchasable,preorder,inStock,backorderable,available,description,descriptionHtml,defaultVariantId,buyBoxVariantId,thumbnailUrl,const DeepCollectionEquality().hash(tags),price,originalPrice,sellerId,seller,primaryMedia,const DeepCollectionEquality().hash(media),const DeepCollectionEquality().hash(variants),defaultVariant,const DeepCollectionEquality().hash(optionTypes),const DeepCollectionEquality().hash(optionValues),const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(customFields),priorPrice]);
@@ -2293,7 +2335,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String slug, String? metaTitle, String? metaDescription, String? metaKeywords, int variantCount, String? availableOn, String? preorderShipsAt, bool purchasable, bool preorder, bool inStock, bool backorderable, bool available, String? description, String? descriptionHtml, String defaultVariantId, String? buyBoxVariantId, String? thumbnailUrl, List<String> tags, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia, List<Media>? media, List<Variant>? variants, Variant? defaultVariant, List<OptionType>? optionTypes, List<OptionValue>? optionValues, List<Category>? categories, List<CustomField>? customFields, PriceHistory? priorPrice
+ String id, String name, String slug, String? metaTitle, String? metaDescription, String? metaKeywords, int variantCount, String? availableOn, String? preorderShipsAt, bool purchasable, bool preorder, bool inStock, bool backorderable, bool available, String? description, String? descriptionHtml, String defaultVariantId, String? buyBoxVariantId, String? thumbnailUrl, List<String> tags, Price price, Price? originalPrice, String? sellerId, Seller? seller, Media? primaryMedia,@JsonKey(includeIfNull: false) List<Media>? media,@JsonKey(includeIfNull: false) List<Variant>? variants, Variant? defaultVariant,@JsonKey(includeIfNull: false) List<OptionType>? optionTypes,@JsonKey(includeIfNull: false) List<OptionValue>? optionValues,@JsonKey(includeIfNull: false) List<Category>? categories,@JsonKey(includeIfNull: false) List<CustomField>? customFields, PriceHistory? priorPrice
 });
 
 
@@ -2421,10 +2463,11 @@ $PriceHistoryCopyWith<$Res>? get priorPrice {
 }
 }
 
+
 /// @nodoc
 mixin _$ProductFilterPriceRange {
 
- String get id; String get min; String get max; CurrencyCode get currency;
+ String get id; String get min; String get max;@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode get currency;
 /// Create a copy of ProductFilterPriceRange
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2439,7 +2482,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterPriceRange&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.min, _this.min) || other.min == _this.min)&&(identical(other.max, _this.max) || other.max == _this.max)&&(identical(other.currency, _this.currency) || other.currency == _this.currency));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterPriceRange;
@@ -2460,7 +2503,7 @@ abstract mixin class $ProductFilterPriceRangeCopyWith<$Res>  {
   factory $ProductFilterPriceRangeCopyWith(ProductFilterPriceRange value, $Res Function(ProductFilterPriceRange) _then) = _$ProductFilterPriceRangeCopyWithImpl;
 @useResult
 $Res call({
- String id, String min, String max, CurrencyCode currency
+ String id, String min, String max,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency
 });
 
 
@@ -2568,7 +2611,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String min,  String max,  CurrencyCode currency)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String min,  String max, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductFilterPriceRange() when $default != null:
 return $default(_that.id,_that.min,_that.max,_that.currency);case _:
@@ -2589,7 +2632,7 @@ return $default(_that.id,_that.min,_that.max,_that.currency);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String min,  String max,  CurrencyCode currency)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String min,  String max, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency)  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterPriceRange():
 return $default(_that.id,_that.min,_that.max,_that.currency);case _:
@@ -2609,7 +2652,7 @@ return $default(_that.id,_that.min,_that.max,_that.currency);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String min,  String max,  CurrencyCode currency)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String min,  String max, @JsonKey(unknownEnumValue: CurrencyCode.unknown)  CurrencyCode currency)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterPriceRange() when $default != null:
 return $default(_that.id,_that.min,_that.max,_that.currency);case _:
@@ -2622,15 +2665,15 @@ return $default(_that.id,_that.min,_that.max,_that.currency);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterPriceRange extends ProductFilterPriceRange {
-  const _ProductFilterPriceRange({required this.id, required this.min, required this.max, required this.currency}): super._();
-  
+  const _ProductFilterPriceRange({required this.id, required this.min, required this.max, @JsonKey(unknownEnumValue: CurrencyCode.unknown) required this.currency}): super._();
+  factory _ProductFilterPriceRange.fromJson(Map<String, dynamic> json) => _$ProductFilterPriceRangeFromJson(json);
 
 @override final  String id;
 @override final  String min;
 @override final  String max;
-@override final  CurrencyCode currency;
+@override@JsonKey(unknownEnumValue: CurrencyCode.unknown) final  CurrencyCode currency;
 
 /// Create a copy of ProductFilterPriceRange
 /// with the given fields replaced by the non-null parameter values.
@@ -2645,7 +2688,7 @@ bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterPriceRange&&(identical(other.id, id) || other.id == id)&&(identical(other.min, min) || other.min == min)&&(identical(other.max, max) || other.max == max)&&(identical(other.currency, currency) || other.currency == currency));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,min,max,currency);
@@ -2664,7 +2707,7 @@ abstract mixin class _$ProductFilterPriceRangeCopyWith<$Res> implements $Product
   factory _$ProductFilterPriceRangeCopyWith(_ProductFilterPriceRange value, $Res Function(_ProductFilterPriceRange) _then) = __$ProductFilterPriceRangeCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String min, String max, CurrencyCode currency
+ String id, String min, String max,@JsonKey(unknownEnumValue: CurrencyCode.unknown) CurrencyCode currency
 });
 
 
@@ -2694,16 +2737,19 @@ as CurrencyCode,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterAvailabilityOption {
 
- StockAvailability get id; int get count;
+@JsonKey(unknownEnumValue: StockAvailability.unknown) StockAvailability get id; int get count;
 /// Create a copy of ProductFilterAvailabilityOption
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ProductFilterAvailabilityOptionCopyWith<ProductFilterAvailabilityOption> get copyWith => _$ProductFilterAvailabilityOptionCopyWithImpl<ProductFilterAvailabilityOption>(this as ProductFilterAvailabilityOption, _$identity);
 
+  /// Serializes this ProductFilterAvailabilityOption to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -2712,7 +2758,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterAvailabilityOption&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.count, _this.count) || other.count == _this.count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterAvailabilityOption;
@@ -2733,7 +2779,7 @@ abstract mixin class $ProductFilterAvailabilityOptionCopyWith<$Res>  {
   factory $ProductFilterAvailabilityOptionCopyWith(ProductFilterAvailabilityOption value, $Res Function(ProductFilterAvailabilityOption) _then) = _$ProductFilterAvailabilityOptionCopyWithImpl;
 @useResult
 $Res call({
- StockAvailability id, int count
+@JsonKey(unknownEnumValue: StockAvailability.unknown) StockAvailability id, int count
 });
 
 
@@ -2839,7 +2885,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StockAvailability id,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: StockAvailability.unknown)  StockAvailability id,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductFilterAvailabilityOption() when $default != null:
 return $default(_that.id,_that.count);case _:
@@ -2860,7 +2906,7 @@ return $default(_that.id,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StockAvailability id,  int count)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: StockAvailability.unknown)  StockAvailability id,  int count)  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterAvailabilityOption():
 return $default(_that.id,_that.count);case _:
@@ -2880,7 +2926,7 @@ return $default(_that.id,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StockAvailability id,  int count)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: StockAvailability.unknown)  StockAvailability id,  int count)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterAvailabilityOption() when $default != null:
 return $default(_that.id,_that.count);case _:
@@ -2893,12 +2939,12 @@ return $default(_that.id,_that.count);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterAvailabilityOption extends ProductFilterAvailabilityOption {
-  const _ProductFilterAvailabilityOption({required this.id, required this.count}): super._();
-  
+  const _ProductFilterAvailabilityOption({@JsonKey(unknownEnumValue: StockAvailability.unknown) required this.id, required this.count}): super._();
+  factory _ProductFilterAvailabilityOption.fromJson(Map<String, dynamic> json) => _$ProductFilterAvailabilityOptionFromJson(json);
 
-@override final  StockAvailability id;
+@override@JsonKey(unknownEnumValue: StockAvailability.unknown) final  StockAvailability id;
 @override final  int count;
 
 /// Create a copy of ProductFilterAvailabilityOption
@@ -2907,14 +2953,17 @@ class _ProductFilterAvailabilityOption extends ProductFilterAvailabilityOption {
 @pragma('vm:prefer-inline')
 _$ProductFilterAvailabilityOptionCopyWith<_ProductFilterAvailabilityOption> get copyWith => __$ProductFilterAvailabilityOptionCopyWithImpl<_ProductFilterAvailabilityOption>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductFilterAvailabilityOptionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterAvailabilityOption&&(identical(other.id, id) || other.id == id)&&(identical(other.count, count) || other.count == count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,count);
@@ -2933,7 +2982,7 @@ abstract mixin class _$ProductFilterAvailabilityOptionCopyWith<$Res> implements 
   factory _$ProductFilterAvailabilityOptionCopyWith(_ProductFilterAvailabilityOption value, $Res Function(_ProductFilterAvailabilityOption) _then) = __$ProductFilterAvailabilityOptionCopyWithImpl;
 @override @useResult
 $Res call({
- StockAvailability id, int count
+@JsonKey(unknownEnumValue: StockAvailability.unknown) StockAvailability id, int count
 });
 
 
@@ -2961,6 +3010,7 @@ as int,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterAvailability {
 
@@ -2979,7 +3029,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterAvailability&&(identical(other.id, _this.id) || other.id == _this.id)&&const DeepCollectionEquality().equals(other.options, _this.options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterAvailability;
@@ -3160,10 +3210,10 @@ return $default(_that.id,_that.options);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterAvailability extends ProductFilterAvailability {
   const _ProductFilterAvailability({required this.id, required this.options}): super._();
-  
+  factory _ProductFilterAvailability.fromJson(Map<String, dynamic> json) => _$ProductFilterAvailabilityFromJson(json);
 
 @override final  String id;
 @override final  List<ProductFilterAvailabilityOption> options;
@@ -3181,7 +3231,7 @@ bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterAvailability&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.options, options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,const DeepCollectionEquality().hash(options));
@@ -3228,6 +3278,7 @@ as List<ProductFilterAvailabilityOption>,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterOptionValue {
 
@@ -3238,6 +3289,8 @@ mixin _$ProductFilterOptionValue {
 @pragma('vm:prefer-inline')
 $ProductFilterOptionValueCopyWith<ProductFilterOptionValue> get copyWith => _$ProductFilterOptionValueCopyWithImpl<ProductFilterOptionValue>(this as ProductFilterOptionValue, _$identity);
 
+  /// Serializes this ProductFilterOptionValue to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3246,7 +3299,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterOptionValue&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.position, _this.position) || other.position == _this.position)&&(identical(other.colorCode, _this.colorCode) || other.colorCode == _this.colorCode)&&(identical(other.imageUrl, _this.imageUrl) || other.imageUrl == _this.imageUrl)&&(identical(other.count, _this.count) || other.count == _this.count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterOptionValue;
@@ -3432,10 +3485,10 @@ return $default(_that.id,_that.name,_that.label,_that.position,_that.colorCode,_
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterOptionValue extends ProductFilterOptionValue {
   const _ProductFilterOptionValue({required this.id, required this.name, required this.label, required this.position, this.colorCode, this.imageUrl, required this.count}): super._();
-  
+  factory _ProductFilterOptionValue.fromJson(Map<String, dynamic> json) => _$ProductFilterOptionValueFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -3451,14 +3504,17 @@ class _ProductFilterOptionValue extends ProductFilterOptionValue {
 @pragma('vm:prefer-inline')
 _$ProductFilterOptionValueCopyWith<_ProductFilterOptionValue> get copyWith => __$ProductFilterOptionValueCopyWithImpl<_ProductFilterOptionValue>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductFilterOptionValueToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterOptionValue&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.label, label) || other.label == label)&&(identical(other.position, position) || other.position == position)&&(identical(other.colorCode, colorCode) || other.colorCode == colorCode)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.count, count) || other.count == count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,label,position,colorCode,imageUrl,count);
@@ -3510,10 +3566,11 @@ as int,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterOption {
 
- String get id; String get name; String get label; OptionTypeKind get kind; List<ProductFilterOptionValue> get options;
+ String get id; String get name; String get label;@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind get kind; List<ProductFilterOptionValue> get options;
 /// Create a copy of ProductFilterOption
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3528,7 +3585,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterOption&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.label, _this.label) || other.label == _this.label)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&const DeepCollectionEquality().equals(other.options, _this.options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterOption;
@@ -3549,7 +3606,7 @@ abstract mixin class $ProductFilterOptionCopyWith<$Res>  {
   factory $ProductFilterOptionCopyWith(ProductFilterOption value, $Res Function(ProductFilterOption) _then) = _$ProductFilterOptionCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String label, OptionTypeKind kind, List<ProductFilterOptionValue> options
+ String id, String name, String label,@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind kind, List<ProductFilterOptionValue> options
 });
 
 
@@ -3658,7 +3715,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String label,  OptionTypeKind kind,  List<ProductFilterOptionValue> options)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String label, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind,  List<ProductFilterOptionValue> options)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductFilterOption() when $default != null:
 return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _:
@@ -3679,7 +3736,7 @@ return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String label,  OptionTypeKind kind,  List<ProductFilterOptionValue> options)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String label, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind,  List<ProductFilterOptionValue> options)  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterOption():
 return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _:
@@ -3699,7 +3756,7 @@ return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String label,  OptionTypeKind kind,  List<ProductFilterOptionValue> options)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String label, @JsonKey(unknownEnumValue: OptionTypeKind.unknown)  OptionTypeKind kind,  List<ProductFilterOptionValue> options)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductFilterOption() when $default != null:
 return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _:
@@ -3712,15 +3769,15 @@ return $default(_that.id,_that.name,_that.label,_that.kind,_that.options);case _
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterOption extends ProductFilterOption {
-  const _ProductFilterOption({required this.id, required this.name, required this.label, required this.kind, required this.options}): super._();
-  
+  const _ProductFilterOption({required this.id, required this.name, required this.label, @JsonKey(unknownEnumValue: OptionTypeKind.unknown) required this.kind, required this.options}): super._();
+  factory _ProductFilterOption.fromJson(Map<String, dynamic> json) => _$ProductFilterOptionFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String label;
-@override final  OptionTypeKind kind;
+@override@JsonKey(unknownEnumValue: OptionTypeKind.unknown) final  OptionTypeKind kind;
 @override final  List<ProductFilterOptionValue> options;
 
 /// Create a copy of ProductFilterOption
@@ -3736,7 +3793,7 @@ bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterOption&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.label, label) || other.label == label)&&(identical(other.kind, kind) || other.kind == kind)&&const DeepCollectionEquality().equals(other.options, options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,label,kind,const DeepCollectionEquality().hash(options));
@@ -3755,7 +3812,7 @@ abstract mixin class _$ProductFilterOptionCopyWith<$Res> implements $ProductFilt
   factory _$ProductFilterOptionCopyWith(_ProductFilterOption value, $Res Function(_ProductFilterOption) _then) = __$ProductFilterOptionCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String label, OptionTypeKind kind, List<ProductFilterOptionValue> options
+ String id, String name, String label,@JsonKey(unknownEnumValue: OptionTypeKind.unknown) OptionTypeKind kind, List<ProductFilterOptionValue> options
 });
 
 
@@ -3786,6 +3843,7 @@ as List<ProductFilterOptionValue>,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterCategoryOption {
 
@@ -3796,6 +3854,8 @@ mixin _$ProductFilterCategoryOption {
 @pragma('vm:prefer-inline')
 $ProductFilterCategoryOptionCopyWith<ProductFilterCategoryOption> get copyWith => _$ProductFilterCategoryOptionCopyWithImpl<ProductFilterCategoryOption>(this as ProductFilterCategoryOption, _$identity);
 
+  /// Serializes this ProductFilterCategoryOption to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -3804,7 +3864,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterCategoryOption&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.permalink, _this.permalink) || other.permalink == _this.permalink)&&(identical(other.count, _this.count) || other.count == _this.count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterCategoryOption;
@@ -3987,10 +4047,10 @@ return $default(_that.id,_that.name,_that.permalink,_that.count);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterCategoryOption extends ProductFilterCategoryOption {
   const _ProductFilterCategoryOption({required this.id, required this.name, required this.permalink, required this.count}): super._();
-  
+  factory _ProductFilterCategoryOption.fromJson(Map<String, dynamic> json) => _$ProductFilterCategoryOptionFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -4003,14 +4063,17 @@ class _ProductFilterCategoryOption extends ProductFilterCategoryOption {
 @pragma('vm:prefer-inline')
 _$ProductFilterCategoryOptionCopyWith<_ProductFilterCategoryOption> get copyWith => __$ProductFilterCategoryOptionCopyWithImpl<_ProductFilterCategoryOption>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductFilterCategoryOptionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterCategoryOption&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.permalink, permalink) || other.permalink == permalink)&&(identical(other.count, count) || other.count == count));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name,permalink,count);
@@ -4059,6 +4122,7 @@ as int,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterCategory {
 
@@ -4077,7 +4141,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterCategory&&(identical(other.id, _this.id) || other.id == _this.id)&&const DeepCollectionEquality().equals(other.options, _this.options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterCategory;
@@ -4258,10 +4322,10 @@ return $default(_that.id,_that.options);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterCategory extends ProductFilterCategory {
   const _ProductFilterCategory({required this.id, required this.options}): super._();
-  
+  factory _ProductFilterCategory.fromJson(Map<String, dynamic> json) => _$ProductFilterCategoryFromJson(json);
 
 @override final  String id;
 @override final  List<ProductFilterCategoryOption> options;
@@ -4279,7 +4343,7 @@ bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterCategory&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.options, options));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,const DeepCollectionEquality().hash(options));
@@ -4593,6 +4657,7 @@ as Map<String, Object?>,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFilterSortOption {
 
@@ -4603,6 +4668,8 @@ mixin _$ProductFilterSortOption {
 @pragma('vm:prefer-inline')
 $ProductFilterSortOptionCopyWith<ProductFilterSortOption> get copyWith => _$ProductFilterSortOptionCopyWithImpl<ProductFilterSortOption>(this as ProductFilterSortOption, _$identity);
 
+  /// Serializes this ProductFilterSortOption to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -4611,7 +4678,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFilterSortOption&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFilterSortOption;
@@ -4792,10 +4859,10 @@ return $default(_that.id,_that.label);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFilterSortOption extends ProductFilterSortOption {
   const _ProductFilterSortOption({required this.id, this.label}): super._();
-  
+  factory _ProductFilterSortOption.fromJson(Map<String, dynamic> json) => _$ProductFilterSortOptionFromJson(json);
 
 @override final  String id;
 @override final  String? label;
@@ -4806,14 +4873,17 @@ class _ProductFilterSortOption extends ProductFilterSortOption {
 @pragma('vm:prefer-inline')
 _$ProductFilterSortOptionCopyWith<_ProductFilterSortOption> get copyWith => __$ProductFilterSortOptionCopyWithImpl<_ProductFilterSortOption>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductFilterSortOptionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFilterSortOption&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,label);
@@ -4860,16 +4930,19 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$ProductFiltersResponse {
 
- String get id; String get defaultSort; int get totalCount; List<ProductFilter> get filters; List<ProductFilterSortOption> get sortOptions;
+ String get id; String get defaultSort; int get totalCount;@JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson) List<ProductFilter> get filters; List<ProductFilterSortOption> get sortOptions;
 /// Create a copy of ProductFiltersResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ProductFiltersResponseCopyWith<ProductFiltersResponse> get copyWith => _$ProductFiltersResponseCopyWithImpl<ProductFiltersResponse>(this as ProductFiltersResponse, _$identity);
 
+  /// Serializes this ProductFiltersResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -4878,7 +4951,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFiltersResponse&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.defaultSort, _this.defaultSort) || other.defaultSort == _this.defaultSort)&&(identical(other.totalCount, _this.totalCount) || other.totalCount == _this.totalCount)&&const DeepCollectionEquality().equals(other.filters, _this.filters)&&const DeepCollectionEquality().equals(other.sortOptions, _this.sortOptions));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductFiltersResponse;
@@ -4899,7 +4972,7 @@ abstract mixin class $ProductFiltersResponseCopyWith<$Res>  {
   factory $ProductFiltersResponseCopyWith(ProductFiltersResponse value, $Res Function(ProductFiltersResponse) _then) = _$ProductFiltersResponseCopyWithImpl;
 @useResult
 $Res call({
- String id, String defaultSort, int totalCount, List<ProductFilter> filters, List<ProductFilterSortOption> sortOptions
+ String id, String defaultSort, int totalCount,@JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson) List<ProductFilter> filters, List<ProductFilterSortOption> sortOptions
 });
 
 
@@ -5008,7 +5081,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String defaultSort,  int totalCount,  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String defaultSort,  int totalCount, @JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson)  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductFiltersResponse() when $default != null:
 return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.sortOptions);case _:
@@ -5029,7 +5102,7 @@ return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String defaultSort,  int totalCount,  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String defaultSort,  int totalCount, @JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson)  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)  $default,) {final _that = this;
 switch (_that) {
 case _ProductFiltersResponse():
 return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.sortOptions);case _:
@@ -5049,7 +5122,7 @@ return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String defaultSort,  int totalCount,  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String defaultSort,  int totalCount, @JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson)  List<ProductFilter> filters,  List<ProductFilterSortOption> sortOptions)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductFiltersResponse() when $default != null:
 return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.sortOptions);case _:
@@ -5062,15 +5135,15 @@ return $default(_that.id,_that.defaultSort,_that.totalCount,_that.filters,_that.
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _ProductFiltersResponse extends ProductFiltersResponse {
-  const _ProductFiltersResponse({required this.id, required this.defaultSort, required this.totalCount, required this.filters, required this.sortOptions}): super._();
-  
+  const _ProductFiltersResponse({required this.id, required this.defaultSort, required this.totalCount, @JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson) required this.filters, required this.sortOptions}): super._();
+  factory _ProductFiltersResponse.fromJson(Map<String, dynamic> json) => _$ProductFiltersResponseFromJson(json);
 
 @override final  String id;
 @override final  String defaultSort;
 @override final  int totalCount;
-@override final  List<ProductFilter> filters;
+@override@JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson) final  List<ProductFilter> filters;
 @override final  List<ProductFilterSortOption> sortOptions;
 
 /// Create a copy of ProductFiltersResponse
@@ -5079,14 +5152,17 @@ class _ProductFiltersResponse extends ProductFiltersResponse {
 @pragma('vm:prefer-inline')
 _$ProductFiltersResponseCopyWith<_ProductFiltersResponse> get copyWith => __$ProductFiltersResponseCopyWithImpl<_ProductFiltersResponse>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductFiltersResponseToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductFiltersResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.defaultSort, defaultSort) || other.defaultSort == defaultSort)&&(identical(other.totalCount, totalCount) || other.totalCount == totalCount)&&const DeepCollectionEquality().equals(other.filters, filters)&&const DeepCollectionEquality().equals(other.sortOptions, sortOptions));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,defaultSort,totalCount,const DeepCollectionEquality().hash(filters),const DeepCollectionEquality().hash(sortOptions));
@@ -5105,7 +5181,7 @@ abstract mixin class _$ProductFiltersResponseCopyWith<$Res> implements $ProductF
   factory _$ProductFiltersResponseCopyWith(_ProductFiltersResponse value, $Res Function(_ProductFiltersResponse) _then) = __$ProductFiltersResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String defaultSort, int totalCount, List<ProductFilter> filters, List<ProductFilterSortOption> sortOptions
+ String id, String defaultSort, int totalCount,@JsonKey(fromJson: _productFiltersFromJson, toJson: _productFiltersToJson) List<ProductFilter> filters, List<ProductFilterSortOption> sortOptions
 });
 
 

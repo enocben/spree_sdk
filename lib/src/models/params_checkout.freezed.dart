@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UpdateCartParams {
 
- String? get email; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String? get email;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of UpdateCartParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $UpdateCartParamsCopyWith<$Res>  {
   factory $UpdateCartParamsCopyWith(UpdateCartParams value, $Res Function(UpdateCartParams) _then) = _$UpdateCartParamsCopyWithImpl;
 @useResult
 $Res call({
- String? email, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? email,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -157,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdateCartParams() when $default != null:
 return $default(_that.email,_that.extra);case _:
@@ -178,7 +178,7 @@ return $default(_that.email,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _UpdateCartParams():
 return $default(_that.email,_that.extra);case _:
@@ -198,7 +198,7 @@ return $default(_that.email,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdateCartParams() when $default != null:
 return $default(_that.email,_that.extra);case _:
@@ -211,13 +211,13 @@ return $default(_that.email,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _UpdateCartParams extends UpdateCartParams {
-  const _UpdateCartParams({this.email, this.extra = const <String, Object?>{}}): super._();
+  const _UpdateCartParams({@JsonKey(includeIfNull: false) this.email, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String? email;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String? email;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of UpdateCartParams
 /// with the given fields replaced by the non-null parameter values.
@@ -251,7 +251,7 @@ abstract mixin class _$UpdateCartParamsCopyWith<$Res> implements $UpdateCartPara
   factory _$UpdateCartParamsCopyWith(_UpdateCartParams value, $Res Function(_UpdateCartParams) _then) = __$UpdateCartParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String? email, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? email,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -282,7 +282,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$AddLineItemParams {
 
- String get variantId; int get quantity; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get variantId;@JsonKey(includeIfNull: false) int get quantity;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of AddLineItemParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,7 +318,7 @@ abstract mixin class $AddLineItemParamsCopyWith<$Res>  {
   factory $AddLineItemParamsCopyWith(AddLineItemParams value, $Res Function(AddLineItemParams) _then) = _$AddLineItemParamsCopyWithImpl;
 @useResult
 $Res call({
- String variantId, int quantity, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String variantId,@JsonKey(includeIfNull: false) int quantity,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -425,7 +425,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String variantId,  int quantity,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String variantId, @JsonKey(includeIfNull: false)  int quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AddLineItemParams() when $default != null:
 return $default(_that.variantId,_that.quantity,_that.extra);case _:
@@ -446,7 +446,7 @@ return $default(_that.variantId,_that.quantity,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String variantId,  int quantity,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String variantId, @JsonKey(includeIfNull: false)  int quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _AddLineItemParams():
 return $default(_that.variantId,_that.quantity,_that.extra);case _:
@@ -466,7 +466,7 @@ return $default(_that.variantId,_that.quantity,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String variantId,  int quantity,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String variantId, @JsonKey(includeIfNull: false)  int quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _AddLineItemParams() when $default != null:
 return $default(_that.variantId,_that.quantity,_that.extra);case _:
@@ -479,14 +479,14 @@ return $default(_that.variantId,_that.quantity,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _AddLineItemParams extends AddLineItemParams {
-  const _AddLineItemParams({required this.variantId, required this.quantity, this.extra = const <String, Object?>{}}): super._();
+  const _AddLineItemParams({@JsonKey(includeIfNull: false) required this.variantId, @JsonKey(includeIfNull: false) required this.quantity, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String variantId;
-@override final  int quantity;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String variantId;
+@override@JsonKey(includeIfNull: false) final  int quantity;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of AddLineItemParams
 /// with the given fields replaced by the non-null parameter values.
@@ -520,7 +520,7 @@ abstract mixin class _$AddLineItemParamsCopyWith<$Res> implements $AddLineItemPa
   factory _$AddLineItemParamsCopyWith(_AddLineItemParams value, $Res Function(_AddLineItemParams) _then) = __$AddLineItemParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String variantId, int quantity, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String variantId,@JsonKey(includeIfNull: false) int quantity,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -552,7 +552,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$UpdateLineItemParams {
 
- int? get quantity; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) int? get quantity;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of UpdateLineItemParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -588,7 +588,7 @@ abstract mixin class $UpdateLineItemParamsCopyWith<$Res>  {
   factory $UpdateLineItemParamsCopyWith(UpdateLineItemParams value, $Res Function(UpdateLineItemParams) _then) = _$UpdateLineItemParamsCopyWithImpl;
 @useResult
 $Res call({
- int? quantity, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) int? quantity,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -694,7 +694,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? quantity,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  int? quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdateLineItemParams() when $default != null:
 return $default(_that.quantity,_that.extra);case _:
@@ -715,7 +715,7 @@ return $default(_that.quantity,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? quantity,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  int? quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _UpdateLineItemParams():
 return $default(_that.quantity,_that.extra);case _:
@@ -735,7 +735,7 @@ return $default(_that.quantity,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? quantity,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  int? quantity, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdateLineItemParams() when $default != null:
 return $default(_that.quantity,_that.extra);case _:
@@ -748,13 +748,13 @@ return $default(_that.quantity,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _UpdateLineItemParams extends UpdateLineItemParams {
-  const _UpdateLineItemParams({this.quantity, this.extra = const <String, Object?>{}}): super._();
+  const _UpdateLineItemParams({@JsonKey(includeIfNull: false) this.quantity, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  int? quantity;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  int? quantity;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of UpdateLineItemParams
 /// with the given fields replaced by the non-null parameter values.
@@ -788,7 +788,7 @@ abstract mixin class _$UpdateLineItemParamsCopyWith<$Res> implements $UpdateLine
   factory _$UpdateLineItemParamsCopyWith(_UpdateLineItemParams value, $Res Function(_UpdateLineItemParams) _then) = __$UpdateLineItemParamsCopyWithImpl;
 @override @useResult
 $Res call({
- int? quantity, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) int? quantity,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -819,7 +819,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$CreatePaymentParams {
 
- Map<String, Object?> get extra;
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of CreatePaymentParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -855,7 +855,7 @@ abstract mixin class $CreatePaymentParamsCopyWith<$Res>  {
   factory $CreatePaymentParamsCopyWith(CreatePaymentParams value, $Res Function(CreatePaymentParams) _then) = _$CreatePaymentParamsCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -960,7 +960,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreatePaymentParams() when $default != null:
 return $default(_that.extra);case _:
@@ -981,7 +981,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _CreatePaymentParams():
 return $default(_that.extra);case _:
@@ -1001,7 +1001,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _CreatePaymentParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1014,12 +1014,12 @@ return $default(_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _CreatePaymentParams extends CreatePaymentParams {
-  const _CreatePaymentParams({this.extra = const <String, Object?>{}}): super._();
+  const _CreatePaymentParams({@JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of CreatePaymentParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1053,7 +1053,7 @@ abstract mixin class _$CreatePaymentParamsCopyWith<$Res> implements $CreatePayme
   factory _$CreatePaymentParamsCopyWith(_CreatePaymentParams value, $Res Function(_CreatePaymentParams) _then) = __$CreatePaymentParamsCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1083,7 +1083,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$CreatePaymentSessionParams {
 
- Map<String, Object?> get extra;
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of CreatePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1119,7 +1119,7 @@ abstract mixin class $CreatePaymentSessionParamsCopyWith<$Res>  {
   factory $CreatePaymentSessionParamsCopyWith(CreatePaymentSessionParams value, $Res Function(CreatePaymentSessionParams) _then) = _$CreatePaymentSessionParamsCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1224,7 +1224,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreatePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1245,7 +1245,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _CreatePaymentSessionParams():
 return $default(_that.extra);case _:
@@ -1265,7 +1265,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _CreatePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1278,12 +1278,12 @@ return $default(_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _CreatePaymentSessionParams extends CreatePaymentSessionParams {
-  const _CreatePaymentSessionParams({this.extra = const <String, Object?>{}}): super._();
+  const _CreatePaymentSessionParams({@JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of CreatePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1317,7 +1317,7 @@ abstract mixin class _$CreatePaymentSessionParamsCopyWith<$Res> implements $Crea
   factory _$CreatePaymentSessionParamsCopyWith(_CreatePaymentSessionParams value, $Res Function(_CreatePaymentSessionParams) _then) = __$CreatePaymentSessionParamsCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1347,7 +1347,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$UpdatePaymentSessionParams {
 
- Map<String, Object?> get extra;
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of UpdatePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1383,7 +1383,7 @@ abstract mixin class $UpdatePaymentSessionParamsCopyWith<$Res>  {
   factory $UpdatePaymentSessionParamsCopyWith(UpdatePaymentSessionParams value, $Res Function(UpdatePaymentSessionParams) _then) = _$UpdatePaymentSessionParamsCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1488,7 +1488,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdatePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1509,7 +1509,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _UpdatePaymentSessionParams():
 return $default(_that.extra);case _:
@@ -1529,7 +1529,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdatePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1542,12 +1542,12 @@ return $default(_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _UpdatePaymentSessionParams extends UpdatePaymentSessionParams {
-  const _UpdatePaymentSessionParams({this.extra = const <String, Object?>{}}): super._();
+  const _UpdatePaymentSessionParams({@JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of UpdatePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1581,7 +1581,7 @@ abstract mixin class _$UpdatePaymentSessionParamsCopyWith<$Res> implements $Upda
   factory _$UpdatePaymentSessionParamsCopyWith(_UpdatePaymentSessionParams value, $Res Function(_UpdatePaymentSessionParams) _then) = __$UpdatePaymentSessionParamsCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1611,7 +1611,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$CompletePaymentSessionParams {
 
- Map<String, Object?> get extra;
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of CompletePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1647,7 +1647,7 @@ abstract mixin class $CompletePaymentSessionParamsCopyWith<$Res>  {
   factory $CompletePaymentSessionParamsCopyWith(CompletePaymentSessionParams value, $Res Function(CompletePaymentSessionParams) _then) = _$CompletePaymentSessionParamsCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1752,7 +1752,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CompletePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1773,7 +1773,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _CompletePaymentSessionParams():
 return $default(_that.extra);case _:
@@ -1793,7 +1793,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _CompletePaymentSessionParams() when $default != null:
 return $default(_that.extra);case _:
@@ -1806,12 +1806,12 @@ return $default(_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _CompletePaymentSessionParams extends CompletePaymentSessionParams {
-  const _CompletePaymentSessionParams({this.extra = const <String, Object?>{}}): super._();
+  const _CompletePaymentSessionParams({@JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of CompletePaymentSessionParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1845,7 +1845,7 @@ abstract mixin class _$CompletePaymentSessionParamsCopyWith<$Res> implements $Co
   factory _$CompletePaymentSessionParamsCopyWith(_CompletePaymentSessionParams value, $Res Function(_CompletePaymentSessionParams) _then) = __$CompletePaymentSessionParamsCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1875,7 +1875,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$UpdateFulfillmentParams {
 
- Map<String, Object?> get extra;
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of UpdateFulfillmentParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1911,7 +1911,7 @@ abstract mixin class $UpdateFulfillmentParamsCopyWith<$Res>  {
   factory $UpdateFulfillmentParamsCopyWith(UpdateFulfillmentParams value, $Res Function(UpdateFulfillmentParams) _then) = _$UpdateFulfillmentParamsCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2016,7 +2016,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdateFulfillmentParams() when $default != null:
 return $default(_that.extra);case _:
@@ -2037,7 +2037,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _UpdateFulfillmentParams():
 return $default(_that.extra);case _:
@@ -2057,7 +2057,7 @@ return $default(_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdateFulfillmentParams() when $default != null:
 return $default(_that.extra);case _:
@@ -2070,12 +2070,12 @@ return $default(_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _UpdateFulfillmentParams extends UpdateFulfillmentParams {
-  const _UpdateFulfillmentParams({this.extra = const <String, Object?>{}}): super._();
+  const _UpdateFulfillmentParams({@JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of UpdateFulfillmentParams
 /// with the given fields replaced by the non-null parameter values.
@@ -2109,7 +2109,7 @@ abstract mixin class _$UpdateFulfillmentParamsCopyWith<$Res> implements $UpdateF
   factory _$UpdateFulfillmentParamsCopyWith(_UpdateFulfillmentParams value, $Res Function(_UpdateFulfillmentParams) _then) = __$UpdateFulfillmentParamsCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Object?> extra
+@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginParams {
 
- String get email; String get password; String? get provider; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get email;@JsonKey(includeIfNull: false) String get password;@JsonKey(includeIfNull: false) String? get provider;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of LoginParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $LoginParamsCopyWith<$Res>  {
   factory $LoginParamsCopyWith(LoginParams value, $Res Function(LoginParams) _then) = _$LoginParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String password, String? provider, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? provider,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -159,7 +159,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String password,  String? provider,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? provider, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginParams() when $default != null:
 return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
@@ -180,7 +180,7 @@ return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String password,  String? provider,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? provider, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _LoginParams():
 return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
@@ -200,7 +200,7 @@ return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String password,  String? provider,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? provider, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginParams() when $default != null:
 return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
@@ -213,15 +213,15 @@ return $default(_that.email,_that.password,_that.provider,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _LoginParams extends LoginParams {
-  const _LoginParams({required this.email, required this.password, this.provider = 'email', this.extra = const <String, Object?>{}}): super._();
+  const _LoginParams({@JsonKey(includeIfNull: false) required this.email, @JsonKey(includeIfNull: false) required this.password, @JsonKey(includeIfNull: false) this.provider = 'email', @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String email;
-@override final  String password;
-@override@JsonKey() final  String? provider;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String email;
+@override@JsonKey(includeIfNull: false) final  String password;
+@override@JsonKey(includeIfNull: false) final  String? provider;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of LoginParams
 /// with the given fields replaced by the non-null parameter values.
@@ -255,7 +255,7 @@ abstract mixin class _$LoginParamsCopyWith<$Res> implements $LoginParamsCopyWith
   factory _$LoginParamsCopyWith(_LoginParams value, $Res Function(_LoginParams) _then) = __$LoginParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String password, String? provider, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? provider,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -288,7 +288,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$RegisterParams {
 
- String get email; String get password; String? get passwordConfirmation; String? get firstName; String? get lastName; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get email;@JsonKey(includeIfNull: false) String get password;@JsonKey(includeIfNull: false) String? get passwordConfirmation;@JsonKey(includeIfNull: false) String? get firstName;@JsonKey(includeIfNull: false) String? get lastName;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of RegisterParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -324,7 +324,7 @@ abstract mixin class $RegisterParamsCopyWith<$Res>  {
   factory $RegisterParamsCopyWith(RegisterParams value, $Res Function(RegisterParams) _then) = _$RegisterParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String password, String? passwordConfirmation, String? firstName, String? lastName, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? passwordConfirmation,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -434,7 +434,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String password,  String? passwordConfirmation,  String? firstName,  String? lastName,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterParams() when $default != null:
 return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firstName,_that.lastName,_that.extra);case _:
@@ -455,7 +455,7 @@ return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firs
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String password,  String? passwordConfirmation,  String? firstName,  String? lastName,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterParams():
 return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firstName,_that.lastName,_that.extra);case _:
@@ -475,7 +475,7 @@ return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firs
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String password,  String? passwordConfirmation,  String? firstName,  String? lastName,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterParams() when $default != null:
 return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firstName,_that.lastName,_that.extra);case _:
@@ -488,17 +488,17 @@ return $default(_that.email,_that.password,_that.passwordConfirmation,_that.firs
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _RegisterParams extends RegisterParams {
-  const _RegisterParams({required this.email, required this.password, this.passwordConfirmation, this.firstName, this.lastName, this.extra = const <String, Object?>{}}): super._();
+  const _RegisterParams({@JsonKey(includeIfNull: false) required this.email, @JsonKey(includeIfNull: false) required this.password, @JsonKey(includeIfNull: false) this.passwordConfirmation, @JsonKey(includeIfNull: false) this.firstName, @JsonKey(includeIfNull: false) this.lastName, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String email;
-@override final  String password;
-@override final  String? passwordConfirmation;
-@override final  String? firstName;
-@override final  String? lastName;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String email;
+@override@JsonKey(includeIfNull: false) final  String password;
+@override@JsonKey(includeIfNull: false) final  String? passwordConfirmation;
+@override@JsonKey(includeIfNull: false) final  String? firstName;
+@override@JsonKey(includeIfNull: false) final  String? lastName;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of RegisterParams
 /// with the given fields replaced by the non-null parameter values.
@@ -532,7 +532,7 @@ abstract mixin class _$RegisterParamsCopyWith<$Res> implements $RegisterParamsCo
   factory _$RegisterParamsCopyWith(_RegisterParams value, $Res Function(_RegisterParams) _then) = __$RegisterParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String password, String? passwordConfirmation, String? firstName, String? lastName, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? passwordConfirmation,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -567,7 +567,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$UpdateCustomerParams {
 
- String? get email; String? get firstName; String? get lastName; String? get phone; bool? get acceptsEmailMarketing; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String? get email;@JsonKey(includeIfNull: false) String? get firstName;@JsonKey(includeIfNull: false) String? get lastName;@JsonKey(includeIfNull: false) String? get phone;@JsonKey(includeIfNull: false) bool? get acceptsEmailMarketing;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of UpdateCustomerParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -603,7 +603,7 @@ abstract mixin class $UpdateCustomerParamsCopyWith<$Res>  {
   factory $UpdateCustomerParamsCopyWith(UpdateCustomerParams value, $Res Function(UpdateCustomerParams) _then) = _$UpdateCustomerParamsCopyWithImpl;
 @useResult
 $Res call({
- String? email, String? firstName, String? lastName, String? phone, bool? acceptsEmailMarketing, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? email,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeIfNull: false) String? phone,@JsonKey(includeIfNull: false) bool? acceptsEmailMarketing,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -713,7 +713,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  String? firstName,  String? lastName,  String? phone,  bool? acceptsEmailMarketing,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  bool? acceptsEmailMarketing, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdateCustomerParams() when $default != null:
 return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.extra);case _:
@@ -734,7 +734,7 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acc
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  String? firstName,  String? lastName,  String? phone,  bool? acceptsEmailMarketing,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  bool? acceptsEmailMarketing, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _UpdateCustomerParams():
 return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.extra);case _:
@@ -754,7 +754,7 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acc
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  String? firstName,  String? lastName,  String? phone,  bool? acceptsEmailMarketing,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String? email, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  bool? acceptsEmailMarketing, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdateCustomerParams() when $default != null:
 return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.extra);case _:
@@ -767,17 +767,17 @@ return $default(_that.email,_that.firstName,_that.lastName,_that.phone,_that.acc
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _UpdateCustomerParams extends UpdateCustomerParams {
-  const _UpdateCustomerParams({this.email, this.firstName, this.lastName, this.phone, this.acceptsEmailMarketing, this.extra = const <String, Object?>{}}): super._();
+  const _UpdateCustomerParams({@JsonKey(includeIfNull: false) this.email, @JsonKey(includeIfNull: false) this.firstName, @JsonKey(includeIfNull: false) this.lastName, @JsonKey(includeIfNull: false) this.phone, @JsonKey(includeIfNull: false) this.acceptsEmailMarketing, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String? email;
-@override final  String? firstName;
-@override final  String? lastName;
-@override final  String? phone;
-@override final  bool? acceptsEmailMarketing;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String? email;
+@override@JsonKey(includeIfNull: false) final  String? firstName;
+@override@JsonKey(includeIfNull: false) final  String? lastName;
+@override@JsonKey(includeIfNull: false) final  String? phone;
+@override@JsonKey(includeIfNull: false) final  bool? acceptsEmailMarketing;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of UpdateCustomerParams
 /// with the given fields replaced by the non-null parameter values.
@@ -811,7 +811,7 @@ abstract mixin class _$UpdateCustomerParamsCopyWith<$Res> implements $UpdateCust
   factory _$UpdateCustomerParamsCopyWith(_UpdateCustomerParams value, $Res Function(_UpdateCustomerParams) _then) = __$UpdateCustomerParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String? email, String? firstName, String? lastName, String? phone, bool? acceptsEmailMarketing, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? email,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeIfNull: false) String? phone,@JsonKey(includeIfNull: false) bool? acceptsEmailMarketing,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -846,7 +846,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$AddressParams {
 
- String? get label; String? get firstName; String? get lastName; String? get address1; String? get address2; String? get city; String? get postalCode; String? get phone; String? get company; String? get countryIso; String? get stateName; String? get stateAbbr; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String? get label;@JsonKey(includeIfNull: false) String? get firstName;@JsonKey(includeIfNull: false) String? get lastName;@JsonKey(includeIfNull: false) String? get address1;@JsonKey(includeIfNull: false) String? get address2;@JsonKey(includeIfNull: false) String? get city;@JsonKey(includeIfNull: false) String? get postalCode;@JsonKey(includeIfNull: false) String? get phone;@JsonKey(includeIfNull: false) String? get company;@JsonKey(includeIfNull: false) String? get countryIso;@JsonKey(includeIfNull: false) String? get stateName;@JsonKey(includeIfNull: false) String? get stateAbbr;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of AddressParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -882,7 +882,7 @@ abstract mixin class $AddressParamsCopyWith<$Res>  {
   factory $AddressParamsCopyWith(AddressParams value, $Res Function(AddressParams) _then) = _$AddressParamsCopyWithImpl;
 @useResult
 $Res call({
- String? label, String? firstName, String? lastName, String? address1, String? address2, String? city, String? postalCode, String? phone, String? company, String? countryIso, String? stateName, String? stateAbbr, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? label,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeIfNull: false) String? address1,@JsonKey(includeIfNull: false) String? address2,@JsonKey(includeIfNull: false) String? city,@JsonKey(includeIfNull: false) String? postalCode,@JsonKey(includeIfNull: false) String? phone,@JsonKey(includeIfNull: false) String? company,@JsonKey(includeIfNull: false) String? countryIso,@JsonKey(includeIfNull: false) String? stateName,@JsonKey(includeIfNull: false) String? stateAbbr,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -999,7 +999,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? label,  String? firstName,  String? lastName,  String? address1,  String? address2,  String? city,  String? postalCode,  String? phone,  String? company,  String? countryIso,  String? stateName,  String? stateAbbr,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? label, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? address1, @JsonKey(includeIfNull: false)  String? address2, @JsonKey(includeIfNull: false)  String? city, @JsonKey(includeIfNull: false)  String? postalCode, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  String? company, @JsonKey(includeIfNull: false)  String? countryIso, @JsonKey(includeIfNull: false)  String? stateName, @JsonKey(includeIfNull: false)  String? stateAbbr, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AddressParams() when $default != null:
 return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.address2,_that.city,_that.postalCode,_that.phone,_that.company,_that.countryIso,_that.stateName,_that.stateAbbr,_that.extra);case _:
@@ -1020,7 +1020,7 @@ return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? label,  String? firstName,  String? lastName,  String? address1,  String? address2,  String? city,  String? postalCode,  String? phone,  String? company,  String? countryIso,  String? stateName,  String? stateAbbr,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? label, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? address1, @JsonKey(includeIfNull: false)  String? address2, @JsonKey(includeIfNull: false)  String? city, @JsonKey(includeIfNull: false)  String? postalCode, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  String? company, @JsonKey(includeIfNull: false)  String? countryIso, @JsonKey(includeIfNull: false)  String? stateName, @JsonKey(includeIfNull: false)  String? stateAbbr, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _AddressParams():
 return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.address2,_that.city,_that.postalCode,_that.phone,_that.company,_that.countryIso,_that.stateName,_that.stateAbbr,_that.extra);case _:
@@ -1040,7 +1040,7 @@ return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? label,  String? firstName,  String? lastName,  String? address1,  String? address2,  String? city,  String? postalCode,  String? phone,  String? company,  String? countryIso,  String? stateName,  String? stateAbbr,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String? label, @JsonKey(includeIfNull: false)  String? firstName, @JsonKey(includeIfNull: false)  String? lastName, @JsonKey(includeIfNull: false)  String? address1, @JsonKey(includeIfNull: false)  String? address2, @JsonKey(includeIfNull: false)  String? city, @JsonKey(includeIfNull: false)  String? postalCode, @JsonKey(includeIfNull: false)  String? phone, @JsonKey(includeIfNull: false)  String? company, @JsonKey(includeIfNull: false)  String? countryIso, @JsonKey(includeIfNull: false)  String? stateName, @JsonKey(includeIfNull: false)  String? stateAbbr, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _AddressParams() when $default != null:
 return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.address2,_that.city,_that.postalCode,_that.phone,_that.company,_that.countryIso,_that.stateName,_that.stateAbbr,_that.extra);case _:
@@ -1053,24 +1053,24 @@ return $default(_that.label,_that.firstName,_that.lastName,_that.address1,_that.
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _AddressParams extends AddressParams {
-  const _AddressParams({this.label, this.firstName, this.lastName, this.address1, this.address2, this.city, this.postalCode, this.phone, this.company, this.countryIso, this.stateName, this.stateAbbr, this.extra = const <String, Object?>{}}): super._();
+  const _AddressParams({@JsonKey(includeIfNull: false) this.label, @JsonKey(includeIfNull: false) this.firstName, @JsonKey(includeIfNull: false) this.lastName, @JsonKey(includeIfNull: false) this.address1, @JsonKey(includeIfNull: false) this.address2, @JsonKey(includeIfNull: false) this.city, @JsonKey(includeIfNull: false) this.postalCode, @JsonKey(includeIfNull: false) this.phone, @JsonKey(includeIfNull: false) this.company, @JsonKey(includeIfNull: false) this.countryIso, @JsonKey(includeIfNull: false) this.stateName, @JsonKey(includeIfNull: false) this.stateAbbr, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String? label;
-@override final  String? firstName;
-@override final  String? lastName;
-@override final  String? address1;
-@override final  String? address2;
-@override final  String? city;
-@override final  String? postalCode;
-@override final  String? phone;
-@override final  String? company;
-@override final  String? countryIso;
-@override final  String? stateName;
-@override final  String? stateAbbr;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String? label;
+@override@JsonKey(includeIfNull: false) final  String? firstName;
+@override@JsonKey(includeIfNull: false) final  String? lastName;
+@override@JsonKey(includeIfNull: false) final  String? address1;
+@override@JsonKey(includeIfNull: false) final  String? address2;
+@override@JsonKey(includeIfNull: false) final  String? city;
+@override@JsonKey(includeIfNull: false) final  String? postalCode;
+@override@JsonKey(includeIfNull: false) final  String? phone;
+@override@JsonKey(includeIfNull: false) final  String? company;
+@override@JsonKey(includeIfNull: false) final  String? countryIso;
+@override@JsonKey(includeIfNull: false) final  String? stateName;
+@override@JsonKey(includeIfNull: false) final  String? stateAbbr;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of AddressParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1104,7 +1104,7 @@ abstract mixin class _$AddressParamsCopyWith<$Res> implements $AddressParamsCopy
   factory _$AddressParamsCopyWith(_AddressParams value, $Res Function(_AddressParams) _then) = __$AddressParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String? label, String? firstName, String? lastName, String? address1, String? address2, String? city, String? postalCode, String? phone, String? company, String? countryIso, String? stateName, String? stateAbbr, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? label,@JsonKey(includeIfNull: false) String? firstName,@JsonKey(includeIfNull: false) String? lastName,@JsonKey(includeIfNull: false) String? address1,@JsonKey(includeIfNull: false) String? address2,@JsonKey(includeIfNull: false) String? city,@JsonKey(includeIfNull: false) String? postalCode,@JsonKey(includeIfNull: false) String? phone,@JsonKey(includeIfNull: false) String? company,@JsonKey(includeIfNull: false) String? countryIso,@JsonKey(includeIfNull: false) String? stateName,@JsonKey(includeIfNull: false) String? stateAbbr,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1146,7 +1146,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$RequestPasswordResetParams {
 
- String get email; String? get redirectUrl; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get email;@JsonKey(includeIfNull: false) String? get redirectUrl;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of RequestPasswordResetParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1182,7 +1182,7 @@ abstract mixin class $RequestPasswordResetParamsCopyWith<$Res>  {
   factory $RequestPasswordResetParamsCopyWith(RequestPasswordResetParams value, $Res Function(RequestPasswordResetParams) _then) = _$RequestPasswordResetParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1289,7 +1289,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestPasswordResetParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1310,7 +1310,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _RequestPasswordResetParams():
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1330,7 +1330,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestPasswordResetParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1343,14 +1343,14 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _RequestPasswordResetParams extends RequestPasswordResetParams {
-  const _RequestPasswordResetParams({required this.email, this.redirectUrl, this.extra = const <String, Object?>{}}): super._();
+  const _RequestPasswordResetParams({@JsonKey(includeIfNull: false) required this.email, @JsonKey(includeIfNull: false) this.redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String email;
-@override final  String? redirectUrl;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String email;
+@override@JsonKey(includeIfNull: false) final  String? redirectUrl;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of RequestPasswordResetParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1384,7 +1384,7 @@ abstract mixin class _$RequestPasswordResetParamsCopyWith<$Res> implements $Requ
   factory _$RequestPasswordResetParamsCopyWith(_RequestPasswordResetParams value, $Res Function(_RequestPasswordResetParams) _then) = __$RequestPasswordResetParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1416,7 +1416,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$ResetPasswordParams {
 
- String get password; String? get passwordConfirmation; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get password;@JsonKey(includeIfNull: false) String? get passwordConfirmation;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of ResetPasswordParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1452,7 +1452,7 @@ abstract mixin class $ResetPasswordParamsCopyWith<$Res>  {
   factory $ResetPasswordParamsCopyWith(ResetPasswordParams value, $Res Function(ResetPasswordParams) _then) = _$ResetPasswordParamsCopyWithImpl;
 @useResult
 $Res call({
- String password, String? passwordConfirmation, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? passwordConfirmation,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1559,7 +1559,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String password,  String? passwordConfirmation,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ResetPasswordParams() when $default != null:
 return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
@@ -1580,7 +1580,7 @@ return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String password,  String? passwordConfirmation,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _ResetPasswordParams():
 return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
@@ -1600,7 +1600,7 @@ return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String password,  String? passwordConfirmation,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String password, @JsonKey(includeIfNull: false)  String? passwordConfirmation, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _ResetPasswordParams() when $default != null:
 return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
@@ -1613,14 +1613,14 @@ return $default(_that.password,_that.passwordConfirmation,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _ResetPasswordParams extends ResetPasswordParams {
-  const _ResetPasswordParams({required this.password, this.passwordConfirmation, this.extra = const <String, Object?>{}}): super._();
+  const _ResetPasswordParams({@JsonKey(includeIfNull: false) required this.password, @JsonKey(includeIfNull: false) this.passwordConfirmation, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String password;
-@override final  String? passwordConfirmation;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String password;
+@override@JsonKey(includeIfNull: false) final  String? passwordConfirmation;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of ResetPasswordParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1654,7 +1654,7 @@ abstract mixin class _$ResetPasswordParamsCopyWith<$Res> implements $ResetPasswo
   factory _$ResetPasswordParamsCopyWith(_ResetPasswordParams value, $Res Function(_ResetPasswordParams) _then) = __$ResetPasswordParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String password, String? passwordConfirmation, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String password,@JsonKey(includeIfNull: false) String? passwordConfirmation,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1686,7 +1686,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$NewsletterSubscribeParams {
 
- String get email; String? get redirectUrl; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get email;@JsonKey(includeIfNull: false) String? get redirectUrl;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of NewsletterSubscribeParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1722,7 +1722,7 @@ abstract mixin class $NewsletterSubscribeParamsCopyWith<$Res>  {
   factory $NewsletterSubscribeParamsCopyWith(NewsletterSubscribeParams value, $Res Function(NewsletterSubscribeParams) _then) = _$NewsletterSubscribeParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1829,7 +1829,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewsletterSubscribeParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1850,7 +1850,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterSubscribeParams():
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1870,7 +1870,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterSubscribeParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -1883,14 +1883,14 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _NewsletterSubscribeParams extends NewsletterSubscribeParams {
-  const _NewsletterSubscribeParams({required this.email, this.redirectUrl, this.extra = const <String, Object?>{}}): super._();
+  const _NewsletterSubscribeParams({@JsonKey(includeIfNull: false) required this.email, @JsonKey(includeIfNull: false) this.redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String email;
-@override final  String? redirectUrl;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String email;
+@override@JsonKey(includeIfNull: false) final  String? redirectUrl;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of NewsletterSubscribeParams
 /// with the given fields replaced by the non-null parameter values.
@@ -1924,7 +1924,7 @@ abstract mixin class _$NewsletterSubscribeParamsCopyWith<$Res> implements $Newsl
   factory _$NewsletterSubscribeParamsCopyWith(_NewsletterSubscribeParams value, $Res Function(_NewsletterSubscribeParams) _then) = __$NewsletterSubscribeParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -1956,7 +1956,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$NewsletterVerifyParams {
 
- String get token; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get token;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of NewsletterVerifyParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1992,7 +1992,7 @@ abstract mixin class $NewsletterVerifyParamsCopyWith<$Res>  {
   factory $NewsletterVerifyParamsCopyWith(NewsletterVerifyParams value, $Res Function(NewsletterVerifyParams) _then) = _$NewsletterVerifyParamsCopyWithImpl;
 @useResult
 $Res call({
- String token, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String token,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2098,7 +2098,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String token,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String token, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewsletterVerifyParams() when $default != null:
 return $default(_that.token,_that.extra);case _:
@@ -2119,7 +2119,7 @@ return $default(_that.token,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String token,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String token, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterVerifyParams():
 return $default(_that.token,_that.extra);case _:
@@ -2139,7 +2139,7 @@ return $default(_that.token,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String token,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String token, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterVerifyParams() when $default != null:
 return $default(_that.token,_that.extra);case _:
@@ -2152,13 +2152,13 @@ return $default(_that.token,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _NewsletterVerifyParams extends NewsletterVerifyParams {
-  const _NewsletterVerifyParams({required this.token, this.extra = const <String, Object?>{}}): super._();
+  const _NewsletterVerifyParams({@JsonKey(includeIfNull: false) required this.token, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String token;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String token;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of NewsletterVerifyParams
 /// with the given fields replaced by the non-null parameter values.
@@ -2192,7 +2192,7 @@ abstract mixin class _$NewsletterVerifyParamsCopyWith<$Res> implements $Newslett
   factory _$NewsletterVerifyParamsCopyWith(_NewsletterVerifyParams value, $Res Function(_NewsletterVerifyParams) _then) = __$NewsletterVerifyParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String token, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String token,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2223,7 +2223,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$NewsletterUnsubscribeRequestParams {
 
- String get email; String? get redirectUrl; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String get email;@JsonKey(includeIfNull: false) String? get redirectUrl;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of NewsletterUnsubscribeRequestParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2259,7 +2259,7 @@ abstract mixin class $NewsletterUnsubscribeRequestParamsCopyWith<$Res>  {
   factory $NewsletterUnsubscribeRequestParamsCopyWith(NewsletterUnsubscribeRequestParams value, $Res Function(NewsletterUnsubscribeRequestParams) _then) = _$NewsletterUnsubscribeRequestParamsCopyWithImpl;
 @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2366,7 +2366,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewsletterUnsubscribeRequestParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -2387,7 +2387,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? redirectUrl,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterUnsubscribeRequestParams():
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -2407,7 +2407,7 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? redirectUrl,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String email, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterUnsubscribeRequestParams() when $default != null:
 return $default(_that.email,_that.redirectUrl,_that.extra);case _:
@@ -2420,14 +2420,14 @@ return $default(_that.email,_that.redirectUrl,_that.extra);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _NewsletterUnsubscribeRequestParams extends NewsletterUnsubscribeRequestParams {
-  const _NewsletterUnsubscribeRequestParams({required this.email, this.redirectUrl, this.extra = const <String, Object?>{}}): super._();
+  const _NewsletterUnsubscribeRequestParams({@JsonKey(includeIfNull: false) required this.email, @JsonKey(includeIfNull: false) this.redirectUrl, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String email;
-@override final  String? redirectUrl;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String email;
+@override@JsonKey(includeIfNull: false) final  String? redirectUrl;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of NewsletterUnsubscribeRequestParams
 /// with the given fields replaced by the non-null parameter values.
@@ -2461,7 +2461,7 @@ abstract mixin class _$NewsletterUnsubscribeRequestParamsCopyWith<$Res> implemen
   factory _$NewsletterUnsubscribeRequestParamsCopyWith(_NewsletterUnsubscribeRequestParams value, $Res Function(_NewsletterUnsubscribeRequestParams) _then) = __$NewsletterUnsubscribeRequestParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? redirectUrl, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String email,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2493,7 +2493,7 @@ as Map<String, Object?>,
 /// @nodoc
 mixin _$CreateDataRequestParams {
 
- String? get type; String? get redirectUrl; String? get currentPassword; Map<String, Object?> get extra;
+@JsonKey(includeIfNull: false) String? get type;@JsonKey(includeIfNull: false) String? get redirectUrl;@JsonKey(includeIfNull: false) String? get currentPassword;@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> get extra;
 /// Create a copy of CreateDataRequestParams
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2529,7 +2529,7 @@ abstract mixin class $CreateDataRequestParamsCopyWith<$Res>  {
   factory $CreateDataRequestParamsCopyWith(CreateDataRequestParams value, $Res Function(CreateDataRequestParams) _then) = _$CreateDataRequestParamsCopyWithImpl;
 @useResult
 $Res call({
- String? type, String? redirectUrl, String? currentPassword, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? type,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeIfNull: false) String? currentPassword,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 
@@ -2637,7 +2637,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? type,  String? redirectUrl,  String? currentPassword,  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? type, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeIfNull: false)  String? currentPassword, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateDataRequestParams() when $default != null:
 return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);case _:
@@ -2658,7 +2658,7 @@ return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? type,  String? redirectUrl,  String? currentPassword,  Map<String, Object?> extra)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(includeIfNull: false)  String? type, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeIfNull: false)  String? currentPassword, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)  $default,) {final _that = this;
 switch (_that) {
 case _CreateDataRequestParams():
 return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);case _:
@@ -2678,7 +2678,7 @@ return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? type,  String? redirectUrl,  String? currentPassword,  Map<String, Object?> extra)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(includeIfNull: false)  String? type, @JsonKey(includeIfNull: false)  String? redirectUrl, @JsonKey(includeIfNull: false)  String? currentPassword, @JsonKey(includeFromJson: false, includeToJson: false)  Map<String, Object?> extra)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateDataRequestParams() when $default != null:
 return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);case _:
@@ -2691,15 +2691,15 @@ return $default(_that.type,_that.redirectUrl,_that.currentPassword,_that.extra);
 
 /// @nodoc
 
-
+@JsonSerializable(createFactory: false, fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 class _CreateDataRequestParams extends CreateDataRequestParams {
-  const _CreateDataRequestParams({this.type, this.redirectUrl, this.currentPassword, this.extra = const <String, Object?>{}}): super._();
+  const _CreateDataRequestParams({@JsonKey(includeIfNull: false) this.type, @JsonKey(includeIfNull: false) this.redirectUrl, @JsonKey(includeIfNull: false) this.currentPassword, @JsonKey(includeFromJson: false, includeToJson: false) this.extra = const <String, Object?>{}}): super._();
   
 
-@override final  String? type;
-@override final  String? redirectUrl;
-@override final  String? currentPassword;
-@override@JsonKey() final  Map<String, Object?> extra;
+@override@JsonKey(includeIfNull: false) final  String? type;
+@override@JsonKey(includeIfNull: false) final  String? redirectUrl;
+@override@JsonKey(includeIfNull: false) final  String? currentPassword;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  Map<String, Object?> extra;
 
 /// Create a copy of CreateDataRequestParams
 /// with the given fields replaced by the non-null parameter values.
@@ -2733,7 +2733,7 @@ abstract mixin class _$CreateDataRequestParamsCopyWith<$Res> implements $CreateD
   factory _$CreateDataRequestParamsCopyWith(_CreateDataRequestParams value, $Res Function(_CreateDataRequestParams) _then) = __$CreateDataRequestParamsCopyWithImpl;
 @override @useResult
 $Res call({
- String? type, String? redirectUrl, String? currentPassword, Map<String, Object?> extra
+@JsonKey(includeIfNull: false) String? type,@JsonKey(includeIfNull: false) String? redirectUrl,@JsonKey(includeIfNull: false) String? currentPassword,@JsonKey(includeFromJson: false, includeToJson: false) Map<String, Object?> extra
 });
 
 

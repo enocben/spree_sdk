@@ -12,6 +12,7 @@ part of 'customer.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$CustomerGroup {
 
@@ -22,6 +23,8 @@ mixin _$CustomerGroup {
 @pragma('vm:prefer-inline')
 $CustomerGroupCopyWith<CustomerGroup> get copyWith => _$CustomerGroupCopyWithImpl<CustomerGroup>(this as CustomerGroup, _$identity);
 
+  /// Serializes this CustomerGroup to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomerGroup&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CustomerGroup;
@@ -211,10 +214,10 @@ return $default(_that.id,_that.name);case _:
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _CustomerGroup extends CustomerGroup {
   const _CustomerGroup({required this.id, required this.name}): super._();
-  
+  factory _CustomerGroup.fromJson(Map<String, dynamic> json) => _$CustomerGroupFromJson(json);
 
 @override final  String id;
 @override final  String name;
@@ -225,14 +228,17 @@ class _CustomerGroup extends CustomerGroup {
 @pragma('vm:prefer-inline')
 _$CustomerGroupCopyWith<_CustomerGroup> get copyWith => __$CustomerGroupCopyWithImpl<_CustomerGroup>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CustomerGroupToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerGroup&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,name);
@@ -279,16 +285,19 @@ as String,
 
 }
 
+
 /// @nodoc
 mixin _$NewsletterSubscriber {
 
- String get id; String get email; String get createdAt; String get updatedAt; bool get verified; String? get verifiedAt; String? get customerId; List<CustomField>? get customFields;
+ String get id; String get email; String get createdAt; String get updatedAt; bool get verified; String? get verifiedAt; String? get customerId;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of NewsletterSubscriber
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $NewsletterSubscriberCopyWith<NewsletterSubscriber> get copyWith => _$NewsletterSubscriberCopyWithImpl<NewsletterSubscriber>(this as NewsletterSubscriber, _$identity);
 
+  /// Serializes this NewsletterSubscriber to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -297,7 +306,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is NewsletterSubscriber&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt)&&(identical(other.verified, _this.verified) || other.verified == _this.verified)&&(identical(other.verifiedAt, _this.verifiedAt) || other.verifiedAt == _this.verifiedAt)&&(identical(other.customerId, _this.customerId) || other.customerId == _this.customerId)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as NewsletterSubscriber;
@@ -318,7 +327,7 @@ abstract mixin class $NewsletterSubscriberCopyWith<$Res>  {
   factory $NewsletterSubscriberCopyWith(NewsletterSubscriber value, $Res Function(NewsletterSubscriber) _then) = _$NewsletterSubscriberCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String createdAt, String updatedAt, bool verified, String? verifiedAt, String? customerId, List<CustomField>? customFields
+ String id, String email, String createdAt, String updatedAt, bool verified, String? verifiedAt, String? customerId,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -430,7 +439,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewsletterSubscriber() when $default != null:
 return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verified,_that.verifiedAt,_that.customerId,_that.customFields);case _:
@@ -451,7 +460,7 @@ return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verif
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterSubscriber():
 return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verified,_that.verifiedAt,_that.customerId,_that.customFields);case _:
@@ -471,7 +480,7 @@ return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verif
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String createdAt,  String updatedAt,  bool verified,  String? verifiedAt,  String? customerId, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _NewsletterSubscriber() when $default != null:
 return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verified,_that.verifiedAt,_that.customerId,_that.customFields);case _:
@@ -484,10 +493,10 @@ return $default(_that.id,_that.email,_that.createdAt,_that.updatedAt,_that.verif
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _NewsletterSubscriber extends NewsletterSubscriber {
-  const _NewsletterSubscriber({required this.id, required this.email, required this.createdAt, required this.updatedAt, required this.verified, this.verifiedAt, this.customerId, this.customFields}): super._();
-  
+  const _NewsletterSubscriber({required this.id, required this.email, required this.createdAt, required this.updatedAt, required this.verified, this.verifiedAt, this.customerId, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _NewsletterSubscriber.fromJson(Map<String, dynamic> json) => _$NewsletterSubscriberFromJson(json);
 
 @override final  String id;
 @override final  String email;
@@ -496,7 +505,7 @@ class _NewsletterSubscriber extends NewsletterSubscriber {
 @override final  bool verified;
 @override final  String? verifiedAt;
 @override final  String? customerId;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of NewsletterSubscriber
 /// with the given fields replaced by the non-null parameter values.
@@ -504,14 +513,17 @@ class _NewsletterSubscriber extends NewsletterSubscriber {
 @pragma('vm:prefer-inline')
 _$NewsletterSubscriberCopyWith<_NewsletterSubscriber> get copyWith => __$NewsletterSubscriberCopyWithImpl<_NewsletterSubscriber>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$NewsletterSubscriberToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewsletterSubscriber&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.verified, verified) || other.verified == verified)&&(identical(other.verifiedAt, verifiedAt) || other.verifiedAt == verifiedAt)&&(identical(other.customerId, customerId) || other.customerId == customerId)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,email,createdAt,updatedAt,verified,verifiedAt,customerId,const DeepCollectionEquality().hash(customFields));
@@ -530,7 +542,7 @@ abstract mixin class _$NewsletterSubscriberCopyWith<$Res> implements $Newsletter
   factory _$NewsletterSubscriberCopyWith(_NewsletterSubscriber value, $Res Function(_NewsletterSubscriber) _then) = __$NewsletterSubscriberCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String createdAt, String updatedAt, bool verified, String? verifiedAt, String? customerId, List<CustomField>? customFields
+ String id, String email, String createdAt, String updatedAt, bool verified, String? verifiedAt, String? customerId,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -564,16 +576,19 @@ as List<CustomField>?,
 
 }
 
+
 /// @nodoc
 mixin _$Customer {
 
- String get id; String get email; String? get firstName; String? get lastName; String? get phone; bool get acceptsEmailMarketing; String? get emailMarketingConsentUpdatedAt; String get fullName; String get availableStoreCreditTotal; List<Address> get addresses; Address? get defaultBillingAddress; Address? get defaultShippingAddress; NewsletterSubscriber? get newsletterSubscriber; List<CustomerGroup> get customerGroups; List<CustomField>? get customFields;
+ String get id; String get email; String? get firstName; String? get lastName; String? get phone; bool get acceptsEmailMarketing; String? get emailMarketingConsentUpdatedAt; String get fullName; String get availableStoreCreditTotal; List<Address> get addresses; Address? get defaultBillingAddress; Address? get defaultShippingAddress; NewsletterSubscriber? get newsletterSubscriber; List<CustomerGroup> get customerGroups;@JsonKey(includeIfNull: false) List<CustomField>? get customFields;
 /// Create a copy of Customer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CustomerCopyWith<Customer> get copyWith => _$CustomerCopyWithImpl<Customer>(this as Customer, _$identity);
 
+  /// Serializes this Customer to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -582,7 +597,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Customer&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.email, _this.email) || other.email == _this.email)&&(identical(other.firstName, _this.firstName) || other.firstName == _this.firstName)&&(identical(other.lastName, _this.lastName) || other.lastName == _this.lastName)&&(identical(other.phone, _this.phone) || other.phone == _this.phone)&&(identical(other.acceptsEmailMarketing, _this.acceptsEmailMarketing) || other.acceptsEmailMarketing == _this.acceptsEmailMarketing)&&(identical(other.emailMarketingConsentUpdatedAt, _this.emailMarketingConsentUpdatedAt) || other.emailMarketingConsentUpdatedAt == _this.emailMarketingConsentUpdatedAt)&&(identical(other.fullName, _this.fullName) || other.fullName == _this.fullName)&&(identical(other.availableStoreCreditTotal, _this.availableStoreCreditTotal) || other.availableStoreCreditTotal == _this.availableStoreCreditTotal)&&const DeepCollectionEquality().equals(other.addresses, _this.addresses)&&(identical(other.defaultBillingAddress, _this.defaultBillingAddress) || other.defaultBillingAddress == _this.defaultBillingAddress)&&(identical(other.defaultShippingAddress, _this.defaultShippingAddress) || other.defaultShippingAddress == _this.defaultShippingAddress)&&(identical(other.newsletterSubscriber, _this.newsletterSubscriber) || other.newsletterSubscriber == _this.newsletterSubscriber)&&const DeepCollectionEquality().equals(other.customerGroups, _this.customerGroups)&&const DeepCollectionEquality().equals(other.customFields, _this.customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Customer;
@@ -603,7 +618,7 @@ abstract mixin class $CustomerCopyWith<$Res>  {
   factory $CustomerCopyWith(Customer value, $Res Function(Customer) _then) = _$CustomerCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String? firstName, String? lastName, String? phone, bool acceptsEmailMarketing, String? emailMarketingConsentUpdatedAt, String fullName, String availableStoreCreditTotal, List<Address> addresses, Address? defaultBillingAddress, Address? defaultShippingAddress, NewsletterSubscriber? newsletterSubscriber, List<CustomerGroup> customerGroups, List<CustomField>? customFields
+ String id, String email, String? firstName, String? lastName, String? phone, bool acceptsEmailMarketing, String? emailMarketingConsentUpdatedAt, String fullName, String availableStoreCreditTotal, List<Address> addresses, Address? defaultBillingAddress, Address? defaultShippingAddress, NewsletterSubscriber? newsletterSubscriber, List<CustomerGroup> customerGroups,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
@@ -758,7 +773,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups,  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Customer() when $default != null:
 return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.emailMarketingConsentUpdatedAt,_that.fullName,_that.availableStoreCreditTotal,_that.addresses,_that.defaultBillingAddress,_that.defaultShippingAddress,_that.newsletterSubscriber,_that.customerGroups,_that.customFields);case _:
@@ -779,7 +794,7 @@ return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups,  List<CustomField>? customFields)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)  $default,) {final _that = this;
 switch (_that) {
 case _Customer():
 return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.emailMarketingConsentUpdatedAt,_that.fullName,_that.availableStoreCreditTotal,_that.addresses,_that.defaultBillingAddress,_that.defaultShippingAddress,_that.newsletterSubscriber,_that.customerGroups,_that.customFields);case _:
@@ -799,7 +814,7 @@ return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups,  List<CustomField>? customFields)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String? firstName,  String? lastName,  String? phone,  bool acceptsEmailMarketing,  String? emailMarketingConsentUpdatedAt,  String fullName,  String availableStoreCreditTotal,  List<Address> addresses,  Address? defaultBillingAddress,  Address? defaultShippingAddress,  NewsletterSubscriber? newsletterSubscriber,  List<CustomerGroup> customerGroups, @JsonKey(includeIfNull: false)  List<CustomField>? customFields)?  $default,) {final _that = this;
 switch (_that) {
 case _Customer() when $default != null:
 return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,_that.acceptsEmailMarketing,_that.emailMarketingConsentUpdatedAt,_that.fullName,_that.availableStoreCreditTotal,_that.addresses,_that.defaultBillingAddress,_that.defaultShippingAddress,_that.newsletterSubscriber,_that.customerGroups,_that.customFields);case _:
@@ -812,10 +827,10 @@ return $default(_that.id,_that.email,_that.firstName,_that.lastName,_that.phone,
 
 /// @nodoc
 
-
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _Customer extends Customer {
-  const _Customer({required this.id, required this.email, this.firstName, this.lastName, this.phone, required this.acceptsEmailMarketing, this.emailMarketingConsentUpdatedAt, required this.fullName, required this.availableStoreCreditTotal, required this.addresses, this.defaultBillingAddress, this.defaultShippingAddress, this.newsletterSubscriber, required this.customerGroups, this.customFields}): super._();
-  
+  const _Customer({required this.id, required this.email, this.firstName, this.lastName, this.phone, required this.acceptsEmailMarketing, this.emailMarketingConsentUpdatedAt, required this.fullName, required this.availableStoreCreditTotal, required this.addresses, this.defaultBillingAddress, this.defaultShippingAddress, this.newsletterSubscriber, required this.customerGroups, @JsonKey(includeIfNull: false) this.customFields}): super._();
+  factory _Customer.fromJson(Map<String, dynamic> json) => _$CustomerFromJson(json);
 
 @override final  String id;
 @override final  String email;
@@ -831,7 +846,7 @@ class _Customer extends Customer {
 @override final  Address? defaultShippingAddress;
 @override final  NewsletterSubscriber? newsletterSubscriber;
 @override final  List<CustomerGroup> customerGroups;
-@override final  List<CustomField>? customFields;
+@override@JsonKey(includeIfNull: false) final  List<CustomField>? customFields;
 
 /// Create a copy of Customer
 /// with the given fields replaced by the non-null parameter values.
@@ -839,14 +854,17 @@ class _Customer extends Customer {
 @pragma('vm:prefer-inline')
 _$CustomerCopyWith<_Customer> get copyWith => __$CustomerCopyWithImpl<_Customer>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CustomerToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType&&other is _Customer&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.firstName, firstName) || other.firstName == firstName)&&(identical(other.lastName, lastName) || other.lastName == lastName)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.acceptsEmailMarketing, acceptsEmailMarketing) || other.acceptsEmailMarketing == acceptsEmailMarketing)&&(identical(other.emailMarketingConsentUpdatedAt, emailMarketingConsentUpdatedAt) || other.emailMarketingConsentUpdatedAt == emailMarketingConsentUpdatedAt)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.availableStoreCreditTotal, availableStoreCreditTotal) || other.availableStoreCreditTotal == availableStoreCreditTotal)&&const DeepCollectionEquality().equals(other.addresses, addresses)&&(identical(other.defaultBillingAddress, defaultBillingAddress) || other.defaultBillingAddress == defaultBillingAddress)&&(identical(other.defaultShippingAddress, defaultShippingAddress) || other.defaultShippingAddress == defaultShippingAddress)&&(identical(other.newsletterSubscriber, newsletterSubscriber) || other.newsletterSubscriber == newsletterSubscriber)&&const DeepCollectionEquality().equals(other.customerGroups, customerGroups)&&const DeepCollectionEquality().equals(other.customFields, customFields));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
     return Object.hash(runtimeType,id,email,firstName,lastName,phone,acceptsEmailMarketing,emailMarketingConsentUpdatedAt,fullName,availableStoreCreditTotal,const DeepCollectionEquality().hash(addresses),defaultBillingAddress,defaultShippingAddress,newsletterSubscriber,const DeepCollectionEquality().hash(customerGroups),const DeepCollectionEquality().hash(customFields));
@@ -865,7 +883,7 @@ abstract mixin class _$CustomerCopyWith<$Res> implements $CustomerCopyWith<$Res>
   factory _$CustomerCopyWith(_Customer value, $Res Function(_Customer) _then) = __$CustomerCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String? firstName, String? lastName, String? phone, bool acceptsEmailMarketing, String? emailMarketingConsentUpdatedAt, String fullName, String availableStoreCreditTotal, List<Address> addresses, Address? defaultBillingAddress, Address? defaultShippingAddress, NewsletterSubscriber? newsletterSubscriber, List<CustomerGroup> customerGroups, List<CustomField>? customFields
+ String id, String email, String? firstName, String? lastName, String? phone, bool acceptsEmailMarketing, String? emailMarketingConsentUpdatedAt, String fullName, String availableStoreCreditTotal, List<Address> addresses, Address? defaultBillingAddress, Address? defaultShippingAddress, NewsletterSubscriber? newsletterSubscriber, List<CustomerGroup> customerGroups,@JsonKey(includeIfNull: false) List<CustomField>? customFields
 });
 
 
