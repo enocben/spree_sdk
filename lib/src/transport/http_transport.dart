@@ -57,13 +57,18 @@ class HttpTransport implements SpreeTransport {
   /// any trailing slash removed.
   static Uri normalizeBaseUrl(Uri base) {
     if (!base.isAbsolute) {
-      throw ArgumentError.value(base, 'baseUrl', 'must be an absolute URI');
+      throw ArgumentError.value(
+        base,
+        'baseUrl',
+        'must be an absolute URI (for example, https://api.example.com); '
+            'got "$base"',
+      );
     }
     if (base.scheme != 'http' && base.scheme != 'https') {
       throw ArgumentError.value(
         base,
         'baseUrl',
-        'scheme must be http or https',
+        'scheme must be http or https; got "$base"',
       );
     }
     var path = base.path;

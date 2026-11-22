@@ -30,8 +30,9 @@ const Set<String> _supportedMethods = <String>{
 /// Immutable configuration for [SpreeClient] (frozen contract,
 /// `doc/architecture/file-ownership.md` table 2).
 class SpreeConfig {
-  /// Store origin (for example `https://api.mystore.com`). Trailing slashes
-  /// are stripped; `/api/v3/store` is appended per request.
+  /// Absolute HTTP(S) store origin (for example
+  /// `Uri.parse('https://api.mystore.com')`). Trailing slashes are stripped;
+  /// `/api/v3/store` is appended per request.
   final Uri baseUrl;
 
   /// Publishable storefront key, sent as `x-spree-api-key` on every request

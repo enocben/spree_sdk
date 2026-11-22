@@ -19,11 +19,23 @@ void main() {
       );
       expect(
         () => HttpTransport.normalizeBaseUrl(Uri.parse('/relative')),
-        throwsArgumentError,
+        throwsA(
+          isA<ArgumentError>().having(
+            (ArgumentError error) => error.toString(),
+            'message',
+            contains('got "/relative"'),
+          ),
+        ),
       );
       expect(
         () => HttpTransport.normalizeBaseUrl(Uri.parse('ftp://a.test')),
-        throwsArgumentError,
+        throwsA(
+          isA<ArgumentError>().having(
+            (ArgumentError error) => error.toString(),
+            'message',
+            contains('scheme must be http or https'),
+          ),
+        ),
       );
     });
 
