@@ -1,5 +1,7 @@
 # AGENTS.md — Spree SDK Engineering Handbook
 
+github projet: https://github.com/enocben/spree_sdk
+
 ## 1. Mission
 
 Build `spree_sdk`, an idiomatic, strongly typed, production-quality Dart SDK for the Spree Commerce Store API. It must be usable from pure Dart and Flutter applications. The core package must not depend on Flutter.
