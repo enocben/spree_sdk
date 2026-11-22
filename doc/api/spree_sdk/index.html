@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="spree_sdk library API docs, for the Dart programming language.">
+  <title>spree_sdk library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">spree_sdk</a></li>
+    <li class="self-crumb">spree_sdk.dart</li>
+  </ol>
+  <div class="self-name">spree_sdk</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="spree_sdk&#47;spree_sdk-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">spree_sdk</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+<section class="desc markdown">
+  <p>Idiomatic Dart SDK for the Spree Commerce Store API.</p>
+<p>Verified against <code>@spree/sdk</code> 6.0.5 at spree/spree SHA <code>d2f38e6</code>
+(2026-11-22), Store API v3, base path <code>/api/v3/store</code>.
+See <code>docs/research/</code> for contracts and <code>docs/architecture/</code> for design.</p>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="AcceptCompanyInvitationParams">
+  <span class="name "><a href="../spree_sdk/AcceptCompanyInvitationParams-class.html">AcceptCompanyInvitationParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /company_invitations/{token}/accept</code>.
+</dd>
+
+          <dt id="AccountCompaniesResource">
+  <span class="name "><a href="../spree_sdk/AccountCompaniesResource-class.html">AccountCompaniesResource</a></span> 
+
+</dt>
+<dd>
+  The signed-in buyer's company directory.
+</dd>
+
+          <dt id="AccountCompany">
+  <span class="name "><a href="../spree_sdk/AccountCompany-class.html">AccountCompany</a></span> 
+
+</dt>
+<dd>
+  One entry of the signed-in buyer's company directory: the membership
+plus its node.
+</dd>
+
+          <dt id="AddCompanyMemberParams">
+  <span class="name "><a href="../spree_sdk/AddCompanyMemberParams-class.html">AddCompanyMemberParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /companies/{id}/members</code>: invites a person by email.
+</dd>
+
+          <dt id="AddLineItemParams">
+  <span class="name "><a href="../spree_sdk/AddLineItemParams-class.html">AddLineItemParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>POST /carts/{id}/items</code>.
+</dd>
+
+          <dt id="Address">
+  <span class="name "><a href="../spree_sdk/Address-class.html">Address</a></span> 
+
+</dt>
+<dd>
+  A postal address: cart address or address-book entry.
+</dd>
+
+          <dt id="AddressOwner">
+  <span class="name "><a href="../spree_sdk/AddressOwner-class.html">AddressOwner</a></span> 
+
+</dt>
+<dd>
+  Owner of an address-book entry.
+</dd>
+
+          <dt id="AddressParams">
+  <span class="name "><a href="../spree_sdk/AddressParams-class.html">AddressParams</a></span> 
+
+</dt>
+<dd>
+  Body for address create (<code>POST /customers/me/addresses</code>) and update
+(<code>PATCH /customers/me/addresses/{id}</code>).
+</dd>
+
+          <dt id="AppliedPromotion">
+  <span class="name "><a href="../spree_sdk/AppliedPromotion-class.html">AppliedPromotion</a></span> 
+
+</dt>
+<dd>
+  A promotion applied to a cart or order.
+</dd>
+
+          <dt id="AuthResource">
+  <span class="name "><a href="../spree_sdk/AuthResource-class.html">AuthResource</a></span> 
+
+</dt>
+<dd>
+  Authentication operations: login, refresh, logout, register and the
+password-reset flow (with auto-login).
+</dd>
+
+          <dt id="AuthTokenProvider">
+  <span class="name "><a href="../spree_sdk/AuthTokenProvider-class.html">AuthTokenProvider</a></span> 
+
+</dt>
+<dd>
+  Token provider contract for the Spree SDK (ADR-004).
+</dd>
+
+          <dt id="AuthTokens">
+  <span class="name "><a href="../spree_sdk/AuthTokens-class.html">AuthTokens</a></span> 
+
+</dt>
+<dd>
+  Credentials returned by <code>POST /auth/login</code> (and <code>POST /auth/refresh</code>,
+<code>POST /customers</code>, <code>PATCH /password_resets/{token}</code>).
+</dd>
+
+          <dt id="AuthUser">
+  <span class="name "><a href="../spree_sdk/AuthUser-class.html">AuthUser</a></span> 
+
+</dt>
+<dd>
+  The customer embedded in <a href="../spree_sdk/AuthTokens-class.html">AuthTokens</a>.
+</dd>
+
+          <dt id="Cart">
+  <span class="name "><a href="../spree_sdk/Cart-class.html">Cart</a></span> 
+
+</dt>
+<dd>
+  The active cart (checkout in progress).
+</dd>
+
+          <dt id="CartsResource">
+  <span class="name "><a href="../spree_sdk/CartsResource-class.html">CartsResource</a></span> 
+
+</dt>
+<dd>
+  Cart and checkout operations.
+</dd>
+
+          <dt id="CartWarning">
+  <span class="name "><a href="../spree_sdk/CartWarning-class.html">CartWarning</a></span> 
+
+</dt>
+<dd>
+  A problem found with the cart (e.g. an item removed after a stock change).
+</dd>
+
+          <dt id="CategoriesResource">
+  <span class="name "><a href="../spree_sdk/CategoriesResource-class.html">CategoriesResource</a></span> 
+
+</dt>
+<dd>
+  Category operations.
+</dd>
+
+          <dt id="Category">
+  <span class="name "><a href="../spree_sdk/Category-class.html">Category</a></span> 
+
+</dt>
+<dd>
+  A category of the catalog tree.
+</dd>
+
+          <dt id="Channel">
+  <span class="name "><a href="../spree_sdk/Channel-class.html">Channel</a></span> 
+
+</dt>
+<dd>
+  A sales channel of the store.
+</dd>
+
+          <dt id="ChannelResource">
+  <span class="name "><a href="../spree_sdk/ChannelResource-class.html">ChannelResource</a></span> 
+
+</dt>
+<dd>
+  Channel operations.
+</dd>
+
+          <dt id="CheckoutRequirement">
+  <span class="name "><a href="../spree_sdk/CheckoutRequirement-class.html">CheckoutRequirement</a></span> 
+
+</dt>
+<dd>
+  A single unsatisfied checkout prerequisite.
+</dd>
+
+          <dt id="Claim">
+  <span class="name "><a href="../spree_sdk/Claim-class.html">Claim</a></span> 
+
+</dt>
+<dd>
+  A customer claim on an order.
+</dd>
+
+          <dt id="ClaimLineItem">
+  <span class="name "><a href="../spree_sdk/ClaimLineItem-class.html">ClaimLineItem</a></span> 
+
+</dt>
+<dd>
+  One claimed unit on a claim.
+</dd>
+
+          <dt id="ClaimReason">
+  <span class="name "><a href="../spree_sdk/ClaimReason-class.html">ClaimReason</a></span> 
+
+</dt>
+<dd>
+  A claim reason of the store.
+</dd>
+
+          <dt id="Collection">
+  <span class="name "><a href="../spree_sdk/Collection-class.html">Collection</a></span> 
+
+</dt>
+<dd>
+  A merchandising collection of products.
+</dd>
+
+          <dt id="CollectionsResource">
+  <span class="name "><a href="../spree_sdk/CollectionsResource-class.html">CollectionsResource</a></span> 
+
+</dt>
+<dd>
+  Collection operations.
+</dd>
+
+          <dt id="CompaniesResource">
+  <span class="name "><a href="../spree_sdk/CompaniesResource-class.html">CompaniesResource</a></span> 
+
+</dt>
+<dd>
+  Company nodes: read and rename.
+</dd>
+
+          <dt id="Company">
+  <span class="name "><a href="../spree_sdk/Company-class.html">Company</a></span> 
+
+</dt>
+<dd>
+  A B2B company node.
+</dd>
+
+          <dt id="CompanyAddressCreateParams">
+  <span class="name "><a href="../spree_sdk/CompanyAddressCreateParams-class.html">CompanyAddressCreateParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /companies/{id}/addresses</code>.
+</dd>
+
+          <dt id="CompanyAddressesResource">
+  <span class="name "><a href="../spree_sdk/CompanyAddressesResource-class.html">CompanyAddressesResource</a></span> 
+
+</dt>
+<dd>
+  Addresses of a company node.
+</dd>
+
+          <dt id="CompanyAddressUpdateParams">
+  <span class="name "><a href="../spree_sdk/CompanyAddressUpdateParams-class.html">CompanyAddressUpdateParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /companies/{id}/addresses/{id}</code>.
+</dd>
+
+          <dt id="CompanyAncestor">
+  <span class="name "><a href="../spree_sdk/CompanyAncestor-class.html">CompanyAncestor</a></span> 
+
+</dt>
+<dd>
+  One ancestor on a company's path.
+</dd>
+
+          <dt id="CompanyInvitation">
+  <span class="name "><a href="../spree_sdk/CompanyInvitation-class.html">CompanyInvitation</a></span> 
+
+</dt>
+<dd>
+  A pending invitation to join a company.
+</dd>
+
+          <dt id="CompanyInvitationLookup">
+  <span class="name "><a href="../spree_sdk/CompanyInvitationLookup-class.html">CompanyInvitationLookup</a></span> 
+
+</dt>
+<dd>
+  An invitation looked up by its email token, with its context.
+</dd>
+
+          <dt id="CompanyInvitationsResource">
+  <span class="name "><a href="../spree_sdk/CompanyInvitationsResource-class.html">CompanyInvitationsResource</a></span> 
+
+</dt>
+<dd>
+  Pending invitations of a company node (company-scoped revoke only).
+</dd>
+
+          <dt id="CompanyInvitationTokenResource">
+  <span class="name "><a href="../spree_sdk/CompanyInvitationTokenResource-class.html">CompanyInvitationTokenResource</a></span> 
+
+</dt>
+<dd>
+  Invitation lookup and acceptance by plaintext email token.
+</dd>
+
+          <dt id="CompanyMembership">
+  <span class="name "><a href="../spree_sdk/CompanyMembership-class.html">CompanyMembership</a></span> 
+
+</dt>
+<dd>
+  A customer's standing on a company node.
+</dd>
+
+          <dt id="CompanyMembersResource">
+  <span class="name "><a href="../spree_sdk/CompanyMembersResource-class.html">CompanyMembersResource</a></span> 
+
+</dt>
+<dd>
+  Members of a company node (member removal excluded: no SPEC path).
+</dd>
+
+          <dt id="CompanyOrdersResource">
+  <span class="name "><a href="../spree_sdk/CompanyOrdersResource-class.html">CompanyOrdersResource</a></span> 
+
+</dt>
+<dd>
+  Completed purchases across a company node's subtree.
+</dd>
+
+          <dt id="CompletedCheckout">
+  <span class="name "><a href="../spree_sdk/CompletedCheckout-class.html">CompletedCheckout</a></span> 
+
+</dt>
+<dd>
+  Result of <code>POST /carts/{id}/complete</code>: either one <a href="../spree_sdk/Order-class.html">Order</a> or the
+<a href="../spree_sdk/OrderGroup-class.html">OrderGroup</a> a multi-seller cart was divided into.
+</dd>
+
+          <dt id="CompletedOrder">
+  <span class="name "><a href="../spree_sdk/CompletedOrder-class.html">CompletedOrder</a></span> 
+
+</dt>
+<dd>
+  A checkout that completed as a single order.
+</dd>
+
+          <dt id="CompletedOrderGroup">
+  <span class="name "><a href="../spree_sdk/CompletedOrderGroup-class.html">CompletedOrderGroup</a></span> 
+
+</dt>
+<dd>
+  A checkout that completed as a multi-seller order group.
+</dd>
+
+          <dt id="CompletePaymentSessionParams">
+  <span class="name "><a href="../spree_sdk/CompletePaymentSessionParams-class.html">CompletePaymentSessionParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>PATCH /carts/{id}/payment_sessions/{id}/complete</code>.
+</dd>
+
+          <dt id="CompletePaymentSetupSessionParams">
+  <span class="name "><a href="../spree_sdk/CompletePaymentSetupSessionParams-class.html">CompletePaymentSetupSessionParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /customers/me/payment_setup_sessions/{id}/complete</code>.
+</dd>
+
+          <dt id="CountriesResource">
+  <span class="name "><a href="../spree_sdk/CountriesResource-class.html">CountriesResource</a></span> 
+
+</dt>
+<dd>
+  Country operations.
+</dd>
+
+          <dt id="Country">
+  <span class="name "><a href="../spree_sdk/Country-class.html">Country</a></span> 
+
+</dt>
+<dd>
+  A country the store operates in.
+</dd>
+
+          <dt id="CreateClaimItem">
+  <span class="name "><a href="../spree_sdk/CreateClaimItem-class.html">CreateClaimItem</a></span> 
+
+</dt>
+<dd>
+  One claimed unit on a <code>POST /orders/{id}/claims</code> body.
+</dd>
+
+          <dt id="CreateClaimParams">
+  <span class="name "><a href="../spree_sdk/CreateClaimParams-class.html">CreateClaimParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /orders/{id}/claims</code>.
+</dd>
+
+          <dt id="CreateDataRequestParams">
+  <span class="name "><a href="../spree_sdk/CreateDataRequestParams-class.html">CreateDataRequestParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /customers/me/data_requests</code>.
+</dd>
+
+          <dt id="CreatePaymentParams">
+  <span class="name "><a href="../spree_sdk/CreatePaymentParams-class.html">CreatePaymentParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>POST /carts/{id}/payments</code> (direct, non-session methods
+such as check or cash on delivery).
+</dd>
+
+          <dt id="CreatePaymentSessionParams">
+  <span class="name "><a href="../spree_sdk/CreatePaymentSessionParams-class.html">CreatePaymentSessionParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>POST /carts/{id}/payment_sessions</code>.
+</dd>
+
+          <dt id="CreatePaymentSetupSessionParams">
+  <span class="name "><a href="../spree_sdk/CreatePaymentSetupSessionParams-class.html">CreatePaymentSetupSessionParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /customers/me/payment_setup_sessions</code>.
+</dd>
+
+          <dt id="CreateReturnItem">
+  <span class="name "><a href="../spree_sdk/CreateReturnItem-class.html">CreateReturnItem</a></span> 
+
+</dt>
+<dd>
+  One returned unit on a <code>POST /orders/{id}/returns</code> body.
+</dd>
+
+          <dt id="CreateReturnParams">
+  <span class="name "><a href="../spree_sdk/CreateReturnParams-class.html">CreateReturnParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /orders/{id}/returns</code>.
+</dd>
+
+          <dt id="CreateWishlistItemParams">
+  <span class="name "><a href="../spree_sdk/CreateWishlistItemParams-class.html">CreateWishlistItemParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /wishlists/{id}/items</code>.
+</dd>
+
+          <dt id="CreateWishlistParams">
+  <span class="name "><a href="../spree_sdk/CreateWishlistParams-class.html">CreateWishlistParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /wishlists</code>.
+</dd>
+
+          <dt id="CreditCard">
+  <span class="name "><a href="../spree_sdk/CreditCard-class.html">CreditCard</a></span> 
+
+</dt>
+<dd>
+  A saved credit card of the customer.
+</dd>
+
+          <dt id="CurrenciesResource">
+  <span class="name "><a href="../spree_sdk/CurrenciesResource-class.html">CurrenciesResource</a></span> 
+
+</dt>
+<dd>
+  Currency operations.
+</dd>
+
+          <dt id="Currency">
+  <span class="name "><a href="../spree_sdk/Currency-class.html">Currency</a></span> 
+
+</dt>
+<dd>
+  A currency the store prices in.
+</dd>
+
+          <dt id="Customer">
+  <span class="name "><a href="../spree_sdk/Customer-class.html">Customer</a></span> 
+
+</dt>
+<dd>
+  The authenticated customer profile.
+</dd>
+
+          <dt id="CustomerAddressesResource">
+  <span class="name "><a href="../spree_sdk/CustomerAddressesResource-class.html">CustomerAddressesResource</a></span> 
+
+</dt>
+<dd>
+  Address-book CRUD (<code>/customers/me/addresses</code>). Auth: KEY+JWT on every
+operation.
+</dd>
+
+          <dt id="CustomerCreditCardsResource">
+  <span class="name "><a href="../spree_sdk/CustomerCreditCardsResource-class.html">CustomerCreditCardsResource</a></span> 
+
+</dt>
+<dd>
+  Saved credit cards of the authenticated customer.
+</dd>
+
+          <dt id="CustomerDigitalLinksResource">
+  <span class="name "><a href="../spree_sdk/CustomerDigitalLinksResource-class.html">CustomerDigitalLinksResource</a></span> 
+
+</dt>
+<dd>
+  Downloads of the authenticated customer (list only).
+</dd>
+
+          <dt id="CustomerGiftCardsResource">
+  <span class="name "><a href="../spree_sdk/CustomerGiftCardsResource-class.html">CustomerGiftCardsResource</a></span> 
+
+</dt>
+<dd>
+  Gift cards of the authenticated customer (list only).
+</dd>
+
+          <dt id="CustomerGroup">
+  <span class="name "><a href="../spree_sdk/CustomerGroup-class.html">CustomerGroup</a></span> 
+
+</dt>
+<dd>
+  A customer group the customer belongs to.
+</dd>
+
+          <dt id="CustomerResource">
+  <span class="name "><a href="../spree_sdk/CustomerResource-class.html">CustomerResource</a></span> 
+
+</dt>
+<dd>
+  Authenticated customer profile (<code>/customers/me</code>) with the nested
+address-book resource at <a href="../spree_sdk/CustomerResource/addresses.html">addresses</a> (mirrors the TS SDK
+<code>customer.addresses.*</code> nesting).
+</dd>
+
+          <dt id="CustomerStoreCreditsResource">
+  <span class="name "><a href="../spree_sdk/CustomerStoreCreditsResource-class.html">CustomerStoreCreditsResource</a></span> 
+
+</dt>
+<dd>
+  Store credits of the authenticated customer (list only).
+</dd>
+
+          <dt id="CustomField">
+  <span class="name "><a href="../spree_sdk/CustomField-class.html">CustomField</a></span> 
+
+</dt>
+<dd>
+  Data type of a merchant-defined custom field.
+</dd>
+
+          <dt id="DataRequest">
+  <span class="name "><a href="../spree_sdk/DataRequest-class.html">DataRequest</a></span> 
+
+</dt>
+<dd>
+  A GDPR data request.
+</dd>
+
+          <dt id="Delivery">
+  <span class="name "><a href="../spree_sdk/Delivery-class.html">Delivery</a></span> 
+
+</dt>
+<dd>
+  One carrier delivery inside a fulfillment.
+</dd>
+
+          <dt id="DeliveryMethod">
+  <span class="name "><a href="../spree_sdk/DeliveryMethod-class.html">DeliveryMethod</a></span> 
+
+</dt>
+<dd>
+  A delivery method available to a fulfillment.
+</dd>
+
+          <dt id="DeliveryMethodsResource">
+  <span class="name "><a href="../spree_sdk/DeliveryMethodsResource-class.html">DeliveryMethodsResource</a></span> 
+
+</dt>
+<dd>
+  Delivery method operations.
+</dd>
+
+          <dt id="DeliveryRate">
+  <span class="name "><a href="../spree_sdk/DeliveryRate-class.html">DeliveryRate</a></span> 
+
+</dt>
+<dd>
+  One selectable delivery rate of a fulfillment.
+</dd>
+
+          <dt id="DigitalLink">
+  <span class="name "><a href="../spree_sdk/DigitalLink-class.html">DigitalLink</a></span> 
+
+</dt>
+<dd>
+  A digital link attached to a line item or owned by a customer.
+</dd>
+
+          <dt id="DiscountCode">
+  <span class="name "><a href="../spree_sdk/DiscountCode-class.html">DiscountCode</a></span> 
+
+</dt>
+<dd>
+  A discount-code record: code, kind, value and applied amount.
+</dd>
+
+          <dt id="Fee">
+  <span class="name "><a href="../spree_sdk/Fee-class.html">Fee</a></span> 
+
+</dt>
+<dd>
+  A fee charged on a cart or order (handling, duty, …).
+</dd>
+
+          <dt id="FreightSummary">
+  <span class="name "><a href="../spree_sdk/FreightSummary-class.html">FreightSummary</a></span> 
+
+</dt>
+<dd>
+  Freight summary of a delivery rate (carton/pallet shipping).
+</dd>
+
+          <dt id="Fulfillment">
+  <span class="name "><a href="../spree_sdk/Fulfillment-class.html">Fulfillment</a></span> 
+
+</dt>
+<dd>
+  A fulfillment (shipment) of a cart or order.
+</dd>
+
+          <dt id="FulfillmentItem">
+  <span class="name "><a href="../spree_sdk/FulfillmentItem-class.html">FulfillmentItem</a></span> 
+
+</dt>
+<dd>
+  One line allocation inside a fulfillment.
+</dd>
+
+          <dt id="GdprResource">
+  <span class="name "><a href="../spree_sdk/GdprResource-class.html">GdprResource</a></span> 
+
+</dt>
+<dd>
+  GDPR data-request operations: the authenticated <code>/customers/me</code>
+collection plus the token-based (credential-less) endpoints.
+</dd>
+
+          <dt id="GiftCard">
+  <span class="name "><a href="../spree_sdk/GiftCard-class.html">GiftCard</a></span> 
+
+</dt>
+<dd>
+  A gift card: code, status and decimal-string balances.
+</dd>
+
+          <dt id="LineItem">
+  <span class="name "><a href="../spree_sdk/LineItem-class.html">LineItem</a></span> 
+
+</dt>
+<dd>
+  One line item of a cart or order.
+</dd>
+
+          <dt id="ListQuery">
+  <span class="name "><a href="../spree_sdk/ListQuery-class.html">ListQuery</a></span> 
+
+</dt>
+<dd>
+  List query conventions for the Spree Store API.
+</dd>
+
+          <dt id="LocalesResource">
+  <span class="name "><a href="../spree_sdk/LocalesResource-class.html">LocalesResource</a></span> 
+
+</dt>
+<dd>
+  Locale operations.
+</dd>
+
+          <dt id="LoginParams">
+  <span class="name "><a href="../spree_sdk/LoginParams-class.html">LoginParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /auth/login</code>.
+</dd>
+
+          <dt id="Market">
+  <span class="name "><a href="../spree_sdk/Market-class.html">Market</a></span> 
+
+</dt>
+<dd>
+  A market: currency + locales + countries served together.
+</dd>
+
+          <dt id="MarketsResource">
+  <span class="name "><a href="../spree_sdk/MarketsResource-class.html">MarketsResource</a></span> 
+
+</dt>
+<dd>
+  Market operations, including market countries.
+</dd>
+
+          <dt id="Media">
+  <span class="name "><a href="../spree_sdk/Media-class.html">Media</a></span> 
+
+</dt>
+<dd>
+  Media attached to a product or variant.
+</dd>
+
+          <dt id="NewsletterResource">
+  <span class="name "><a href="../spree_sdk/NewsletterResource-class.html">NewsletterResource</a></span> 
+
+</dt>
+<dd>
+  Newsletter subscription operations.
+</dd>
+
+          <dt id="NewsletterSubscribeParams">
+  <span class="name "><a href="../spree_sdk/NewsletterSubscribeParams-class.html">NewsletterSubscribeParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /newsletter_subscribers</code>.
+</dd>
+
+          <dt id="NewsletterSubscriber">
+  <span class="name "><a href="../spree_sdk/NewsletterSubscriber-class.html">NewsletterSubscriber</a></span> 
+
+</dt>
+<dd>
+  A newsletter subscription linked to a customer.
+</dd>
+
+          <dt id="NewsletterUnsubscribeRequestParams">
+  <span class="name "><a href="../spree_sdk/NewsletterUnsubscribeRequestParams-class.html">NewsletterUnsubscribeRequestParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /newsletter_subscribers/request_unsubscribe</code>.
+</dd>
+
+          <dt id="NewsletterVerifyParams">
+  <span class="name "><a href="../spree_sdk/NewsletterVerifyParams-class.html">NewsletterVerifyParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /newsletter_subscribers/verify</code>.
+</dd>
+
+          <dt id="OptionType">
+  <span class="name "><a href="../spree_sdk/OptionType-class.html">OptionType</a></span> 
+
+</dt>
+<dd>
+  A product option type (e.g. size, color).
+</dd>
+
+          <dt id="OptionValue">
+  <span class="name "><a href="../spree_sdk/OptionValue-class.html">OptionValue</a></span> 
+
+</dt>
+<dd>
+  One value of a product option type (e.g. <code>Red</code> for color).
+</dd>
+
+          <dt id="Order">
+  <span class="name "><a href="../spree_sdk/Order-class.html">Order</a></span> 
+
+</dt>
+<dd>
+  A completed order.
+</dd>
+
+          <dt id="OrderClaimsResource">
+  <span class="name "><a href="../spree_sdk/OrderClaimsResource-class.html">OrderClaimsResource</a></span> 
+
+</dt>
+<dd>
+  Lists and files claims on a completed order.
+</dd>
+
+          <dt id="OrderGroup">
+  <span class="name "><a href="../spree_sdk/OrderGroup-class.html">OrderGroup</a></span> 
+
+</dt>
+<dd>
+  The group a multi-seller checkout divides into, carrying one <a href="../spree_sdk/Order-class.html">Order</a>
+per seller.
+</dd>
+
+          <dt id="OrderReturnsResource">
+  <span class="name "><a href="../spree_sdk/OrderReturnsResource-class.html">OrderReturnsResource</a></span> 
+
+</dt>
+<dd>
+  Lists and opens returns on a completed order.
+</dd>
+
+          <dt id="OrdersResource">
+  <span class="name "><a href="../spree_sdk/OrdersResource-class.html">OrdersResource</a></span> 
+
+</dt>
+<dd>
+  Reads for completed orders: guest-capable single get plus the
+authenticated customer's order history.
+</dd>
+
+          <dt id="PaginatedResponse">
+  <span class="name "><a href="../spree_sdk/PaginatedResponse-class.html">PaginatedResponse</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Paginated collection envelope for the Spree Store API.
+</dd>
+
+          <dt id="PaginationMeta">
+  <span class="name "><a href="../spree_sdk/PaginationMeta-class.html">PaginationMeta</a></span> 
+
+</dt>
+<dd>
+  Pagination metadata for a collection response.
+</dd>
+
+          <dt id="Payment">
+  <span class="name "><a href="../spree_sdk/Payment-class.html">Payment</a></span> 
+
+</dt>
+<dd>
+  A payment on a cart or order.
+</dd>
+
+          <dt id="PaymentMethod">
+  <span class="name "><a href="../spree_sdk/PaymentMethod-class.html">PaymentMethod</a></span> 
+
+</dt>
+<dd>
+  A payment method available on a cart.
+</dd>
+
+          <dt id="PaymentSession">
+  <span class="name "><a href="../spree_sdk/PaymentSession-class.html">PaymentSession</a></span> 
+
+</dt>
+<dd>
+  A provider-delegated payment session (e.g. Stripe).
+</dd>
+
+          <dt id="PaymentSessionsResource">
+  <span class="name "><a href="../spree_sdk/PaymentSessionsResource-class.html">PaymentSessionsResource</a></span> 
+
+</dt>
+<dd>
+  Cart payment-session operations.
+</dd>
+
+          <dt id="PaymentSetupSession">
+  <span class="name "><a href="../spree_sdk/PaymentSetupSession-class.html">PaymentSetupSession</a></span> 
+
+</dt>
+<dd>
+  A payment setup session (save-method flow).
+</dd>
+
+          <dt id="PaymentSetupSessionsResource">
+  <span class="name "><a href="../spree_sdk/PaymentSetupSessionsResource-class.html">PaymentSetupSessionsResource</a></span> 
+
+</dt>
+<dd>
+  Payment setup sessions: the save-method flow against a payment gateway.
+</dd>
+
+          <dt id="PoliciesResource">
+  <span class="name "><a href="../spree_sdk/PoliciesResource-class.html">PoliciesResource</a></span> 
+
+</dt>
+<dd>
+  Policy operations.
+</dd>
+
+          <dt id="Policy">
+  <span class="name "><a href="../spree_sdk/Policy-class.html">Policy</a></span> 
+
+</dt>
+<dd>
+  A store/seller policy page (terms, returns, …).
+</dd>
+
+          <dt id="Price">
+  <span class="name "><a href="../spree_sdk/Price-class.html">Price</a></span> 
+
+</dt>
+<dd>
+  A price in a currency: decimal-string amounts.
+</dd>
+
+          <dt id="PriceHistory">
+  <span class="name "><a href="../spree_sdk/PriceHistory-class.html">PriceHistory</a></span> 
+
+</dt>
+<dd>
+  The lowest prior price of a variant (omnibus-style pricing history).
+</dd>
+
+          <dt id="Product">
+  <span class="name "><a href="../spree_sdk/Product-class.html">Product</a></span> 
+
+</dt>
+<dd>
+  A catalog product.
+</dd>
+
+          <dt id="ProductFilter">
+  <span class="name "><a href="../spree_sdk/ProductFilter-class.html">ProductFilter</a></span> 
+
+</dt>
+<dd>
+  Base of the <code>GET /products/filters</code> response union.
+</dd>
+
+          <dt id="ProductFilterAvailability">
+  <span class="name "><a href="../spree_sdk/ProductFilterAvailability-class.html">ProductFilterAvailability</a></span> 
+
+</dt>
+<dd>
+  Availability facet of the filters response.
+</dd>
+
+          <dt id="ProductFilterAvailabilityOption">
+  <span class="name "><a href="../spree_sdk/ProductFilterAvailabilityOption-class.html">ProductFilterAvailabilityOption</a></span> 
+
+</dt>
+<dd>
+  One availability option of the availability facet.
+</dd>
+
+          <dt id="ProductFilterCategory">
+  <span class="name "><a href="../spree_sdk/ProductFilterCategory-class.html">ProductFilterCategory</a></span> 
+
+</dt>
+<dd>
+  Category facet of the filters response.
+</dd>
+
+          <dt id="ProductFilterCategoryOption">
+  <span class="name "><a href="../spree_sdk/ProductFilterCategoryOption-class.html">ProductFilterCategoryOption</a></span> 
+
+</dt>
+<dd>
+  One category option of the category facet.
+</dd>
+
+          <dt id="ProductFilterOption">
+  <span class="name "><a href="../spree_sdk/ProductFilterOption-class.html">ProductFilterOption</a></span> 
+
+</dt>
+<dd>
+  Option facet of the filters response.
+</dd>
+
+          <dt id="ProductFilterOptionValue">
+  <span class="name "><a href="../spree_sdk/ProductFilterOptionValue-class.html">ProductFilterOptionValue</a></span> 
+
+</dt>
+<dd>
+  One option value of the option facet.
+</dd>
+
+          <dt id="ProductFilterPriceRange">
+  <span class="name "><a href="../spree_sdk/ProductFilterPriceRange-class.html">ProductFilterPriceRange</a></span> 
+
+</dt>
+<dd>
+  Price-range facet of the filters response.
+</dd>
+
+          <dt id="ProductFilterSortOption">
+  <span class="name "><a href="../spree_sdk/ProductFilterSortOption-class.html">ProductFilterSortOption</a></span> 
+
+</dt>
+<dd>
+  One sort option of the filters response.
+</dd>
+
+          <dt id="ProductFiltersResponse">
+  <span class="name "><a href="../spree_sdk/ProductFiltersResponse-class.html">ProductFiltersResponse</a></span> 
+
+</dt>
+<dd>
+  Response of <code>GET /products/filters</code>: facets and sort options describing
+the current listing.
+</dd>
+
+          <dt id="ProductFilterUnknown">
+  <span class="name "><a href="../spree_sdk/ProductFilterUnknown-class.html">ProductFilterUnknown</a></span> 
+
+</dt>
+<dd>
+  Fallback carrier for a filter with an unrecognized <code>type</code>.
+</dd>
+
+          <dt id="ProductsResource">
+  <span class="name "><a href="../spree_sdk/ProductsResource-class.html">ProductsResource</a></span> 
+
+</dt>
+<dd>
+  Catalog product operations.
+</dd>
+
+          <dt id="RegisterParams">
+  <span class="name "><a href="../spree_sdk/RegisterParams-class.html">RegisterParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /customers</code> (registration, auto-login).
+</dd>
+
+          <dt id="RequestOptions">
+  <span class="name "><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a></span> 
+
+</dt>
+<dd>
+  Per-request options threaded through resource methods (frozen contract,
+<code>docs/architecture/file-ownership.md</code> table 2).
+</dd>
+
+          <dt id="RequestPasswordResetParams">
+  <span class="name "><a href="../spree_sdk/RequestPasswordResetParams-class.html">RequestPasswordResetParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>POST /password_resets</code> (request reset email).
+</dd>
+
+          <dt id="ResetPasswordParams">
+  <span class="name "><a href="../spree_sdk/ResetPasswordParams-class.html">ResetPasswordParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /password_resets/{token}</code> (consume reset token,
+auto-login).
+</dd>
+
+          <dt id="RetryConfig">
+  <span class="name "><a href="../spree_sdk/RetryConfig-class.html">RetryConfig</a></span> 
+
+</dt>
+<dd>
+  Conservative retry policy for the Spree SDK (ADR-003).
+</dd>
+
+          <dt id="Return">
+  <span class="name "><a href="../spree_sdk/Return-class.html">Return</a></span> 
+
+</dt>
+<dd>
+  A customer return on an order.
+</dd>
+
+          <dt id="ReturnLineItem">
+  <span class="name "><a href="../spree_sdk/ReturnLineItem-class.html">ReturnLineItem</a></span> 
+
+</dt>
+<dd>
+  One returned unit on a return.
+</dd>
+
+          <dt id="ReturnReason">
+  <span class="name "><a href="../spree_sdk/ReturnReason-class.html">ReturnReason</a></span> 
+
+</dt>
+<dd>
+  A return reason of the store.
+</dd>
+
+          <dt id="Seller">
+  <span class="name "><a href="../spree_sdk/Seller-class.html">Seller</a></span> 
+
+</dt>
+<dd>
+  A marketplace seller.
+</dd>
+
+          <dt id="SellersResource">
+  <span class="name "><a href="../spree_sdk/SellersResource-class.html">SellersResource</a></span> 
+
+</dt>
+<dd>
+  Seller operations.
+</dd>
+
+          <dt id="SpreeClient">
+  <span class="name "><a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a></span> 
+
+</dt>
+<dd>
+  Entry point for the Spree Store API (frozen contract,
+<code>docs/architecture/file-ownership.md</code> table 2).
+</dd>
+
+          <dt id="SpreeConfig">
+  <span class="name "><a href="../spree_sdk/SpreeConfig-class.html">SpreeConfig</a></span> 
+
+</dt>
+<dd>
+  Immutable configuration for <a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a> (frozen contract,
+<code>docs/architecture/file-ownership.md</code> table 2).
+</dd>
+
+          <dt id="SpreeLocale">
+  <span class="name "><a href="../spree_sdk/SpreeLocale-class.html">SpreeLocale</a></span> 
+
+</dt>
+<dd>
+  A locale the storefront is translated into.
+</dd>
+
+          <dt id="SpreeRequest">
+  <span class="name "><a href="../spree_sdk/SpreeRequest-class.html">SpreeRequest</a></span> 
+
+</dt>
+<dd>
+  Internal request/response value types for the transport pipeline.
+</dd>
+
+          <dt id="SpreeResponse">
+  <span class="name "><a href="../spree_sdk/SpreeResponse-class.html">SpreeResponse</a></span> 
+
+</dt>
+<dd>
+  Internal HTTP response value type.
+</dd>
+
+          <dt id="SpreeTransport">
+  <span class="name "><a href="../spree_sdk/SpreeTransport-class.html">SpreeTransport</a></span> 
+
+</dt>
+<dd>
+  Narrow internal transport seam (ADR-001).
+</dd>
+
+          <dt id="State">
+  <span class="name "><a href="../spree_sdk/State-class.html">State</a></span> 
+
+</dt>
+<dd>
+  A state / province of a country.
+</dd>
+
+          <dt id="StockLocation">
+  <span class="name "><a href="../spree_sdk/StockLocation-class.html">StockLocation</a></span> 
+
+</dt>
+<dd>
+  A stock location fulfilling a shipment.
+</dd>
+
+          <dt id="Store">
+  <span class="name "><a href="../spree_sdk/Store-class.html">Store</a></span> 
+
+</dt>
+<dd>
+  Store-level public settings.
+</dd>
+
+          <dt id="StoreCredit">
+  <span class="name "><a href="../spree_sdk/StoreCredit-class.html">StoreCredit</a></span> 
+
+</dt>
+<dd>
+  A store-credit record with decimal-string balances.
+</dd>
+
+          <dt id="StoreResource">
+  <span class="name "><a href="../spree_sdk/StoreResource-class.html">StoreResource</a></span> 
+
+</dt>
+<dd>
+  Store operations.
+</dd>
+
+          <dt id="TaxLine">
+  <span class="name "><a href="../spree_sdk/TaxLine-class.html">TaxLine</a></span> 
+
+</dt>
+<dd>
+  One tax line: a single applied tax.
+</dd>
+
+          <dt id="UpdateCartParams">
+  <span class="name "><a href="../spree_sdk/UpdateCartParams-class.html">UpdateCartParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>PATCH /carts/{id}</code>.
+</dd>
+
+          <dt id="UpdateCompanyParams">
+  <span class="name "><a href="../spree_sdk/UpdateCompanyParams-class.html">UpdateCompanyParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /companies/{id}</code>.
+</dd>
+
+          <dt id="UpdateCustomerParams">
+  <span class="name "><a href="../spree_sdk/UpdateCustomerParams-class.html">UpdateCustomerParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /customers/me</code>.
+</dd>
+
+          <dt id="UpdateFulfillmentParams">
+  <span class="name "><a href="../spree_sdk/UpdateFulfillmentParams-class.html">UpdateFulfillmentParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>PATCH /carts/{id}/fulfillments/{id}</code>.
+</dd>
+
+          <dt id="UpdateLineItemParams">
+  <span class="name "><a href="../spree_sdk/UpdateLineItemParams-class.html">UpdateLineItemParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>PATCH /carts/{id}/items/{id}</code>.
+</dd>
+
+          <dt id="UpdatePaymentSessionParams">
+  <span class="name "><a href="../spree_sdk/UpdatePaymentSessionParams-class.html">UpdatePaymentSessionParams</a></span> 
+
+</dt>
+<dd>
+  Parameters for <code>PATCH /carts/{id}/payment_sessions/{id}</code>.
+</dd>
+
+          <dt id="UpdateWishlistItemParams">
+  <span class="name "><a href="../spree_sdk/UpdateWishlistItemParams-class.html">UpdateWishlistItemParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /wishlists/{id}/items/{id}</code>.
+</dd>
+
+          <dt id="UpdateWishlistParams">
+  <span class="name "><a href="../spree_sdk/UpdateWishlistParams-class.html">UpdateWishlistParams</a></span> 
+
+</dt>
+<dd>
+  Body for <code>PATCH /wishlists/{id}</code>.
+</dd>
+
+          <dt id="Variant">
+  <span class="name "><a href="../spree_sdk/Variant-class.html">Variant</a></span> 
+
+</dt>
+<dd>
+  A purchasable variant of a product.
+</dd>
+
+          <dt id="Wishlist">
+  <span class="name "><a href="../spree_sdk/Wishlist-class.html">Wishlist</a></span> 
+
+</dt>
+<dd>
+  A customer wishlist.
+</dd>
+
+          <dt id="WishlistItem">
+  <span class="name "><a href="../spree_sdk/WishlistItem-class.html">WishlistItem</a></span> 
+
+</dt>
+<dd>
+  One item on a wishlist.
+</dd>
+
+          <dt id="WishlistItemsResource">
+  <span class="name "><a href="../spree_sdk/WishlistItemsResource-class.html">WishlistItemsResource</a></span> 
+
+</dt>
+<dd>
+  Items on one wishlist.
+</dd>
+
+          <dt id="WishlistsResource">
+  <span class="name "><a href="../spree_sdk/WishlistsResource-class.html">WishlistsResource</a></span> 
+
+</dt>
+<dd>
+  Wishlists of the authenticated customer.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="enums">
+      <h2>Enums</h2>
+      <dl>
+          <dt id="AddressOwnerType">
+  <span class="name "><a href="../spree_sdk/AddressOwnerType.html">AddressOwnerType</a></span> 
+
+</dt>
+<dd>
+  Owner of an address-book entry.
+</dd>
+
+          <dt id="ClaimResolution">
+  <span class="name "><a href="../spree_sdk/ClaimResolution.html">ClaimResolution</a></span> 
+
+</dt>
+<dd>
+  How a claim was resolved.
+</dd>
+
+          <dt id="ClaimStatus">
+  <span class="name "><a href="../spree_sdk/ClaimStatus.html">ClaimStatus</a></span> 
+
+</dt>
+<dd>
+  Lifecycle status of a claim.
+</dd>
+
+          <dt id="CollectionSortOrder">
+  <span class="name "><a href="../spree_sdk/CollectionSortOrder.html">CollectionSortOrder</a></span> 
+
+</dt>
+<dd>
+  Sort order of a merchandising collection.
+</dd>
+
+          <dt id="CompanyInvitationStatus">
+  <span class="name "><a href="../spree_sdk/CompanyInvitationStatus.html">CompanyInvitationStatus</a></span> 
+
+</dt>
+<dd>
+  Lifecycle status of a company invitation.
+</dd>
+
+          <dt id="CompanyKind">
+  <span class="name "><a href="../spree_sdk/CompanyKind.html">CompanyKind</a></span> 
+
+</dt>
+<dd>
+  Kind of a B2B company node.
+</dd>
+
+          <dt id="CountryCode">
+  <span class="name "><a href="../spree_sdk/CountryCode.html">CountryCode</a></span> 
+
+</dt>
+<dd>
+  ISO 3166-1 alpha-2 country code, as Spree accepts it.
+</dd>
+
+          <dt id="CurrencyCode">
+  <span class="name "><a href="../spree_sdk/CurrencyCode.html">CurrencyCode</a></span> 
+
+</dt>
+<dd>
+  ISO 4217 currency code, as Spree accepts it.
+</dd>
+
+          <dt id="CustomFieldType">
+  <span class="name "><a href="../spree_sdk/CustomFieldType.html">CustomFieldType</a></span> 
+
+</dt>
+<dd>
+  Data type of a merchant-defined custom field.
+</dd>
+
+          <dt id="DeliveryStatus">
+  <span class="name "><a href="../spree_sdk/DeliveryStatus.html">DeliveryStatus</a></span> 
+
+</dt>
+<dd>
+  Carrier status of a delivery. Note <code>unknown</code> is a genuine
+server value here as well as the client fallback.
+</dd>
+
+          <dt id="DimensionUnit">
+  <span class="name "><a href="../spree_sdk/DimensionUnit.html">DimensionUnit</a></span> 
+
+</dt>
+<dd>
+  Dimension unit of variant dimensions.
+</dd>
+
+          <dt id="DiscountKind">
+  <span class="name "><a href="../spree_sdk/DiscountKind.html">DiscountKind</a></span> 
+
+</dt>
+<dd>
+  Origin of a discount: promotion rule or manual adjustment.
+</dd>
+
+          <dt id="FeeKind">
+  <span class="name "><a href="../spree_sdk/FeeKind.html">FeeKind</a></span> 
+
+</dt>
+<dd>
+  What sort of charge a fee is. Extensions may register more kinds.
+</dd>
+
+          <dt id="FulfillmentStatus">
+  <span class="name "><a href="../spree_sdk/FulfillmentStatus.html">FulfillmentStatus</a></span> 
+
+</dt>
+<dd>
+  Status of a cart/order fulfillment (shipment).
+</dd>
+
+          <dt id="FulfillmentType">
+  <span class="name "><a href="../spree_sdk/FulfillmentType.html">FulfillmentType</a></span> 
+
+</dt>
+<dd>
+  How a fulfillment is delivered.
+</dd>
+
+          <dt id="GiftCardStatus">
+  <span class="name "><a href="../spree_sdk/GiftCardStatus.html">GiftCardStatus</a></span> 
+
+</dt>
+<dd>
+  Lifecycle status of a gift card.
+</dd>
+
+          <dt id="LocaleCode">
+  <span class="name "><a href="../spree_sdk/LocaleCode.html">LocaleCode</a></span> 
+
+</dt>
+<dd>
+  Locale code, as Spree accepts it.
+</dd>
+
+          <dt id="MediaType">
+  <span class="name "><a href="../spree_sdk/MediaType.html">MediaType</a></span> 
+
+</dt>
+<dd>
+  Media attachable to products/variants.
+</dd>
+
+          <dt id="OptionTypeKind">
+  <span class="name "><a href="../spree_sdk/OptionTypeKind.html">OptionTypeKind</a></span> 
+
+</dt>
+<dd>
+  Presentation kind of a product option type.
+</dd>
+
+          <dt id="OrderFulfillmentStatus">
+  <span class="name "><a href="../spree_sdk/OrderFulfillmentStatus.html">OrderFulfillmentStatus</a></span> 
+
+</dt>
+<dd>
+  Aggregate fulfillment status of an order.
+</dd>
+
+          <dt id="OrderPaymentStatus">
+  <span class="name "><a href="../spree_sdk/OrderPaymentStatus.html">OrderPaymentStatus</a></span> 
+
+</dt>
+<dd>
+  Aggregate payment status of an order.
+</dd>
+
+          <dt id="PaymentSessionStatus">
+  <span class="name "><a href="../spree_sdk/PaymentSessionStatus.html">PaymentSessionStatus</a></span> 
+
+</dt>
+<dd>
+  Status of a payment session.
+</dd>
+
+          <dt id="PaymentSetupSessionStatus">
+  <span class="name "><a href="../spree_sdk/PaymentSetupSessionStatus.html">PaymentSetupSessionStatus</a></span> 
+
+</dt>
+<dd>
+  Lifecycle status of a payment setup session.
+</dd>
+
+          <dt id="PaymentSourceType">
+  <span class="name "><a href="../spree_sdk/PaymentSourceType.html">PaymentSourceType</a></span> 
+
+</dt>
+<dd>
+  Polymorphic source behind a payment.
+</dd>
+
+          <dt id="PaymentStatus">
+  <span class="name "><a href="../spree_sdk/PaymentStatus.html">PaymentStatus</a></span> 
+
+</dt>
+<dd>
+  Status of a cart/order payment.
+</dd>
+
+          <dt id="ProductFilterType">
+  <span class="name "><a href="../spree_sdk/ProductFilterType.html">ProductFilterType</a></span> 
+
+</dt>
+<dd>
+  Discriminator of the product-filters union.
+</dd>
+
+          <dt id="PurchaseUnit">
+  <span class="name "><a href="../spree_sdk/PurchaseUnit.html">PurchaseUnit</a></span> 
+
+</dt>
+<dd>
+  Purchase unit of a variant (<code>unit</code> or <code>carton</code>).
+</dd>
+
+          <dt id="ReturnStatus">
+  <span class="name "><a href="../spree_sdk/ReturnStatus.html">ReturnStatus</a></span> 
+
+</dt>
+<dd>
+  Lifecycle status of a return.
+</dd>
+
+          <dt id="StockAvailability">
+  <span class="name "><a href="../spree_sdk/StockAvailability.html">StockAvailability</a></span> 
+
+</dt>
+<dd>
+  Availability option of the product-filters response.
+</dd>
+
+          <dt id="WeightUnit">
+  <span class="name "><a href="../spree_sdk/WeightUnit.html">WeightUnit</a></span> 
+
+</dt>
+<dd>
+  Weight unit of variant dimensions.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+      <dl>
+          <dt id="SpreeClientResources">
+  <span class="name "><a href="../spree_sdk/SpreeClientResources.html">SpreeClientResources</a></span>
+  on <a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a>
+  
+
+</dt>
+<dd>
+  Typed resource accessors for <a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a>.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+      <dl class="properties">
+          <dt id="redactedPlaceholder" class="constant">
+    <span class="name "><a href="../spree_sdk/redactedPlaceholder-constant.html">redactedPlaceholder</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  Placeholder substituted for secret values.
+  
+
+</dd>
+
+          <dt id="safeHttpMethods" class="constant">
+    <span class="name "><a href="../spree_sdk/safeHttpMethods-constant.html">safeHttpMethods</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  HTTP methods considered safe (and therefore idempotent) for automatic
+retries. Everything else is a mutation and is never retried without
+explicit idempotence (AGENTS.md sections 3.9 and 6, ADR-003).
+  
+
+</dd>
+
+          <dt id="sensitiveHeaderNames" class="constant">
+    <span class="name "><a href="../spree_sdk/sensitiveHeaderNames-constant.html">sensitiveHeaderNames</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  Header names (compared lower-cased) whose values are always secrets.
+  
+
+</dd>
+
+          <dt id="sensitiveQueryParameters" class="constant">
+    <span class="name "><a href="../spree_sdk/sensitiveQueryParameters-constant.html">sensitiveQueryParameters</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  Query parameter names (compared lower-cased) treated as secrets.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+      <dl class="callables">
+          <dt id="isOrderGroup" class="callable">
+  <span class="name"><a href="../spree_sdk/isOrderGroup.html">isOrderGroup</a></span><span class="signature">(<wbr><span class="parameter" id="isOrderGroup-param-json"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span> <span class="parameter-name">json</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Whether a decoded <code>carts.complete</code> / <code>orders.get</code> payload is the group
+a multi-seller cart divided into, rather than one order.
+  
+
+</dd>
+
+          <dt id="redactHeaders" class="callable">
+  <span class="name"><a href="../spree_sdk/redactHeaders.html">redactHeaders</a></span><span class="signature">(<wbr><span class="parameter" id="redactHeaders-param-headers"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">headers</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a copy of <code>headers</code> with secret values replaced by
+<a href="../spree_sdk/redactedPlaceholder-constant.html">redactedPlaceholder</a>. Header names are preserved as given.
+  
+
+</dd>
+
+          <dt id="redactText" class="callable">
+  <span class="name"><a href="../spree_sdk/redactText.html">redactText</a></span><span class="signature">(<wbr><span class="parameter" id="redactText-param-input"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">input</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Redacts bearer tokens and publishable keys embedded in free text.
+  
+
+</dd>
+
+          <dt id="redactUri" class="callable">
+  <span class="name"><a href="../spree_sdk/redactUri.html">redactUri</a></span><span class="signature">(<wbr><span class="parameter" id="redactUri-param-uri"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Uri-class.html">Uri</a></span> <span class="parameter-name">uri</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Uri-class.html">Uri</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns <code>uri</code> with secret query parameter values redacted.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="RequestInterceptor" class="callable">
+    <span class="name"><a href="../spree_sdk/RequestInterceptor.html">RequestInterceptor</a></span><span class="signature">
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/SpreeRequest-class.html">SpreeRequest</a></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-request"><span class="type-annotation"><a href="../spree_sdk/SpreeRequest-class.html">SpreeRequest</a></span> <span class="parameter-name">request</span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Intercepts an outgoing request before it is sent.
+    
+
+  </dd>
+
+          
+  <dt id="ResponseInterceptor" class="callable">
+    <span class="name"><a href="../spree_sdk/ResponseInterceptor.html">ResponseInterceptor</a></span><span class="signature">
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/SpreeResponse-class.html">SpreeResponse</a></span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-response"><span class="type-annotation"><a href="../spree_sdk/SpreeResponse-class.html">SpreeResponse</a></span> <span class="parameter-name">response</span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Intercepts an incoming response before it is decoded.
+    
+
+  </dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+      <dl>
+          <dt id="SpreeAuthError">
+  <span class="name "><a href="../spree_sdk/SpreeAuthError-class.html">SpreeAuthError</a></span> 
+
+</dt>
+<dd>
+  401/403-class failures surfaced distinctly so apps can trigger re-login
+(ADR-003). Constructed via <a href="../spree_sdk/SpreeHttpError/SpreeHttpError.fromResponse.html">SpreeHttpError.fromResponse</a>.
+</dd>
+
+          <dt id="SpreeDecodeError">
+  <span class="name "><a href="../spree_sdk/SpreeDecodeError-class.html">SpreeDecodeError</a></span> 
+
+</dt>
+<dd>
+  A response body did not match the expected shape.
+</dd>
+
+          <dt id="SpreeException">
+  <span class="name "><a href="../spree_sdk/SpreeException-class.html">SpreeException</a></span> 
+
+</dt>
+<dd>
+  Base class for all errors thrown by the Spree SDK.
+</dd>
+
+          <dt id="SpreeHttpError">
+  <span class="name "><a href="../spree_sdk/SpreeHttpError-class.html">SpreeHttpError</a></span> 
+
+</dt>
+<dd>
+  The server answered with a non-2xx status code.
+</dd>
+
+          <dt id="SpreeTimeoutError">
+  <span class="name "><a href="../spree_sdk/SpreeTimeoutError-class.html">SpreeTimeoutError</a></span> 
+
+</dt>
+<dd>
+  A request exceeded the configured client-side timeout.
+</dd>
+
+          <dt id="SpreeTransportError">
+  <span class="name "><a href="../spree_sdk/SpreeTransportError-class.html">SpreeTransportError</a></span> 
+
+</dt>
+<dd>
+  A request failed before any HTTP response was received.
+</dd>
+
+      </dl>
+    </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">spree_sdk</a></li>
+    <li class="self-crumb">spree_sdk.dart</li>
+</ol>
+
+    <h5><span class="package-name">spree_sdk</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../spree_sdk/">spree_sdk</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>spree_sdk library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    spree_sdk
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

@@ -27,7 +27,7 @@ Map<String, Object?> _asMap(Object? json) {
 /// Upstream: `products.list` (SRC 184), `products.get` (SRC 196),
 /// `products.filters` (SRC 210) in `packages/sdk/src/store-client.ts`.
 class ProductsResource {
-  /// Creates a product resource bound to [client].
+  /// Creates a product resource bound to [SpreeClient].
   const ProductsResource(this._client);
 
   /// Underlying Store API client.

@@ -24,7 +24,7 @@ import '../utils/query_builder.dart';
 
 /// Saved credit cards of the authenticated customer.
 class CustomerCreditCardsResource {
-  /// Creates a credit-cards resource bound to [client].
+  /// Creates a credit-cards resource bound to [SpreeClient].
   const CustomerCreditCardsResource(this._client);
 
   final SpreeClient _client;
@@ -73,7 +73,7 @@ class CustomerCreditCardsResource {
 
 /// Gift cards of the authenticated customer (list only).
 class CustomerGiftCardsResource {
-  /// Creates a gift-cards resource bound to [client].
+  /// Creates a gift-cards resource bound to [SpreeClient].
   const CustomerGiftCardsResource(this._client);
 
   final SpreeClient _client;
@@ -99,7 +99,7 @@ class CustomerGiftCardsResource {
 
 /// Store credits of the authenticated customer (list only).
 class CustomerStoreCreditsResource {
-  /// Creates a store-credits resource bound to [client].
+  /// Creates a store-credits resource bound to [SpreeClient].
   const CustomerStoreCreditsResource(this._client);
 
   final SpreeClient _client;
@@ -125,7 +125,7 @@ class CustomerStoreCreditsResource {
 
 /// Downloads of the authenticated customer (list only).
 class CustomerDigitalLinksResource {
-  /// Creates a digital-links resource bound to [client].
+  /// Creates a digital-links resource bound to [SpreeClient].
   const CustomerDigitalLinksResource(this._client);
 
   final SpreeClient _client;
@@ -151,7 +151,7 @@ class CustomerDigitalLinksResource {
 
 /// Payment setup sessions: the save-method flow against a payment gateway.
 class PaymentSetupSessionsResource {
-  /// Creates a payment-setup-sessions resource bound to [client].
+  /// Creates a payment-setup-sessions resource bound to [SpreeClient].
   const PaymentSetupSessionsResource(this._client);
 
   final SpreeClient _client;

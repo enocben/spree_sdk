@@ -53,7 +53,7 @@ Map<String, Object?> _asObject(Object? json, String operation) {
 /// );
 /// ```
 class CustomerResource {
-  /// Creates a customer resource bound to [client].
+  /// Creates a customer resource bound to [SpreeClient].
   const CustomerResource(this.client);
 
   /// The Store API client used for every operation.
@@ -91,7 +91,7 @@ class CustomerResource {
 /// Address-book CRUD (`/customers/me/addresses`). Auth: KEY+JWT on every
 /// operation.
 class CustomerAddressesResource {
-  /// Creates an address-book resource bound to [client].
+  /// Creates an address-book resource bound to [SpreeClient].
   const CustomerAddressesResource(this.client);
 
   /// The Store API client used for every operation.

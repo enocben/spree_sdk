@@ -19,7 +19,7 @@ import '../utils/query_builder.dart';
 
 /// Lists and files claims on a completed order.
 class OrderClaimsResource {
-  /// Creates a claims resource bound to [client].
+  /// Creates a claims resource bound to [SpreeClient].
   const OrderClaimsResource(this._client);
 
   final SpreeClient _client;

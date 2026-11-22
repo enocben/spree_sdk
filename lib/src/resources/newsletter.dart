@@ -73,7 +73,7 @@ Map<String, Object?> _asObject(Object? json, String operation) {
 /// );
 /// ```
 class NewsletterResource {
-  /// Creates a newsletter resource bound to [client].
+  /// Creates a newsletter resource bound to [SpreeClient].
   const NewsletterResource(this.client);
 
   /// The Store API client used for every operation.

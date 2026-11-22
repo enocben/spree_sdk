@@ -41,7 +41,7 @@ Map<String, String> _sparseQuery({List<String>? expand, List<String>? fields}) {
 ///
 /// Upstream: `categories.list` (SRC 228), `categories.get` (SRC 240).
 class CategoriesResource {
-  /// Creates a category resource bound to [client].
+  /// Creates a category resource bound to [SpreeClient].
   const CategoriesResource(this._client);
 
   /// Underlying Store API client.
@@ -94,7 +94,7 @@ class CategoriesResource {
 ///
 /// Upstream: `sellers.list` (SRC 269), `sellers.get` (SRC 279).
 class SellersResource {
-  /// Creates a seller resource bound to [client].
+  /// Creates a seller resource bound to [SpreeClient].
   const SellersResource(this._client);
 
   /// Underlying Store API client.
@@ -148,7 +148,7 @@ class SellersResource {
 /// Upstream: `collections.list` (SRC 294), `collections.get` (SRC 306),
 /// `collections.products.list` (SRC 324).
 class CollectionsResource {
-  /// Creates a collection resource bound to [client].
+  /// Creates a collection resource bound to [SpreeClient].
   const CollectionsResource(this._client);
 
   /// Underlying Store API client.

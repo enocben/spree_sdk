@@ -34,7 +34,7 @@ Map<String, Object?> _asMap(Object? json) {
 /// Upstream: `deliveryMethods.list` (SRC 411),
 /// `deliveryMethods.pickupLocations` (SRC 428).
 class DeliveryMethodsResource {
-  /// Creates a delivery-method resource bound to [client].
+  /// Creates a delivery-method resource bound to [SpreeClient].
   const DeliveryMethodsResource(this._client);
 
   /// Underlying Store API client.

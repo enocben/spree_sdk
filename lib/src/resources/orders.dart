@@ -22,7 +22,7 @@ import '../utils/query_builder.dart';
 /// Reads for completed orders: guest-capable single get plus the
 /// authenticated customer's order history.
 class OrdersResource {
-  /// Creates an orders resource bound to [client].
+  /// Creates an orders resource bound to [SpreeClient].
   const OrdersResource(this._client);
 
   final SpreeClient _client;

@@ -32,7 +32,7 @@ import '../utils/query_builder.dart';
 
 /// The signed-in buyer's company directory.
 class AccountCompaniesResource {
-  /// Creates an account-companies resource bound to [client].
+  /// Creates an account-companies resource bound to [SpreeClient].
   const AccountCompaniesResource(this._client);
 
   final SpreeClient _client;
@@ -58,7 +58,7 @@ class AccountCompaniesResource {
 
 /// Company nodes: read and rename.
 class CompaniesResource {
-  /// Creates a companies resource bound to [client].
+  /// Creates a companies resource bound to [SpreeClient].
   const CompaniesResource(this._client);
 
   final SpreeClient _client;
@@ -95,7 +95,7 @@ class CompaniesResource {
 
 /// Addresses of a company node.
 class CompanyAddressesResource {
-  /// Creates a company-addresses resource bound to [client].
+  /// Creates a company-addresses resource bound to [SpreeClient].
   const CompanyAddressesResource(this._client);
 
   final SpreeClient _client;
@@ -173,7 +173,7 @@ class CompanyAddressesResource {
 
 /// Members of a company node (member removal excluded: no SPEC path).
 class CompanyMembersResource {
-  /// Creates a company-members resource bound to [client].
+  /// Creates a company-members resource bound to [SpreeClient].
   const CompanyMembersResource(this._client);
 
   final SpreeClient _client;
@@ -218,7 +218,7 @@ class CompanyMembersResource {
 
 /// Pending invitations of a company node (company-scoped revoke only).
 class CompanyInvitationsResource {
-  /// Creates a company-invitations resource bound to [client].
+  /// Creates a company-invitations resource bound to [SpreeClient].
   const CompanyInvitationsResource(this._client);
 
   final SpreeClient _client;
@@ -262,7 +262,7 @@ class CompanyInvitationsResource {
 
 /// Completed purchases across a company node's subtree.
 class CompanyOrdersResource {
-  /// Creates a company-orders resource bound to [client].
+  /// Creates a company-orders resource bound to [SpreeClient].
   const CompanyOrdersResource(this._client);
 
   final SpreeClient _client;
@@ -291,7 +291,7 @@ class CompanyOrdersResource {
 /// account (registration payload), or bind the invitation to the signed-in
 /// customer when called authenticated.
 class CompanyInvitationTokenResource {
-  /// Creates an invitation-token resource bound to [client].
+  /// Creates an invitation-token resource bound to [SpreeClient].
   const CompanyInvitationTokenResource(this._client);
 
   final SpreeClient _client;

@@ -20,7 +20,7 @@ import '../utils/query_builder.dart';
 
 /// Wishlists of the authenticated customer.
 class WishlistsResource {
-  /// Creates a wishlists resource bound to [client].
+  /// Creates a wishlists resource bound to [SpreeClient].
   const WishlistsResource(this._client);
 
   final SpreeClient _client;
@@ -104,7 +104,7 @@ class WishlistsResource {
 
 /// Items on one wishlist.
 class WishlistItemsResource {
-  /// Creates a wishlist-items resource bound to [client].
+  /// Creates a wishlist-items resource bound to [SpreeClient].
   const WishlistItemsResource(this._client);
 
   final SpreeClient _client;

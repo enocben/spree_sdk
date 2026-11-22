@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the CartsResource class from the spree_sdk library, for the Dart programming language.">
+  <title>CartsResource class - spree_sdk library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">spree_sdk</a></li>
+    <li><a href="../spree_sdk/">spree_sdk.dart</a></li>
+    <li class="self-crumb">CartsResource class</li>
+  </ol>
+  <div class="self-name">CartsResource</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="spree_sdk&#47;spree_sdk-library-sidebar.html"
+    data-below-sidebar="spree_sdk&#47;CartsResource-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">CartsResource</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Cart and checkout operations.</p>
+<p>Upstream (<code>packages/sdk/src/store-client.ts</code>): <code>carts.list</code> (SRC 535),
+<code>carts.get</code> (SRC 542), <code>carts.create</code> (SRC 549), <code>carts.update</code>
+(SRC 560), <code>carts.delete</code> (SRC 570), <code>carts.associate</code> (SRC 578),
+<code>carts.complete</code> (SRC 588), <code>carts.addresses.list</code> (SRC 612),
+<code>carts.items.create/update/delete</code> (SRC 632/648/659),
+<code>carts.discountCodes.apply/remove</code> (SRC 672/683),
+<code>carts.giftCards.apply/remove</code> (SRC 698/709),
+<code>carts.fulfillments.update</code> (SRC 727), <code>carts.payments.create</code>
+(SRC 747), <code>carts.storeCredits.apply/remove</code> (SRC 819/829).</p>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="CartsResource.new" class="callable">
+          <span class="name"><a href="../spree_sdk/CartsResource/CartsResource.html">CartsResource</a></span><span class="signature">(<span class="parameter" id="param-_client"><span class="type-annotation"><a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a></span> <span class="parameter-name">_client</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a cart resource bound to <a href="../spree_sdk/SpreeClient-class.html">SpreeClient</a>.
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="addItem" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/addItem.html">addItem</a></span><span class="signature">(<wbr><span class="parameter" id="addItem-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="addItem-param-params"><span>required</span> <span class="type-annotation"><a href="../spree_sdk/AddLineItemParams-class.html">AddLineItemParams</a></span> <span class="parameter-name">params</span>, </span><span class="parameter" id="addItem-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Adds a line item (<code>POST /carts/{id}/items</code>); returns the
+recalculated cart.
+  
+
+</dd>
+
+        <dt id="addresses" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/addresses.html">addresses</a></span><span class="signature">(<wbr><span class="parameter" id="addresses-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="addresses-param-page"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">page</span>, </span><span class="parameter" id="addresses-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="addresses-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/PaginatedResponse-class.html">PaginatedResponse</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Address-class.html">Address</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Lists the address-book entries usable for a cart
+(<code>GET /carts/{id}/addresses</code>).
+  
+
+</dd>
+
+        <dt id="applyDiscountCode" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/applyDiscountCode.html">applyDiscountCode</a></span><span class="signature">(<wbr><span class="parameter" id="applyDiscountCode-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="applyDiscountCode-param-code"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">code</span>, </span><span class="parameter" id="applyDiscountCode-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Applies a discount code (<code>POST /carts/{id}/discount_codes</code>
+with <code>{code}</code>; verified contract §4, SRC 672).
+  
+
+</dd>
+
+        <dt id="applyGiftCard" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/applyGiftCard.html">applyGiftCard</a></span><span class="signature">(<wbr><span class="parameter" id="applyGiftCard-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="applyGiftCard-param-code"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">code</span>, </span><span class="parameter" id="applyGiftCard-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Applies a gift card (<code>POST /carts/{id}/gift_cards</code> with <code>{code}</code>;
+the cart total is unchanged while <code>amount_due</code> drops — verified
+contract §4, SRC 698).
+  
+
+</dd>
+
+        <dt id="applyStoreCredit" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/applyStoreCredit.html">applyStoreCredit</a></span><span class="signature">(<wbr><span class="parameter" id="applyStoreCredit-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="applyStoreCredit-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="applyStoreCredit-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Applies store credit (<code>POST /carts/{id}/store_credits</code>).
+  
+
+</dd>
+
+        <dt id="associate" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/associate.html">associate</a></span><span class="signature">(<wbr><span class="parameter" id="associate-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="associate-param-options"><span>required</span> <span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a></span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Associates a guest cart with the authenticated customer
+(<code>PATCH /carts/{id}/associate</code>).
+  
+
+</dd>
+
+        <dt id="complete" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/complete.html">complete</a></span><span class="signature">(<wbr><span class="parameter" id="complete-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="complete-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/CompletedCheckout-class.html">CompletedCheckout</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Completes checkout (<code>POST /carts/{id}/complete</code>).
+  
+
+</dd>
+
+        <dt id="create" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/create.html">create</a></span><span class="signature">(<wbr>{<span class="parameter" id="create-param-body"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span>?</span> <span class="parameter-name">body</span>, </span><span class="parameter" id="create-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates a cart (<code>POST /carts</code>).
+  
+
+</dd>
+
+        <dt id="createPayment" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/createPayment.html">createPayment</a></span><span class="signature">(<wbr><span class="parameter" id="createPayment-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="createPayment-param-params"><span>required</span> <span class="type-annotation"><a href="../spree_sdk/CreatePaymentParams-class.html">CreatePaymentParams</a></span> <span class="parameter-name">params</span>, </span><span class="parameter" id="createPayment-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Payment-class.html">Payment</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates a direct payment for non-session methods such as check or
+cash on delivery (<code>POST /carts/{id}/payments</code>; verified contract §4,
+SRC 747). Never retried without an explicit <code>Idempotency-Key</code>.
+  
+
+</dd>
+
+        <dt id="delete" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/delete.html">delete</a></span><span class="signature">(<wbr><span class="parameter" id="delete-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="delete-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Deletes a cart (<code>DELETE /carts/{id}</code>).
+  
+
+</dd>
+
+        <dt id="get" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/get.html">get</a></span><span class="signature">(<wbr><span class="parameter" id="get-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="get-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Fetches one cart (<code>GET /carts/{id}</code>).
+  
+
+</dd>
+
+        <dt id="list" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/list.html">list</a></span><span class="signature">(<wbr>{<span class="parameter" id="list-param-page"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">page</span>, </span><span class="parameter" id="list-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="list-param-expand"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">expand</span>, </span><span class="parameter" id="list-param-filter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">filter</span>, </span><span class="parameter" id="list-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/PaginatedResponse-class.html">PaginatedResponse</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Lists the active carts of the authenticated customer
+(<code>GET /carts</code>; <code>KEY+JWT</code> — guest token is not accepted here).
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="removeDiscountCode" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/removeDiscountCode.html">removeDiscountCode</a></span><span class="signature">(<wbr><span class="parameter" id="removeDiscountCode-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, </span><span class="parameter" id="removeDiscountCode-param-code"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">code</span>, {</span><span class="parameter" id="removeDiscountCode-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Removes a discount code
+(<code>DELETE /carts/{id}/discount_codes/{id}</code>, where the path segment
+carries the code string — verified contract §4, SRC 683).
+  
+
+</dd>
+
+        <dt id="removeGiftCard" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/removeGiftCard.html">removeGiftCard</a></span><span class="signature">(<wbr><span class="parameter" id="removeGiftCard-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, </span><span class="parameter" id="removeGiftCard-param-code"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">code</span>, {</span><span class="parameter" id="removeGiftCard-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Removes a gift card (<code>DELETE /carts/{id}/gift_cards/{id}</code>, where the
+path segment carries the code string — verified contract §4,
+SRC 709).
+  
+
+</dd>
+
+        <dt id="removeItem" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/removeItem.html">removeItem</a></span><span class="signature">(<wbr><span class="parameter" id="removeItem-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, </span><span class="parameter" id="removeItem-param-itemId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">itemId</span>, {</span><span class="parameter" id="removeItem-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Removes a line item (<code>DELETE /carts/{id}/items/{id}</code>); returns the
+recalculated cart (not void — verified contract §4, SRC 659).
+  
+
+</dd>
+
+        <dt id="removeStoreCredit" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/removeStoreCredit.html">removeStoreCredit</a></span><span class="signature">(<wbr><span class="parameter" id="removeStoreCredit-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="removeStoreCredit-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Removes store credit (<code>DELETE /carts/{id}/store_credits</code>; verified
+contract §4, SRC 829).
+  
+
+</dd>
+
+        <dt id="selectFulfillmentRate" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/selectFulfillmentRate.html">selectFulfillmentRate</a></span><span class="signature">(<wbr><span class="parameter" id="selectFulfillmentRate-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, </span><span class="parameter" id="selectFulfillmentRate-param-fulfillmentId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">fulfillmentId</span>, {</span><span class="parameter" id="selectFulfillmentRate-param-params"><span>required</span> <span class="type-annotation"><a href="../spree_sdk/UpdateFulfillmentParams-class.html">UpdateFulfillmentParams</a></span> <span class="parameter-name">params</span>, </span><span class="parameter" id="selectFulfillmentRate-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Selects the delivery rate of a fulfillment
+(<code>PATCH /carts/{id}/fulfillments/{id}</code>; verified contract §4,
+SRC 727).
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="update" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/update.html">update</a></span><span class="signature">(<wbr><span class="parameter" id="update-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, {</span><span class="parameter" id="update-param-params"><span class="type-annotation"><a href="../spree_sdk/UpdateCartParams-class.html">UpdateCartParams</a></span> <span class="parameter-name">params</span> = <span class="default-value">const UpdateCartParams()</span>, </span><span class="parameter" id="update-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Updates a cart (<code>PATCH /carts/{id}</code>).
+  
+
+</dd>
+
+        <dt id="updateItem" class="callable">
+  <span class="name"><a href="../spree_sdk/CartsResource/updateItem.html">updateItem</a></span><span class="signature">(<wbr><span class="parameter" id="updateItem-param-cartId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cartId</span>, </span><span class="parameter" id="updateItem-param-itemId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">itemId</span>, {</span><span class="parameter" id="updateItem-param-params"><span>required</span> <span class="type-annotation"><a href="../spree_sdk/UpdateLineItemParams-class.html">UpdateLineItemParams</a></span> <span class="parameter-name">params</span>, </span><span class="parameter" id="updateItem-param-options"><span class="type-annotation"><a href="../spree_sdk/RequestOptions-class.html">RequestOptions</a>?</span> <span class="parameter-name">options</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../spree_sdk/Cart-class.html">Cart</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Updates a line item (<code>PATCH /carts/{id}/items/{id}</code>); returns the
+recalculated cart.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">spree_sdk</a></li>
+    <li><a href="../spree_sdk/">spree_sdk</a></li>
+    <li class="self-crumb">CartsResource class</li>
+</ol>
+
+    <h5>spree_sdk library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    spree_sdk
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

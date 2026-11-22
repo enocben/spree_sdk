@@ -39,7 +39,7 @@ Map<String, Object?> _withoutNulls(Map<String, Object?> body) {
 ///
 /// Verified (contract §1, flows §C): `{provider?='email', email, password}`
 /// with provider-dispatched strategies (`Spree.store_authentication_strategies`).
-/// Auth: KEY only — no JWT is sent by [login].
+/// Auth: KEY only — no JWT is sent by `POST /auth/login`.
 class LoginParams {
   /// Creates login credentials.
   const LoginParams({

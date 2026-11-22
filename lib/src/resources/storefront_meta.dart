@@ -47,7 +47,7 @@ List<T> _dataList<T>(Object? json, T Function(Map<String, Object?>) parse) {
 ///
 /// Upstream: `countries.list` (SRC 345), `countries.get` (SRC 353).
 class CountriesResource {
-  /// Creates a country resource bound to [client].
+  /// Creates a country resource bound to [SpreeClient].
   const CountriesResource(this._client);
 
   /// Underlying Store API client.
@@ -91,7 +91,7 @@ class CountriesResource {
 ///
 /// Upstream: `currencies.list` (SRC 368).
 class CurrenciesResource {
-  /// Creates a currency resource bound to [client].
+  /// Creates a currency resource bound to [SpreeClient].
   const CurrenciesResource(this._client);
 
   /// Underlying Store API client.
@@ -112,7 +112,7 @@ class CurrenciesResource {
 ///
 /// Upstream: `locales.list` (SRC 376).
 class LocalesResource {
-  /// Creates a locale resource bound to [client].
+  /// Creates a locale resource bound to [SpreeClient].
   const LocalesResource(this._client);
 
   /// Underlying Store API client.
@@ -133,7 +133,7 @@ class LocalesResource {
 ///
 /// Upstream: `channel.get` (SRC 388).
 class ChannelResource {
-  /// Creates a channel resource bound to [client].
+  /// Creates a channel resource bound to [SpreeClient].
   const ChannelResource(this._client);
 
   /// Underlying Store API client.
@@ -154,7 +154,7 @@ class ChannelResource {
 ///
 /// Upstream: `store.get` (SRC 398).
 class StoreResource {
-  /// Creates a store resource bound to [client].
+  /// Creates a store resource bound to [SpreeClient].
   const StoreResource(this._client);
 
   /// Underlying Store API client.
@@ -175,7 +175,7 @@ class StoreResource {
 ///
 /// Upstream: `policies.list` (SRC 459), `policies.get` (SRC 466).
 class PoliciesResource {
-  /// Creates a policy resource bound to [client].
+  /// Creates a policy resource bound to [SpreeClient].
   const PoliciesResource(this._client);
 
   /// Underlying Store API client.
@@ -208,7 +208,7 @@ class PoliciesResource {
 /// `markets.resolve` (SRC 492), `markets.countries.list` (SRC 506),
 /// `markets.countries.get` (SRC 519).
 class MarketsResource {
-  /// Creates a market resource bound to [client].
+  /// Creates a market resource bound to [SpreeClient].
   const MarketsResource(this._client);
 
   /// Underlying Store API client.

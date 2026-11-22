@@ -75,7 +75,7 @@ Map<String, Object?> _asObject(Object? json, String operation) {
 /// );
 /// ```
 class AuthResource {
-  /// Creates an auth resource bound to [client].
+  /// Creates an auth resource bound to [SpreeClient].
   const AuthResource(this.client);
 
   /// The Store API client used for every operation.

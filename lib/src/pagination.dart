@@ -9,7 +9,7 @@ import 'errors/decode_error.dart';
 /// Note: this differs nominally from the `meta(count/totalCount/totalPages/
 /// page)` sketch in `docs/architecture/file-ownership.md` table 2, which was
 /// a pre-research proposal. The field names below follow the verified
-/// research contract; [totalCount] and [totalPages] are provided as
+/// research contract; `totalCount` and `totalPages` are provided as
 /// convenience aliases so both spellings read naturally.
 class PaginatedResponse<T> {
   /// Items on this page.

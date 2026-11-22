@@ -2419,7 +2419,7 @@ class Cart {
   /// Uploaded PO document size in bytes, when reported.
   final int? poDocumentByteSize;
 
-  /// Cart number. Deprecated upstream in favor of [id] — a cart has no
+  /// Cart number. Deprecated upstream in favor of `id` — a cart has no
   /// order number — but still serialized; kept as a plain field.
   final String number;
 

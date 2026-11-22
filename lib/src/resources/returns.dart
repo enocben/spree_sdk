@@ -19,7 +19,7 @@ import '../utils/query_builder.dart';
 
 /// Lists and opens returns on a completed order.
 class OrderReturnsResource {
-  /// Creates a returns resource bound to [client].
+  /// Creates a returns resource bound to [SpreeClient].
   const OrderReturnsResource(this._client);
 
   final SpreeClient _client;

@@ -90,7 +90,7 @@ final class CompletedOrderGroup extends CompletedCheckout {
 /// `carts.fulfillments.update` (SRC 727), `carts.payments.create`
 /// (SRC 747), `carts.storeCredits.apply/remove` (SRC 819/829).
 class CartsResource {
-  /// Creates a cart resource bound to [client].
+  /// Creates a cart resource bound to [SpreeClient].
   const CartsResource(this._client);
 
   /// Underlying Store API client.

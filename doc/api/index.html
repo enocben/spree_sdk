@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="spree_sdk API docs, for the Dart programming language.">
+  <title>spree_sdk - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">spree_sdk package</li>
+  </ol>
+  <div class="self-name">spree_sdk</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="spree-sdk-for-dart">Spree SDK for Dart</h1>
+<p>A pure-Dart SDK for the Spree Commerce Store API. It provides typed
+resources and models, configurable authentication, pagination helpers,
+HTTP transport with retries and timeouts, and structured SDK errors.</p>
+<p>The package has no Flutter dependency and can be used in Dart server,
+command-line, and Flutter applications.</p>
+<blockquote>
+<p>This SDK is compatible with the Spree Store API v3 base path
+<code>/api/v3/store</code>.</p>
+</blockquote>
+<h2 id="features">Features</h2>
+<ul>
+<li>Typed access to products, categories, sellers, collections, carts,
+checkout, orders, customers, and account data</li>
+<li>Authentication, password reset, customer registration, and token refresh</li>
+<li>Guest cart tokens and customer JWT providers</li>
+<li>Store, market, locale, currency, country, and delivery resources</li>
+<li>Wishlists, newsletters, GDPR data requests, returns, claims, and B2B
+company operations</li>
+<li>Payment sessions and payment setup sessions</li>
+<li>Paginated responses with typed metadata</li>
+<li>Automatic retries for safe reads and explicit idempotency-key retries for
+mutations</li>
+<li>Request interceptors, response interceptors, and per-request options</li>
+<li>Secret redaction in exceptions and diagnostics</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Dart SDK <code>^3.14.0</code></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Add the package to <code>pubspec.yaml</code>:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  spree_sdk: ^1.0.0
+</code></pre>
+<p>Then import the public API:</p>
+<pre class="language-dart"><code class="language-dart">import 'package:spree_sdk/spree_sdk.dart';
+</code></pre>
+<h2 id="quick-start">Quick start</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:spree_sdk/spree_sdk.dart';
+
+Future&lt;void&gt; main() async {
+  final client = SpreeClient(
+    baseUrl: Uri.parse('https://api.example.com'),
+    publishableKey: 'your-publishable-key',
+    locale: 'en',
+    currency: 'USD',
+  );
+
+  try {
+    final products = await client.products.list(
+      page: 1,
+      limit: 10,
+      sort: '-updated_at',
+    );
+
+    for (final product in products.data) {
+      print('${product.id}: ${product.name}');
+    }
+  } finally {
+    client.close();
+  }
+}
+</code></pre>
+<p>The SDK appends <code>/api/v3/store</code> to <code>baseUrl</code>. Do not include that path in
+<code>baseUrl</code> itself.</p>
+<h2 id="client-configuration">Client configuration</h2>
+<pre class="language-dart"><code class="language-dart">final client = SpreeClient(
+  baseUrl: Uri.parse('https://api.example.com'),
+  publishableKey: 'your-publishable-key',
+  locale: 'en',
+  currency: 'USD',
+  country: 'US',
+  channel: 'default',
+  timeout: const Duration(seconds: 30),
+  maxRedirects: 5,
+);
+</code></pre>
+<p><code>locale</code>, <code>currency</code>, <code>country</code>, and <code>channel</code> are sent as Spree request
+headers by default. Use <code>RequestOptions</code> to override them for a single
+request.</p>
+<h2 id="authentication">Authentication</h2>
+<p>Implement <code>AuthTokenProvider</code> to supply customer JWTs. The core package never
+persists or chooses storage for tokens:</p>
+<pre class="language-dart"><code class="language-dart">class InMemoryAuthProvider implements AuthTokenProvider {
+  String? accessToken;
+  String? refreshTokenValue;
+
+  @override
+  Future&lt;String?&gt; getToken() async =&gt; accessToken;
+
+  @override
+  Future&lt;String?&gt; refreshToken() async {
+    // Store/refresh the token using a platform-specific adapter.
+    return accessToken;
+  }
+}
+</code></pre>
+<p>Pass the provider to the client:</p>
+<pre class="language-dart"><code class="language-dart">final auth = InMemoryAuthProvider();
+
+final client = SpreeClient(
+  baseUrl: Uri.parse('https://api.example.com'),
+  publishableKey: 'your-publishable-key',
+  authProvider: auth,
+);
+</code></pre>
+<p>Authenticate with the auth resource:</p>
+<pre class="language-dart"><code class="language-dart">final tokens = await client.auth.login(
+  email: 'customer@example.com',
+  password: 'secret',
+);
+
+auth.accessToken = tokens.token;
+auth.refreshTokenValue = tokens.refreshToken;
+</code></pre>
+<p>The SDK also supports registration, logout, password reset, and refresh.
+Password reset and newsletter operations receive typed parameter objects;
+customer and address updates use <code>UpdateCustomerParams</code> and <code>AddressParams</code>.</p>
+<h2 id="guest-cart-and-per-request-options">Guest cart and per-request options</h2>
+<p>Use <code>RequestOptions</code> for guest/order tokens, explicit JWT overrides,
+idempotency keys, contextual headers, and timeout overrides:</p>
+<pre class="language-dart"><code class="language-dart">const options = RequestOptions(
+  spreeToken: 'guest-cart-token',
+  idempotencyKey: 'cart-complete-unique-id',
+);
+
+final checkout = await client.carts.complete(
+  'cart-id',
+  options: options,
+);
+</code></pre>
+<p>When <code>authProvider</code> is configured, a request without <code>RequestOptions.token</code>
+uses the token returned by <code>getToken()</code>. Explicit request options take
+precedence.</p>
+<h2 id="pagination">Pagination</h2>
+<p>Collection resources return <code>PaginatedResponse&lt;T&gt;</code>:</p>
+<pre class="language-dart"><code class="language-dart">final response = await client.products.list(
+  page: 2,
+  limit: 25,
+  sort: '-updated_at',
+  filter: {'name_cont': 'shirt'},
+);
+
+print(response.data);
+print(response.meta.page);
+print(response.meta.pages);
+print(response.meta.count);
+</code></pre>
+<p><code>ListQuery</code> builds shared <code>page</code>, <code>limit</code>, <code>expand</code>, <code>fields</code>, <code>sort</code>, and
+Ransack-style <code>q[...]</code> parameters:</p>
+<pre class="language-dart"><code class="language-dart">final query = const ListQuery(
+  page: 1,
+  limit: 20,
+  sort: '-created_at',
+).toQueryParameters();
+</code></pre>
+<h2 id="resource-access">Resource access</h2>
+<p>Resources are available from <code>SpreeClient</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Accessor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authentication</td>
+<td><code>client.auth</code></td>
+</tr>
+<tr>
+<td>Products and listing filters</td>
+<td><code>client.products</code></td>
+</tr>
+<tr>
+<td>Categories, sellers, collections</td>
+<td><code>client.categories</code>, <code>client.sellers</code>, <code>client.collections</code></td>
+</tr>
+<tr>
+<td>Countries, currencies, locales</td>
+<td><code>client.countries</code>, <code>client.currencies</code>, <code>client.locales</code></td>
+</tr>
+<tr>
+<td>Channel, store, policies, markets</td>
+<td><code>client.channel</code>, <code>client.store</code>, <code>client.policies</code>, <code>client.markets</code></td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td><code>client.deliveryMethods</code></td>
+</tr>
+<tr>
+<td>Carts and checkout</td>
+<td><code>client.carts</code></td>
+</tr>
+<tr>
+<td>Payment sessions</td>
+<td><code>client.paymentSessions</code></td>
+</tr>
+<tr>
+<td>Orders, returns, claims</td>
+<td><code>client.orders</code>, <code>client.orderReturns</code>, <code>client.orderClaims</code></td>
+</tr>
+<tr>
+<td>Customer profile and addresses</td>
+<td><code>client.customer</code>, <code>client.customerAddresses</code></td>
+</tr>
+<tr>
+<td>Credit cards and payment setup</td>
+<td><code>client.customerCreditCards</code>, <code>client.paymentSetupSessions</code></td>
+</tr>
+<tr>
+<td>Wishlists</td>
+<td><code>client.wishlists</code>, <code>client.wishlistItems</code></td>
+</tr>
+<tr>
+<td>Newsletter and GDPR</td>
+<td><code>client.newsletter</code>, <code>client.gdpr</code></td>
+</tr>
+<tr>
+<td>B2B companies</td>
+<td><code>client.accountCompanies</code>, <code>client.companies</code>, <code>client.companyMembers</code>, <code>client.companyOrders</code></td>
+</tr>
+</tbody>
+</table>
+<p>For custom Store API operations, use the typed escape hatch:</p>
+<pre class="language-dart"><code class="language-dart">final result = await client.request(
+  'GET',
+  '/products',
+  query: {'page': '1', 'limit': '10'},
+);
+</code></pre>
+<p>Use <code>requestPaginated&lt;T&gt;()</code> when implementing a custom paginated endpoint.</p>
+<h2 id="retries-and-idempotency">Retries and idempotency</h2>
+<p>The default retry policy retries safe HTTP methods with exponential
+backoff and optional jitter. Mutations are not retried unless the request
+has an explicit idempotency key:</p>
+<pre class="language-dart"><code class="language-dart">const retry = RetryConfig(
+  maxRetries: 2,
+  initialDelay: Duration(milliseconds: 500),
+  maxDelay: Duration(seconds: 5),
+);
+
+final client = SpreeClient(
+  baseUrl: Uri.parse('https://api.example.com'),
+  publishableKey: 'your-publishable-key',
+  retry: retry,
+);
+</code></pre>
+<p>Payment, checkout, and other non-idempotent mutations should not be retried
+blindly. Supply <code>RequestOptions.idempotencyKey</code> only when the server supports
+the corresponding idempotency behavior.</p>
+<h2 id="errors">Errors</h2>
+<p>All SDK failures derive from <code>SpreeException</code>:</p>
+<ul>
+<li><code>SpreeAuthError</code> for HTTP 401 and 403 responses</li>
+<li><code>SpreeHttpError</code> for other unsuccessful HTTP responses</li>
+<li><code>SpreeDecodeError</code> for malformed or unexpected JSON</li>
+<li><code>SpreeTransportError</code> for network failures</li>
+<li><code>SpreeTimeoutError</code> for client-side timeouts</li>
+</ul>
+<pre class="language-dart"><code class="language-dart">try {
+  await client.products.get('missing-product');
+} on SpreeAuthError catch (error) {
+  print('Authentication failed: ${error.code}');
+} on SpreeHttpError catch (error) {
+  print('HTTP ${error.statusCode}: ${error.message}');
+} on SpreeTimeoutError {
+  print('The request timed out');
+} on SpreeException catch (error) {
+  print(error.message);
+}
+</code></pre>
+<p>Credentials are redacted from exception text, HTTP headers, and sensitive
+URI query parameters.</p>
+<h2 id="lifecycle">Lifecycle</h2>
+<p>Call <code>close()</code> when the client is no longer needed:</p>
+<pre class="language-dart"><code class="language-dart">client.close();
+</code></pre>
+<p>A closed client cannot process additional requests.</p>
+<h2 id="development">Development</h2>
+<p>Run the package checks from the repository root:</p>
+<pre class="language-bash"><code class="language-bash">dart format --output=none --set-exit-if-changed .
+dart analyze
+dart test
+</code></pre>
+<p>Repository design and Store API contract references are available in
+<code>docs/architecture/</code>, <code>docs/api/</code>, and <code>docs/research/</code>.</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="spree_sdk">
+  <span class="name"><a href="spree_sdk/">spree_sdk</a></span> 
+
+</dt>
+<dd>Idiomatic Dart SDK for the Spree Commerce Store API.
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">spree_sdk package</li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">spree_sdk</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="spree_sdk/">spree_sdk</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    spree_sdk
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

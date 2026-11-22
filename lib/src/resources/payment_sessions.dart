@@ -69,7 +69,7 @@ class PaymentSession {
 /// `carts.paymentSessions.update` (SRC 791),
 /// `carts.paymentSessions.complete` (SRC 807).
 class PaymentSessionsResource {
-  /// Creates a payment-session resource bound to [client].
+  /// Creates a payment-session resource bound to [SpreeClient].
   const PaymentSessionsResource(this._client);
 
   /// Underlying Store API client.

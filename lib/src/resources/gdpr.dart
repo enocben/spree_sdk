@@ -161,7 +161,7 @@ class DataRequest {
 /// await gdpr.confirm(tokenFromLink);
 /// ```
 class GdprResource {
-  /// Creates a GDPR resource bound to [client].
+  /// Creates a GDPR resource bound to [SpreeClient].
   const GdprResource(this.client);
 
   /// The Store API client used for every operation.

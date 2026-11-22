@@ -20,7 +20,7 @@ import 'resources/wishlists.dart';
 ///
 /// Kept in this file (instead of `client.dart`) so the frozen core client
 /// contract stays untouched while resources evolve. Resources are immutable
-/// value objects over the client, so each accessor cheaply wraps [this].
+/// value objects over the client, so each accessor cheaply wraps `this`.
 extension SpreeClientResources on SpreeClient {
   AuthResource get auth => AuthResource(this);
   ProductsResource get products => ProductsResource(this);
