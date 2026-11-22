@@ -7,12 +7,12 @@
 ///
 /// Evidence (all consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
-/// * endpoint/method/auth matrix: `docs/research/store-api-contract.md`
+/// * endpoint/method/auth matrix: `doc/research/store-api-contract.md`
 ///   sections 1 (auth), 6 (newsletter), 7 (`/customers/me`), 8 (data
 ///   requests);
-/// * flows: `docs/research/authentication-flows.md` sections B, C, D, E, H,
+/// * flows: `doc/research/authentication-flows.md` sections B, C, D, E, H,
 ///   I, K;
-/// * open unknowns recorded in `docs/research/open-questions.md` Q7
+/// * open unknowns recorded in `doc/research/open-questions.md` Q7
 ///   (full field lists for `RegisterParams`, password-reset params,
 ///   address create/update params, newsletter params and data-request
 ///   params were not printed in the research pass).

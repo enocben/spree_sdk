@@ -9,7 +9,7 @@
 /// * discriminator: `packages/sdk/src/order-group.ts` (`isOrderGroup`
 ///   narrows on the `orders` key, which only the group carries);
 /// * SPEC `store.yaml#/components/schemas/{Order,OrderGroup}`;
-/// * contracts: `docs/research/store-api-contract.md` §4 (`carts.complete`
+/// * contracts: `doc/research/store-api-contract.md` §4 (`carts.complete`
 ///   → `Order | OrderGroup`) and §5 (`orders.get` accepts the cart id the
 ///   checkout was placed from).
 library;

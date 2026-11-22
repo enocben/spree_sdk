@@ -18,4 +18,4 @@ description: Analyze the official Spree TypeScript SDK and Store API to produce 
 Use source file paths, official docs, OpenAPI operation identifiers, and test names. Do not infer endpoint paths from resource names. Record disagreements and unresolved questions; do not silently choose one interpretation.
 
 ## Output
-Maintain the feature parity matrix and research documents under `docs/research/`. Do not edit implementation files.
+Maintain the feature parity matrix and research documents under `doc/research/`. Do not edit implementation files.

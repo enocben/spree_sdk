@@ -300,7 +300,7 @@ dart test
 ```
 
 Repository design and Store API contract references are available in
-`docs/architecture/`, `docs/api/`, and `docs/research/`.
+`doc/architecture/`, `doc/api/`, and `doc/research/`.
 
 ## License
 

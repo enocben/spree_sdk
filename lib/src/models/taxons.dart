@@ -8,7 +8,7 @@
 /// * shapes: `packages/sdk/src/types/generated/{Category,Seller,Collection}.ts`
 ///   and `packages/sdk/src/types/index.ts` (re-exports);
 /// * SPEC `store.yaml#/components/schemas/{Category,Seller,Collection}`;
-/// * contracts: `docs/research/store-api-contract.md` §2
+/// * contracts: `doc/research/store-api-contract.md` §2
 ///   (`GET /categories[/{id}]`, `GET /sellers[/{id}]`,
 ///   `GET /collections[/{id}]`,
 ///   `GET /collections/{id}/products`).

@@ -1,6 +1,6 @@
 /// Delivery method operations (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §3
+/// Contracts: `doc/research/store-api-contract.md` §3
 /// (`GET /delivery_methods`,
 /// `GET /delivery_methods/{id}/pickup_locations`); parity matrix row 8.
 /// Auth: publishable key only (`KEY`).

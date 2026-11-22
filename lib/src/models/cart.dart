@@ -14,7 +14,7 @@
 /// * SPEC `store.yaml#/components/schemas/` for the same names
 ///   (`Discount` carries `code`/`value`/`amount`; `AppliedPromotion` carries
 ///   `promotion_id`/`name`/`code`/`amount`);
-/// * contracts: `docs/research/store-api-contract.md` §4 (cart ops, guest
+/// * contracts: `doc/research/store-api-contract.md` §4 (cart ops, guest
 ///   credential via `spreeToken`, discount-code apply/remove bodies
 ///   `{code}`, store-credit apply `{amount?}` decimal string).
 ///

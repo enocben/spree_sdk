@@ -5,7 +5,7 @@ import 'transport.dart';
 /// Parses a `Retry-After` header value.
 ///
 /// Supports delta-seconds (the form Spree rate limiting uses —
-/// `docs/research/store-api-contract.md` section 0). HTTP-date values are
+/// `doc/research/store-api-contract.md` section 0). HTTP-date values are
 /// not parsed and yield null (documented limitation).
 Duration? parseRetryAfter(String? value) {
   if (value == null) {

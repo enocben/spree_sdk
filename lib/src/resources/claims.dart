@@ -4,7 +4,7 @@
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
 /// * `packages/sdk/src/store-client.ts` (`orders.claims.list` SRC 925,
 ///   `orders.claims.create` SRC 949);
-/// * contracts: `docs/research/store-api-contract.md` section 5.
+/// * contracts: `doc/research/store-api-contract.md` section 5.
 ///
 /// P2 scope excluded by the owner: the single-get
 /// (`GET /orders/{id}/claims/{id}`) has no SPEC path and is not implemented

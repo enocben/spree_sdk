@@ -2,10 +2,10 @@
 ///
 /// Verified contracts (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
-/// * `docs/research/store-api-contract.md` §6 — method, path, auth, body
+/// * `doc/research/store-api-contract.md` §6 — method, path, auth, body
 ///   and envelope rows for `newsletterSubscribers.create/verify/
 ///   requestUnsubscribe/delete`;
-/// * `docs/research/authentication-flows.md` §K — subscribe links/auto-
+/// * `doc/research/authentication-flows.md` §K — subscribe links/auto-
 ///   verifies on email match with an optional JWT; verify consumes the
 ///   emailed token; `requestUnsubscribe` always yields 202 (void,
 ///   anti-enumeration); delete takes the JWT (own subscription) or the

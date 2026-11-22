@@ -1,7 +1,7 @@
 /// Catalog taxonomy operations: categories, sellers, collections
 /// (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §2
+/// Contracts: `doc/research/store-api-contract.md` §2
 /// (`GET /categories[/{id}]`, `GET /sellers[/{id}]`,
 /// `GET /collections[/{id}]`, `GET /collections/{id}/products`);
 /// parity matrix row 6. Auth: publishable key only (`KEY`).

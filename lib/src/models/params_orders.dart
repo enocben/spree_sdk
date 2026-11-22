@@ -21,7 +21,7 @@
 ///   CompanyAddressUpdateParams, AddCompanyMemberParams,
 ///   AcceptCompanyInvitationParams}.ts` (auto-generated from the SPEC
 ///   request schemas);
-/// * contracts: `docs/research/store-api-contract.md` sections 5, 7 and 8
+/// * contracts: `doc/research/store-api-contract.md` sections 5, 7 and 8
 ///   (method/path/auth/envelope per operation).
 ///
 /// Conventions (ADR-002 + file-ownership table 2):

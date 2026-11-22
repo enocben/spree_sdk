@@ -11,11 +11,11 @@ Reverse-engineer the public `@spree/sdk` behavior and establish evidence-backed 
 - Separate verified facts, inferences, and unknowns.
 
 ## Deliverables
-- `docs/research/upstream-sdk-inventory.md`
-- `docs/research/store-api-contract.md`
-- `docs/research/authentication-flows.md`
-- `docs/research/feature-parity-matrix.md`
-- `docs/research/open-questions.md`
+- `doc/research/upstream-sdk-inventory.md`
+- `doc/research/store-api-contract.md`
+- `doc/research/authentication-flows.md`
+- `doc/research/feature-parity-matrix.md`
+- `doc/research/open-questions.md`
 
 ## Boundaries
 Do not modify `lib/`, `test/`, or `pubspec.yaml`. Never invent endpoints or schemas. Cite source paths/URLs for every non-trivial claim.

@@ -9,14 +9,14 @@
 ///   `{token, refresh_token, user: {id, email, first_name, last_name}}`;
 /// * SPEC `store.yaml#/components/schemas/AuthResponse` types `user` as the
 ///   full `Customer` schema (conflict recorded as Q4 in
-///   `docs/research/open-questions.md`). Per the task brief this file models
+///   `doc/research/open-questions.md`). Per the task brief this file models
 ///   the documented superset: the SDK fields plus the SPEC-documented
 ///   customer fields, all SPEC extras nullable;
 /// * SPEC `store.yaml#/components/schemas/Customer` for the extra fields
 ///   (`phone`, `accepts_email_marketing`,
 ///   `email_marketing_consent_updated_at`, `full_name`,
 ///   `available_store_credit_total`);
-/// * login/refresh/logout contracts: `docs/research/store-api-contract.md` §1
+/// * login/refresh/logout contracts: `doc/research/store-api-contract.md` §1
 ///   (`POST /auth/login`, `POST /auth/refresh`, `POST /auth/logout`).
 library;
 

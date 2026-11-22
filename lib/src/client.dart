@@ -28,14 +28,14 @@ const Set<String> _supportedMethods = <String>{
 };
 
 /// Immutable configuration for [SpreeClient] (frozen contract,
-/// `docs/architecture/file-ownership.md` table 2).
+/// `doc/architecture/file-ownership.md` table 2).
 class SpreeConfig {
   /// Store origin (for example `https://api.mystore.com`). Trailing slashes
   /// are stripped; `/api/v3/store` is appended per request.
   final Uri baseUrl;
 
   /// Publishable storefront key, sent as `x-spree-api-key` on every request
-  /// (verified: `docs/research/store-api-contract.md` section 0).
+  /// (verified: `doc/research/store-api-contract.md` section 0).
   final String publishableKey;
 
   /// Token provider supplying the customer JWT. Null for anonymous usage.
@@ -47,7 +47,7 @@ class SpreeConfig {
 
   /// Contextual defaults, sent as `x-spree-locale`, `x-spree-currency`,
   /// `x-spree-country` and `x-spree-channel` (verified header names:
-  /// `docs/research/store-api-contract.md` section 0). Per-request
+  /// `doc/research/store-api-contract.md` section 0). Per-request
   /// [RequestOptions] override these.
   final String? locale;
   final String? currency;
@@ -87,7 +87,7 @@ class SpreeConfig {
 }
 
 /// Entry point for the Spree Store API (frozen contract,
-/// `docs/architecture/file-ownership.md` table 2).
+/// `doc/architecture/file-ownership.md` table 2).
 ///
 /// ```dart
 /// final client = SpreeClient(

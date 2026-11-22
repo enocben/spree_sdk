@@ -9,7 +9,7 @@
 ///   CustomerGroup}.ts` and `packages/sdk/src/types/index.ts` (re-exports);
 /// * SPEC `store.yaml#/components/schemas/{Customer,NewsletterSubscriber,
 ///   CustomerGroup}`;
-/// * contracts: `docs/research/store-api-contract.md` §7
+/// * contracts: `doc/research/store-api-contract.md` §7
 ///   (`GET/PATCH /customers/me`, address CRUD, `dataRequests`, `creditCards`,
 ///   `gift_cards`, `store_credits`, `digital_links`, `orders`).
 ///

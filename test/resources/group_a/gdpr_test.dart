@@ -2,8 +2,8 @@
 ///
 /// Covers one test per operation (method, URL, query, headers, body,
 /// response) plus 401/403/422 error paths. Contracts:
-/// `docs/research/store-api-contract.md` §§7–8,
-/// `docs/research/authentication-flows.md` §I (double opt-in; the token
+/// `doc/research/store-api-contract.md` §§7–8,
+/// `doc/research/authentication-flows.md` §I (double opt-in; the token
 /// endpoints carry no credential because the path token IS the credential).
 library;
 

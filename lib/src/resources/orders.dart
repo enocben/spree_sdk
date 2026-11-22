@@ -4,7 +4,7 @@
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
 /// * `packages/sdk/src/store-client.ts` (`orders.get` SRC 853,
 ///   `customer.orders.list` SRC 1250, `customer.orders.get` SRC 1263);
-/// * contracts: `docs/research/store-api-contract.md` sections 5 and 7.
+/// * contracts: `doc/research/store-api-contract.md` sections 5 and 7.
 ///
 /// Auth: `orders.get` accepts a customer JWT (`RequestOptions.token`, or the
 /// client's `AuthTokenProvider`) **or** a guest order token

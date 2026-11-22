@@ -1,6 +1,6 @@
 /// List query conventions for the Spree Store API.
 ///
-/// Verified against `docs/research/store-api-contract.md` section 0
+/// Verified against `doc/research/store-api-contract.md` section 0
 /// (`CORE params.ts`, `helpers.ts`): `page`/`limit` passthrough, `expand` and
 /// `fields` comma-joined, `sort` passthrough (prefix `-` for descending),
 /// every other filter key wrapped as `q[…]` (Ransack). Nothing else is ever

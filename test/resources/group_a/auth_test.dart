@@ -2,8 +2,8 @@
 ///
 /// Covers one test per operation (method, URL, query, headers, body,
 /// response) plus 401/403/422 error paths. Contracts:
-/// `docs/research/store-api-contract.md` §1,
-/// `docs/research/authentication-flows.md` §B–E, §H.
+/// `doc/research/store-api-contract.md` §1,
+/// `doc/research/authentication-flows.md` §B–E, §H.
 library;
 
 import 'package:http/http.dart' as http;

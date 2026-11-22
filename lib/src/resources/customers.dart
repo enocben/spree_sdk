@@ -2,10 +2,10 @@
 ///
 /// Verified contracts (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
-/// * `docs/research/store-api-contract.md` §7 — `customer.get/update`
+/// * `doc/research/store-api-contract.md` §7 — `customer.get/update`
 ///   (`GET`/`PATCH /customers/me`) and `customer.addresses.*` CRUD paths,
 ///   all KEY+JWT (the `/customers/me` surface is the authenticated surface;
-///   see `docs/research/authentication-flows.md` §3);
+///   see `doc/research/authentication-flows.md` §3);
 /// * response shapes: `Customer` and `Address` (SPEC serializers, shared
 ///   with the cart models).
 ///

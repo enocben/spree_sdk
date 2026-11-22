@@ -2,12 +2,12 @@ import 'errors/decode_error.dart';
 
 /// Paginated collection envelope for the Spree Store API.
 ///
-/// Verified shape (`docs/research/store-api-contract.md` section 0):
+/// Verified shape (`doc/research/store-api-contract.md` section 0):
 /// `{"data": [...], "meta": {page, limit, count, pages, from, to, in,
 /// previous, next}}`.
 ///
 /// Note: this differs nominally from the `meta(count/totalCount/totalPages/
-/// page)` sketch in `docs/architecture/file-ownership.md` table 2, which was
+/// page)` sketch in `doc/architecture/file-ownership.md` table 2, which was
 /// a pre-research proposal. The field names below follow the verified
 /// research contract; `totalCount` and `totalPages` are provided as
 /// convenience aliases so both spellings read naturally.

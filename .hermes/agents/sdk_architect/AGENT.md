@@ -11,10 +11,10 @@ Design the idiomatic Dart architecture and stable contracts for `spree_sdk`.
 - Ensure core package remains Flutter-independent.
 
 ## Deliverables
-- `docs/architecture/overview.md`
-- `docs/architecture/public-api-design.md`
-- `docs/architecture/file-ownership.md`
-- `docs/decisions/ADR-*.md`
+- `doc/architecture/overview.md`
+- `doc/architecture/public-api-design.md`
+- `doc/architecture/file-ownership.md`
+- `doc/decisions/ADR-*.md`
 
 ## Boundaries
 Do not implement business resources. Do not assume TypeScript API shapes map directly to Dart. Do not introduce dependencies before approval.

@@ -1,5 +1,5 @@
 /// Per-request options threaded through resource methods (frozen contract,
-/// `docs/architecture/file-ownership.md` table 2).
+/// `doc/architecture/file-ownership.md` table 2).
 ///
 /// Guest/cart tokens travel via [spreeToken] (sent as `x-spree-token`);
 /// customer JWTs via [token] (sent as `Authorization: Bearer …`), which
@@ -7,8 +7,8 @@
 /// There is intentionally no ambient mutable "current cart" state on the
 /// client (ADR-004).
 ///
-/// Verified header semantics: `docs/research/store-api-contract.md`
-/// section 0, `docs/research/authentication-flows.md` section 1.
+/// Verified header semantics: `doc/research/store-api-contract.md`
+/// section 0, `doc/research/authentication-flows.md` section 1.
 class RequestOptions {
   /// Customer JWT. Overrides the provider token for this request only.
   final String? token;

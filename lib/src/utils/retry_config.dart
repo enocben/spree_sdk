@@ -12,7 +12,7 @@ const Set<String> safeHttpMethods = <String>{'GET', 'HEAD', 'OPTIONS'};
 /// (`POST`/`PUT`/`PATCH`/`DELETE`) are retried only when [RetryConfig]
 /// observes explicit idempotence — i.e. the request carries an idempotency
 /// key (`RequestOptions.idempotencyKey`, sent as `Idempotency-Key`, a
-/// server-supported mechanism per `docs/research/store-api-contract.md`
+/// server-supported mechanism per `doc/research/store-api-contract.md`
 /// section 4).
 class RetryConfig {
   /// Maximum number of retries after the initial attempt. Defaults to 2.

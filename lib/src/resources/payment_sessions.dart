@@ -1,7 +1,7 @@
 /// Cart payment-session operations for provider-delegated payments such as
 /// Stripe (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §4
+/// Contracts: `doc/research/store-api-contract.md` §4
 /// (`POST /carts/{id}/payment_sessions`,
 /// `GET /carts/{id}/payment_sessions/{id}`,
 /// `PATCH /carts/{id}/payment_sessions/{id}`,

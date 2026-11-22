@@ -2,7 +2,7 @@
 ///
 /// Verified against `@spree/sdk` 6.0.5 at spree/spree SHA `d2f38e6`
 /// (2026-11-22), Store API v3, base path `/api/v3/store`.
-/// See `docs/research/` for contracts and `docs/architecture/` for design.
+/// See `doc/research/` for contracts and `doc/architecture/` for design.
 library;
 
 // Core: client, configuration, auth provider contract, errors,

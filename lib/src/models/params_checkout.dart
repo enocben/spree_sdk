@@ -10,7 +10,7 @@
 ///   `CreatePaymentParams`, `CreatePaymentSessionParams`,
 ///   `UpdatePaymentSessionParams`, `CompletePaymentSessionParams`,
 ///   `UpdateFulfillmentParams`);
-/// * contracts: `docs/research/store-api-contract.md` §4 (`SRC 560` update,
+/// * contracts: `doc/research/store-api-contract.md` §4 (`SRC 560` update,
 ///   `SRC 632` items create `{variant_id, quantity, …}`,
 ///   `SRC 648` items update, `SRC 727` fulfillments update selecting the
 ///   delivery rate, `SRC 747` direct payments for non-session methods,

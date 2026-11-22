@@ -2,11 +2,11 @@
 ///
 /// Verified contracts (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
-/// * `docs/research/store-api-contract.md` §1 — method, path, auth, body,
+/// * `doc/research/store-api-contract.md` §1 — method, path, auth, body,
 ///   envelope and error rows for `auth.login`, `auth.refresh`,
 ///   `auth.logout`, `customers.create` (register), `passwordResets.create`
 ///   and `passwordResets.update`;
-/// * `docs/research/authentication-flows.md` §B–E, §H — register/login/
+/// * `doc/research/authentication-flows.md` §B–E, §H — register/login/
 ///   refresh/logout/password-reset flows, rate limits, rotation and
 ///   auto-login behavior.
 ///

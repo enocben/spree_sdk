@@ -12,4 +12,4 @@ Implement the approved Dart SDK foundation: configuration, HTTP pipeline, auth e
 - Add unit and HTTP request-construction tests.
 
 ## Boundaries
-Only edit files assigned in `docs/architecture/file-ownership.md`. Do not implement domain resources or models. Do not change public contracts without approval.
+Only edit files assigned in `doc/architecture/file-ownership.md`. Do not implement domain resources or models. Do not change public contracts without approval.

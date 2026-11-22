@@ -7,7 +7,7 @@
 ///   `companies.members.list/create` SRC 1432, `companies.invitations.*`
 ///   SRC 1467, `companies.orders.list` SRC 1485,
 ///   `companyInvitations.lookup/accept` SRC 1502);
-/// * contracts: `docs/research/store-api-contract.md` section 8.
+/// * contracts: `doc/research/store-api-contract.md` section 8.
 ///
 /// Auth: every company read/write needs a customer JWT plus standing over
 /// the node (membership on it or an ancestor); within a company any member

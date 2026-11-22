@@ -7,8 +7,8 @@ Shared contracts (table 2) freeze **before** parallel implementation; changing t
 
 | Area | Files | Owner agent (proposed) |
 |---|---|---|
-| Architecture + ADRs | `docs/architecture/*`, `docs/decisions/*` | sdk_architect (this proposal) — owner-approved, then read-only |
-| Research / contracts | `docs/research/*`, per-operation contract records | api_analyzer |
+| Architecture + ADRs | `doc/architecture/*`, `doc/decisions/*` | sdk_architect (this proposal) — owner-approved, then read-only |
+| Research / contracts | `doc/research/*`, per-operation contract records | api_analyzer |
 | Public barrel | `lib/spree_sdk.dart` | sdk_architect (exports only) |
 | Client + config | `lib/src/client.dart`, `lib/src/config.dart` | core_implementer (Phase 03, post-approval) |
 | Transport (internal) | `lib/src/transport/*` | core_implementer |
@@ -21,7 +21,7 @@ Shared contracts (table 2) freeze **before** parallel implementation; changing t
 | Flutter adapter (separate package) | outside this repo/package | flutter_adapter_agent (only if needed) |
 | `pubspec.yaml` | dependency changes | orchestrator approval required (AGENTS.md §3.5); no agent edits unilaterally |
 
-This phase modifies **only** `docs/architecture/*` and `docs/decisions/*`. `lib/`, `test/`, `pubspec.yaml`, `docs/research/*` are untouched.
+This phase modifies **only** `doc/architecture/*` and `doc/decisions/*`. `lib/`, `test/`, `pubspec.yaml`, `doc/research/*` are untouched.
 
 ## 2. Shared stable contracts (freeze before parallel coding)
 

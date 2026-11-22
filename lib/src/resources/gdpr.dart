@@ -2,10 +2,10 @@
 ///
 /// Verified contracts (consulted 2026-11-22, upstream SHA
 /// `d2f38e6ab47618bb57a0062e5640fed3c9b63eb2`):
-/// * `docs/research/store-api-contract.md` §7 (`customer.dataRequests.
+/// * `doc/research/store-api-contract.md` §7 (`customer.dataRequests.
 ///   list/get/create`, KEY+JWT) and §8 (`dataRequests.get/confirm` by
 ///   email-link token, no credential — the token IS the credential);
-/// * `docs/research/authentication-flows.md` §I — double opt-in: create
+/// * `doc/research/authentication-flows.md` §I — double opt-in: create
 ///   yields `awaiting_confirmation`, the confirmation email appends the
 ///   token to `redirect_url`, confirmation must run on user gesture (mail
 ///   scanners prefetch links), `GET` by token later carries the download

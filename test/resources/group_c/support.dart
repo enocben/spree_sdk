@@ -53,7 +53,7 @@ http.Response jsonResponse(Object body, [int status = 200]) {
 }
 
 /// Builds an error envelope as documented in
-/// `docs/research/store-api-contract.md` section 0.
+/// `doc/research/store-api-contract.md` section 0.
 http.Response errorResponse(String code, String message, [int status = 422]) {
   return jsonResponse(<String, Object?>{
     'error': <String, Object?>{'code': code, 'message': message},

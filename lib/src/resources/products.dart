@@ -1,6 +1,6 @@
 /// Catalog product operations (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §2
+/// Contracts: `doc/research/store-api-contract.md` §2
 /// (`GET /products`, `GET /products/{id}`, `GET /products/filters`);
 /// parity matrix rows 5–6. Auth: publishable key only (`KEY`).
 library;

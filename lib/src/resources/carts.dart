@@ -1,6 +1,6 @@
 /// Cart and checkout operations (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §4
+/// Contracts: `doc/research/store-api-contract.md` §4
 /// (`GET /carts`, `GET /carts/{id}`, `POST /carts`, `PATCH /carts/{id}`,
 /// `DELETE /carts/{id}`, `PATCH /carts/{id}/associate`,
 /// `POST /carts/{id}/complete`, `GET /carts/{id}/addresses`,

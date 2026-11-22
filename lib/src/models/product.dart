@@ -12,11 +12,11 @@
 ///   ProductFilterOptionValue,ProductFilterCategory,
 ///   ProductFilterCategoryOption,ProductFilterSortOption}.ts`;
 /// * SPEC `store.yaml#/components/schemas/` for the same names;
-/// * contracts: `docs/research/store-api-contract.md` §2
+/// * contracts: `doc/research/store-api-contract.md` §2
 ///   (`GET /products`, `GET /products/{id}`, `GET /products/filters`);
 /// * money is always a decimal string, never a number
 ///   (`docs/developer/sdk/configuration.mdx` "Monetary Amounts", verified in
-///   `docs/research/upstream-sdk-inventory.md` §4).
+///   `doc/research/upstream-sdk-inventory.md` §4).
 library;
 
 import 'meta.dart';

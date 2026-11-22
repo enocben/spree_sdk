@@ -5,7 +5,7 @@ import 'spree_exception.dart';
 /// The server answered with a non-2xx status code.
 ///
 /// The `{error: {code, message, details}}` envelope documented in
-/// `docs/research/store-api-contract.md` section 0 is parsed when present;
+/// `doc/research/store-api-contract.md` section 0 is parsed when present;
 /// otherwise [code] is null and [message] falls back to a status summary.
 /// The raw body is retained in [rawBody] for diagnostics (truncated) and is
 /// never interpolated into [toString] unredacted.

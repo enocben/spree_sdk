@@ -7,7 +7,7 @@
 ///   `wishlists.update` SRC 1575, `wishlists.delete` SRC 1584,
 ///   `wishlists.items.create` SRC 1598, `wishlists.items.update` SRC 1612,
 ///   `wishlists.items.delete` SRC 1621);
-/// * contracts: `docs/research/store-api-contract.md` section 8.
+/// * contracts: `doc/research/store-api-contract.md` section 8.
 ///
 /// Auth: account-scoped; the customer JWT is required.
 library;

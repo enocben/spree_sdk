@@ -1,7 +1,7 @@
 # Architecture Overview — `spree_sdk` (Phase 01 proposal)
 
 Status: **proposal** — no implementation. No new dependencies.
-Date: 2026-11-22. Upstream inspection: `spree/spree` `packages/sdk` public behavior only (docs + npm page); no upstream commit SHA pinned (see Limitations). All upstream-derived facts below are marked **inferred** until `docs/research/*` (api_analyzer) lands.
+Date: 2026-11-22. Upstream inspection: `spree/spree` `packages/sdk` public behavior only (docs + npm page); no upstream commit SHA pinned (see Limitations). All upstream-derived facts below are marked **inferred** until `doc/research/*` (api_analyzer) lands.
 
 ## 1. Package boundaries
 
@@ -47,6 +47,6 @@ public client / config  →  resources  →  transport  →  Spree Store API
 
 ## 5. Limitations / open questions → owner
 
-- `docs/research/*` not yet available at write time — endpoint inventory, parity matrix, and contract evidence are pending api_analyzer; **no resource method is specified here beyond the TS-mirroring sketch**.
+- `doc/research/*` not yet available at write time — endpoint inventory, parity matrix, and contract evidence are pending api_analyzer; **no resource method is specified here beyond the TS-mirroring sketch**.
 - Upstream commit SHA / target Store API version / OpenAPI revision **not pinned** — needs owner sign-off (proposed as Phase 02 gate).
 - Dependency recommendations in ADRs are **recommendations only** — §3.5 requires documented reason + alternatives + maintenance/license review before adding anything (this phase adds nothing).

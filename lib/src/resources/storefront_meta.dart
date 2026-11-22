@@ -1,7 +1,7 @@
 /// Storefront reference-data operations: countries, currencies, locales,
 /// channel, store, policies, markets (Store API).
 ///
-/// Contracts: `docs/research/store-api-contract.md` §3
+/// Contracts: `doc/research/store-api-contract.md` §3
 /// (`GET /countries[/{iso}]`, `GET /currencies`, `GET /locales`,
 /// `GET /channel`, `GET /store`, `GET /policies[/{id}]`,
 /// `GET /markets[/{id}]`, `GET /markets/resolve`,

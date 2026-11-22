@@ -6,7 +6,7 @@
 ///   `customer.giftCards` SRC 1174, `customer.storeCredits` SRC 1199,
 ///   `customer.digitalLinks` SRC 1225, `customer.paymentSetupSessions`
 ///   SRC 1281);
-/// * contracts: `docs/research/store-api-contract.md` section 7.
+/// * contracts: `doc/research/store-api-contract.md` section 7.
 ///
 /// All reads here are under `/customers/me` and require the customer JWT.
 /// P2 scope excluded by the owner: single-gets for gift cards, store

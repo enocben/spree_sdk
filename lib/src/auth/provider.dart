@@ -9,7 +9,7 @@
 /// Verified credential semantics (`Authorization: Bearer …` from the `token`
 /// option, refresh via `POST /auth/refresh` with `{refresh_token}` and no
 /// Authorization header) are recorded in
-/// `docs/research/authentication-flows.md` sections 1–2.
+/// `doc/research/authentication-flows.md` sections 1–2.
 abstract class AuthTokenProvider {
   const AuthTokenProvider();
 
