@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Make invalid base URL errors more actionable by showing the supplied URI and an absolute HTTP(S) example.
+
 ## 1.0.1
 
 - Generate model value semantics, `copyWith`, and JSON serialization with Freezed.

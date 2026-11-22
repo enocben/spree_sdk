@@ -2,10 +2,8 @@ import 'package:spree_sdk/spree_sdk.dart';
 
 Future<void> main() async {
   final client = SpreeClient(
-    baseUrl: Uri.parse('https://example.com'),
+    baseUrl: Uri.parse('https://spree.sh'),
     publishableKey: 'your-publishable-key',
-    locale: 'en',
-    currency: 'USD',
   );
 
   try {
