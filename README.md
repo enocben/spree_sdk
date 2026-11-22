@@ -301,3 +301,7 @@ dart test
 
 Repository design and Store API contract references are available in
 `docs/architecture/`, `docs/api/`, and `docs/research/`.
+
+## License
+
+This package is licensed under the [MIT License](./LICENSE).
